@@ -25,7 +25,9 @@ agents write code only within these rules.
 7. Side effects (later milestones): tools with side effects must stop in a pending-approval state,
    enforced in code by the policy layer, never by prompt wording.
 8. Evaluation integrity (later milestones): never edit gold labels, eval datasets or thresholds
-   to make a result pass. Tune on dev, report on test. Evals use temperature 0.
+   to make a result pass. Tune on dev, report on test. Do not rely on temperature for determinism:
+   chat-cloud accepts no sampling params (the gateway drops them, gateway decision 20). Record the resolved
+   model and the sampling params actually sent; run each eval item N times and report the spread.
 9. Do not modify anything outside this repository (in particular the gateway repository).
 10. Do not commit, tag or push. Leave changes in the working tree for human review.
 

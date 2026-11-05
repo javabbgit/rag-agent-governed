@@ -1,0 +1,11 @@
+HTTP/1.1 403 Forbidden
+date: Thu, 05 Nov 2026 15:14:52 GMT
+x-litellm-call-id: 1578d403-f390-4667-abfc-1af4671a8fcd
+x-litellm-response-cost: 0
+x-litellm-key-spend: 0.00025176
+content-length: 476
+content-type: application/json
+x-frame-options: DENY
+content-security-policy: frame-ancestors 'none'
+x-content-type-options: nosniff
+
