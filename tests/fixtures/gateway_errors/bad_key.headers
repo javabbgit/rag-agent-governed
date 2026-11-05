@@ -1,0 +1,8 @@
+HTTP/1.1 401 Unauthorized
+date: Thu, 05 Nov 2026 15:02:32 GMT
+content-length: 315
+content-type: application/json
+x-frame-options: DENY
+content-security-policy: frame-ancestors 'none'
+x-content-type-options: nosniff
+

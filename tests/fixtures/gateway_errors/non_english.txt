@@ -1,0 +1,2 @@
+{"error":{"message":"policy_blocked: rule R10 — 改道目标 chat-default 不在调用方的模型白名单里. Request contains data that may not be sent to chat-cloud (level high, reason language_unsupported).","type":"permission_error","param":null,"code":"403","provider_specific_fields":{"error":"policy_blocked: rule R10 — 改道目标 chat-default 不在调用方的模型白名单里. Request contains data that may not be sent to chat-cloud (level high, reason language_unsupported)."}}}
+403
