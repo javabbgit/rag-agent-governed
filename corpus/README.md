@@ -55,7 +55,7 @@ The summary chunk is `<doc id>#summary`. Example: `POL-003#qualifying-rate`.
 ## Cross-document conventions
 
 Rules carried forward from the written batches. Later documents must stay consistent with them.
-Updated after each batch (currently B1 to B3).
+Updated after each batch (currently B1 to B4).
 
 - **Owners are departments, by document family.** Credit Risk: POL-001, POL-003, POL-004,
   POL-005, POL-007, POL-010. Underwriting: POL-002, POL-006, POL-008. Compliance: POL-011.
@@ -102,6 +102,28 @@ Updated after each batch (currently B1 to B3).
   force that day; no penalty at maturity.
 - **Complaints (PRC-008):** acknowledged within 2 business days, final response within 30
   calendar days; path is front line, Complaints Office, external complaints body.
+- **Rates (RATE-001, effective 2026-11-01; PRD-001 to PRD-007 use the same figures).** DMC Prime
+  4.70%. Contract rate and qualifying rate (contract + 1.75 points; the 5.40% floor binds for no
+  product): FX5-C 4.69% / 6.44%, FX3-C 4.84% / 6.59%, VR5-C 4.15% (prime minus 0.55) / 5.90%,
+  FX1-O 6.99% / 8.74%, HEL-1 5.45% (prime plus 0.75) / 7.20%, RNT-4 5.09% / 6.84%, SEA-5 5.19% /
+  6.94%. Product documents do not restate exception limits; they point to POL-010.
+- **Rate holds (RATE-003):** 120 days for a purchase, 60 days for a refinance, starting on the
+  date Mortgage Operations acknowledges the complete application. A hold locks the contract rate
+  only (for VR5-C and HEL-1, the spread and starting rate). It is not an approval. An extension
+  is an exception under POL-010 plus the 150 fee; delay in closing does not extend it.
+- **Fees (RATE-002):** only four fees exist (discharge 295, NSF 45, payment change 25, rate hold
+  extension 150). The discharge fee is charged in addition to any prepayment penalty. The payment
+  change fee is not charged when a variable-rate payment changes because prime moved. No fee for
+  application, renewal, conversion or a prepayment within privileges. Staff never waive a fee;
+  only the Credit Committee may waive the extension fee.
+- **Products:** FX5-C, FX3-C, VR5-C and FX1-O are for owner-occupied property on a new
+  application; RNT-4 is the only product for a non-owner-occupied property. A closed mortgage of
+  any kind that renews by default (including RNT-4) renews into FX1-O. VR5-C may convert to a
+  fixed term at least as long as the remaining term, with no fee and no requalification, and
+  follows the new product's privileges and penalty. VR5-C and HEL-1 payments follow prime. HEL-1:
+  interest calculated daily on the drawn balance and charged monthly, interest-only minimum
+  payment, no prepayment penalty, no fixed term. Product documents have owner Product and
+  audience staff and broker.
 - **Appraisal:** a full appraisal on every file, ordered by Mortgage Operations.
 - **Heating** is counted at 100 per month in GDS in every version (POL-003 and POL-003-V1).
 - **Closed products** with a prepayment privilege and penalty: FX5-C, FX3-C, SEA-5 and RNT-4
