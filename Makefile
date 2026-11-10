@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan
 
 setup:
 	uv sync --python 3.11
@@ -25,3 +25,12 @@ test:
 
 smoke:
 	uv run python scripts/smoke.py --pii
+
+corpus-check:
+	uv run python scripts/check_corpus.py $(if $(ALLOW_MISSING),--allow-missing)
+
+corpus-chunks:
+	uv run python scripts/check_corpus.py --list-chunks $(if $(ALLOW_MISSING),--allow-missing)
+
+corpus-prescan:
+	uv run python scripts/pii_prescan.py $(if $(DOC),--doc $(DOC))
