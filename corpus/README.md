@@ -55,7 +55,7 @@ The summary chunk is `<doc id>#summary`. Example: `POL-003#qualifying-rate`.
 ## Cross-document conventions
 
 Rules carried forward from the written batches. Later documents must stay consistent with them.
-Updated after each batch (currently B1 to B4).
+Updated after each batch (currently B1 to B5).
 
 - **Owners are departments, by document family.** Credit Risk: POL-001, POL-003, POL-004,
   POL-005, POL-007, POL-010. Underwriting: POL-002, POL-006, POL-008. Compliance: POL-011.
@@ -124,6 +124,23 @@ Updated after each batch (currently B1 to B4).
   interest calculated daily on the drawn balance and charged monthly, interest-only minimum
   payment, no prepayment penalty, no fixed term. Product documents have owner Product and
   audience staff and broker.
+- **Rate basis, exact wording:** "Without a rate hold, the rate is the rate on the rate sheet in
+  force on the funding date." It appears in RATE-001, RATE-003 and every PRD document. For a
+  renewal the funding date is the first day of the new term. Underwriting qualifies at the current
+  sheet on the decision date and recalculates if the rate changes before funding (POL-004).
+- **FAQ documents** restate rules in everyday words, in the second person, and add no rule. The
+  H2 headings are questions. Audience: FAQ-001, FAQ-002, FAQ-003 borrower; FAQ-004 broker;
+  FAQ-006 staff. All FAQ documents are owned by Customer Care.
+- **Superseded documents** keep the current title and structure, use v1 values only (33% and 40%
+  ratios, 15% privileges, the 2026-08-01 rates and their qualifying rates), and open with
+  "Superseded on <date> by <ID> version 2.0." They carry version 1.0 and `superseded_by`.
+  RATE-001-V1 qualifying rates: FX5-C 6.64, FX3-C 6.79, VR5-C 6.25 (4.50 contract), FX1-O 8.94,
+  HEL-1 7.45 (5.70 contract), RNT-4 7.04, SEA-5 7.14.
+- **Property tax account and home insurance (FAQ-005):** a property tax account with Demo Mortgage
+  Co. is optional and does not change how the application is tested (property tax is always in
+  GDS housing costs). Proof of home insurance is required at closing (a PRC-003 condition, signed
+  off by Mortgage Operations, due 10 business days before closing) and at each renewal, including
+  a straight renewal.
 - **Appraisal:** a full appraisal on every file, ordered by Mortgage Operations.
 - **Heating** is counted at 100 per month in GDS in every version (POL-003 and POL-003-V1).
 - **Closed products** with a prepayment privilege and penalty: FX5-C, FX3-C, SEA-5 and RNT-4
