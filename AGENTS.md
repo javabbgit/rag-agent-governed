@@ -34,6 +34,12 @@ agents write code only within these rules.
 10. Do not commit, tag or push. Leave changes in the working tree for human review.
 11. corpus/facts.toml is the single source of truth for policy numbers (ratios, rates, fees,
     limits). Code that needs one reads it from there; never hard-code a policy number.
+12. All retrieval goes through rag_agent.retrieve.retrieve(). Tools, UI and eval code never
+    query the chunks table directly.
+13. Retrieval parameters (tokenizer, stopwords, BM25 k1/b, RRF k, candidate depth) live in one
+    constant block in retrieve.py. Changing any of them needs a full eval run and a decision record.
+14. Every embedding input carries the nomic task prefix: "search_document: " for chunks,
+    "search_query: " for queries.
 
 ## Commands
 - make setup   install with uv (Python 3.11)
@@ -46,11 +52,18 @@ agents write code only within these rules.
 - make corpus-check    validate corpus format, PII patterns, numbers and banned terms
 - make corpus-chunks   write reports/corpus/chunks.csv (frozen chunk IDs)
 - make corpus-prescan  send every chunk through the gateway's rag-embed (gateway mode only)
+- make db-init create tables (idempotent)
+- make ingest embed and store the corpus; skips unchanged chunks (COLLECTION=main)
+- make ingest-rebuild re-embed every chunk
+- make search Q="..." MODE=hybrid|bm25|vector
+- make retrieval-smoke 12 sanity queries x 3 modes; not part of any eval set
+- make test-db         db-marked tests against the local pgvector
 
 ## Testing requirements
 - Every new module gets unit tests. Unit tests never touch the network.
-- Tests that need the gateway, Ollama or Postgres are marked @pytest.mark.integration
-  and are excluded from make test.
+- Tests that need only the local Postgres are marked @pytest.mark.db and run with
+  make test-db. Tests that need the gateway or Ollama are marked
+  @pytest.mark.integration. Both are excluded from make test.
 - Gateway error handling is tested against the recorded fixtures in tests/fixtures/gateway_errors/.
 
 ## Ask before
@@ -58,6 +71,7 @@ Changing the database schema, docker-compose.yml, environment variables, the err
 the eval datasets, or this file.
 Changing corpus/facts.toml, corpus/manifest.toml or anything under corpus/docs/.
 Chunk IDs are frozen after tag d2-corpus; renaming a heading invalidates eval labels.
+Changing db/schema.sql, the embedding text format, or any retrieval parameter.
 
 ## Definition of done for a task
 - make lint and make test pass.
