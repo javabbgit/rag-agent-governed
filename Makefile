@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke
 
 setup:
 	uv sync --python 3.11
@@ -49,3 +49,13 @@ ingest-rebuild:
 
 test-db:
 	uv run pytest -m db
+
+MODE ?= hybrid
+K ?= 10
+
+search:
+	@test -n "$(Q)" || { echo 'usage: make search Q="your question" [MODE=hybrid|bm25|vector] [K=10]'; exit 2; }
+	uv run python scripts/search.py "$(Q)" --mode $(MODE) -k $(K)
+
+retrieval-smoke:
+	uv run python scripts/retrieval_smoke.py

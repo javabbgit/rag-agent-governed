@@ -49,6 +49,28 @@ class ChunkRow:
     embedding: list[float]
 
 
+@dataclass(frozen=True)
+class ChunkText:
+    """A chunk as read for retrieval (no embedding). `status` comes from its document."""
+
+    chunk_id: str
+    doc_id: str
+    heading: str
+    status: str
+    body: str
+    index_text: str
+
+
+@dataclass(frozen=True)
+class VectorMatch:
+    chunk_id: str
+    doc_id: str
+    heading: str
+    status: str
+    body: str
+    score: float  # 1 - cosine distance
+
+
 def connect(dsn: str | None = None) -> psycopg.Connection[Any]:
     """Connect with `dsn`, or DATABASE_URL from the environment."""
     url = dsn or os.environ.get("DATABASE_URL")
@@ -202,3 +224,54 @@ def record_run(
                 ok,
             ),
         )
+
+
+# --- read-only retrieval queries -------------------------------------------------------------
+
+
+def collection_signature(collection: str, dsn: str | None = None) -> tuple[int, datetime | None]:
+    """(chunk count, max(ingested_at)): changes whenever the collection is re-ingested."""
+    with connect(dsn) as conn:
+        row = conn.execute(
+            "SELECT count(*), max(ingested_at) FROM chunks WHERE collection = %s", (collection,)
+        ).fetchone()
+    return (int(row[0]), row[1])
+
+
+def load_chunks(collection: str, dsn: str | None = None) -> list[ChunkText]:
+    """Every chunk of the collection (current and superseded), ordered by chunk_id."""
+    with connect(dsn) as conn:
+        rows = conn.execute(
+            "SELECT c.chunk_id, c.doc_id, c.heading, d.status, c.body, c.index_text"
+            " FROM chunks c JOIN documents d ON d.collection = c.collection AND d.doc_id = c.doc_id"
+            " WHERE c.collection = %s ORDER BY c.chunk_id",
+            (collection,),
+        ).fetchall()
+    return [ChunkText(*r) for r in rows]
+
+
+_VECTOR_ALL = (
+    "SELECT c.chunk_id, c.doc_id, c.heading, d.status, c.body,"
+    " 1 - (c.embedding <=> %s::vector) AS score"
+    " FROM chunks c JOIN documents d ON d.collection = c.collection AND d.doc_id = c.doc_id"
+    " WHERE c.collection = %s"
+    " ORDER BY c.embedding <=> %s::vector, c.chunk_id LIMIT %s"
+)
+_VECTOR_CURRENT = _VECTOR_ALL.replace(
+    " WHERE c.collection = %s", " WHERE c.collection = %s AND d.status = 'current'"
+)
+
+
+def vector_search(
+    collection: str,
+    vector: list[float],
+    limit: int,
+    include_superseded: bool = True,
+    dsn: str | None = None,
+) -> list[VectorMatch]:
+    """Exact cosine scan: nearest first, ties by chunk_id."""
+    lit = vector_literal(vector)
+    sql = _VECTOR_ALL if include_superseded else _VECTOR_CURRENT
+    with connect(dsn) as conn:
+        rows = conn.execute(sql, (lit, collection, lit, limit)).fetchall()
+    return [VectorMatch(r[0], r[1], r[2], r[3], r[4], float(r[5])) for r in rows]

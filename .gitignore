@@ -10,3 +10,4 @@ reports/smoke/
 *.log
 reports/corpus/
 reports/ingest/
+reports/retrieval/
