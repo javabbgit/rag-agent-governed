@@ -28,9 +28,10 @@ packages = ["src/rag_agent"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["tests", "scripts"]
-addopts = '-m "not integration"'
+addopts = '-m "not integration and not db"'
 markers = [
     "integration: needs the gateway, Ollama or Postgres (excluded from make test)",
+    "db: needs Postgres with pgvector and DATABASE_URL (make test-db; excluded from make test)",
 ]
 
 [tool.ruff]
