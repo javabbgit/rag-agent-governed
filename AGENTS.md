@@ -22,6 +22,8 @@ agents write code only within these rules.
    Loan numbers use the format DMC-YYYY-NNNNN. Never write 9-digit numbers.
    The single exception is the PII_PROBE_TEXT constant in scripts/smoke.py
    (the gateway's FAKE_SIN 193 456 787, Luhn-valid, not anyone's number), used only for the PII probe.
+   Corpus text under corpus/docs/ is English, ASCII only, and contains no person names,
+   phone numbers, emails, street addresses, postal codes, or digit runs of 9 or more.
 7. Side effects (later milestones): tools with side effects must stop in a pending-approval state,
    enforced in code by the policy layer, never by prompt wording.
 8. Evaluation integrity (later milestones): never edit gold labels, eval datasets or thresholds
@@ -30,6 +32,8 @@ agents write code only within these rules.
    model and the sampling params actually sent; run each eval item N times and report the spread.
 9. Do not modify anything outside this repository (in particular the gateway repository).
 10. Do not commit, tag or push. Leave changes in the working tree for human review.
+11. corpus/facts.toml is the single source of truth for policy numbers (ratios, rates, fees,
+    limits). Code that needs one reads it from there; never hard-code a policy number.
 
 ## Commands
 - make setup   install with uv (Python 3.11)
@@ -39,6 +43,9 @@ agents write code only within these rules.
 - make lint    ruff check + ruff format --check
 - make test    unit tests only; must pass with no network and no gateway
 - make smoke   connectivity test against the configured endpoint (writes reports/smoke/*.json)
+- make corpus-check    validate corpus format, PII patterns, numbers and banned terms
+- make corpus-chunks   write reports/corpus/chunks.csv (frozen chunk IDs)
+- make corpus-prescan  send every chunk through the gateway's rag-embed (gateway mode only)
 
 ## Testing requirements
 - Every new module gets unit tests. Unit tests never touch the network.
@@ -49,6 +56,8 @@ agents write code only within these rules.
 ## Ask before
 Changing the database schema, docker-compose.yml, environment variables, the error taxonomy,
 the eval datasets, or this file.
+Changing corpus/facts.toml, corpus/manifest.toml or anything under corpus/docs/.
+Chunk IDs are frozen after tag d2-corpus; renaming a heading invalidates eval labels.
 
 ## Definition of done for a task
 - make lint and make test pass.

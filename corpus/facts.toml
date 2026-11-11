@@ -1,0 +1,108 @@
+# Fictional facts for Demo Mortgage Co. None of these numbers is a real regulatory requirement.
+# Current values under [section]; superseded v1 values under [v1.section].
+
+[ratios]
+gds_max_pct = 35.0  # GDS limit
+tds_max_pct = 42.0  # TDS limit
+heating_monthly_cad = 100  # heating cost counted in GDS
+condo_fee_share_pct = 50.0  # share of condo fees counted in GDS
+
+[qualifying]
+buffer_pts = 1.75  # qualifying rate = contract rate + buffer
+floor_pct = 5.40  # qualifying rate floor; the greater of the two applies
+
+[down_payment]
+tier1_pct = 6.0  # on the first 400,000 of the price
+tier1_cap_cad = 400000
+tier2_pct = 12.0  # on the portion above 400,000
+high_price_threshold_cad = 1200000  # at this price or more, minimum 20% down
+high_price_min_pct = 20.0
+savings_history_days = 90  # own savings need a 90-day history
+
+[ltv]
+conventional_max_pct = 80.0  # above this, default insurance is required
+rental_max_pct = 75.0  # RNT-4
+sea5_max_pct = 75.0  # SEA-5
+heloc_combined_max_pct = 65.0  # HEL-1 combined LTV
+
+[amortization]
+insured_max_years = 25
+uninsured_max_years = 30
+
+[income]
+employment_letter_max_age_days = 30
+rental_inclusion_pct = 50.0  # share of gross rents counted as income
+self_employed_min_years = 2  # 2-year average
+
+[prepayment]
+lump_sum_pct = 18.0  # per anniversary year, on original principal
+payment_increase_pct = 18.0
+penalty_months_interest = 3  # fixed rate: greater of this or IRD
+
+[exceptions]
+senior_uw_max_pts = 2.0  # GDS/TDS points over the limit
+committee_max_pts = 4.0
+sla_business_days = 2
+
+[authority]
+underwriter_max_cad = 750000
+senior_uw_max_cad = 1500000  # above this: Credit Committee
+
+[rates]
+effective_date = 2026-11-01  # rate sheet effective date
+prime_pct = 4.70  # DMC Prime
+FX5C_pct = 4.69  # 5-year fixed closed
+FX3C_pct = 4.84  # 3-year fixed closed
+VR5C_spread_pts = -0.55  # 5-year variable = prime + spread
+FX1O_pct = 6.99  # 1-year fixed open
+HEL1_spread_pts = 0.75  # HELOC = prime + spread
+RNT4_pct = 5.09  # rental property
+SEA5_pct = 5.19  # self-employed
+
+[rate_hold]
+purchase_days = 120
+refinance_days = 60
+
+[fees]
+discharge_cad = 295
+nsf_cad = 45
+payment_change_cad = 25
+rate_hold_extension_cad = 150
+
+[process]
+intake_ack_business_days = 1
+conditions_due_business_days = 10  # before closing
+renewal_notice_days = 120  # before maturity
+
+[complaints]
+ack_business_days = 2
+final_response_days = 30  # calendar days
+
+[payment]
+fixed_compounding = "semi-annual"
+variable_compounding = "monthly"
+
+[loan_number]
+format = "DMC-YYYY-NNNNN"  # example DMC-2026-00123
+
+[v1.ratios]
+gds_max_pct = 33.0
+tds_max_pct = 40.0
+heating_monthly_cad = 100
+condo_fee_share_pct = 50.0
+
+[v1.prepayment]
+lump_sum_pct = 15.0
+payment_increase_pct = 15.0
+penalty_months_interest = 3
+
+[v1.rates]
+effective_date = 2026-08-01
+prime_pct = 4.95
+FX5C_pct = 4.89
+FX3C_pct = 5.04
+VR5C_spread_pts = -0.45
+FX1O_pct = 7.19
+HEL1_spread_pts = 0.75
+RNT4_pct = 5.29
+SEA5_pct = 5.39

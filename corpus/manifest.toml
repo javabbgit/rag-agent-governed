@@ -1,0 +1,549 @@
+# Corpus manifest: one entry per planned document. Generated from docs/d2-corpus-spec.md.
+
+[[docs]]
+id = "POL-001"
+title = "Credit Policy Overview"
+doc_type = "policy"
+status = "current"
+batch = "B1"
+must_cover = [
+  "policy scope",
+  "document hierarchy (policy > process > FAQ)",
+  "exceptions go through POL-010",
+  "owners are departments",
+]
+
+[[docs]]
+id = "POL-002"
+title = "Income Verification"
+doc_type = "policy"
+status = "current"
+batch = "B1"
+must_cover = [
+  "salaried: recent pay stub + employment letter dated within 30 days",
+  "variable income: 2-year average",
+  "rental income: 50% counted",
+]
+
+[[docs]]
+id = "POL-003"
+title = "Debt Service Ratio Limits (GDS/TDS)"
+doc_type = "policy"
+status = "current"
+batch = "B1"
+must_cover = [
+  "GDS max 35%, TDS max 42%",
+  "GDS includes heating 100/month and 50% of condo fees",
+  "ratios use the qualifying rate (POL-004)",
+]
+
+[[docs]]
+id = "POL-004"
+title = "Qualifying Rate"
+doc_type = "policy"
+status = "current"
+batch = "B1"
+must_cover = [
+  "greater of contract rate + 1.75 pts or 5.40%",
+  "applies to all products incl. HEL-1",
+  "straight renewals are not requalified",
+]
+
+[[docs]]
+id = "POL-005"
+title = "Down Payment Requirements and Sources"
+doc_type = "policy"
+status = "current"
+batch = "B1"
+must_cover = [
+  "6% of first 400,000 + 12% of remainder",
+  "20% at price 1,200,000 or more",
+  "own savings need 90-day history",
+  "gifts need a signed gift letter",
+  "borrowed down payment not accepted",
+]
+
+[[docs]]
+id = "POL-006"
+title = "Property Eligibility"
+doc_type = "policy"
+status = "current"
+batch = "B1"
+must_cover = [
+  "eligible: 1-4 unit residential homes and condos in Canada (non-owner-occupied only under RNT-4)",
+  "ineligible: vacant land, mobile homes without permanent foundation",
+  "full appraisal required",
+]
+
+[[docs]]
+id = "POL-007"
+title = "Loan-to-Value and Default Insurance"
+doc_type = "policy"
+status = "current"
+batch = "B2"
+must_cover = [
+  "conventional max LTV 80%",
+  "above 80% requires mortgage default insurance",
+  "max amortization 25 years insured, 30 uninsured",
+]
+
+[[docs]]
+id = "POL-008"
+title = "Self-Employed Borrowers"
+doc_type = "policy"
+status = "current"
+batch = "B2"
+must_cover = [
+  "minimum 2 years in business",
+  "2-year average net income",
+  "notices of assessment for 2 years",
+  "SEA-5 option",
+]
+
+[[docs]]
+id = "POL-009"
+title = "Prepayment Privileges and Penalties"
+doc_type = "policy"
+status = "current"
+batch = "B2"
+must_cover = [
+  "18% lump sum per anniversary year on original principal",
+  "payment increase up to 18%",
+  "fixed penalty = greater of 3 months' interest or IRD",
+  "variable = 3 months' interest",
+  "FX1-O no penalty",
+  "unused privileges do not carry forward",
+]
+
+[[docs]]
+id = "POL-010"
+title = "Exceptions to Credit Policy"
+doc_type = "policy"
+status = "current"
+batch = "B2"
+must_cover = [
+  "exceptable items (GDS/TDS, LTV, income documents, rate hold extension)",
+  "Senior Underwriter up to +2.0 pts, Credit Committee up to +4.0 pts",
+  "compensating factors",
+  "never exceptable: privacy rules, fraud flags",
+]
+
+[[docs]]
+id = "POL-011"
+title = "Customer Data Privacy and Handling"
+doc_type = "policy"
+status = "current"
+batch = "B2"
+must_cover = [
+  "never type SIN, card or bank account numbers into chat tools",
+  "refer to customers by loan number only",
+  "least-privilege access by role",
+]
+
+[[docs]]
+id = "POL-012"
+title = "Payment Calculation Method"
+doc_type = "policy"
+status = "current"
+batch = "B2"
+must_cover = [
+  "amortization formula",
+  "fixed compounded semi-annually, variable monthly",
+  "frequencies incl. accelerated bi-weekly and weekly",
+  "round payments to the cent",
+]
+
+[[docs]]
+id = "PRC-001"
+title = "Application Intake"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "channels (broker portal, branch)",
+  "minimum data for a complete application",
+  "loan number format DMC-YYYY-NNNNN",
+  "acknowledgement within 1 business day",
+]
+
+[[docs]]
+id = "PRC-002"
+title = "Underwriting Workflow"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "8 stages from file assignment to decision, one H2 per stage",
+  "outcomes: approve, approve with conditions, decline, refer to exception",
+]
+
+[[docs]]
+id = "PRC-003"
+title = "Conditions and Document Checklist"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "standard conditions",
+  "conditions due 10 business days before closing",
+  "who signs off each condition type",
+]
+
+[[docs]]
+id = "PRC-004"
+title = "Approval Authority Matrix"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "roles: Customer Service Representative, Loan Officer, Underwriter, Senior Underwriter, Credit Committee",
+  "what each may view and approve",
+  "Underwriter up to 750,000, Senior Underwriter up to 1,500,000",
+]
+
+[[docs]]
+id = "PRC-005"
+title = "Exception Request Procedure"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "form EXC-100 fields: loan number, exception type, requested value, justification, compensating factors",
+  "routing by authority",
+  "2-business-day SLA",
+  "a request stays pending until a human approves",
+  "no verbal approvals",
+]
+
+[[docs]]
+id = "PRC-006"
+title = "Funding and Closing"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "closing instructions to the borrower's lawyer",
+  "final conditions check",
+  "funds release steps",
+  "post-closing file audit",
+]
+
+[[docs]]
+id = "PRC-007"
+title = "Renewals and Maturity"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "renewal notice 120 days before maturity",
+  "renewal options",
+  "straight renewal without requalification",
+  "no instruction at maturity renews into FX1-O",
+]
+
+[[docs]]
+id = "PRC-008"
+title = "Complaint Handling and Escalation"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "acknowledge within 2 business days",
+  "final response within 30 days",
+  "path: front line, Complaints Office, external complaints body",
+]
+
+[[docs]]
+id = "PRC-009"
+title = "Customer Communication Standards"
+doc_type = "process"
+status = "current"
+batch = "B3"
+must_cover = [
+  "never promise approval or a rate beyond a rate hold",
+  "cite the policy ID",
+  "plain language",
+  "every draft reviewed by a human before sending",
+]
+
+[[docs]]
+id = "PRD-001"
+title = "5-Year Fixed Closed (FX5-C)"
+doc_type = "product"
+status = "current"
+batch = "B4"
+must_cover = [
+  "product code FX5-C",
+  "5-year term",
+  "prepayment per POL-009",
+  "penalty greater of 3 months' interest or IRD",
+  "payment frequencies",
+]
+
+[[docs]]
+id = "PRD-002"
+title = "3-Year Fixed Closed (FX3-C)"
+doc_type = "product"
+status = "current"
+batch = "B4"
+must_cover = [
+  "product code FX3-C",
+  "3-year term",
+  "same privileges as FX5-C",
+  "who it suits",
+]
+
+[[docs]]
+id = "PRD-003"
+title = "5-Year Variable Closed (VR5-C)"
+doc_type = "product"
+status = "current"
+batch = "B4"
+must_cover = [
+  "DMC Prime minus 0.55",
+  "payments adjust when prime changes",
+  "may convert to a fixed term at least as long as the remaining term",
+  "penalty 3 months' interest",
+]
+
+[[docs]]
+id = "PRD-004"
+title = "1-Year Fixed Open (FX1-O)"
+doc_type = "product"
+status = "current"
+batch = "B4"
+must_cover = [
+  "prepay any amount at any time without penalty",
+  "higher rate than closed terms",
+  "default term at maturity (PRC-007)",
+]
+
+[[docs]]
+id = "PRD-005"
+title = "Home Equity Line of Credit (HEL-1)"
+doc_type = "product"
+status = "current"
+batch = "B4"
+must_cover = [
+  "DMC Prime plus 0.75",
+  "combined LTV max 65%",
+  "interest-only minimum payment",
+  "qualified at the qualifying rate",
+]
+
+[[docs]]
+id = "PRD-006"
+title = "Rental Property Mortgage (RNT-4)"
+doc_type = "product"
+status = "current"
+batch = "B4"
+must_cover = [
+  "non-owner-occupied 1-4 units",
+  "max LTV 75%",
+  "50% of gross rents counted as income",
+]
+
+[[docs]]
+id = "PRD-007"
+title = "Self-Employed Advantage Mortgage (SEA-5)"
+doc_type = "product"
+status = "current"
+batch = "B4"
+must_cover = [
+  "5-year fixed for self-employed borrowers",
+  "2 years in business",
+  "max LTV 75%",
+]
+
+[[docs]]
+id = "RATE-001"
+title = "Rate Sheet (effective 2026-11-01)"
+doc_type = "rate_sheet"
+status = "current"
+batch = "B4"
+must_cover = [
+  "table of all product rates and DMC Prime",
+  "qualifying rate per product",
+  "a rate hold locks a rate, otherwise rates may change",
+]
+
+[[docs]]
+id = "RATE-002"
+title = "Fee Schedule"
+doc_type = "rate_sheet"
+status = "current"
+batch = "B4"
+must_cover = [
+  "discharge 295",
+  "NSF 45",
+  "payment change 25",
+  "rate hold extension 150",
+  "fees not listed are not charged",
+]
+
+[[docs]]
+id = "RATE-003"
+title = "Rate Holds and Rate Locks"
+doc_type = "rate_sheet"
+status = "current"
+batch = "B4"
+must_cover = [
+  "purchases 120 days, refinances 60 days",
+  "extension needs an exception (POL-010) plus the extension fee",
+  "a rate hold is not an approval",
+]
+
+[[docs]]
+id = "FAQ-001"
+title = "Borrower FAQ: Making Your Payments"
+doc_type = "faq"
+status = "current"
+batch = "B5"
+must_cover = [
+  "lay language: changing payment date or frequency",
+  "what happens after a missed payment",
+  "fees 45 and 25",
+]
+
+[[docs]]
+id = "FAQ-002"
+title = "Borrower FAQ: Paying Off Your Mortgage Faster"
+doc_type = "faq"
+status = "current"
+batch = "B5"
+must_cover = [
+  "lay-language version of POL-009 (\"pay extra\", \"pay off early\", \"penalty\")",
+]
+
+[[docs]]
+id = "FAQ-003"
+title = "Borrower FAQ: Renewing Your Mortgage"
+doc_type = "faq"
+status = "current"
+batch = "B5"
+must_cover = [
+  "lay-language version of PRC-007",
+]
+
+[[docs]]
+id = "FAQ-004"
+title = "Broker FAQ: Submissions and Conditions"
+doc_type = "faq"
+status = "current"
+batch = "B5"
+must_cover = [
+  "broker view of PRC-001 and PRC-003",
+]
+
+[[docs]]
+id = "FAQ-005"
+title = "Borrower FAQ: Property Tax and Home Insurance"
+doc_type = "faq"
+status = "current"
+batch = "B5"
+must_cover = [
+  "optional property tax account",
+  "proof of home insurance required at closing and at each renewal",
+]
+
+[[docs]]
+id = "FAQ-006"
+title = "Staff FAQ: Using the Policy Assistant"
+doc_type = "faq"
+status = "current"
+batch = "B5"
+must_cover = [
+  "answers come with sources",
+  "says no supporting document was found when unsure",
+  "cannot submit or approve without a human",
+  "never paste SIN or account numbers",
+]
+
+[[docs]]
+id = "POL-003-V1"
+title = "Debt Service Ratio Limits (GDS/TDS)"
+doc_type = "policy"
+status = "superseded"
+batch = "B5"
+must_cover = [
+  "GDS 33%, TDS 40%",
+  "superseded on 2026-09-01 by POL-003 version 2.0",
+]
+
+[[docs]]
+id = "POL-009-V1"
+title = "Prepayment Privileges and Penalties"
+doc_type = "policy"
+status = "superseded"
+batch = "B5"
+must_cover = [
+  "15% lump sum, 15% payment increase",
+  "superseded on 2026-06-01 by POL-009 version 2.0",
+]
+
+[[docs]]
+id = "RATE-001-V1"
+title = "Rate Sheet (effective 2026-08-01)"
+doc_type = "rate_sheet"
+status = "superseded"
+batch = "B5"
+must_cover = [
+  "v1 rates",
+  "superseded on 2026-11-01 by RATE-001 version 2.0",
+]
+
+[out_of_scope]
+topics_far = [
+  "car loans",
+  "student loans",
+  "travel insurance",
+  "RRSP or investment advice",
+  "cryptocurrency",
+  "life insurance claims",
+  "property tax appeals",
+  "employee vacation policy",
+  "IT password resets",
+  "commercial real estate",
+]
+topics_near = [
+  "reverse mortgages",
+  "bridge financing",
+  "mortgage portability",
+  "blend-and-extend",
+  "construction draw mortgages",
+  "cottage or recreational properties",
+  "co-signers and guarantors",
+  "foreign buyer rules",
+  "payment deferral or skip-a-payment",
+  "mortgage assumption by a buyer",
+]
+banned_terms = [
+  "car loan",
+  "auto loan",
+  "student loan",
+  "travel insurance",
+  "rrsp",
+  "crypto",
+  "bitcoin",
+  "life insurance",
+  "tax appeal",
+  "vacation",
+  "password",
+  "commercial",
+  "reverse mortgage",
+  "bridge financing",
+  "bridge loan",
+  "portab",
+  "blend",
+  "construction",
+  "cottage",
+  "recreational",
+  "co-signer",
+  "cosigner",
+  "guarantor",
+  "foreign buyer",
+  "deferral",
+  "skip-a-payment",
+  "assumable",
+  "assumption of the mortgage",
+]
