@@ -9,3 +9,5 @@ __pycache__/
 reports/smoke/
 *.log
 reports/corpus/
+reports/ingest/
+reports/retrieval/

@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke
 
 setup:
 	uv sync --python 3.11
@@ -34,3 +34,28 @@ corpus-chunks:
 
 corpus-prescan:
 	uv run python scripts/pii_prescan.py $(if $(DOC),--doc $(DOC))
+
+COLLECTION ?= main
+DOCS_DIR ?= corpus/docs
+
+db-init:
+	uv run python -c "from rag_agent.config import load_settings; from rag_agent.store import init_schema; init_schema(load_settings().database_url)"
+
+ingest:
+	uv run python scripts/ingest.py --collection $(COLLECTION) --docs-dir $(DOCS_DIR)
+
+ingest-rebuild:
+	uv run python scripts/ingest.py --collection $(COLLECTION) --docs-dir $(DOCS_DIR) --rebuild
+
+test-db:
+	uv run pytest -m db
+
+MODE ?= hybrid
+K ?= 10
+
+search:
+	@test -n "$(Q)" || { echo 'usage: make search Q="your question" [MODE=hybrid|bm25|vector] [K=10]'; exit 2; }
+	uv run python scripts/search.py "$(Q)" --mode $(MODE) -k $(K)
+
+retrieval-smoke:
+	uv run python scripts/retrieval_smoke.py
