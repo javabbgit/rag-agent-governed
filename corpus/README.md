@@ -6,7 +6,7 @@ any real regulatory requirement.
 The documents were AI-generated and then reviewed one by one by the human owner (see
 [REVIEW.md](REVIEW.md)).
 
-Generated with: <model and version>, <date>
+Generated with: Claude Code (claude-sonnet-5-5), 2026-11-10; reviewed by the human owner, see REVIEW.md
 
 License: MIT, like the rest of the repository.
 
