@@ -118,6 +118,16 @@ def _index(collection: str, dsn: str, store: Any) -> _Entry:
     return entry
 
 
+def embed_query(query: str, *, client: Any = None) -> list[float]:
+    """Embed one query (QUERY_PREFIX + query) through LLMClient.embed; the single vector."""
+    if client is None:
+        client = LLMClient(load_settings())
+    res = client.embed([QUERY_PREFIX + query])
+    if len(res.vectors) != 1:
+        raise ValueError(f"expected 1 query vector, got {len(res.vectors)}")
+    return res.vectors[0]
+
+
 def retrieve(
     query: str,
     mode: str = "hybrid",
@@ -162,10 +172,7 @@ def retrieve(
         if query_vector is None:
             if client is None:
                 client = LLMClient(settings or load_settings())
-            res = client.embed([QUERY_PREFIX + query])
-            if len(res.vectors) != 1:
-                raise ValueError(f"expected 1 query vector, got {len(res.vectors)}")
-            query_vector = res.vectors[0]
+            query_vector = embed_query(query, client=client)
         vec_list = store.vector_search(
             collection, validate_vector(list(query_vector)), CANDIDATES, include_superseded, dsn=dsn
         )

@@ -1,0 +1,87 @@
+version = 1
+
+[[q]]
+id = "D01"
+split = "dev"
+kind = "answerable"
+category = "exact"
+persona = "staff"
+query = "What is the maximum TDS ratio?"
+answer = "42 percent"
+gold = ["POL-003#ratio-limits"]
+related = ["POL-003#limits-table"]
+nonrel = []
+origin = "smoke-Q01"
+reviewed = true
+
+[[q]]
+id = "D02"
+split = "dev"
+kind = "answerable"
+category = "fine_grained"
+persona = "borrower"
+query = "How much can be prepaid as a lump sum each year?"
+answer = "15 percent"
+gold = ["POL-009#lump-sum-limit"]
+related = []
+nonrel = ["FAQ-001#early-renewal"]
+origin = "new"
+reviewed = true
+
+[[q]]
+id = "D31"
+split = "dev"
+kind = "oos"
+category = "oos_far"
+persona = "broker"
+query = "Can I get a loan to buy a used vehicle?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = true
+topic = "car loans"
+
+[[q]]
+id = "T01"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "staff"
+query = "Which share of gross income may all debts reach?"
+answer = "42 percent"
+gold = ["POL-003#ratio-limits"]
+related = []
+nonrel = []
+origin = "new"
+reviewed = true
+
+[[q]]
+id = "T02"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "broker"
+query = "What happens to prepayment privileges that go unused?"
+answer = "do not carry forward"
+gold = ["POL-009#unused-privileges"]
+related = []
+nonrel = []
+origin = "new"
+reviewed = true
+
+[[q]]
+id = "T51"
+split = "test"
+kind = "oos"
+category = "oos_near"
+persona = "borrower"
+query = "Can a buyer take over my existing mortgage?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = true
+topic = "mortgage assumption by a buyer"

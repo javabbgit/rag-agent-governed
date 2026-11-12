@@ -1,0 +1,30 @@
+version = 1
+
+[[q]]
+id = "D01"
+split = "dev"
+kind = "answerable"
+category = "exact"
+persona = "staff"
+query = "What is the maximum TDS ratio?"
+answer = "42 percent"
+gold = ["POL-003#ratio-limits"]
+related = ["POL-003#limits-table"]
+nonrel = []
+origin = "smoke-Q01"
+reviewed = true
+
+[[q]]
+id = "D31"
+split = "dev"
+kind = "oos"
+category = "oos_far"
+persona = "borrower"
+query = "Can I get a loan to buy a used vehicle?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = true
+topic = "Car Loans"
