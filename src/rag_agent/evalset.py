@@ -318,14 +318,13 @@ def _check_category(q: dict[str, Any], gold_chunks: list[Section], truth: Truth,
         if shared:
             add(FAIL, qid, f"paraphrase: query shares heading tokens {sorted(shared)}")
     elif cat == "confusable":
-        bad = docs - CONFUSABLE_DOCS
-        if bad:
-            add(FAIL, qid, f"confusable: gold docs outside the product set: {sorted(bad)}")
+        if not docs & CONFUSABLE_DOCS:
+            add(FAIL, qid, f"confusable: no gold chunk in {sorted(CONFUSABLE_DOCS)}")
     elif cat == "superseded_trap":
-        bad = docs - TRAP_DOCS
-        if bad:
-            add(FAIL, qid, f"superseded_trap: gold docs outside {sorted(TRAP_DOCS)}: {sorted(bad)}")
-        for d in sorted(docs & TRAP_DOCS):
+        trap = docs & TRAP_DOCS
+        if not trap:
+            add(FAIL, qid, f"superseded_trap: no gold doc in {sorted(TRAP_DOCS)}")
+        for d in sorted(trap):
             v1 = [c.text for c in truth.chunks.values() if c.doc_id == f"{d}-V1"]
             if not v1:
                 add(FAIL, qid, f"superseded_trap: no {d}-V1 document in the corpus")

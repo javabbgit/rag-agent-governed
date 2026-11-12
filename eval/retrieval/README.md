@@ -53,9 +53,10 @@ Oos: oos_far, oos_near.
 - Answerable: gold non-empty; gold, related and nonrel exist, are disjoint, and gold and related
   hold no superseded chunk; the answer is found in a gold chunk (case-insensitive, whitespace
   collapsed) and not in the query.
-- paraphrase: no token shared between query and any gold heading. confusable: gold docs in
-  PRD-001, 002, 003, 004, 006, 007. superseded_trap: gold docs within POL-003, POL-009,
-  RATE-001 and the answer is in no chunk of the matching -V1 doc. fine_grained: exactly one gold
+- paraphrase: no token shared between query and any gold heading. confusable: at least one gold
+  chunk in PRD-001, 002, 003, 004, 006, 007 (gold from other docs is allowed). superseded_trap:
+  at least one gold doc in POL-003, POL-009, RATE-001 (gold from other docs is allowed) and the
+  answer is in no chunk of the -V1 doc of any such doc. fine_grained: exactly one gold
   chunk, in a doc with at least 5 H2 sections. table: the answer is in a `|` line of a gold
   chunk. multi_doc: gold chunks from at least 2 docs.
 - oos: gold and related empty, answer empty, topic from `topics_far` (oos_far) or

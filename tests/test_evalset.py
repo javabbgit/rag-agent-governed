@@ -175,13 +175,38 @@ def test_confusable_needs_product_docs():
     assert not fails(run([ok]), "confusable")
 
 
+def test_confusable_allows_policy_or_faq_gold_alongside_product():
+    ok = mk(
+        category="confusable",
+        gold=["PRD-001#term", "FAQ-001#early-renewal"],
+        answer="five years",
+        query="Which closed product has the longest of the terms offered to borrowers?",
+    )
+    assert not fails(run([ok]), "confusable")
+    ok2 = mk(ok, gold=["PRD-001#term", "POL-003#ratio-limits"])
+    assert not fails(run([ok2]), "confusable")
+
+
 def test_superseded_trap_answer_in_v1_fails_and_otherwise_passes():
     bad = mk(category="superseded_trap", gold=["POL-003#ratio-limits"], answer="gross income")
     assert fails(run([bad]), "also found in POL-003-V1")
     ok = mk(category="superseded_trap", gold=["POL-003#ratio-limits"], answer="42 percent")
     assert not fails(run([ok]), "superseded_trap")
     outside = mk(category="superseded_trap", gold=["PRD-001#term"], answer="five years")
-    assert fails(run([outside]), "outside")
+    assert fails(run([outside]), "no gold doc in")
+    for extra in ("FAQ-001#early-renewal", "PRD-001#term"):
+        mixed = mk(
+            category="superseded_trap",
+            gold=["POL-003#ratio-limits", extra],
+            answer="42 percent",
+        )
+        assert not fails(run([mixed]), "superseded_trap")
+    mixed_bad = mk(
+        category="superseded_trap",
+        gold=["POL-003#ratio-limits", "FAQ-001#early-renewal"],
+        answer="gross income",
+    )
+    assert fails(run([mixed_bad]), "also found in POL-003-V1")
 
 
 def test_fine_grained():
