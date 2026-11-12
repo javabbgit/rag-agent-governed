@@ -1,2 +1,723 @@
 # Retrieval eval questions. Format, ID rules and labeling rules: see README.md in this directory.
 version = 1
+
+[[q]]
+id = "D01"
+split = "dev"
+kind = "answerable"
+category = "multi_doc"
+persona = "staff"
+query = "What is the maximum TDS ratio?"
+answer = "42%"
+gold = [
+  "POL-003#summary",
+  "POL-003#gds-and-tds-limits",
+  "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment",
+]
+related = [
+  "POL-003#example-gds-and-tds-for-a-sample-condominium-file",
+]
+nonrel = []
+origin = "smoke-Q01"
+reviewed = false
+
+[[q]]
+id = "D02"
+split = "dev"
+kind = "answerable"
+category = "exact"
+persona = "broker"
+query = "How much can I prepay as a lump sum on an FX5-C mortgage?"
+answer = "18%"
+gold = [
+  "POL-009#summary",
+  "POL-009#lump-sum-prepayment-limit",
+  "PRD-001#fx5-c-prepayment-privileges",
+  "FAQ-002#summary",
+  "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+]
+related = [
+  "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
+  "FAQ-002#can-i-pay-extra-on-my-mortgage",
+]
+nonrel = []
+origin = "smoke-Q02"
+reviewed = false
+
+[[q]]
+id = "D03"
+split = "dev"
+kind = "answerable"
+category = "exact"
+persona = "staff"
+query = "What fields does form EXC-100 require?"
+answer = "requested value"
+gold = [
+  "PRC-005#exc-100-fields",
+  "POL-010#recording-and-timing-of-exceptions",
+  "PRC-002#stage-7-authority-check",
+]
+related = [
+  "PRC-005#summary",
+]
+nonrel = []
+origin = "smoke-Q03"
+reviewed = false
+
+[[q]]
+id = "D04"
+split = "dev"
+kind = "answerable"
+category = "table"
+persona = "borrower"
+query = "How much is the discharge fee?"
+answer = "$295"
+gold = [
+  "RATE-002#summary",
+  "RATE-002#fees-charged-by-demo-mortgage-co",
+  "FAQ-002#can-i-pay-off-my-mortgage-early",
+]
+related = [
+  "RATE-002#when-each-fee-is-charged",
+  "FAQ-001#which-fees-can-i-pay-on-my-mortgage-payments",
+]
+nonrel = []
+origin = "smoke-Q04"
+reviewed = false
+
+[[q]]
+id = "D05"
+split = "dev"
+kind = "answerable"
+category = "exact"
+persona = "broker"
+query = "How long can a rate be held for a refinance?"
+answer = "60 days"
+gold = [
+  "RATE-003#summary",
+  "RATE-003#rate-hold-period-for-a-refinance",
+]
+related = []
+nonrel = []
+origin = "smoke-Q05"
+reviewed = false
+
+[[q]]
+id = "D06"
+split = "dev"
+kind = "answerable"
+category = "multi_doc"
+persona = "borrower"
+query = "Can I pay extra on my mortgage?"
+answer = "without a penalty"
+gold = [
+  "FAQ-002#can-i-pay-extra-on-my-mortgage",
+  "FAQ-002#summary",
+  "POL-009#summary",
+  "POL-009#lump-sum-prepayment-limit",
+  "POL-009#payment-increase-limit",
+]
+related = [
+  "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+  "PRD-001#fx5-c-prepayment-privileges",
+]
+nonrel = []
+origin = "smoke-Q06"
+reviewed = false
+
+[[q]]
+id = "D07"
+split = "dev"
+kind = "answerable"
+category = "multi_doc"
+persona = "borrower"
+query = "What happens if I give no instructions when my mortgage matures?"
+answer = "FX1-O"
+gold = [
+  "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+  "PRC-007#summary",
+  "PRC-007#if-the-borrower-gives-no-instruction",
+  "PRC-007#renewal-notice-120-days-before-maturity",
+  "PRD-004#fx1-o-as-the-default-product-at-maturity",
+]
+related = [
+  "PRD-004#summary",
+  "PRD-001#fx5-c-renewal-at-maturity",
+  "PRD-006#rnt-4-payment-frequencies-and-renewal",
+  "PRD-007#sea-5-payment-frequencies-and-renewal",
+  "FAQ-003#summary",
+]
+nonrel = []
+origin = "smoke-Q07"
+reviewed = false
+
+[[q]]
+id = "D08"
+split = "dev"
+kind = "answerable"
+category = "multi_doc"
+persona = "staff"
+query = "Who can approve a loan above 750,000?"
+answer = "Senior Underwriter"
+gold = [
+  "PRC-004#summary",
+  "PRC-004#loan-amount-authority-limits",
+  "PRC-002#stage-7-authority-check",
+]
+related = [
+  "PRC-004#example-routing-three-files",
+  "PRC-004#what-each-role-may-approve",
+]
+nonrel = []
+origin = "smoke-Q08"
+reviewed = false
+
+[[q]]
+id = "D09"
+split = "dev"
+kind = "answerable"
+category = "multi_doc"
+persona = "broker"
+query = "How is income calculated for someone who runs their own business?"
+answer = "2-year average"
+gold = [
+  "POL-008#summary",
+  "POL-008#income-the-2-year-average-of-net-income",
+  "PRD-007#sea-5-eligibility-for-self-employed-borrowers",
+]
+related = []
+nonrel = []
+origin = "smoke-Q09"
+reviewed = false
+
+[[q]]
+id = "D10"
+split = "dev"
+kind = "answerable"
+category = "multi_doc"
+persona = "broker"
+query = "What is the maximum combined loan-to-value on a home equity line?"
+answer = "65%"
+gold = [
+  "PRD-005#summary",
+  "PRD-005#hel-1-combined-loan-to-value-limit",
+  "POL-007#loan-to-value-limits-set-by-product",
+]
+related = [
+  "POL-007#how-loan-to-value-is-calculated",
+]
+nonrel = []
+origin = "smoke-Q10"
+reviewed = false
+
+[[q]]
+id = "D11"
+split = "dev"
+kind = "answerable"
+category = "multi_doc"
+persona = "broker"
+query = "What is the stress test rate for mortgage approval?"
+answer = "1.75 points"
+gold = [
+  "POL-004#summary",
+  "POL-004#how-the-qualifying-rate-is-calculated",
+  "POL-003#why-both-ratios-use-the-qualifying-rate",
+  "RATE-001#qualifying-rate-by-product",
+]
+related = [
+  "POL-004#products-that-must-be-qualified-at-the-qualifying-rate",
+]
+nonrel = []
+origin = "smoke-Q11"
+reviewed = false
+
+[[q]]
+id = "D12"
+split = "dev"
+kind = "answerable"
+category = "multi_doc"
+persona = "borrower"
+query = "How long does the lender have to give a final response to a complaint?"
+answer = "30 days"
+gold = [
+  "PRC-008#summary",
+  "PRC-008#final-response-within-30-days",
+  "FAQ-001#what-happens-if-a-payment-is-returned-or-missed",
+]
+related = []
+nonrel = []
+origin = "smoke-Q12"
+reviewed = false
+
+[[q]]
+id = "D13"
+split = "dev"
+kind = "answerable"
+category = "exact"
+persona = "broker"
+query = "What is the rate hold extension fee?"
+answer = "$150"
+gold = [
+  "RATE-002#summary",
+  "RATE-002#fees-charged-by-demo-mortgage-co",
+  "RATE-003#extending-a-rate-hold",
+]
+related = [
+  "RATE-002#when-each-fee-is-charged",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D14"
+split = "dev"
+kind = "answerable"
+category = "exact"
+persona = "staff"
+query = "What may a Customer Service Representative view on a loan file?"
+answer = "contact details needed to answer"
+gold = [
+  "PRC-004#what-each-role-may-view",
+  "POL-011#least-privilege-access-by-role",
+]
+related = [
+  "PRC-004#roles-in-the-authority-matrix",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D15"
+split = "dev"
+kind = "answerable"
+category = "table"
+persona = "staff"
+query = "Who has to approve an exception to the loan-to-value limit?"
+answer = "Credit Committee"
+gold = [
+  "PRC-005#routing-by-authority",
+  "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions",
+  "PRC-004#exception-approval-authority",
+]
+related = [
+  "POL-010#items-that-can-be-excepted",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D16"
+split = "dev"
+kind = "answerable"
+category = "table"
+persona = "broker"
+query = "Who signs off the lawyer's confirmation of clear title on a file?"
+answer = "Mortgage Operations"
+gold = [
+  "PRC-003#who-signs-off-each-condition-type",
+  "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+]
+related = [
+  "PRC-003#standard-conditions",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D17"
+split = "dev"
+kind = "answerable"
+category = "superseded_trap"
+persona = "staff"
+query = "What is the maximum GDS ratio?"
+answer = "35%"
+gold = [
+  "POL-003#summary",
+  "POL-003#gds-and-tds-limits",
+  "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment",
+]
+related = [
+  "POL-003#example-gds-and-tds-for-a-sample-condominium-file",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D18"
+split = "dev"
+kind = "answerable"
+category = "superseded_trap"
+persona = "broker"
+query = "By how much can a borrower raise their regular payment each year without a penalty?"
+answer = "18% of the current regular payment"
+gold = [
+  "POL-009#summary",
+  "POL-009#payment-increase-limit",
+  "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+]
+related = [
+  "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
+  "FAQ-002#can-i-pay-extra-on-my-mortgage",
+  "PRD-001#fx5-c-prepayment-privileges",
+  "PRD-002#fx3-c-prepayment-privileges",
+  "PRD-003#vr5-c-prepayment-privileges-and-penalty",
+  "PRD-006#rnt-4-prepayment-privileges-and-penalty",
+  "PRD-007#sea-5-prepayment-privileges-and-penalty",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D19"
+split = "dev"
+kind = "answerable"
+category = "superseded_trap"
+persona = "borrower"
+query = "What rate does the 1-year open mortgage carry right now?"
+answer = "6.99%"
+gold = [
+  "RATE-001#contract-rates-by-product",
+  "RATE-001#qualifying-rate-by-product",
+  "PRD-004#fx1-o-rate-and-qualifying-rate",
+]
+related = [
+  "PRD-004#summary",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D20"
+split = "dev"
+kind = "answerable"
+category = "fine_grained"
+persona = "broker"
+query = "On a 600,000 purchase with the minimum down payment, what is the largest loan the borrower can get?"
+answer = "552,000"
+gold = [
+  "POL-005#example-minimum-down-payment-on-a-600-000-purchase",
+]
+related = [
+  "POL-005#minimum-down-payment-by-purchase-price",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D21"
+split = "dev"
+kind = "answerable"
+category = "fine_grained"
+persona = "staff"
+query = "A buyer agrees to pay 500,000, asks for 400,000, and the appraisal is 490,000: what LTV results?"
+answer = "81.6%"
+gold = [
+  "POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal",
+]
+related = [
+  "POL-007#how-loan-to-value-is-calculated",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D22"
+split = "dev"
+kind = "answerable"
+category = "fine_grained"
+persona = "staff"
+query = "Who decides which underwriter gets a newly released complete file?"
+answer = "Underwriting team lead"
+gold = [
+  "PRC-002#stage-1-file-assignment",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D23"
+split = "dev"
+kind = "answerable"
+category = "fine_grained"
+persona = "staff"
+query = "Before the money is released, who has to confirm the final conditions check was signed?"
+answer = "a person other than the one who prepared the file"
+gold = [
+  "PRC-006#funds-release-steps",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D24"
+split = "dev"
+kind = "answerable"
+category = "paraphrase"
+persona = "borrower"
+query = "Can my parents give me money toward the house purchase?"
+answer = "gift from a close family member"
+gold = [
+  "POL-005#gifted-down-payment-and-the-gift-letter",
+]
+related = [
+  "FAQ-004#which-conditions-will-i-see-on-an-approval",
+  "PRC-003#standard-conditions",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D25"
+split = "dev"
+kind = "answerable"
+category = "paraphrase"
+persona = "borrower"
+query = "How early will you write to me when my loan term is running out?"
+answer = "120 days"
+gold = [
+  "FAQ-003#when-will-i-hear-about-renewing-my-mortgage",
+  "FAQ-003#summary",
+  "PRC-007#renewal-notice-120-days-before-maturity",
+  "PRC-007#summary",
+  "PRD-004#fx1-o-as-the-default-product-at-maturity",
+  "PRD-001#fx5-c-renewal-at-maturity",
+  "PRD-006#rnt-4-payment-frequencies-and-renewal",
+  "PRD-007#sea-5-payment-frequencies-and-renewal",
+]
+related = [
+  "FAQ-005#do-i-have-to-show-proof-of-home-insurance-when-i-renew",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D26"
+split = "dev"
+kind = "answerable"
+category = "paraphrase"
+persona = "broker"
+query = "Can a buyer use a credit card cash advance for the deposit?"
+answer = "does not accept a borrowed down payment"
+gold = [
+  "POL-005#a-borrowed-down-payment-is-not-accepted",
+  "POL-005#summary",
+]
+related = [
+  "POL-010#items-that-can-never-be-excepted",
+  "PRC-005#when-an-exc-100-may-be-raised",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D27"
+split = "dev"
+kind = "answerable"
+category = "paraphrase"
+persona = "borrower"
+query = "How much does it cost when my automatic withdrawal bounces?"
+answer = "$45"
+gold = [
+  "RATE-002#summary",
+  "RATE-002#fees-charged-by-demo-mortgage-co",
+  "FAQ-001#what-happens-if-a-payment-is-returned-or-missed",
+  "FAQ-001#which-fees-can-i-pay-on-my-mortgage-payments",
+]
+related = [
+  "FAQ-001#summary",
+  "RATE-002#when-each-fee-is-charged",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D28"
+split = "dev"
+kind = "answerable"
+category = "confusable"
+persona = "borrower"
+query = "What penalty applies if I prepay too much on a 5-year variable closed mortgage?"
+answer = "3 months' interest"
+gold = [
+  "PRD-003#vr5-c-prepayment-privileges-and-penalty",
+  "POL-009#prepayment-penalty-on-a-variable-rate-mortgage",
+  "FAQ-002#how-is-the-penalty-worked-out",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D29"
+split = "dev"
+kind = "answerable"
+category = "confusable"
+persona = "broker"
+query = "What is the maximum loan-to-value for a rental property mortgage?"
+answer = "75%"
+gold = [
+  "PRD-006#summary",
+  "PRD-006#rnt-4-loan-to-value-limit-and-rental-income",
+  "POL-007#loan-to-value-limits-set-by-product",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D30"
+split = "dev"
+kind = "answerable"
+category = "confusable"
+persona = "borrower"
+query = "Which mortgage is meant for someone who expects to pay it off soon after a property sale?"
+answer = "FX1-O"
+gold = [
+  "PRD-004#who-fx1-o-suits",
+]
+related = [
+  "PRD-004#fx1-o-prepayment-without-penalty",
+  "FAQ-002#is-there-a-mortgage-with-no-penalty",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "D31"
+split = "dev"
+kind = "oos"
+category = "oos_far"
+persona = "borrower"
+query = "What rate would I pay on a loan to buy a new car?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "car loans"
+
+[[q]]
+id = "D32"
+split = "dev"
+kind = "oos"
+category = "oos_far"
+persona = "borrower"
+query = "Can I buy travel insurance for my holiday through you?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "travel insurance"
+
+[[q]]
+id = "D33"
+split = "dev"
+kind = "oos"
+category = "oos_far"
+persona = "staff"
+query = "Which cryptocurrency exchange is best for buying a small amount of coins?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "cryptocurrency"
+
+[[q]]
+id = "D34"
+split = "dev"
+kind = "oos"
+category = "oos_far"
+persona = "staff"
+query = "How do I reset my work laptop password after it locked me out?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "IT password resets"
+
+[[q]]
+id = "D35"
+split = "dev"
+kind = "oos"
+category = "oos_near"
+persona = "borrower"
+query = "Do you offer reverse mortgages for retired homeowners who want to stay in their house?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "reverse mortgages"
+
+[[q]]
+id = "D36"
+split = "dev"
+kind = "oos"
+category = "oos_near"
+persona = "broker"
+query = "Can my client blend and extend the rate on their current mortgage to lower the payment?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "blend-and-extend"
+
+[[q]]
+id = "D37"
+split = "dev"
+kind = "oos"
+category = "oos_near"
+persona = "borrower"
+query = "Will you finance a cottage that my family only uses on weekends and in summer?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "cottage or recreational properties"
+
+[[q]]
+id = "D38"
+split = "dev"
+kind = "oos"
+category = "oos_near"
+persona = "borrower"
+query = "Can my father act as a guarantor so I can qualify for the mortgage?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "co-signers and guarantors"
