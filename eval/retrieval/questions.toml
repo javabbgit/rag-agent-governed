@@ -721,3 +721,1080 @@ nonrel = []
 origin = "new"
 reviewed = true
 topic = "co-signers and guarantors"
+
+[[q]]
+id = "T01"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "staff"
+query = "How long does an approver have to decide a complete EXC-100?"
+answer = "2 business days"
+gold = [
+  "PRC-005#summary",
+  "PRC-005#the-2-business-day-decision-time",
+  "POL-010#recording-and-timing-of-exceptions",
+]
+related = [
+  "PRC-005#pending-until-a-human-approves",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T02"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "broker"
+query = "Which payment frequencies can an FX3-C borrower choose?"
+answer = "accelerated bi-weekly"
+gold = [
+  "PRD-002#fx3-c-payment-frequencies",
+  "POL-012#payment-frequencies",
+  "FAQ-001#how-often-can-i-make-my-mortgage-payments",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T03"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "staff"
+query = "Who is allowed to waive the rate hold extension fee?"
+answer = "Credit Committee"
+gold = [
+  "RATE-002#waiving-and-correcting-fees",
+  "RATE-003#extending-a-rate-hold",
+  "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions",
+  "PRC-004#exception-approval-authority",
+  "PRC-005#routing-by-authority",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T04"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "broker"
+query = "How is the minimum payment worked out on HEL-1?"
+answer = "interest-only"
+gold = [
+  "PRD-005#summary",
+  "PRD-005#hel-1-interest-and-minimum-payment",
+  "FAQ-001#how-often-can-i-make-my-mortgage-payments",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T05"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "broker"
+query = "A VR5-C borrower has 4 years left; which fixed term can they convert to?"
+answer = "5-year term"
+gold = [
+  "PRD-003#vr5-c-conversion-to-a-fixed-term",
+]
+related = [
+  "PRD-003#summary",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T06"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "staff"
+query = "What may the Complaints Office not approve?"
+answer = "exception to credit policy"
+gold = [
+  "PRC-008#escalation-to-the-complaints-office",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T07"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "broker"
+query = "How many years in business does an SEA-5 borrower need?"
+answer = "2 years"
+gold = [
+  "PRD-007#summary",
+  "PRD-007#sea-5-eligibility-for-self-employed-borrowers",
+  "POL-008#summary",
+  "POL-008#minimum-time-in-business",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T08"
+split = "test"
+kind = "answerable"
+category = "exact"
+persona = "borrower"
+query = "Does FX1-O charge a penalty if I move to a closed term?"
+answer = "no penalty is charged"
+gold = [
+  "PRD-004#fx1-o-prepayment-without-penalty",
+  "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+  "PRC-007#if-the-borrower-gives-no-instruction",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T09"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "borrower"
+query = "Must I show the lender a certificate from my insurer before the loan is paid out?"
+answer = "proof of home insurance"
+gold = [
+  "FAQ-005#do-i-need-home-insurance-on-my-property",
+  "FAQ-005#summary",
+  "PRC-003#standard-conditions",
+  "FAQ-004#which-conditions-will-i-see-on-an-approval",
+  "PRC-006#final-conditions-check",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T10"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "staff"
+query = "Can the chatbot sign off a loan on its own?"
+answer = "cannot approve anything"
+gold = [
+  "FAQ-006#can-the-policy-assistant-approve-a-file-or-submit-a-request",
+  "FAQ-006#summary",
+]
+related = [
+  "PRC-005#pending-until-a-human-approves",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T11"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "borrower"
+query = "Will you lend on a plot of land with nothing built on it?"
+answer = "vacant land"
+gold = [
+  "POL-006#ineligible-property-types",
+]
+related = [
+  "PRD-006#rnt-4-eligible-properties",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T12"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "broker"
+query = "Would you lend on a four-plex that my client will live in?"
+answer = "1-4 unit"
+gold = [
+  "POL-006#eligible-property-types",
+  "POL-006#summary",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T13"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "borrower"
+query = "A big sum landed in my bank account recently; will you ask where it came from?"
+answer = "explained and documented"
+gold = [
+  "POL-005#own-savings-need-a-90-day-history",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T14"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "staff"
+query = "Can I assure a customer that their application will be accepted?"
+answer = "never promise"
+gold = [
+  "PRC-009#what-staff-may-not-promise",
+  "PRC-009#summary",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T15"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "staff"
+query = "When two of our written guides conflict, which one takes precedence?"
+answer = "higher-ranked"
+gold = [
+  "POL-001#document-hierarchy-policy-process-and-faq",
+  "FAQ-006#how-do-i-know-a-document-is-current",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T16"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "borrower"
+query = "Why is my monthly instalment different this month on my floating mortgage?"
+answer = "DMC Prime"
+gold = [
+  "POL-012#variable-rate-payments-when-prime-changes",
+  "FAQ-001#will-my-payment-change-if-i-have-a-variable-rate",
+  "PRD-003#vr5-c-payments-when-prime-changes",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T17"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "broker"
+query = "How quickly will the lender confirm that our submission arrived?"
+answer = "1 business day"
+gold = [
+  "PRC-001#acknowledgement-within-1-business-day",
+  "PRC-001#summary",
+  "FAQ-004#how-will-i-know-you-received-the-application",
+  "FAQ-004#summary",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T18"
+split = "test"
+kind = "answerable"
+category = "paraphrase"
+persona = "borrower"
+query = "Will you re-check my earnings and debts when my loan term ends and I stay on the same balance?"
+answer = "not requalified"
+gold = [
+  "FAQ-003#do-i-have-to-qualify-again-to-renew",
+  "PRC-007#straight-renewal-without-requalification",
+  "POL-004#straight-renewals-are-not-requalified",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T19"
+split = "test"
+kind = "answerable"
+category = "confusable"
+persona = "staff"
+query = "Can an FX5-C borrower use accelerated payments to get around the prepayment limits?"
+answer = "avoid the prepayment limits"
+gold = [
+  "PRD-001#fx5-c-payment-frequencies",
+]
+related = [
+  "POL-012#payment-frequencies",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T20"
+split = "test"
+kind = "answerable"
+category = "confusable"
+persona = "broker"
+query = "How many units can a property have to qualify for RNT-4?"
+answer = "1-4 unit"
+gold = [
+  "PRD-006#summary",
+  "PRD-006#rnt-4-eligible-properties",
+]
+related = [
+  "POL-006#eligible-property-types",
+  "POL-006#owner-occupied-and-non-owner-occupied-properties",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T21"
+split = "test"
+kind = "answerable"
+category = "confusable"
+persona = "broker"
+query = "Can mortgage insurance raise the maximum loan-to-value on SEA-5?"
+answer = "does not raise"
+gold = [
+  "PRD-007#sea-5-loan-to-value-limit",
+  "POL-007#loan-to-value-limits-set-by-product",
+]
+related = [
+  "PRD-007#summary",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T22"
+split = "test"
+kind = "answerable"
+category = "confusable"
+persona = "staff"
+query = "How is interest compounded on an FX3-C mortgage?"
+answer = "semi-annually"
+gold = [
+  "PRD-002#fx3-c-rate-and-qualifying-rate",
+  "PRD-002#fx3-c-payment-frequencies",
+  "POL-012#compounding-fixed-semi-annual-variable-monthly",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T23"
+split = "test"
+kind = "answerable"
+category = "confusable"
+persona = "broker"
+query = "How often is interest compounded on a VR5-C mortgage?"
+answer = "compounded monthly"
+gold = [
+  "PRD-003#vr5-c-rate-and-qualifying-rate",
+  "PRD-003#vr5-c-payments-when-prime-changes",
+  "POL-012#compounding-fixed-semi-annual-variable-monthly",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T24"
+split = "test"
+kind = "answerable"
+category = "confusable"
+persona = "borrower"
+query = "Do self-employed borrowers have to take SEA-5?"
+answer = "not required"
+gold = [
+  "PRD-007#sea-5-eligibility-for-self-employed-borrowers",
+  "POL-008#the-sea-5-option-for-self-employed-borrowers",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T25"
+split = "test"
+kind = "answerable"
+category = "confusable"
+persona = "broker"
+query = "Can an FX5-C mortgage be used to buy a property the borrower will not live in?"
+answer = "lent on under RNT-4"
+gold = [
+  "PRD-001#fx5-c-product-summary",
+  "PRD-006#rnt-4-product-summary",
+  "POL-006#owner-occupied-and-non-owner-occupied-properties",
+  "POL-006#summary",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T26"
+split = "test"
+kind = "answerable"
+category = "confusable"
+persona = "borrower"
+query = "Is a penalty charged when an FX5-C mortgage is paid off at its maturity date?"
+answer = "no penalty on the payout"
+gold = [
+  "PRD-001#fx5-c-prepayment-penalty",
+  "FAQ-002#can-i-pay-off-my-mortgage-early",
+  "PRC-007#renewal-options",
+  "FAQ-003#what-can-i-choose-when-my-mortgage-matures",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T27"
+split = "test"
+kind = "answerable"
+category = "superseded_trap"
+persona = "broker"
+query = "What qualifying rate applies to a 3-year fixed closed mortgage?"
+answer = "6.59%"
+gold = [
+  "RATE-001#qualifying-rate-by-product",
+  "PRD-002#fx3-c-rate-and-qualifying-rate",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T28"
+split = "test"
+kind = "answerable"
+category = "superseded_trap"
+persona = "borrower"
+query = "What interest rate do you charge on a mortgage for a rental property I will not live in?"
+answer = "5.09%"
+gold = [
+  "RATE-001#contract-rates-by-product",
+  "PRD-006#rnt-4-rate-and-qualifying-rate",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T29"
+split = "test"
+kind = "answerable"
+category = "superseded_trap"
+persona = "borrower"
+query = "What is the current rate on a home equity line of credit?"
+answer = "5.45%"
+gold = [
+  "RATE-001#contract-rates-by-product",
+  "PRD-005#hel-1-rate-and-qualifying-rate",
+  "POL-004#example-qualifying-rate-for-three-products",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T30"
+split = "test"
+kind = "answerable"
+category = "superseded_trap"
+persona = "staff"
+query = "In the worked condominium example with 9,000 monthly income and a 2,400 payment at the qualifying rate, what GDS results?"
+answer = "33.9%"
+gold = [
+  "POL-003#example-gds-and-tds-for-a-sample-condominium-file",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T31"
+split = "test"
+kind = "answerable"
+category = "superseded_trap"
+persona = "staff"
+query = "In the worked example with 9,000 monthly income and 500 of other debt payments, what TDS results?"
+answer = "39.4%"
+gold = [
+  "POL-003#example-gds-and-tds-for-a-sample-condominium-file",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T32"
+split = "test"
+kind = "answerable"
+category = "superseded_trap"
+persona = "broker"
+query = "On a 30,000 prepayment above the privileges at 4.69%, how much is three months' interest?"
+answer = "351.75"
+gold = [
+  "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T33"
+split = "test"
+kind = "answerable"
+category = "fine_grained"
+persona = "staff"
+query = "Which department owns the policy on verifying income?"
+answer = "Underwriting owns"
+gold = [
+  "POL-001#who-owns-each-policy",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T34"
+split = "test"
+kind = "answerable"
+category = "fine_grained"
+persona = "staff"
+query = "When a payment calculation lands on half a cent, which way does it round?"
+answer = "rounded up"
+gold = [
+  "POL-012#rounding-rules",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T35"
+split = "test"
+kind = "answerable"
+category = "fine_grained"
+persona = "broker"
+query = "My client has two salaried jobs; what income documents do we send?"
+answer = "same two documents"
+gold = [
+  "POL-002#documents-required-for-salaried-income",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T36"
+split = "test"
+kind = "answerable"
+category = "fine_grained"
+persona = "broker"
+query = "Can the number given to a withdrawn application be handed out again later?"
+answer = "never reuses"
+gold = [
+  "PRC-001#loan-number-assignment",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T37"
+split = "test"
+kind = "answerable"
+category = "fine_grained"
+persona = "staff"
+query = "May a message to a customer set our rates against those of competing banks?"
+answer = "must not compare"
+gold = [
+  "PRC-009#rates-and-rate-holds-in-messages",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T38"
+split = "test"
+kind = "answerable"
+category = "fine_grained"
+persona = "borrower"
+query = "Who is the 3-year fixed closed mortgage meant for?"
+answer = "circumstances to change"
+gold = [
+  "PRD-002#who-fx3-c-suits",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T39"
+split = "test"
+kind = "answerable"
+category = "table"
+persona = "borrower"
+query = "Who checks that my proof of home insurance is in order?"
+answer = "Mortgage Operations"
+gold = [
+  "PRC-003#who-signs-off-each-condition-type",
+  "FAQ-005#who-checks-my-proof-of-home-insurance",
+  "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T40"
+split = "test"
+kind = "answerable"
+category = "table"
+persona = "staff"
+query = "Which role approves a rate hold extension?"
+answer = "Senior Underwriter"
+gold = [
+  "PRC-005#routing-by-authority",
+  "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions",
+  "PRC-004#exception-approval-authority",
+]
+related = [
+  "RATE-003#extending-a-rate-hold",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T41"
+split = "test"
+kind = "answerable"
+category = "table"
+persona = "borrower"
+query = "What does it cost to change from monthly to weekly payments?"
+answer = "$25"
+gold = [
+  "RATE-002#fees-charged-by-demo-mortgage-co",
+  "FAQ-001#can-i-change-my-payment-date-or-how-often-i-pay",
+  "FAQ-001#which-fees-can-i-pay-on-my-mortgage-payments",
+]
+related = [
+  "RATE-002#summary",
+  "RATE-002#when-each-fee-is-charged",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T42"
+split = "test"
+kind = "answerable"
+category = "table"
+persona = "staff"
+query = "Which files may an Underwriter open in full?"
+answer = "whole file"
+gold = [
+  "PRC-004#what-each-role-may-view",
+  "POL-011#least-privilege-access-by-role",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T43"
+split = "test"
+kind = "answerable"
+category = "table"
+persona = "broker"
+query = "What rate is used to qualify a borrower for VR5-C?"
+answer = "5.90%"
+gold = [
+  "RATE-001#qualifying-rate-by-product",
+  "PRD-003#vr5-c-rate-and-qualifying-rate",
+  "POL-004#example-qualifying-rate-for-three-products",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T44"
+split = "test"
+kind = "answerable"
+category = "table"
+persona = "broker"
+query = "Who signs off a condition that an exception approver attached?"
+answer = "role that approved the exception"
+gold = [
+  "PRC-003#who-signs-off-each-condition-type",
+]
+related = [
+  "PRC-005#recording-and-closing-the-request",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T45"
+split = "test"
+kind = "answerable"
+category = "multi_doc"
+persona = "broker"
+query = "How far ahead of closing must every condition document be in the loan system?"
+answer = "10 business days"
+gold = [
+  "PRC-003#summary",
+  "PRC-003#conditions-due-10-business-days-before-closing",
+  "FAQ-004#summary",
+  "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+  "FAQ-005#when-do-i-have-to-give-proof-of-home-insurance-for-closing",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T46"
+split = "test"
+kind = "answerable"
+category = "multi_doc"
+persona = "broker"
+query = "When a client puts less than 20% down, what extra cover must be arranged?"
+answer = "mortgage default insurance"
+gold = [
+  "POL-007#when-mortgage-default-insurance-is-required",
+  "POL-005#minimum-down-payment-by-purchase-price",
+]
+related = [
+  "POL-007#summary",
+]
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T47"
+split = "test"
+kind = "answerable"
+category = "multi_doc"
+persona = "staff"
+query = "May I paste a customer's social insurance number into a chat tool to get help?"
+answer = "never type or paste"
+gold = [
+  "POL-011#data-that-may-never-be-typed-into-a-chat-tool",
+  "POL-011#summary",
+  "FAQ-006#what-must-i-never-type-into-the-policy-assistant",
+  "FAQ-006#summary",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T48"
+split = "test"
+kind = "answerable"
+category = "multi_doc"
+persona = "broker"
+query = "How should I identify the borrower when I message the lender about a file?"
+answer = "loan number"
+gold = [
+  "POL-011#referring-to-customers-by-loan-number-only",
+  "PRC-001#loan-number-assignment",
+  "FAQ-004#how-do-i-submit-a-mortgage-application",
+  "FAQ-006#what-must-i-never-type-into-the-policy-assistant",
+  "PRC-009#plain-language",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T49"
+split = "test"
+kind = "answerable"
+category = "multi_doc"
+persona = "borrower"
+query = "Do I still need to send anything about my property cover when I renew without changes?"
+answer = "proof of home insurance"
+gold = [
+  "FAQ-005#do-i-have-to-show-proof-of-home-insurance-when-i-renew",
+  "FAQ-003#do-i-have-to-qualify-again-to-renew",
+  "PRC-007#straight-renewal-without-requalification",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T50"
+split = "test"
+kind = "answerable"
+category = "multi_doc"
+persona = "staff"
+query = "Is a spoken go-ahead from a manager enough to accept an exception?"
+answer = "verbal"
+gold = [
+  "PRC-005#pending-until-a-human-approves",
+  "POL-010#recording-and-timing-of-exceptions",
+  "POL-001#how-exceptions-to-credit-policy-are-handled",
+  "PRC-002#stage-7-authority-check",
+]
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+
+[[q]]
+id = "T51"
+split = "test"
+kind = "oos"
+category = "oos_far"
+persona = "borrower"
+query = "Can I borrow money from you to pay for my tuition at university?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "student loans"
+
+[[q]]
+id = "T52"
+split = "test"
+kind = "oos"
+category = "oos_far"
+persona = "borrower"
+query = "How much should I put into my RRSP this year?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "RRSP or investment advice"
+
+[[q]]
+id = "T53"
+split = "test"
+kind = "oos"
+category = "oos_far"
+persona = "borrower"
+query = "How do I make a claim on my life insurance after a family member passes away?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "life insurance claims"
+
+[[q]]
+id = "T54"
+split = "test"
+kind = "oos"
+category = "oos_far"
+persona = "borrower"
+query = "How do I appeal my property tax assessment with the city?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "property tax appeals"
+
+[[q]]
+id = "T55"
+split = "test"
+kind = "oos"
+category = "oos_far"
+persona = "staff"
+query = "How many weeks of paid vacation do new hires receive?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "employee vacation policy"
+
+[[q]]
+id = "T56"
+split = "test"
+kind = "oos"
+category = "oos_far"
+persona = "broker"
+query = "What rate would you quote on a loan to buy a strip mall?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "commercial real estate"
+
+[[q]]
+id = "T57"
+split = "test"
+kind = "oos"
+category = "oos_near"
+persona = "broker"
+query = "Can my client get short-term funds to buy a new home before the old one sells?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "bridge financing"
+
+[[q]]
+id = "T58"
+split = "test"
+kind = "oos"
+category = "oos_near"
+persona = "borrower"
+query = "Can I take my current mortgage rate with me when I move to a new house?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "mortgage portability"
+
+[[q]]
+id = "T59"
+split = "test"
+kind = "oos"
+category = "oos_near"
+persona = "broker"
+query = "Do you release mortgage money in stages while a new house is being built?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "construction draw mortgages"
+
+[[q]]
+id = "T60"
+split = "test"
+kind = "oos"
+category = "oos_near"
+persona = "broker"
+query = "Can a buyer who lives outside Canada get a mortgage from you?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "foreign buyer rules"
+
+[[q]]
+id = "T61"
+split = "test"
+kind = "oos"
+category = "oos_near"
+persona = "borrower"
+query = "Can I miss one payment this month and add it to the end of my mortgage?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "payment deferral or skip-a-payment"
+
+[[q]]
+id = "T62"
+split = "test"
+kind = "oos"
+category = "oos_near"
+persona = "borrower"
+query = "If I sell my house, can the buyer take over my existing mortgage?"
+answer = ""
+gold = []
+related = []
+nonrel = []
+origin = "new"
+reviewed = false
+topic = "mortgage assumption by a buyer"
