@@ -19,7 +19,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q01"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D02"
@@ -42,7 +42,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q02"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D03"
@@ -62,7 +62,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q03"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D04"
@@ -83,7 +83,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q04"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D05"
@@ -100,7 +100,7 @@ gold = [
 related = []
 nonrel = []
 origin = "smoke-Q05"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D06"
@@ -123,7 +123,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q06"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D07"
@@ -149,7 +149,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q07"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D08"
@@ -170,7 +170,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q08"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D09"
@@ -188,7 +188,7 @@ gold = [
 related = []
 nonrel = []
 origin = "smoke-Q09"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D10"
@@ -208,7 +208,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q10"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D11"
@@ -229,7 +229,7 @@ related = [
 ]
 nonrel = []
 origin = "smoke-Q11"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D12"
@@ -247,7 +247,7 @@ gold = [
 related = []
 nonrel = []
 origin = "smoke-Q12"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D13"
@@ -267,7 +267,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D14"
@@ -286,7 +286,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D15"
@@ -306,7 +306,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D16"
@@ -325,7 +325,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D17"
@@ -345,7 +345,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D18"
@@ -371,7 +371,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D19"
@@ -391,7 +391,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D20"
@@ -409,7 +409,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D21"
@@ -427,7 +427,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D22"
@@ -443,7 +443,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D23"
@@ -459,7 +459,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D24"
@@ -478,7 +478,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D25"
@@ -503,7 +503,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D26"
@@ -523,7 +523,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D27"
@@ -545,7 +545,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D28"
@@ -563,7 +563,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D29"
@@ -581,7 +581,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D30"
@@ -600,7 +600,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "D31"
@@ -614,7 +614,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "car loans"
 
 [[q]]
@@ -629,7 +629,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "travel insurance"
 
 [[q]]
@@ -644,7 +644,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "cryptocurrency"
 
 [[q]]
@@ -659,7 +659,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "IT password resets"
 
 [[q]]
@@ -674,7 +674,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "reverse mortgages"
 
 [[q]]
@@ -689,7 +689,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "blend-and-extend"
 
 [[q]]
@@ -704,7 +704,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "cottage or recreational properties"
 
 [[q]]
@@ -719,5 +719,5 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "co-signers and guarantors"
