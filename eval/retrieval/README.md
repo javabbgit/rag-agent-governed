@@ -1,7 +1,8 @@
 # Retrieval eval set
 
 `questions.toml` holds the labeled questions; `test_runs.csv` logs every reported test run.
-Tooling: `make evalset-check`, `make evalset-show`, `make eval-pool`, `make eval-retrieval`.
+Tooling: `make evalset-check`, `make evalset-show`, `make eval-pool`, `make eval-pool-sheet`,
+`make eval-pool-apply`, `make eval-retrieval`.
 The checker and `show_question.py` read the corpus files, never the database.
 
 ## Format
@@ -63,6 +64,19 @@ Oos: oos_far, oos_near.
   `topics_near` (oos_near).
 - Pooling (`make eval-pool`) lists unjudged top-ranked chunks per answerable question; the human
   fills the judgment column and moves chunk ids into gold, related or nonrel.
+
+## Judging a pool
+
+1. `make eval-pool-sheet FILE=reports/eval/pool_<split>_<UTC>.csv` writes `<name>_judge.csv` and
+   `<name>_judge.md` next to it. The CSV adds `answer` and `contains_answer` (yes/no, same matching as
+   the checker) and is sorted yes first, then qid, best_rank; `judgment` is empty. The markdown shows each
+   candidate chunk's full text. No network.
+2. Fill `judgment` with `gold`, `related` or `nonrel` (any case; blank = skip). Excel is fine (BOM, CRLF).
+3. `make eval-pool-apply FILE=<name>_judge.csv` adds each chunk id to that list of its question and
+   rewrites `questions.toml` in the exact existing layout. It prints counts per judgment and per split.
+   It refuses (exit 1, file byte-identical) on an unknown qid, a missing or superseded chunk, a chunk
+   already in any list of that question, a bad judgment word, or a result that fails `make evalset-check`
+   at the default level.
 
 ## Metrics
 

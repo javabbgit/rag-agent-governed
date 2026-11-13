@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-retrieval
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval
 
 setup:
 	uv sync --python 3.11
@@ -71,6 +71,14 @@ evalset-show:
 
 eval-pool:
 	uv run python scripts/eval_retrieval.py --split $(SPLIT) --pool-only
+
+eval-pool-sheet:
+	@test -n "$(FILE)" || { echo 'usage: make eval-pool-sheet FILE=reports/eval/pool_dev_<UTC>.csv'; exit 2; }
+	uv run python scripts/pool_sheet.py "$(FILE)"
+
+eval-pool-apply:
+	@test -n "$(FILE)" || { echo 'usage: make eval-pool-apply FILE=reports/eval/pool_dev_<UTC>_judge.csv'; exit 2; }
+	uv run python scripts/apply_pool.py "$(FILE)"
 
 eval-retrieval:
 	uv run python scripts/eval_retrieval.py --split $(SPLIT)
