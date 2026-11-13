@@ -740,7 +740,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T02"
@@ -758,7 +758,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T03"
@@ -778,7 +778,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T04"
@@ -796,7 +796,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T05"
@@ -814,7 +814,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T06"
@@ -830,7 +830,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T07"
@@ -849,7 +849,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T08"
@@ -867,7 +867,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T09"
@@ -887,7 +887,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T10"
@@ -906,7 +906,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T11"
@@ -924,7 +924,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T12"
@@ -941,7 +941,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T13"
@@ -957,7 +957,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T14"
@@ -974,7 +974,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T15"
@@ -991,7 +991,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T16"
@@ -1009,7 +1009,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T17"
@@ -1028,7 +1028,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T18"
@@ -1046,7 +1046,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T19"
@@ -1064,7 +1064,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T20"
@@ -1084,7 +1084,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T21"
@@ -1103,7 +1103,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T22"
@@ -1121,7 +1121,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T23"
@@ -1139,7 +1139,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T24"
@@ -1156,7 +1156,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T25"
@@ -1175,7 +1175,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T26"
@@ -1194,7 +1194,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T27"
@@ -1211,7 +1211,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T28"
@@ -1228,7 +1228,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T29"
@@ -1246,7 +1246,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T30"
@@ -1262,7 +1262,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T31"
@@ -1278,7 +1278,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T32"
@@ -1294,7 +1294,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T33"
@@ -1310,7 +1310,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T34"
@@ -1326,7 +1326,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T35"
@@ -1342,7 +1342,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T36"
@@ -1358,7 +1358,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T37"
@@ -1374,7 +1374,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T38"
@@ -1390,7 +1390,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T39"
@@ -1408,7 +1408,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T40"
@@ -1428,7 +1428,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T41"
@@ -1449,7 +1449,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T42"
@@ -1466,7 +1466,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T43"
@@ -1484,7 +1484,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T44"
@@ -1502,7 +1502,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T45"
@@ -1522,7 +1522,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T46"
@@ -1541,7 +1541,7 @@ related = [
 ]
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T47"
@@ -1560,7 +1560,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T48"
@@ -1580,7 +1580,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T49"
@@ -1598,7 +1598,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T50"
@@ -1617,7 +1617,7 @@ gold = [
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 
 [[q]]
 id = "T51"
@@ -1631,7 +1631,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "student loans"
 
 [[q]]
@@ -1646,7 +1646,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "RRSP or investment advice"
 
 [[q]]
@@ -1661,7 +1661,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "life insurance claims"
 
 [[q]]
@@ -1676,7 +1676,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "property tax appeals"
 
 [[q]]
@@ -1691,7 +1691,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "employee vacation policy"
 
 [[q]]
@@ -1706,7 +1706,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "commercial real estate"
 
 [[q]]
@@ -1721,7 +1721,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "bridge financing"
 
 [[q]]
@@ -1736,7 +1736,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "mortgage portability"
 
 [[q]]
@@ -1751,7 +1751,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "construction draw mortgages"
 
 [[q]]
@@ -1766,7 +1766,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "foreign buyer rules"
 
 [[q]]
@@ -1781,7 +1781,7 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "payment deferral or skip-a-payment"
 
 [[q]]
@@ -1796,5 +1796,5 @@ gold = []
 related = []
 nonrel = []
 origin = "new"
-reviewed = false
+reviewed = true
 topic = "mortgage assumption by a buyer"
