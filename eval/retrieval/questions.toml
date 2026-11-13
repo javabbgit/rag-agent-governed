@@ -60,7 +60,9 @@ gold = [
 related = [
   "PRC-005#summary",
 ]
-nonrel = []
+nonrel = [
+  "PRC-005#when-an-exc-100-may-be-raised",
+]
 origin = "smoke-Q03"
 reviewed = true
 
@@ -98,7 +100,10 @@ gold = [
   "RATE-003#rate-hold-period-for-a-refinance",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "POL-010#compensating-factors",
+  "RATE-003#rate-hold-period-for-a-purchase",
+]
 origin = "smoke-Q05"
 reviewed = true
 
@@ -120,6 +125,7 @@ gold = [
 related = [
   "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
   "PRD-001#fx5-c-prepayment-privileges",
+  "FAQ-002#do-unused-extra-payments-carry-over-to-next-year",
 ]
 nonrel = []
 origin = "smoke-Q06"
@@ -146,6 +152,7 @@ related = [
   "PRD-006#rnt-4-payment-frequencies-and-renewal",
   "PRD-007#sea-5-payment-frequencies-and-renewal",
   "FAQ-003#summary",
+  "FAQ-003#when-will-i-hear-about-renewing-my-mortgage",
 ]
 nonrel = []
 origin = "smoke-Q07"
@@ -185,8 +192,13 @@ gold = [
   "POL-008#income-the-2-year-average-of-net-income",
   "PRD-007#sea-5-eligibility-for-self-employed-borrowers",
 ]
-related = []
-nonrel = []
+related = [
+  "POL-008#who-counts-as-a-self-employed-borrower",
+]
+nonrel = [
+  "POL-002#rental-income-50-counted",
+  "POL-001#who-owns-each-policy",
+]
 origin = "smoke-Q09"
 reviewed = true
 
@@ -206,7 +218,9 @@ gold = [
 related = [
   "POL-007#how-loan-to-value-is-calculated",
 ]
-nonrel = []
+nonrel = [
+  "PRD-007#sea-5-loan-to-value-limit",
+]
 origin = "smoke-Q10"
 reviewed = true
 
@@ -226,8 +240,14 @@ gold = [
 ]
 related = [
   "POL-004#products-that-must-be-qualified-at-the-qualifying-rate",
+  "PRD-007#sea-5-rate-and-qualifying-rate",
+  "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-003#what-if-i-want-more-money-or-to-change-who-is-on-my-mortgage",
+  "RATE-003#a-rate-hold-is-not-an-approval",
+  "PRC-005#pending-until-a-human-approves",
+]
 origin = "smoke-Q11"
 reviewed = true
 
@@ -244,7 +264,9 @@ gold = [
   "PRC-008#final-response-within-30-days",
   "FAQ-001#what-happens-if-a-payment-is-returned-or-missed",
 ]
-related = []
+related = [
+  "PRC-008#the-external-complaints-body",
+]
 nonrel = []
 origin = "smoke-Q12"
 reviewed = true
@@ -264,8 +286,11 @@ gold = [
 ]
 related = [
   "RATE-002#when-each-fee-is-charged",
+  "RATE-003#summary",
 ]
-nonrel = []
+nonrel = [
+  "RATE-003#rate-hold-period-for-a-purchase",
+]
 origin = "new"
 reviewed = true
 
@@ -283,8 +308,12 @@ gold = [
 ]
 related = [
   "PRC-004#roles-in-the-authority-matrix",
+  "PRC-004#summary",
 ]
-nonrel = []
+nonrel = [
+  "POL-011#referring-to-customers-by-loan-number-only",
+  "PRC-004#what-each-role-may-approve",
+]
 origin = "new"
 reviewed = true
 
@@ -304,7 +333,11 @@ gold = [
 related = [
   "POL-010#items-that-can-be-excepted",
 ]
-nonrel = []
+nonrel = [
+  "POL-010#who-can-approve-a-gds-or-tds-exception",
+  "PRD-005#hel-1-combined-loan-to-value-limit",
+  "PRD-007#sea-5-loan-to-value-limit",
+]
 origin = "new"
 reviewed = true
 
@@ -322,8 +355,12 @@ gold = [
 ]
 related = [
   "PRC-003#standard-conditions",
+  "PRC-006#closing-instructions-to-the-borrower-s-lawyer",
+  "FAQ-004#which-conditions-will-i-see-on-an-approval",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-005#who-checks-my-proof-of-home-insurance",
+]
 origin = "new"
 reviewed = true
 
@@ -388,8 +425,11 @@ gold = [
 ]
 related = [
   "PRD-004#summary",
+  "PRD-004#fx1-o-product-summary",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+]
 origin = "new"
 reviewed = true
 
@@ -407,7 +447,9 @@ gold = [
 related = [
   "POL-005#minimum-down-payment-by-purchase-price",
 ]
-nonrel = []
+nonrel = [
+  "POL-005#minimum-down-payment-at-a-price-of-1-200-000-or-more",
+]
 origin = "new"
 reviewed = true
 
@@ -424,8 +466,12 @@ gold = [
 ]
 related = [
   "POL-007#how-loan-to-value-is-calculated",
+  "POL-007#conventional-loan-to-value-limit",
 ]
-nonrel = []
+nonrel = [
+  "POL-003#example-gds-and-tds-for-a-sample-condominium-file",
+  "POL-005#example-minimum-down-payment-on-a-600-000-purchase",
+]
 origin = "new"
 reviewed = true
 
@@ -440,8 +486,13 @@ answer = "Underwriting team lead"
 gold = [
   "PRC-002#stage-1-file-assignment",
 ]
-related = []
-nonrel = []
+related = [
+  "PRC-001#incomplete-applications-and-handoff-to-underwriting",
+]
+nonrel = [
+  "PRC-002#stage-2-completeness-check",
+  "PRC-002#stage-7-authority-check",
+]
 origin = "new"
 reviewed = true
 
@@ -456,8 +507,13 @@ answer = "a person other than the one who prepared the file"
 gold = [
   "PRC-006#funds-release-steps",
 ]
-related = []
-nonrel = []
+related = [
+  "PRC-006#final-conditions-check",
+]
+nonrel = [
+  "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+  "FAQ-005#when-do-i-have-to-give-proof-of-home-insurance-for-closing",
+]
 origin = "new"
 reviewed = true
 
@@ -475,8 +531,15 @@ gold = [
 related = [
   "FAQ-004#which-conditions-will-i-see-on-an-approval",
   "PRC-003#standard-conditions",
+  "POL-005#own-savings-need-a-90-day-history",
+  "POL-005#a-borrowed-down-payment-is-not-accepted",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+  "FAQ-005#do-i-have-to-open-a-property-tax-account",
+  "POL-005#minimum-down-payment-by-purchase-price",
+  "POL-007#how-loan-to-value-is-calculated",
+]
 origin = "new"
 reviewed = true
 
@@ -500,8 +563,15 @@ gold = [
 ]
 related = [
   "FAQ-005#do-i-have-to-show-proof-of-home-insurance-when-i-renew",
+  "FAQ-003#what-can-i-choose-when-my-mortgage-matures",
+  "PRC-007#renewal-options",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-002#can-i-pay-off-my-mortgage-early",
+  "POL-002#rental-income-50-counted",
+  "FAQ-002#summary",
+  "PRC-008#final-response-within-30-days",
+]
 origin = "new"
 reviewed = true
 
@@ -520,8 +590,13 @@ gold = [
 related = [
   "POL-010#items-that-can-never-be-excepted",
   "PRC-005#when-an-exc-100-may-be-raised",
+  "POL-005#own-savings-need-a-90-day-history",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-002#can-i-pay-extra-on-my-mortgage",
+  "POL-009#payment-increase-limit",
+  "PRC-001#minimum-data-for-a-complete-application",
+]
 origin = "new"
 reviewed = true
 
@@ -543,7 +618,10 @@ related = [
   "FAQ-001#summary",
   "RATE-002#when-each-fee-is-charged",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+  "POL-003#what-counts-in-the-gds-ratio",
+]
 origin = "new"
 reviewed = true
 
@@ -559,8 +637,11 @@ gold = [
   "PRD-003#vr5-c-prepayment-privileges-and-penalty",
   "POL-009#prepayment-penalty-on-a-variable-rate-mortgage",
   "FAQ-002#how-is-the-penalty-worked-out",
+  "PRD-003#summary",
 ]
-related = []
+related = [
+  "PRD-003#vr5-c-product-summary",
+]
 nonrel = []
 origin = "new"
 reviewed = true
@@ -579,7 +660,9 @@ gold = [
   "POL-007#loan-to-value-limits-set-by-product",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "PRD-007#sea-5-loan-to-value-limit",
+]
 origin = "new"
 reviewed = true
 
@@ -597,8 +680,12 @@ gold = [
 related = [
   "PRD-004#fx1-o-prepayment-without-penalty",
   "FAQ-002#is-there-a-mortgage-with-no-penalty",
+  "FAQ-002#can-i-pay-off-my-mortgage-early",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-002#summary",
+  "POL-005#own-savings-need-a-90-day-history",
+]
 origin = "new"
 reviewed = true
 
