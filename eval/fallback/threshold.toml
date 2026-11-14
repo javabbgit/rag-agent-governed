@@ -1,0 +1,13 @@
+# Frozen fallback threshold, written once by `make eval-fallback SPLIT=dev REPORT=...
+# WRITE_THRESHOLD=1`. Never edit by hand; commit it before any test run.
+signal = "rerank_top1"
+threshold = 0.062085786500000004
+rule = "youden-midpoint-ties-high"
+interval_lo = 0.043409023
+interval_hi = 0.08076255
+rerank_n = 10
+reranker_model_sha = "None"
+dev_questions_sha256 = "0b8d89dfce9955197f08799c549640796b3aed5c7fc2e001c7cad63560049e57"
+dev_report_fingerprint = "8373a368ae0c6e06f7eca5b4f049a56bdfc9dba7d8c4a84251a03445732f368d"
+dev_correct_fallback_rate = 1.0
+dev_false_fallback_rate = 0.13333333333333333

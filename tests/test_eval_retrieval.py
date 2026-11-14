@@ -6,6 +6,7 @@ import pytest
 
 import eval_retrieval
 from rag_agent import evalset
+from rag_agent.rerank import RerankError
 from rag_agent.retrieve import Hit
 
 FIX = Path(__file__).parent / "fixtures" / "evalset"
@@ -69,6 +70,11 @@ class Env:
         self.retrieves: list[tuple[str, str]] = []
         self.fail_on_retrieve_call: int | None = None
         self.dirty = False
+        self.rerank_ns: list[int] = []
+        self.max_batch_seen: list[int] = []
+        self.preflights = 0
+        self.max_batch = 64
+        self.preflight_error: Exception | None = None
 
         def fake_embed(query, *, client=None):
             self.embeds.append(query)
@@ -81,20 +87,44 @@ class Env:
             collection="main",
             include_superseded=True,
             query_vector=None,
+            rerank_n=None,
             **kw,
         ):
             n = len(self.retrieves)
             self.retrieves.append((query, mode))
             if self.fail_on_retrieve_call is not None and n == self.fail_on_retrieve_call:
                 raise RuntimeError("boom")
-            assert collection == "main" and include_superseded is True and k == 10
-            if mode in ("vector", "hybrid"):
+            assert collection == "main" and include_superseded is True
+            if mode == "rerank":
+                assert k == 10 and rerank_n
+                self.rerank_ns.append(rerank_n)
+                self.max_batch_seen.append(kw["max_batch"])
+            elif mode == "hybrid":
+                assert k >= 10  # max rerank_n when rerank is also run
+            else:
+                assert k == 10
+            if mode in ("vector", "hybrid", "rerank"):
                 assert query_vector == [0.1, 0.2, 0.3, 0.4]
             return make_hits(query, mode, k)
 
         ok = evalset.Result([], {s: dict.fromkeys(evalset.KINDS, 0) for s in evalset.SPLITS})
         monkeypatch.setattr(eval_retrieval, "embed_query", fake_embed)
         monkeypatch.setattr(eval_retrieval, "retrieve", fake_retrieve)
+
+        def fake_info(url, timeout):
+            self.preflights += 1
+            if self.preflight_error:
+                raise self.preflight_error
+            return {
+                "model_id": "m",
+                "model_sha": "sha1",
+                "version": "1.2",
+                "extra": 1,
+                "max_client_batch_size": self.max_batch,
+            }
+
+        monkeypatch.setattr(eval_retrieval, "reranker_info", fake_info)
+        monkeypatch.setattr(eval_retrieval, "check_pin", lambda info, rev: None)
         monkeypatch.setattr(eval_retrieval.check_evalset, "run_check", lambda *a, **k: ok)
         monkeypatch.setattr(eval_retrieval, "git_info", lambda: ("abc123", self.dirty))
 
@@ -330,4 +360,98 @@ def test_untracked_file_refuses_but_ignored_file_does_not(tmp_path, monkeypatch)
 def test_untracked_file_refuses_test_split(env, settings, monkeypatch):
     env.dirty = True  # git_info() reports dirty, as it does for an untracked file
     assert env.run(settings, split="test") == 2
+    assert env.test_runs.read_text() == env.initial
+
+
+ALL_MODES = ("bm25", "vector", "hybrid", "rerank")
+
+
+def test_preflight_failure_exits_before_any_embed_or_write(env, settings, capsys):
+    env.preflight_error = RerankError("reranker request failed: URLError")
+    assert env.run(settings, split="test", modes=ALL_MODES) == 1
+    assert env.preflights == 1 and env.embeds == [] and env.retrieves == []
+    assert not (env.tmp / "reports").exists()
+    assert env.test_runs.read_text() == env.initial
+    assert "preflight" in capsys.readouterr().out
+
+
+def test_preflight_refuses_rerank_n_above_batch_limit(env, settings, capsys):
+    env.max_batch = 15
+    assert env.run(settings, split="test", modes=ALL_MODES, rerank_ns=[20]) == 1
+    assert env.embeds == [] and env.retrieves == [] and not (env.tmp / "reports").exists()
+    assert "max_client_batch_size 15" in capsys.readouterr().out
+
+
+def test_rerank_calls_use_reported_batch_limit(env, settings):
+    env.max_batch = 32
+    assert env.run(settings, split="test", modes=("hybrid", "rerank"), rerank_ns=[30]) == 0
+    assert env.max_batch_seen == [32, 32, 32]
+
+
+def test_no_preflight_without_rerank_mode(env, settings):
+    assert env.run(settings) == 0
+    assert env.preflights == 0
+
+
+def test_one_embed_per_question_across_four_modes(env, settings):
+    assert env.run(settings, modes=ALL_MODES) == 0
+    assert len(env.embeds) == 3 and env.preflights == 1
+    assert env.rerank_ns == [10, 10, 10]  # default RERANK_CANDIDATES, one real call per question
+    assert len(env.retrieves) == 12  # hybrid candidates are fetched once and reused
+
+
+def test_rerank_report_fields_and_no_chunk_text(env, settings):
+    assert env.run(settings, modes=ALL_MODES, rerank_ns=[10]) == 0
+    raw = next((env.tmp / "reports").glob("retrieval_dev_*.json")).read_text()
+    assert SECRET not in raw
+    report = json.loads(raw)
+    assert report["rerank_n"] == 10 and env.rerank_ns == [10, 10, 10]
+    assert report["reranker"] == {"model_id": "m", "model_sha": "sha1", "version": "1.2"}
+    lat = report["rerank_latency_ms"]
+    assert lat["n_calls"] == 3 and lat["p50"] <= lat["p95"]
+    assert report["cand_recall"] == 1.0  # both gold chunks are among the fake candidates
+    assert report["vector_score"] == "cosine_similarity"
+    pair_names = {"rerank-hybrid", "rerank-bm25", "rerank-vector"}
+    assert pair_names <= set(report["metrics"]["paired"])
+    assert set(report["metrics"]["paired_hit1"]) == pair_names
+    top1 = report["metrics"]["top1_score"]
+    assert set(top1) == set(ALL_MODES) and set(top1["rerank"]) == {"D01", "D02", "D31"}
+    assert report["questions"]["D01"]["modes"]["rerank"]["top1_score"] == 1.0
+    md = next((env.tmp / "reports").glob("retrieval_dev_*.md")).read_text()
+    assert "## Rerank" in md and "rerank-hybrid" in md
+
+
+def test_pool_with_several_rerank_n_lists_each_n_and_no_metric_words(env, settings, capsys):
+    code = env.run(
+        settings, modes=("bm25", "rerank"), pool_only=True, pool_depth=5, rerank_ns=[10, 20]
+    )
+    assert code == 0
+    assert env.rerank_ns == [10, 20] * 3
+    out = capsys.readouterr().out
+    assert "Hit" not in out and "MRR" not in out
+    text = next((env.tmp / "reports").glob("pool_dev_*.csv")).read_text()
+    assert "Hit" not in text and "MRR" not in text
+    rows = list(csv.DictReader(text.splitlines()))
+    row = next(r for r in rows if r["qid"] == "D01" and r["chunk_id"] == "PRD-001#term")
+    assert row["ranks"] == "bm25:4 rerank@10:4 rerank@20:4" and row["best_rank"] == "4"
+    assert len({(r["qid"], r["chunk_id"]) for r in rows}) == len(rows)
+
+
+def test_several_rerank_n_without_pool_only_is_refused(env, settings):
+    assert env.run(settings, modes=ALL_MODES, rerank_ns=[10, 20]) == 2
+    assert env.embeds == [] and env.preflights == 0
+
+
+def test_test_ledger_has_rerank_at_n_line(env, settings):
+    assert env.run(settings, split="test", modes=("hybrid", "rerank"), rerank_ns=[30]) == 0
+    lines = env.test_runs.read_text().splitlines()
+    assert lines[:2] == env.initial.splitlines()
+    rows = list(csv.DictReader(lines[0:1] + lines[2:]))
+    assert [r["mode"] for r in rows] == ["hybrid", "rerank@30"]
+
+
+def test_rerank_failure_leaves_ledger_and_reports_untouched(env, settings):
+    env.fail_on_retrieve_call = 1  # first question: hybrid ok, rerank fails
+    assert env.run(settings, split="test", modes=("hybrid", "rerank")) == 1
+    assert not (env.tmp / "reports").exists()
     assert env.test_runs.read_text() == env.initial

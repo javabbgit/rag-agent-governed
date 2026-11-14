@@ -16,6 +16,7 @@ from rag_agent.bm25 import BM25Index
 from rag_agent.config import load_settings
 from rag_agent.ingest import QUERY_PREFIX, validate_vector
 from rag_agent.llm_client import LLMClient
+from rag_agent.rerank import rerank_scores
 
 # --- parameters: one block, not tuned ---------------------------------------------------------
 BM25_K1 = 1.2
@@ -23,6 +24,9 @@ BM25_B = 0.75
 RRF_K = 60
 CANDIDATES = 50
 DEFAULT_K = 10
+RERANK_CANDIDATES = 10  # dev sweep 2026-11-14: smallest N within 0.01 of best with p95 <= 5 s
+RERANK_GRID = (10, 20, 30, 50)
+RERANK_MAX_BATCH = 64  # keep equal to --max-client-batch-size in docker-compose.yml
 STOPWORDS = frozenset(
     {
         "a",
@@ -63,7 +67,7 @@ STOPWORDS = frozenset(
 )
 # ----------------------------------------------------------------------------------------------
 
-MODES = ("bm25", "vector", "hybrid")
+MODES = ("bm25", "vector", "hybrid", "rerank")
 
 
 @dataclass(frozen=True)
@@ -79,6 +83,7 @@ class Hit:
     bm25_score: float | None
     vector_rank: int | None
     vector_score: float | None
+    rrf_rank: int | None = None  # rank in the hybrid candidate list (rerank mode only)
 
 
 @dataclass
@@ -139,11 +144,17 @@ def retrieve(
     client: Any = None,
     store: Any = default_store,
     dsn: str | None = None,
+    rerank_n: int | None = None,
+    reranker_url: str | None = None,
+    rerank_timeout: float | None = None,
+    max_batch: int = RERANK_MAX_BATCH,
 ) -> list[Hit]:
-    """Top-`k` hits. `score` is the BM25 score, the cosine, or the RRF score, by mode.
+    """Top-`k` hits. `score` is the BM25 score, the cosine, the RRF score or the rerank score.
 
     `dsn=None` means load_settings().database_url (never the bare DATABASE_URL variable).
     `client` is anything with embed(list[str]) (default LLMClient(settings)).
+    mode "rerank": hybrid candidates (k = rerank_n or RERANK_CANDIDATES) reordered by the local
+    cross-encoder; a reranker failure raises RerankError, it never returns hybrid hits.
     """
     if not query or not query.strip():
         raise ValueError("query is empty")
@@ -151,6 +162,9 @@ def retrieve(
         raise ValueError(f"mode must be one of {MODES}, got {mode!r}")
     if k < 1:
         raise ValueError("k must be >= 1")
+    n_cand = rerank_n or RERANK_CANDIDATES
+    if mode == "rerank" and n_cand < 1:
+        raise ValueError("rerank_n must be >= 1")
 
     settings = None
     if dsn is None:
@@ -159,16 +173,18 @@ def retrieve(
 
     bm25_list: list[tuple[str, float]] = []
     meta: dict[str, Any] = {}
-    if mode in ("bm25", "hybrid"):
+    index_texts: dict[str, str] = {}
+    if mode in ("bm25", "hybrid", "rerank"):
         entry = _index(collection, dsn, store)
         meta.update(entry.chunks)
+        index_texts = {c: m.index_text for c, m in entry.chunks.items()}
         keep = None
         if not include_superseded:
             keep = {c for c, m in entry.chunks.items() if m.status == "current"}
         bm25_list = entry.index.top(query, CANDIDATES, keep)
 
     vec_list: list[Any] = []
-    if mode in ("vector", "hybrid"):
+    if mode in ("vector", "hybrid", "rerank"):
         if query_vector is None:
             if client is None:
                 client = LLMClient(settings or load_settings())
@@ -190,6 +206,26 @@ def retrieve(
     else:
         final = rrf([[c for c, _ in bm25_list], [m.chunk_id for m in vec_list]])
 
+    rrf_rank: dict[str, int] = {}
+    if mode == "rerank":
+        cand = [c for c, _ in final[:n_cand]]
+        rrf_rank = {c: i for i, c in enumerate(cand, start=1)}
+        if reranker_url is None or rerank_timeout is None:
+            settings = settings or load_settings()
+            reranker_url = reranker_url or settings.reranker_url
+            rerank_timeout = rerank_timeout or settings.rerank_timeout_s
+        scores = rerank_scores(
+            reranker_url,
+            query,
+            [index_texts[c] for c in cand],
+            max_batch,
+            rerank_timeout,
+        )
+        final = sorted(
+            zip(cand, scores, strict=True),
+            key=lambda cs: (-round(cs[1], 6), rrf_rank[cs[0]], cs[0]),
+        )
+
     hits = []
     for rank, (chunk_id, score) in enumerate(final[:k], start=1):
         m = meta[chunk_id]
@@ -206,6 +242,16 @@ def retrieve(
                 bm25_score=b_score.get(chunk_id),
                 vector_rank=v_rank.get(chunk_id),
                 vector_score=v_score.get(chunk_id),
+                rrf_rank=rrf_rank.get(chunk_id),
             )
         )
     return hits
+
+
+def all_index_texts(
+    collection: str = "main", *, store: Any = default_store, dsn: str | None = None
+) -> list[tuple[str, str]]:
+    """(chunk_id, index_text) for every chunk of the collection, ordered by chunk_id."""
+    if dsn is None:
+        dsn = load_settings().database_url
+    return [(c.chunk_id, c.index_text) for c in store.load_chunks(collection, dsn=dsn)]

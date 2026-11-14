@@ -1,0 +1,2 @@
+utc,report_file,report_fingerprint,questions_sha256,threshold,n_oos,n_oos_fallback,n_answerable,n_answerable_fallback,correct_rate,false_rate
+2026-11-14T22:59:37.505Z,retrieval_test_20261114T225634Z.json,24486b95d21ff2be2e87cff3c01edd23fe5865ae14e70297df16ef94ae6e1c27,6136924ca0a5645efb69836b092ced0dc802b028f87a36bb9967009623bc51a7,0.062085786500000004,12,11,50,9,0.9167,0.1800

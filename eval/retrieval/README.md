@@ -89,8 +89,32 @@ Over answerable questions, rank = 1-based position of the first gold chunk in th
   chunk is superseded.
 - Paired MRR@10 differences hybrid-bm25 and hybrid-vector use one set of resample indices per
   iteration for both modes.
-- oos questions record the top-1 score per mode only.
+- oos questions record the top-1 score per mode only (answerable questions' top-1 scores are in
+  the report too, for `make eval-fallback`). Vector scores are cosine similarities.
 - Reported to 4 decimals; nothing is rounded before printing.
+
+## Rerank mode
+
+`rerank` takes the hybrid top `N` (`RERANK_CANDIDATES`, or `--rerank-n` / `RERANK_N=`), scores
+each candidate's index text against the query with the local cross-encoder (compose service
+`reranker`, `make reranker-check`), and sorts by rerank score (rounded to 6 decimals), then
+hybrid rank, then chunk id. The query is embedded once and shared by all modes. If the reranker
+fails, the run fails; hybrid hits are never substituted. The reranker revision is checked
+against `RERANKER_MODEL_REV` before any gateway request.
+
+- `make eval-retrieval` default modes: `bm25,vector,hybrid,rerank`. `MODES=` selects modes.
+  One `RERANK_N` per run; a comma list (`RERANK_N=10,20`) only with `make eval-pool`, where the
+  ranks column lists each N (`rerank@10:1 rerank@20:2`) and `best_rank` is the minimum.
+- The report adds `rerank_n`, `reranker` (model id, sha, version), `rerank_latency_ms` (p50/p95
+  of the wall time of one `retrieve(mode="rerank")` call), `cand_recall` (share of answerable
+  questions with a gold chunk among the `N` hybrid candidates), and paired differences
+  rerank-hybrid, rerank-bm25 and rerank-vector for MRR@10 and Hit@1.
+- Test runs append the line with mode `rerank@N`.
+- `make eval-rerank-sweep` (dev only, no ledger) runs `N` over `RERANK_GRID`, drops `N` with
+  p95 above 5000 ms, and selects the smallest `N` whose MRR@10 is within 0.01 of the best. The
+  human then sets `RERANK_CANDIDATES`. Scores of one chunk are expected to be identical across
+  `N`; the sweep warns when they differ by more than 1e-5.
+- Fallback threshold: see `eval/fallback/README.md`.
 
 ## Freeze rule and test_runs.csv
 
