@@ -40,6 +40,14 @@ agents write code only within these rules.
     constant block in retrieve.py. Changing any of them needs a full eval run and a decision record.
 14. Every embedding input carries the nomic task prefix: "search_document: " for chunks,
     "search_query: " for queries.
+15. eval/retrieval/questions.toml is human-owned. Agents never edit the test split. After tag
+    d4-eval a test label changes only for a proven labeling error, made by the human with a
+    decision record.
+16. Tuning (reranking, thresholds, retrieval parameters, prompts) is judged on the dev split only.
+    Test runs need a clean tree and append to eval/retrieval/test_runs.csv; never edit or delete
+    a line of that file.
+17. Retrieval metrics come from src/rag_agent/metrics.py only. Scripts never re-implement
+    Hit@k, MRR or the bootstrap.        
 
 ## Commands
 - make setup   install with uv (Python 3.11)
@@ -58,6 +66,10 @@ agents write code only within these rules.
 - make search Q="..." MODE=hybrid|bm25|vector
 - make retrieval-smoke 12 sanity queries x 3 modes; not part of any eval set
 - make test-db         db-marked tests against the local pgvector
+- make evalset-check [ALLOW_INCOMPLETE=1|FINAL=1]   validate eval/retrieval/questions.toml
+- make evalset-show ID=T07 | CHUNK=<chunk_id>       a question with its gold text, or one chunk
+- make eval-pool SPLIT=dev|test                     unjudged top-3 chunks; prints no metrics
+- make eval-retrieval SPLIT=dev|test                Hit@1/3/5 and MRR@10 with 95% CI per mode
 
 ## Testing requirements
 - Every new module gets unit tests. Unit tests never touch the network.
@@ -72,6 +84,7 @@ the eval datasets, or this file.
 Changing corpus/facts.toml, corpus/manifest.toml or anything under corpus/docs/.
 Chunk IDs are frozen after tag d2-corpus; renaming a heading invalidates eval labels.
 Changing db/schema.sql, the embedding text format, or any retrieval parameter.
+Changing eval/retrieval/questions.toml, eval/retrieval/test_runs.csv or src/rag_agent/metrics.py.
 
 ## Definition of done for a task
 - make lint and make test pass.
