@@ -1330,6 +1330,8 @@ gold = [
   "PRD-003#vr5-c-rate-and-qualifying-rate",
   "PRD-003#vr5-c-payments-when-prime-changes",
   "POL-012#compounding-fixed-semi-annual-variable-monthly",
+  "FAQ-001#will-my-payment-change-if-i-have-a-variable-rate",
+  "POL-012#variable-rate-payments-when-prime-changes",
 ]
 related = []
 nonrel = [
