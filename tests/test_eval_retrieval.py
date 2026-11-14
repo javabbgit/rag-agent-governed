@@ -396,7 +396,7 @@ def test_no_preflight_without_rerank_mode(env, settings):
 def test_one_embed_per_question_across_four_modes(env, settings):
     assert env.run(settings, modes=ALL_MODES) == 0
     assert len(env.embeds) == 3 and env.preflights == 1
-    assert env.rerank_ns == [20, 20, 20]  # default RERANK_CANDIDATES, one real call per question
+    assert env.rerank_ns == [10, 10, 10]  # default RERANK_CANDIDATES, one real call per question
     assert len(env.retrieves) == 12  # hybrid candidates are fetched once and reused
 
 

@@ -236,7 +236,7 @@ def rerank_run(query, rr, monkeypatch, **kw):
 
 
 def test_rerank_params_and_candidate_texts(monkeypatch):
-    assert retrieve_mod.RERANK_CANDIDATES == 20 and retrieve_mod.RERANK_GRID == (10, 20, 30, 50)
+    assert retrieve_mod.RERANK_CANDIDATES == 10 and retrieve_mod.RERANK_GRID == (10, 20, 30, 50)
     rr = FakeReranker()
     hits = rerank_run("maximum GDS ratio", rr, monkeypatch, rerank_n=4)
     url, query, texts, max_batch, timeout = rr.calls[0]
