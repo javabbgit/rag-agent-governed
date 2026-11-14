@@ -34,6 +34,9 @@ class Settings(BaseSettings):
     llm_timeout_s: float = 180.0
     llm_max_retries: int = 1
     database_url: str = "postgresql://rag:rag@127.0.0.1:5433/rag"
+    reranker_url: str = "http://127.0.0.1:8081"
+    reranker_model_rev: str = "2cfc18c9415c912f9d8155881c133215df768a70"
+    rerank_timeout_s: float = 60.0
 
     @property
     def effective_embed_base_url(self) -> str:

@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback
 
 setup:
 	uv sync --python 3.11
@@ -48,7 +48,7 @@ ingest-rebuild:
 	uv run python scripts/ingest.py --collection $(COLLECTION) --docs-dir $(DOCS_DIR) --rebuild
 
 test-db:
-	uv run pytest -m db
+	DATABASE_URL="$${DATABASE_URL:-$$(uv run python -c 'from rag_agent.config import load_settings; print(load_settings().database_url)')}" uv run pytest -m db
 
 MODE ?= hybrid
 K ?= 10
@@ -70,7 +70,7 @@ evalset-show:
 	uv run python scripts/show_question.py $(if $(ID),--id $(ID)) $(if $(CHUNK),--chunk '$(CHUNK)')
 
 eval-pool:
-	uv run python scripts/eval_retrieval.py --split $(SPLIT) --pool-only
+	uv run python scripts/eval_retrieval.py --split $(SPLIT) --pool-only $(if $(MODES),--modes $(MODES)) $(if $(RERANK_N),--rerank-n $(RERANK_N))
 
 eval-pool-sheet:
 	@test -n "$(FILE)" || { echo 'usage: make eval-pool-sheet FILE=reports/eval/pool_dev_<UTC>.csv'; exit 2; }
@@ -81,4 +81,14 @@ eval-pool-apply:
 	uv run python scripts/apply_pool.py "$(FILE)"
 
 eval-retrieval:
-	uv run python scripts/eval_retrieval.py --split $(SPLIT)
+	uv run python scripts/eval_retrieval.py --split $(SPLIT) $(if $(MODES),--modes $(MODES)) $(if $(RERANK_N),--rerank-n $(RERANK_N))
+
+reranker-check:
+	uv run python scripts/reranker_check.py
+
+eval-rerank-sweep:
+	uv run python scripts/eval_rerank_sweep.py --split $(SPLIT)
+
+eval-fallback:
+	@test -n "$(REPORT)" || { echo 'usage: make eval-fallback SPLIT=dev|test REPORT=reports/eval/retrieval_<split>_<UTC>.json [WRITE_THRESHOLD=1]'; exit 2; }
+	uv run python scripts/eval_fallback.py --split $(SPLIT) --report "$(REPORT)" $(if $(WRITE_THRESHOLD),--write-threshold)

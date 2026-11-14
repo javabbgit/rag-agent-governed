@@ -17,10 +17,10 @@ from typing import Any
 from rag_agent.config import ConfigError, Settings, load_settings
 from rag_agent.ingest import git_info
 from rag_agent.llm_client import LLMClient
-from rag_agent.retrieve import MODES, embed_query, retrieve
+from rag_agent.retrieve import embed_query, retrieve
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-
+SMOKE_MODES = ("bm25", "vector", "hybrid")
 # sanity only - never part of the D4 test set
 SMOKE_QUERIES: list[tuple[str, str, list[str]]] = [
     ("Q01", "What is the maximum TDS ratio?", ["POL-003"]),
@@ -87,7 +87,7 @@ def run_smoke(
     client = client or LLMClient(settings)
     tops: dict[str, dict[str, list[str]]] = {}
     per_query: dict[str, dict[str, Any]] = {}
-    hits5 = dict.fromkeys(MODES, 0)
+    hits5 = dict.fromkeys(SMOKE_MODES, 0)
     n_errors = 0
 
     for qid, query, expected in SMOKE_QUERIES:
@@ -100,7 +100,7 @@ def run_smoke(
             n_errors += 1
             continue
         cells = []
-        for mode in MODES:
+        for mode in SMOKE_MODES:
             try:
                 hits = retrieve_fn(
                     query,

@@ -33,6 +33,26 @@ services:
       timeout: 5s
       retries: 10
 
+  reranker:
+    image: ghcr.io/huggingface/text-embeddings-inference@sha256:2538ea1c9640d3763b15af668039d24172d063b42337b0c27796fc2be180c78d
+    command:
+      - --model-id
+      - /data/models--BAAI--bge-reranker-base/snapshots/2cfc18c9415c912f9d8155881c133215df768a70
+      - --max-client-batch-size
+      - "64"
+    ports:
+      - "127.0.0.1:8081:80"
+    volumes:
+      - rag-agent-reranker-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:80/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
 volumes:
   pgdata:
   ollama:
+  rag-agent-reranker-data:
+    external: true
+    name: rag-agent-reranker-data

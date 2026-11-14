@@ -1,9 +1,13 @@
 """Retrieval evaluation and pooling over eval/retrieval/questions.toml. Needs the DB and embedder.
 
 Without --pool-only: Hit@k, MRR@10 with bootstrap CIs per mode (reports/eval/retrieval_*.json/.md).
---split test appends one line per mode to eval/retrieval/test_runs.csv (never rewritten).
+Mode rerank needs the local reranker (docker compose up -d reranker); it is preflighted before
+any gateway request. --rerank-n takes one value; a comma list is accepted only with --pool-only.
+--split test appends one line per mode to eval/retrieval/test_runs.csv (never rewritten); the
+rerank line uses the mode "rerank@N".
 --pool-only: writes reports/eval/pool_<split>_<UTC>.csv, the unjudged candidates for labeling.
-Reports hold chunk ids, ranks and scores only: no chunk text, vectors or keys.
+Reports hold chunk ids, ranks and scores only: no chunk text, vectors or keys. Vector scores are
+cosine similarities (the store returns 1 - cosine distance); rerank scores are in [0, 1].
 """
 
 from __future__ import annotations
@@ -13,6 +17,7 @@ import csv
 import hashlib
 import json
 import sys
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -23,7 +28,8 @@ from rag_agent import evalset, metrics
 from rag_agent.config import ConfigError, Settings, load_settings
 from rag_agent.ingest import git_info
 from rag_agent.llm_client import LLMClient
-from rag_agent.retrieve import MODES, embed_query, retrieve
+from rag_agent.rerank import RerankError, check_pin, percentile, reranker_info
+from rag_agent.retrieve import MODES, RERANK_CANDIDATES, RERANK_MAX_BATCH, embed_query, retrieve
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 K = 10
@@ -106,8 +112,15 @@ def compute_metrics(
     qs: list[dict[str, Any]], runs: dict[str, dict[str, list[Any]]], modes: list[str], truth: Any
 ) -> dict[str, Any]:
     ans = [q for q in qs if q["kind"] == "answerable"]
-    out: dict[str, Any] = {"modes": {}, "paired": {}, "oos_top1_score": {}}
+    out: dict[str, Any] = {
+        "modes": {},
+        "paired": {},
+        "paired_hit1": {},
+        "oos_top1_score": {},
+        "top1_score": {},
+    }
     rr_lists: dict[str, list[float]] = {}
+    h1_lists: dict[str, list[float]] = {}
     for mode in modes:
         ranks = [
             metrics.first_rank([h.chunk_id for h in runs[q["id"]][mode]], set(q["gold"]), K)
@@ -115,6 +128,7 @@ def compute_metrics(
         ]
         rrs = [metrics.rr(r, K) for r in ranks]
         rr_lists[mode] = rrs
+        h1_lists[mode] = [metrics.hit_at(r, 1) for r in ranks]
         m: dict[str, Any] = dict(metrics.summarize(ranks))
         for name, vals in (
             ("hit1", [metrics.hit_at(r, 1) for r in ranks]),
@@ -147,10 +161,20 @@ def compute_metrics(
             for q in qs
             if q["kind"] == "oos"
         }
+        out["top1_score"][mode] = {
+            q["id"]: (runs[q["id"]][mode][0].score if runs[q["id"]][mode] else None) for q in qs
+        }
     for a, b in (("hybrid", "bm25"), ("hybrid", "vector")):
         if a in rr_lists and b in rr_lists:
             d, lo, hi = metrics.paired_bootstrap_diff(rr_lists[a], rr_lists[b])
             out["paired"][f"{a}-{b}"] = {"mean_diff": d, "lo": lo, "hi": hi}
+    for b in ("hybrid", "bm25", "vector"):
+        if "rerank" in rr_lists and b in rr_lists:
+            name = f"rerank-{b}"
+            d, lo, hi = metrics.paired_bootstrap_diff(rr_lists["rerank"], rr_lists[b])
+            out["paired"][name] = {"mean_diff": d, "lo": lo, "hi": hi}
+            d, lo, hi = metrics.paired_bootstrap_diff(h1_lists["rerank"], h1_lists[b])
+            out["paired_hit1"][name] = {"mean_diff": d, "lo": lo, "hi": hi}
     return out
 
 
@@ -203,7 +227,27 @@ def markdown(report: dict[str, Any], modes: list[str]) -> str:
     out += ["", "## Paired MRR@10 differences (mean, 95% CI)", ""]
     for name, p in res["paired"].items():
         out.append(f"- {name}: {_f(p['mean_diff'])} [{_f(p['lo'])}, {_f(p['hi'])}]")
+    if res.get("paired_hit1"):
+        out += ["", "## Paired Hit@1 differences (mean, 95% CI)", ""]
+        for name, p in res["paired_hit1"].items():
+            out.append(f"- {name}: {_f(p['mean_diff'])} [{_f(p['lo'])}, {_f(p['hi'])}]")
+    if "rerank" in modes:
+        rr = report["reranker"]
+        lat = report["rerank_latency_ms"]
+        out += [
+            "",
+            "## Rerank",
+            "",
+            f"- rerank_n {report['rerank_n']}, cand_recall {_f(report['cand_recall'])}",
+            f"- reranker {rr['model_id']} sha {rr['model_sha']} version {rr['version']}",
+            f"- latency per call: p50 {lat['p50']:.0f} ms, p95 {lat['p95']:.0f} ms "
+            f"({lat['n_calls']} calls)",
+        ]
     return "\n".join(out) + "\n"
+
+
+def mode_label(report: dict[str, Any], mode: str) -> str:
+    return f"rerank@{report['rerank_n']}" if mode == "rerank" else mode
 
 
 def append_test_runs(path: Path, report: dict[str, Any], modes: list[str]) -> None:
@@ -226,7 +270,7 @@ def append_test_runs(path: Path, report: dict[str, Any], modes: list[str]) -> No
                     report["git_dirty"],
                     report["questions_sha256"],
                     report["n_queries"],
-                    mode,
+                    mode_label(report, mode),
                     _f(m["hit1"]),
                     _f(m["hit3"]),
                     _f(m["hit5"]),
@@ -244,6 +288,7 @@ def run_eval(
     *,
     pool_only: bool = False,
     pool_depth: int = 3,
+    rerank_ns: list[int] | None = None,
     client: Any = None,
     questions_path: Path | None = None,
     docs_dir: Path | None = None,
@@ -275,24 +320,88 @@ def run_eval(
             print("[REFUSED] some test questions are not reviewed")
             return 2
 
+    ns = rerank_ns or [RERANK_CANDIDATES]
+    has_rerank = "rerank" in modes
+    if len(ns) > 1 and not pool_only:
+        print("[FAIL] several --rerank-n values are accepted only with --pool-only")
+        return 2
+    if any(n < 1 for n in ns):
+        print("[FAIL] --rerank-n must be >= 1")
+        return 2
+
+    reranker: dict[str, Any] | None = None
+    max_batch = RERANK_MAX_BATCH
+    if has_rerank:
+        try:
+            info = reranker_info(settings.reranker_url, settings.rerank_timeout_s)
+            check_pin(info, settings.reranker_model_rev)
+            max_batch = int(info["max_client_batch_size"])
+        except (RerankError, KeyError, TypeError, ValueError) as exc:
+            print(f"[FAIL] reranker preflight: {exc}; no request sent")
+            return 1
+        if max(ns) > max_batch:
+            print(
+                f"[FAIL] reranker preflight: rerank_n {max(ns)} > max_client_batch_size "
+                f"{max_batch}; no request sent"
+            )
+            return 1
+        reranker = {k: info.get(k) for k in ("model_id", "model_sha", "version")}
+
+    # pool-only lists every N separately (rerank@N); reports use the plain mode name
+    rerank_labels = [f"rerank@{n}" for n in ns] if pool_only else ["rerank"]
+    labels: list[str] = []
+    for mode in modes:
+        labels += rerank_labels if mode == "rerank" else [mode]
+
     truth = evalset.build_truth(docs_dir)
     started = datetime.now(UTC)
     runs: dict[str, dict[str, list[Any]]] = {}
-    need_vec = any(m in ("vector", "hybrid") for m in modes)
+    cand_ranks: list[int | None] = []
+    latencies: list[float] = []
+    need_vec = any(m in ("vector", "hybrid", "rerank") for m in modes)
+    depth = max([K, *ns]) if has_rerank else K
+    common = {
+        "collection": COLLECTION,
+        "include_superseded": INCLUDE_SUPERSEDED,
+        "client": client,
+        "dsn": settings.database_url,
+    }
     try:
         for q in qs:
             q_vec = embed_query(q["query"], client=client) if need_vec else None
             runs[q["id"]] = {}
+            cand: list[Any] | None = None
+
+            def hybrid_candidates(query: str = q["query"], vec: Any = q_vec) -> list[Any]:
+                return retrieve(query, mode="hybrid", k=depth, query_vector=vec, **common)
+
             for mode in modes:
-                runs[q["id"]][mode] = retrieve(
-                    q["query"],
-                    mode=mode,
-                    k=K,
-                    collection=COLLECTION,
-                    include_superseded=INCLUDE_SUPERSEDED,
-                    query_vector=q_vec,
-                    client=client,
-                    dsn=settings.database_url,
+                if mode == "hybrid":
+                    cand = cand or hybrid_candidates()
+                    runs[q["id"]][mode] = cand[:K]
+                elif mode == "rerank":
+                    for n, label in zip(ns, rerank_labels, strict=True):
+                        t0 = time.perf_counter()
+                        runs[q["id"]][label] = retrieve(
+                            q["query"],
+                            mode="rerank",
+                            k=K,
+                            query_vector=q_vec,
+                            rerank_n=n,
+                            reranker_url=settings.reranker_url,
+                            rerank_timeout=settings.rerank_timeout_s,
+                            max_batch=max_batch,
+                            **common,
+                        )
+                        latencies.append((time.perf_counter() - t0) * 1000)
+                else:
+                    runs[q["id"]][mode] = retrieve(
+                        q["query"], mode=mode, k=K, query_vector=q_vec, **common
+                    )
+            if has_rerank and not pool_only and q["kind"] == "answerable":
+                cand = cand or hybrid_candidates()
+                cand_ranks.append(
+                    metrics.first_rank([h.chunk_id for h in cand], set(q["gold"]), depth)
                 )
     except Exception as exc:
         print(f"[FAIL] {type(exc).__name__}: no metrics written")
@@ -302,7 +411,7 @@ def run_eval(
     reports_dir.mkdir(parents=True, exist_ok=True)
 
     if pool_only:
-        rows = build_pool(qs, runs, pool_depth, modes)
+        rows = build_pool(qs, runs, pool_depth, labels)
         path = reports_dir / f"pool_{split}_{stamp}.csv"
         fields = [
             "qid",
@@ -340,9 +449,23 @@ def run_eval(
                 "first_gold_rank": metrics.first_rank([h.chunk_id for h in hits], set(q["gold"]), K)
                 if q["kind"] == "answerable"
                 else None,
+                "top1_score": hits[0].score if hits else None,
                 "top10": [{"chunk_id": h.chunk_id, "score": h.score} for h in hits],
             }
         per_question[q["id"]] = entry
+    extra: dict[str, Any] = {"rerank_n": None, "reranker": None}
+    if has_rerank:
+        extra = {
+            "rerank_n": ns[0],
+            "reranker": reranker,
+            "rerank_latency_ms": {
+                "p50": percentile(latencies, 50),
+                "p95": percentile(latencies, 95),
+                "n_calls": len(latencies),
+            },
+            "cand_recall": metrics.cand_recall(cand_ranks, ns[0]),
+            "cand_depth": depth,
+        }
     report = {
         "started_utc": _iso(started),
         "finished_utc": _iso(finished),
@@ -353,6 +476,8 @@ def run_eval(
         "include_superseded": INCLUDE_SUPERSEDED,
         "EMBED_MODEL": settings.embed_model,
         "embed_base_host": urlparse(settings.effective_embed_base_url).hostname,
+        "vector_score": "cosine_similarity",
+        **extra,
         "git_commit": commit,
         "git_dirty": dirty,
         "questions_sha256": questions_sha256(qs),
@@ -378,6 +503,11 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--split", choices=evalset.SPLITS, default="dev")
     ap.add_argument("--modes", default=",".join(MODES))
+    ap.add_argument(
+        "--rerank-n",
+        default=str(RERANK_CANDIDATES),
+        help="rerank candidate size (a comma list only with --pool-only)",
+    )
     ap.add_argument("--pool-only", action="store_true")
     ap.add_argument("--pool-depth", type=int, default=3)
     ap.add_argument("--env-file", help="path to an env file (default: ./.env if present)")
@@ -386,6 +516,13 @@ def main(argv: list[str] | None = None) -> int:
     bad = [m for m in modes if m not in MODES]
     if bad or not modes:
         print(f"[FAIL] --modes must be a subset of {MODES}")
+        return 2
+    try:
+        rerank_ns = [int(x) for x in args.rerank_n.split(",") if x.strip()]
+    except ValueError:
+        rerank_ns = []
+    if not rerank_ns or (len(rerank_ns) > 1 and not args.pool_only):
+        print("[FAIL] --rerank-n needs integers; a comma list only with --pool-only")
         return 2
     try:
         settings = load_settings(args.env_file)
@@ -398,6 +535,7 @@ def main(argv: list[str] | None = None) -> int:
         modes,
         pool_only=args.pool_only,
         pool_depth=args.pool_depth,
+        rerank_ns=rerank_ns,
         client=LLMClient(settings),
     )
 

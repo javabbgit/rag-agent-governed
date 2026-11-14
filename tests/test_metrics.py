@@ -55,3 +55,36 @@ def test_paired_diff_uses_same_indices():
 def test_empty_rejected():
     with pytest.raises(ValueError):
         m.summarize([])
+
+
+def test_cand_recall():
+    ranks = [3, 15, None, 40]
+    assert [m.cand_recall(ranks, n) for n in (10, 20, 30, 50)] == [0.25, 0.5, 0.5, 0.75]
+
+
+def test_auroc():
+    assert m.auroc([0.9, 0.6], [0.7, 0.2]) == 0.75
+    assert m.auroc([0.5, 0.5], [0.5]) == 0.5
+    assert m.auroc([0.5, 0.9], [0.5]) == 0.75
+
+
+def test_fallback_rates():
+    assert m.fallback_rates([0.95, 0.8, 0.4], [0.3, 0.5], 0.65) == (1.0, pytest.approx(1 / 3))
+    assert m.fallback_rates([0.5], [0.5], 0.5) == (0.0, 0.0)  # fallback is score < t
+
+
+def test_youden_threshold():
+    t, lo, hi, j = m.youden_threshold([0.95, 0.80, 0.40], [0.30, 0.50])
+    assert (t, lo, hi) == (pytest.approx(0.65), 0.5, 0.8)
+    assert j == pytest.approx(2 / 3, abs=1e-4)
+    assert m.fallback_rates([0.95, 0.80, 0.40], [0.30, 0.50], t) == (1.0, pytest.approx(1 / 3))
+    assert m.youden_threshold([0.9, 0.3], [0.2, 0.6])[0] == pytest.approx(0.75)
+
+
+def test_youden_ties_go_to_higher_interval():
+    # perfect separation: every threshold in (0.3, 0.7] has J = 1; (0.3, 0.7] is one interval
+    t, lo, hi, j = m.youden_threshold([0.9, 0.7], [0.1, 0.3])
+    assert (lo, hi, j) == (0.3, 0.7, 1.0) and t == pytest.approx(0.5)
+    # two equal-J intervals: the higher one wins
+    t, lo, hi, j = m.youden_threshold([0.3, 0.9], [0.1, 0.6])
+    assert j == 0.5 and (lo, hi) == (0.6, 0.9) and t == pytest.approx(0.75)

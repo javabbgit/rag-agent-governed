@@ -1,0 +1,10 @@
+# Frozen fallback threshold. Empty until written once by
+#   make eval-fallback SPLIT=dev REPORT=<dev retrieval report> WRITE_THRESHOLD=1
+# which writes these keys:
+#   signal = "rerank_top1"
+#   threshold = <float>
+#   rule = "youden-midpoint-ties-high"
+#   interval_lo, interval_hi, rerank_n, reranker_model_sha,
+#   dev_questions_sha256, dev_report_fingerprint,
+#   dev_correct_fallback_rate, dev_false_fallback_rate
+# Never edit by hand. Commit it before any test run.

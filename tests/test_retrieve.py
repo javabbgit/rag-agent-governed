@@ -218,3 +218,82 @@ def test_sources_are_read_only():
     for name in ("bm25.py", "retrieve.py"):
         src = (root / name).read_text(encoding="utf-8")
         assert not re.search(r"\b(INSERT|UPDATE|DELETE)\b", src), name
+
+
+class FakeReranker:
+    def __init__(self, fn=None):
+        self.calls: list[tuple] = []
+        self.fn = fn or (lambda texts: [0.5] * len(texts))
+
+    def __call__(self, url, query, texts, max_batch, timeout):
+        self.calls.append((url, query, list(texts), max_batch, timeout))
+        return self.fn(texts)
+
+
+def rerank_run(query, rr, monkeypatch, **kw):
+    monkeypatch.setattr(retrieve_mod, "rerank_scores", rr)
+    return run(query, mode="rerank", reranker_url="http://r.invalid", rerank_timeout=3.0, **kw)
+
+
+def test_rerank_params_and_candidate_texts(monkeypatch):
+    assert retrieve_mod.RERANK_CANDIDATES == 20 and retrieve_mod.RERANK_GRID == (10, 20, 30, 50)
+    rr = FakeReranker()
+    hits = rerank_run("maximum GDS ratio", rr, monkeypatch, rerank_n=4)
+    url, query, texts, max_batch, timeout = rr.calls[0]
+    assert (url, query, max_batch, timeout) == ("http://r.invalid", "maximum GDS ratio", 64, 3.0)
+    hybrid = run("maximum GDS ratio", mode="hybrid", k=4)
+    assert len(texts) == 4
+    by_id = {c.chunk_id: c.index_text for c in CHUNKS}
+    assert texts == [by_id[h.chunk_id] for h in hybrid]
+    assert [h.rrf_rank for h in hits] == [1, 2, 3, 4]
+
+
+def test_rerank_orders_by_score_then_rrf_rank(monkeypatch):
+    # candidate 3 gets the best score; 1e-7 differences vanish at 6 decimals
+    scores = [0.5, 0.5 + 1e-7, 0.9, 0.5 + 2e-7]
+    rr = FakeReranker(lambda texts: scores[: len(texts)])
+    hits = rerank_run("maximum GDS ratio", rr, monkeypatch, rerank_n=4)
+    hybrid = [h.chunk_id for h in run("maximum GDS ratio", mode="hybrid", k=4)]
+    assert [h.chunk_id for h in hits] == [hybrid[2], hybrid[0], hybrid[1], hybrid[3]]
+    assert hits[0].score == 0.9 and [h.rank for h in hits] == [1, 2, 3, 4]
+    assert [h.rrf_rank for h in hits] == [3, 1, 2, 4]
+
+
+def test_rerank_k_limits_output_not_candidates(monkeypatch):
+    rr = FakeReranker()
+    hits = rerank_run("maximum GDS ratio", rr, monkeypatch, rerank_n=5, k=2)
+    assert len(hits) == 2 and len(rr.calls[0][2]) == 5
+
+
+def test_rerank_reuses_given_query_vector(monkeypatch):
+    emb = FakeEmbedder()
+    rerank_run("maximum GDS ratio", FakeReranker(), monkeypatch, client=emb)
+    assert len(emb.calls) == 1
+    rerank_run(
+        "maximum GDS ratio", FakeReranker(), monkeypatch, client=emb, query_vector=fake_vector("q")
+    )
+    assert len(emb.calls) == 1
+
+
+def test_embed_failure_never_reaches_the_reranker(monkeypatch):
+    rr = FakeReranker()
+    with pytest.raises(Exception, match="blocked"):
+        rerank_run("maximum GDS ratio", rr, monkeypatch, client=FakeEmbedder(fail_at=0))
+    assert rr.calls == []
+
+
+def test_rerank_failure_raises_and_returns_no_hybrid_hits(monkeypatch):
+    from rag_agent.rerank import RerankError
+
+    def boom(texts):
+        raise RerankError("down")
+
+    with pytest.raises(RerankError):
+        rerank_run("maximum GDS ratio", FakeReranker(boom), monkeypatch)
+
+
+def test_all_index_texts_comes_from_the_store():
+    store = FakeStore()
+    pairs = retrieve_mod.all_index_texts("main", store=store, dsn=DSN)
+    assert pairs == [(c.chunk_id, c.index_text) for c in CHUNKS]
+    assert store.calls[-1] == ("load", "main", DSN)
