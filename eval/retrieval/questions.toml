@@ -174,6 +174,7 @@ gold = [
 related = [
   "PRC-004#example-routing-three-files",
   "PRC-004#what-each-role-may-approve",
+  "PRC-002#stage-1-file-assignment",
 ]
 nonrel = []
 origin = "smoke-Q08"
@@ -247,6 +248,8 @@ nonrel = [
   "FAQ-003#what-if-i-want-more-money-or-to-change-who-is-on-my-mortgage",
   "RATE-003#a-rate-hold-is-not-an-approval",
   "PRC-005#pending-until-a-human-approves",
+  "PRC-006#when-closing-is-delayed",
+  "PRC-009#rates-and-rate-holds-in-messages",
 ]
 origin = "smoke-Q11"
 reviewed = true
@@ -267,7 +270,9 @@ gold = [
 related = [
   "PRC-008#the-external-complaints-body",
 ]
-nonrel = []
+nonrel = [
+  "PRC-008#acknowledgement-within-2-business-days",
+]
 origin = "smoke-Q12"
 reviewed = true
 
@@ -290,6 +295,7 @@ related = [
 ]
 nonrel = [
   "RATE-003#rate-hold-period-for-a-purchase",
+  "RATE-002#waiving-and-correcting-fees",
 ]
 origin = "new"
 reviewed = true
@@ -337,6 +343,7 @@ nonrel = [
   "POL-010#who-can-approve-a-gds-or-tds-exception",
   "PRD-005#hel-1-combined-loan-to-value-limit",
   "PRD-007#sea-5-loan-to-value-limit",
+  "PRC-005#when-an-exc-100-may-be-raised",
 ]
 origin = "new"
 reviewed = true
@@ -429,6 +436,7 @@ related = [
 ]
 nonrel = [
   "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+  "FAQ-002#is-there-a-mortgage-with-no-penalty",
 ]
 origin = "new"
 reviewed = true
@@ -488,6 +496,7 @@ gold = [
 ]
 related = [
   "PRC-001#incomplete-applications-and-handoff-to-underwriting",
+  "FAQ-004#what-happens-to-an-incomplete-application",
 ]
 nonrel = [
   "PRC-002#stage-2-completeness-check",
@@ -539,6 +548,9 @@ nonrel = [
   "FAQ-005#do-i-have-to-open-a-property-tax-account",
   "POL-005#minimum-down-payment-by-purchase-price",
   "POL-007#how-loan-to-value-is-calculated",
+  "PRC-001#minimum-data-for-a-complete-application",
+  "POL-005#example-minimum-down-payment-on-a-600-000-purchase",
+  "PRC-003#document-checklist-by-file-type",
 ]
 origin = "new"
 reviewed = true
@@ -571,6 +583,9 @@ nonrel = [
   "POL-002#rental-income-50-counted",
   "FAQ-002#summary",
   "PRC-008#final-response-within-30-days",
+  "FAQ-001#will-my-payment-change-if-i-have-a-variable-rate",
+  "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+  "PRC-009#plain-language",
 ]
 origin = "new"
 reviewed = true
@@ -621,6 +636,7 @@ related = [
 nonrel = [
   "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
   "POL-003#what-counts-in-the-gds-ratio",
+  "POL-005#summary",
 ]
 origin = "new"
 reviewed = true
@@ -685,6 +701,7 @@ related = [
 nonrel = [
   "FAQ-002#summary",
   "POL-005#own-savings-need-a-90-day-history",
+  "PRD-002#who-fx3-c-suits",
 ]
 origin = "new"
 reviewed = true
