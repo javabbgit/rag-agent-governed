@@ -91,3 +91,16 @@ Changing eval/retrieval/questions.toml, eval/retrieval/test_runs.csv or src/rag_
 - No new warnings, no TODOs without an issue reference.
 - README or docs updated if behaviour or configuration changed.
 - Reply with: files changed, what was verified and how, open questions.
+
+## Reranking and fallback (D5)
+18. Reranking runs only on hybrid candidates, after the gateway accepted the query embedding.
+    Never send text to the reranker for a query the gateway rejected.
+19. Reranker failure is fail-closed in scripts: preflight before any gateway request, exit 1,
+    no metrics, no ledger line. Never fall back to hybrid results silently.
+20. eval/fallback/threshold.toml is human-owned and is committed before any test run scored
+    with it. eval/fallback/test_runs.csv is append-only.
+Commands: make reranker-check | make eval-rerank-sweep SPLIT=dev |
+  make eval-retrieval / eval-pool SPLIT=.. [MODES=..] [RERANK_N=..] |
+  make eval-fallback SPLIT=dev|test REPORT=path [WRITE_THRESHOLD=1]
+Ask before changing: docker-compose.yml image pins, the reranker revision, RERANK_CANDIDATES,
+eval/fallback/threshold.toml.
