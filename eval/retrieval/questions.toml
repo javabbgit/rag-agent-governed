@@ -1118,6 +1118,7 @@ nonrel = [
   "POL-011#summary",
   "FAQ-002#can-i-pay-extra-on-my-mortgage",
   "POL-009#lump-sum-prepayment-limit",
+  "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
 ]
 origin = "new"
 reviewed = true
@@ -1145,6 +1146,7 @@ nonrel = [
   "POL-011#least-privilege-access-by-role",
   "POL-011#summary",
   "PRC-001#loan-number-assignment",
+  "FAQ-004#which-conditions-will-i-see-on-an-approval",
 ]
 origin = "new"
 reviewed = true
@@ -1168,6 +1170,7 @@ nonrel = [
   "PRC-009#plain-language",
   "POL-001#policy-versions-and-superseded-documents",
   "PRC-008#the-external-complaints-body",
+  "PRC-002#summary",
 ]
 origin = "new"
 reviewed = true
@@ -1194,6 +1197,7 @@ nonrel = [
   "FAQ-002#how-is-the-penalty-worked-out",
   "POL-001#summary",
   "PRD-001#fx5-c-payment-frequencies",
+  "PRD-002#fx3-c-payment-frequencies",
 ]
 origin = "new"
 reviewed = true
@@ -1233,6 +1237,7 @@ gold = [
   "FAQ-003#do-i-have-to-qualify-again-to-renew",
   "PRC-007#straight-renewal-without-requalification",
   "POL-004#straight-renewals-are-not-requalified",
+  "FAQ-005#do-i-have-to-show-proof-of-home-insurance-when-i-renew",
 ]
 related = []
 nonrel = [
@@ -1265,6 +1270,7 @@ nonrel = [
   "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
   "POL-012#example-monthly-payment-on-an-fx5-c-mortgage",
   "PRD-002#fx3-c-prepayment-privileges",
+  "PRD-002#fx3-c-payment-frequencies",
 ]
 origin = "new"
 reviewed = true
@@ -1284,6 +1290,7 @@ gold = [
 related = [
   "POL-006#eligible-property-types",
   "POL-006#owner-occupied-and-non-owner-occupied-properties",
+  "POL-006#summary",
 ]
 nonrel = [
   "PRD-006#rnt-4-loan-to-value-limit-and-rental-income",
@@ -1422,6 +1429,7 @@ related = [
 ]
 nonrel = [
   "PRD-006#rnt-4-prepayment-privileges-and-penalty",
+  "PRD-002#fx3-c-prepayment-penalty",
 ]
 origin = "new"
 reviewed = true
@@ -1470,6 +1478,7 @@ nonrel = [
   "FAQ-002#how-is-the-penalty-worked-out",
   "RATE-002#fees-not-listed-are-not-charged",
   "POL-009#prepayment-penalty-on-a-fixed-rate-mortgage",
+  "PRD-006#rnt-4-prepayment-privileges-and-penalty",
 ]
 origin = "new"
 reviewed = true
@@ -1573,6 +1582,7 @@ nonrel = [
   "FAQ-006#what-does-the-policy-assistant-say-when-it-is-not-sure",
   "POL-001#summary",
   "POL-002#recording-verified-income-in-the-file",
+  "POL-001#scope-of-the-credit-policy",
 ]
 origin = "new"
 reviewed = true
@@ -1594,6 +1604,7 @@ nonrel = [
   "POL-012#summary",
   "POL-012#example-monthly-payment-on-an-fx5-c-mortgage",
   "PRD-001#fx5-c-payment-frequencies",
+  "FAQ-001#how-often-can-i-make-my-mortgage-payments",
 ]
 origin = "new"
 reviewed = true
@@ -1633,6 +1644,7 @@ gold = [
 ]
 related = [
   "PRC-001#incomplete-applications-and-handoff-to-underwriting",
+  "FAQ-004#what-happens-to-an-incomplete-application",
 ]
 nonrel = [
   "FAQ-004#how-do-i-submit-a-mortgage-application",
@@ -1679,6 +1691,7 @@ nonrel = [
   "PRD-002#summary",
   "PRD-002#fx3-c-product-summary",
   "RATE-001#contract-rates-by-product",
+  "PRD-001#summary",
 ]
 origin = "new"
 reviewed = true
@@ -1696,6 +1709,7 @@ gold = [
   "FAQ-005#who-checks-my-proof-of-home-insurance",
   "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
   "FAQ-005#when-do-i-have-to-give-proof-of-home-insurance-for-closing",
+  "PRC-006#final-conditions-check",
 ]
 related = [
   "FAQ-005#do-i-need-home-insurance-on-my-property",
@@ -1773,6 +1787,8 @@ nonrel = [
   "PRC-002#stage-7-authority-check",
   "PRC-004#example-routing-three-files",
   "PRD-006#rnt-4-eligible-properties",
+  "PRC-004#what-each-role-may-approve",
+  "PRC-003#standard-conditions",
 ]
 origin = "new"
 reviewed = true
@@ -1820,6 +1836,7 @@ nonrel = [
   "PRC-004#exception-approval-authority",
   "FAQ-005#who-checks-my-proof-of-home-insurance",
   "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+  "PRC-003#summary",
 ]
 origin = "new"
 reviewed = true
@@ -1900,7 +1917,9 @@ gold = [
   "FAQ-006#what-must-i-never-type-into-the-policy-assistant",
   "PRC-009#plain-language",
 ]
-related = []
+related = [
+  "PRC-006#closing-instructions-to-the-borrower-s-lawyer",
+]
 nonrel = [
   "POL-011#storing-and-sharing-customer-documents",
 ]
@@ -1953,6 +1972,8 @@ nonrel = [
   "POL-002#how-old-an-employment-letter-may-be",
   "POL-001#summary",
   "PRC-004#exception-approval-authority",
+  "POL-011#least-privilege-access-by-role",
+  "PRC-008#escalation-to-the-complaints-office",
 ]
 origin = "new"
 reviewed = true
