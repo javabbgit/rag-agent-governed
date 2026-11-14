@@ -15,9 +15,9 @@ from pathlib import Path
 from typing import Any
 
 from rag_agent.config import ConfigError, Settings, load_settings
-from rag_agent.ingest import QUERY_PREFIX, git_info
+from rag_agent.ingest import git_info
 from rag_agent.llm_client import LLMClient
-from rag_agent.retrieve import MODES, retrieve
+from rag_agent.retrieve import MODES, embed_query, retrieve
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -94,7 +94,7 @@ def run_smoke(
         tops[qid] = {}
         per_query[qid] = {}
         try:
-            vec = client.embed([QUERY_PREFIX + query]).vectors[0]
+            vec = embed_query(query, client=client)
         except Exception as exc:
             print(f"[FAIL] {qid} embed: {type(exc).__name__}")
             n_errors += 1
