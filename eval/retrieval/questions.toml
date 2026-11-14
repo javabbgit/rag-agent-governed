@@ -824,8 +824,11 @@ gold = [
 ]
 related = [
   "PRC-005#pending-until-a-human-approves",
+  "PRC-005#exc-100-fields",
 ]
-nonrel = []
+nonrel = [
+  "PRC-005#recording-and-closing-the-request",
+]
 origin = "new"
 reviewed = true
 
@@ -843,7 +846,11 @@ gold = [
   "FAQ-001#how-often-can-i-make-my-mortgage-payments",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "PRD-001#fx5-c-payment-frequencies",
+  "PRD-002#fx3-c-prepayment-privileges",
+  "PRD-002#who-fx3-c-suits",
+]
 origin = "new"
 reviewed = true
 
@@ -863,7 +870,9 @@ gold = [
   "PRC-005#routing-by-authority",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "RATE-003#summary",
+]
 origin = "new"
 reviewed = true
 
@@ -881,7 +890,11 @@ gold = [
   "FAQ-001#how-often-can-i-make-my-mortgage-payments",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "POL-004#products-that-must-be-qualified-at-the-qualifying-rate",
+  "PRD-005#hel-1-rate-and-qualifying-rate",
+  "PRD-005#hel-1-repayment-and-fees",
+]
 origin = "new"
 reviewed = true
 
@@ -898,8 +911,11 @@ gold = [
 ]
 related = [
   "PRD-003#summary",
+  "POL-009#prepayment-penalty-on-a-variable-rate-mortgage",
 ]
-nonrel = []
+nonrel = [
+  "PRD-003#vr5-c-prepayment-privileges-and-penalty",
+]
 origin = "new"
 reviewed = true
 
@@ -914,8 +930,16 @@ answer = "exception to credit policy"
 gold = [
   "PRC-008#escalation-to-the-complaints-office",
 ]
-related = []
-nonrel = []
+related = [
+  "PRC-008#what-counts-as-a-complaint",
+]
+nonrel = [
+  "PRC-008#final-response-within-30-days",
+  "PRC-008#the-external-complaints-body",
+  "PRC-009#what-staff-may-not-promise",
+  "FAQ-006#can-the-policy-assistant-approve-a-file-or-submit-a-request",
+  "PRC-008#summary",
+]
 origin = "new"
 reviewed = true
 
@@ -933,7 +957,9 @@ gold = [
   "POL-008#summary",
   "POL-008#minimum-time-in-business",
 ]
-related = []
+related = [
+  "POL-008#the-sea-5-option-for-self-employed-borrowers",
+]
 nonrel = []
 origin = "new"
 reviewed = true
@@ -951,7 +977,9 @@ gold = [
   "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
   "PRC-007#if-the-borrower-gives-no-instruction",
 ]
-related = []
+related = [
+  "POL-009#fx1-o-no-prepayment-penalty",
+]
 nonrel = []
 origin = "new"
 reviewed = true
@@ -970,9 +998,15 @@ gold = [
   "PRC-003#standard-conditions",
   "FAQ-004#which-conditions-will-i-see-on-an-approval",
   "PRC-006#final-conditions-check",
+  "FAQ-005#when-do-i-have-to-give-proof-of-home-insurance-for-closing",
 ]
-related = []
-nonrel = []
+related = [
+  "FAQ-005#what-happens-if-i-do-not-give-proof-of-home-insurance",
+]
+nonrel = [
+  "FAQ-005#do-i-have-to-show-proof-of-home-insurance-when-i-renew",
+  "POL-007#when-mortgage-default-insurance-is-required",
+]
 origin = "new"
 reviewed = true
 
@@ -990,8 +1024,15 @@ gold = [
 ]
 related = [
   "PRC-005#pending-until-a-human-approves",
+  "FAQ-006#can-i-send-a-message-that-the-policy-assistant-drafted",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-005#who-checks-my-proof-of-home-insurance",
+  "POL-011#referring-to-customers-by-loan-number-only",
+  "FAQ-006#what-must-i-never-type-into-the-policy-assistant",
+  "PRC-003#who-signs-off-each-condition-type",
+  "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+]
 origin = "new"
 reviewed = true
 
@@ -1008,8 +1049,13 @@ gold = [
 ]
 related = [
   "PRD-006#rnt-4-eligible-properties",
+  "POL-006#summary",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-003#summary",
+  "POL-006#owner-occupied-and-non-owner-occupied-properties",
+  "PRC-004#what-each-role-may-approve",
+]
 origin = "new"
 reviewed = true
 
@@ -1025,8 +1071,14 @@ gold = [
   "POL-006#eligible-property-types",
   "POL-006#summary",
 ]
-related = []
-nonrel = []
+related = [
+  "POL-006#owner-occupied-and-non-owner-occupied-properties",
+  "POL-006#ineligible-property-types",
+]
+nonrel = [
+  "PRD-006#rnt-4-eligible-properties",
+  "PRD-006#rnt-4-loan-to-value-limit-and-rental-income",
+]
 origin = "new"
 reviewed = true
 
@@ -1041,8 +1093,15 @@ answer = "explained and documented"
 gold = [
   "POL-005#own-savings-need-a-90-day-history",
 ]
-related = []
-nonrel = []
+related = [
+  "POL-005#a-borrowed-down-payment-is-not-accepted",
+]
+nonrel = [
+  "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+  "POL-011#summary",
+  "FAQ-002#can-i-pay-extra-on-my-mortgage",
+  "POL-009#lump-sum-prepayment-limit",
+]
 origin = "new"
 reviewed = true
 
@@ -1058,8 +1117,18 @@ gold = [
   "PRC-009#what-staff-may-not-promise",
   "PRC-009#summary",
 ]
-related = []
-nonrel = []
+related = [
+  "FAQ-004#how-will-i-know-you-received-the-application",
+  "PRC-001#acknowledgement-within-1-business-day",
+  "PRC-004#what-each-role-may-approve",
+]
+nonrel = [
+  "POL-005#gifted-down-payment-and-the-gift-letter",
+  "PRC-004#what-each-role-may-view",
+  "POL-011#least-privilege-access-by-role",
+  "POL-011#summary",
+  "PRC-001#loan-number-assignment",
+]
 origin = "new"
 reviewed = true
 
@@ -1076,7 +1145,13 @@ gold = [
   "FAQ-006#how-do-i-know-a-document-is-current",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "PRC-001#application-channels",
+  "PRC-004#what-each-role-may-approve",
+  "PRC-009#plain-language",
+  "POL-001#policy-versions-and-superseded-documents",
+  "PRC-008#the-external-complaints-body",
+]
 origin = "new"
 reviewed = true
 
@@ -1094,7 +1169,15 @@ gold = [
   "PRD-003#vr5-c-payments-when-prime-changes",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+  "POL-003#example-gds-and-tds-for-a-sample-condominium-file",
+  "FAQ-001#how-often-can-i-make-my-mortgage-payments",
+  "PRD-007#sea-5-payment-frequencies-and-renewal",
+  "FAQ-002#how-is-the-penalty-worked-out",
+  "POL-001#summary",
+  "PRD-001#fx5-c-payment-frequencies",
+]
 origin = "new"
 reviewed = true
 
@@ -1113,7 +1196,11 @@ gold = [
   "FAQ-004#summary",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+  "POL-007#when-mortgage-default-insurance-is-required",
+  "POL-005#gifted-down-payment-and-the-gift-letter",
+]
 origin = "new"
 reviewed = true
 
@@ -1131,7 +1218,14 @@ gold = [
   "POL-004#straight-renewals-are-not-requalified",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "FAQ-001#will-my-payment-change-if-i-have-a-variable-rate",
+  "FAQ-002#do-unused-extra-payments-carry-over-to-next-year",
+  "POL-012#variable-rate-payments-when-prime-changes",
+  "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+  "POL-008#income-the-2-year-average-of-net-income",
+  "PRC-001#minimum-data-for-a-complete-application",
+]
 origin = "new"
 reviewed = true
 
@@ -1149,7 +1243,12 @@ gold = [
 related = [
   "POL-012#payment-frequencies",
 ]
-nonrel = []
+nonrel = [
+  "PRD-001#fx5-c-prepayment-privileges",
+  "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
+  "POL-012#example-monthly-payment-on-an-fx5-c-mortgage",
+  "PRD-002#fx3-c-prepayment-privileges",
+]
 origin = "new"
 reviewed = true
 
@@ -1169,7 +1268,10 @@ related = [
   "POL-006#eligible-property-types",
   "POL-006#owner-occupied-and-non-owner-occupied-properties",
 ]
-nonrel = []
+nonrel = [
+  "PRD-006#rnt-4-loan-to-value-limit-and-rental-income",
+  "PRD-006#rnt-4-product-summary",
+]
 origin = "new"
 reviewed = true
 
@@ -1188,7 +1290,9 @@ gold = [
 related = [
   "PRD-007#summary",
 ]
-nonrel = []
+nonrel = [
+  "PRD-007#sea-5-prepayment-privileges-and-penalty",
+]
 origin = "new"
 reviewed = true
 
@@ -1206,7 +1310,11 @@ gold = [
   "POL-012#compounding-fixed-semi-annual-variable-monthly",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "PRD-002#summary",
+  "PRD-002#fx3-c-prepayment-penalty",
+  "PRD-002#fx3-c-product-summary",
+]
 origin = "new"
 reviewed = true
 
@@ -1224,7 +1332,11 @@ gold = [
   "POL-012#compounding-fixed-semi-annual-variable-monthly",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "PRD-003#summary",
+  "PRD-003#vr5-c-prepayment-privileges-and-penalty",
+  "PRD-003#vr5-c-product-summary",
+]
 origin = "new"
 reviewed = true
 
@@ -1240,8 +1352,12 @@ gold = [
   "PRD-007#sea-5-eligibility-for-self-employed-borrowers",
   "POL-008#the-sea-5-option-for-self-employed-borrowers",
 ]
-related = []
-nonrel = []
+related = [
+  "POL-008#summary",
+]
+nonrel = [
+  "PRD-007#summary",
+]
 origin = "new"
 reviewed = true
 
@@ -1260,7 +1376,11 @@ gold = [
   "POL-006#summary",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "PRD-001#fx5-c-payment-frequencies",
+  "PRD-001#fx5-c-prepayment-privileges",
+  "PRD-001#fx5-c-renewal-at-maturity",
+]
 origin = "new"
 reviewed = true
 
@@ -1278,8 +1398,12 @@ gold = [
   "PRC-007#renewal-options",
   "FAQ-003#what-can-i-choose-when-my-mortgage-matures",
 ]
-related = []
-nonrel = []
+related = [
+  "PRD-001#fx5-c-renewal-at-maturity",
+]
+nonrel = [
+  "PRD-006#rnt-4-prepayment-privileges-and-penalty",
+]
 origin = "new"
 reviewed = true
 
@@ -1295,8 +1419,14 @@ gold = [
   "RATE-001#qualifying-rate-by-product",
   "PRD-002#fx3-c-rate-and-qualifying-rate",
 ]
-related = []
-nonrel = []
+related = [
+  "RATE-001#contract-rates-by-product",
+]
+nonrel = [
+  "PRD-002#summary",
+  "PRD-001#fx5-c-rate-and-qualifying-rate",
+  "PRD-002#fx3-c-product-summary",
+]
 origin = "new"
 reviewed = true
 
@@ -1312,8 +1442,16 @@ gold = [
   "RATE-001#contract-rates-by-product",
   "PRD-006#rnt-4-rate-and-qualifying-rate",
 ]
-related = []
-nonrel = []
+related = [
+  "PRD-006#rnt-4-product-summary",
+  "POL-006#owner-occupied-and-non-owner-occupied-properties",
+  "PRD-006#rnt-4-eligible-properties",
+]
+nonrel = [
+  "FAQ-002#how-is-the-penalty-worked-out",
+  "RATE-002#fees-not-listed-are-not-charged",
+  "POL-009#prepayment-penalty-on-a-fixed-rate-mortgage",
+]
 origin = "new"
 reviewed = true
 
@@ -1330,8 +1468,14 @@ gold = [
   "PRD-005#hel-1-rate-and-qualifying-rate",
   "POL-004#example-qualifying-rate-for-three-products",
 ]
-related = []
-nonrel = []
+related = [
+  "PRD-005#summary",
+  "POL-004#products-that-must-be-qualified-at-the-qualifying-rate",
+]
+nonrel = [
+  "PRD-005#hel-1-product-summary",
+  "RATE-001#fees-renewals-and-home-equity-rates",
+]
 origin = "new"
 reviewed = true
 
@@ -1346,8 +1490,12 @@ answer = "33.9%"
 gold = [
   "POL-003#example-gds-and-tds-for-a-sample-condominium-file",
 ]
-related = []
-nonrel = []
+related = [
+  "POL-003#what-counts-in-the-gds-ratio",
+]
+nonrel = [
+  "POL-012#example-monthly-payment-on-an-fx5-c-mortgage",
+]
 origin = "new"
 reviewed = true
 
@@ -1362,7 +1510,9 @@ answer = "39.4%"
 gold = [
   "POL-003#example-gds-and-tds-for-a-sample-condominium-file",
 ]
-related = []
+related = [
+  "POL-003#what-counts-in-the-tds-ratio",
+]
 nonrel = []
 origin = "new"
 reviewed = true
@@ -1377,9 +1527,12 @@ query = "On a 30,000 prepayment above the privileges at 4.69%, how much is three
 answer = "351.75"
 gold = [
   "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
+  "POL-009#prepayment-penalty-on-a-fixed-rate-mortgage",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "PRD-002#fx3-c-prepayment-privileges",
+]
 origin = "new"
 reviewed = true
 
@@ -1394,8 +1547,14 @@ answer = "Underwriting owns"
 gold = [
   "POL-001#who-owns-each-policy",
 ]
-related = []
-nonrel = []
+related = [
+  "POL-002#summary",
+]
+nonrel = [
+  "FAQ-006#what-does-the-policy-assistant-say-when-it-is-not-sure",
+  "POL-001#summary",
+  "POL-002#recording-verified-income-in-the-file",
+]
 origin = "new"
 reviewed = true
 
@@ -1411,7 +1570,12 @@ gold = [
   "POL-012#rounding-rules",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "POL-012#compounding-fixed-semi-annual-variable-monthly",
+  "POL-012#summary",
+  "POL-012#example-monthly-payment-on-an-fx5-c-mortgage",
+  "PRD-001#fx5-c-payment-frequencies",
+]
 origin = "new"
 reviewed = true
 
@@ -1426,8 +1590,14 @@ answer = "same two documents"
 gold = [
   "POL-002#documents-required-for-salaried-income",
 ]
-related = []
-nonrel = []
+related = [
+  "POL-002#summary",
+  "PRC-002#stage-3-income-verification",
+]
+nonrel = [
+  "POL-008#minimum-time-in-business",
+  "POL-008#documents-required-for-self-employed-income",
+]
 origin = "new"
 reviewed = true
 
@@ -1442,8 +1612,13 @@ answer = "never reuses"
 gold = [
   "PRC-001#loan-number-assignment",
 ]
-related = []
-nonrel = []
+related = [
+  "PRC-001#incomplete-applications-and-handoff-to-underwriting",
+]
+nonrel = [
+  "FAQ-004#how-do-i-submit-a-mortgage-application",
+  "FAQ-004#how-will-i-know-you-received-the-application",
+]
 origin = "new"
 reviewed = true
 
@@ -1459,7 +1634,13 @@ gold = [
   "PRC-009#rates-and-rate-holds-in-messages",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "POL-011#summary",
+  "PRC-009#plain-language",
+  "FAQ-006#can-i-send-a-message-that-the-policy-assistant-drafted",
+  "POL-011#data-that-may-never-be-typed-into-a-chat-tool",
+  "PRC-009#summary",
+]
 origin = "new"
 reviewed = true
 
@@ -1475,7 +1656,11 @@ gold = [
   "PRD-002#who-fx3-c-suits",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "PRD-002#summary",
+  "PRD-002#fx3-c-product-summary",
+  "RATE-001#contract-rates-by-product",
+]
 origin = "new"
 reviewed = true
 
@@ -1491,8 +1676,11 @@ gold = [
   "PRC-003#who-signs-off-each-condition-type",
   "FAQ-005#who-checks-my-proof-of-home-insurance",
   "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+  "FAQ-005#when-do-i-have-to-give-proof-of-home-insurance-for-closing",
 ]
-related = []
+related = [
+  "FAQ-005#do-i-need-home-insurance-on-my-property",
+]
 nonrel = []
 origin = "new"
 reviewed = true
@@ -1512,6 +1700,7 @@ gold = [
 ]
 related = [
   "RATE-003#extending-a-rate-hold",
+  "RATE-003#summary",
 ]
 nonrel = []
 origin = "new"
@@ -1533,8 +1722,13 @@ gold = [
 related = [
   "RATE-002#summary",
   "RATE-002#when-each-fee-is-charged",
+  "POL-012#payment-frequencies",
+  "PRD-001#fx5-c-payment-frequencies",
+  "PRD-002#fx3-c-payment-frequencies",
 ]
-nonrel = []
+nonrel = [
+  "FAQ-001#how-often-can-i-make-my-mortgage-payments",
+]
 origin = "new"
 reviewed = true
 
@@ -1550,8 +1744,17 @@ gold = [
   "PRC-004#what-each-role-may-view",
   "POL-011#least-privilege-access-by-role",
 ]
-related = []
-nonrel = []
+related = [
+  "PRC-002#stage-1-file-assignment",
+]
+nonrel = [
+  "PRC-002#stage-2-completeness-check",
+  "PRC-003#conditions-that-are-not-met",
+  "PRC-004#loan-amount-authority-limits",
+  "PRC-002#stage-7-authority-check",
+  "PRC-004#example-routing-three-files",
+  "PRD-006#rnt-4-eligible-properties",
+]
 origin = "new"
 reviewed = true
 
@@ -1568,8 +1771,14 @@ gold = [
   "PRD-003#vr5-c-rate-and-qualifying-rate",
   "POL-004#example-qualifying-rate-for-three-products",
 ]
-related = []
-nonrel = []
+related = [
+  "POL-004#which-contract-rate-is-used-to-qualify",
+  "PRD-003#summary",
+]
+nonrel = [
+  "PRD-003#vr5-c-conversion-to-a-fixed-term",
+  "PRD-003#vr5-c-prepayment-privileges-and-penalty",
+]
 origin = "new"
 reviewed = true
 
@@ -1586,8 +1795,13 @@ gold = [
 ]
 related = [
   "PRC-005#recording-and-closing-the-request",
+  "PRC-005#pending-until-a-human-approves",
 ]
-nonrel = []
+nonrel = [
+  "PRC-004#exception-approval-authority",
+  "FAQ-005#who-checks-my-proof-of-home-insurance",
+  "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+]
 origin = "new"
 reviewed = true
 
@@ -1625,8 +1839,11 @@ gold = [
 ]
 related = [
   "POL-007#summary",
+  "POL-005#minimum-down-payment-at-a-price-of-1-200-000-or-more",
 ]
-nonrel = []
+nonrel = [
+  "POL-005#summary",
+]
 origin = "new"
 reviewed = true
 
@@ -1665,7 +1882,9 @@ gold = [
   "PRC-009#plain-language",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "POL-011#storing-and-sharing-customer-documents",
+]
 origin = "new"
 reviewed = true
 
@@ -1681,9 +1900,14 @@ gold = [
   "FAQ-005#do-i-have-to-show-proof-of-home-insurance-when-i-renew",
   "FAQ-003#do-i-have-to-qualify-again-to-renew",
   "PRC-007#straight-renewal-without-requalification",
+  "FAQ-005#do-i-need-home-insurance-on-my-property",
 ]
 related = []
-nonrel = []
+nonrel = [
+  "FAQ-005#what-happens-if-i-do-not-give-proof-of-home-insurance",
+  "FAQ-003#what-if-i-want-more-money-or-to-change-who-is-on-my-mortgage",
+  "FAQ-006#summary",
+]
 origin = "new"
 reviewed = true
 
@@ -1701,8 +1925,16 @@ gold = [
   "POL-001#how-exceptions-to-credit-policy-are-handled",
   "PRC-002#stage-7-authority-check",
 ]
-related = []
-nonrel = []
+related = [
+  "PRC-009#what-staff-may-not-promise",
+  "FAQ-006#can-the-policy-assistant-approve-a-file-or-submit-a-request",
+]
+nonrel = [
+  "PRC-004#what-each-role-may-view",
+  "POL-002#how-old-an-employment-letter-may-be",
+  "POL-001#summary",
+  "PRC-004#exception-approval-authority",
+]
 origin = "new"
 reviewed = true
 
