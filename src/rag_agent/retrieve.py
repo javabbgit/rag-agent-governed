@@ -24,7 +24,7 @@ BM25_B = 0.75
 RRF_K = 60
 CANDIDATES = 50
 DEFAULT_K = 10
-RERANK_CANDIDATES = 20  # provisional; set after the dev sweep (make eval-rerank-sweep)
+RERANK_CANDIDATES = 10  # dev sweep 2026-11-14: smallest N within 0.01 of best with p95 <= 5 s
 RERANK_GRID = (10, 20, 30, 50)
 RERANK_MAX_BATCH = 64  # keep equal to --max-client-batch-size in docker-compose.yml
 STOPWORDS = frozenset(
