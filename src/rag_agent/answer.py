@@ -375,7 +375,8 @@ def prepare(question: str, rt: Runtime, *, allow_degraded: bool = True) -> Prepa
         out = _result(
             "fallback", rt, subtype="no_basis", reason=reason, stage="gate", message=msg.B1
         )
-        out.sources = [_source(info[h.chunk_id], h.score, low=True) for h in hits[:GATE_SOURCES]]
+        closest = [h for h in hits if h.status == "current"][:GATE_SOURCES]
+        out.sources = [_source(info[h.chunk_id], h.score, low=True) for h in closest]
         return finish(out)
 
     kept = [h for h in hits if h.status == "current"][: settings.answer_context_k]

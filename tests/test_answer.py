@@ -54,7 +54,23 @@ def test_e9_superseded_only(settings):
     )
     assert client.chats == []
     assert res.message == msg.B1 and res.handoff_suggested
-    assert len(res.sources) == 3 and all(s.low_relevance for s in res.sources)
+    assert len(res.sources) == 2 and all(s.low_relevance for s in res.sources)
+    assert all(not s.superseded for s in res.sources)
+
+
+def test_closest_sections_skip_superseded_among_first_three(settings):
+    spec = [(0.01, SUP), (0.009, SUP), (0.008, CUR), (0.007, SUP), (0.006, CUR), (0.005, CUR)]
+    spec += [(0.004, CUR), (0.003, CUR)]
+    _, _, rt = setup(settings, hits=hits_from(spec))
+    res = ans.answer("q?", rt, log=False)
+    assert res.reason == "low_score"
+    assert [s.chunk_id for s in res.sources] == ["DOC-003#s3", "DOC-005#s5", "DOC-006#s6"]
+
+
+def test_closest_sections_empty_when_all_superseded(settings):
+    _, _, rt = setup(settings, hits=hits_from([(0.9, SUP), (0.8, SUP)]))
+    res = ans.answer("q?", rt, log=False)
+    assert res.reason == "superseded_only" and res.sources == []
 
 
 def test_e10_low_score(settings):

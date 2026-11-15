@@ -49,14 +49,14 @@ def render(res: AnswerResult) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("question", nargs="?", default="")
+    ap.add_argument("question", nargs="?", default=None)
     ap.add_argument("--json", action="store_true", help="print the AnswerResult as JSON")
     ap.add_argument("--env-file", help="path to an env file (default: ./.env if present)")
     try:
         args = ap.parse_args(argv)
     except SystemExit as exc:
         return 2 if exc.code else 0
-    if not args.question.strip():
+    if args.question is None:
         print("usage: ask.py [--json] QUESTION", file=sys.stderr)
         return 2
     try:
