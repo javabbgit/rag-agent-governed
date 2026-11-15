@@ -25,6 +25,7 @@ EXPECTED = {
     "empty_key": (GatewayAuthError, "auth_config"),
     "not_allowed": (ModelNotAllowedError, "auth_config"),
     "pii": (PolicyBlockedError, "blocked_policy"),
+    "blocked_tool_message": (PolicyBlockedError, "blocked_policy"),
     "non_english": (PolicyBlockedError, "blocked_policy"),
     "budget_exceeded": (BudgetExceededError, "budget_exceeded"),
     "rate_limited": (RateLimitedError, "rate_limited"),
