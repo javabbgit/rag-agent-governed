@@ -1,0 +1,130 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "search_policy",
+      "description": "Searches the Demo Mortgage Co. policy, procedure, product and FAQ documents and returns the most relevant passages with their chunk ids.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {"type": "string", "minLength": 3, "maxLength": 500}
+        },
+        "required": ["query"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_loan_status",
+      "description": "Returns the record of one loan file and the contacts on it.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "loan_number": {"type": "string", "pattern": "^DMC-[0-9]{4}-[0-9]{5}$"}
+        },
+        "required": ["loan_number"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "calculate_payment",
+      "description": "Calculates the mortgage payment for the given terms and, when an income is given, the GDS and TDS ratios at the qualifying rate.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "principal": {"type": "number", "minimum": 1000, "maximum": 5000000},
+          "product_code": {
+            "type": "string",
+            "enum": ["FX1-O", "FX3-C", "FX5-C", "VR5-C", "RNT-4", "SEA-5"]
+          },
+          "annual_rate_pct": {"type": "number", "minimum": 0.01, "maximum": 25},
+          "compounding": {"type": "string", "enum": ["semi_annual", "monthly"]},
+          "amortization_years": {"type": "integer", "minimum": 1, "maximum": 40},
+          "payment_frequency": {
+            "type": "string",
+            "enum": [
+              "monthly",
+              "semi_monthly",
+              "biweekly",
+              "accelerated_biweekly",
+              "weekly",
+              "accelerated_weekly"
+            ]
+          },
+          "gross_annual_income": {"type": "number", "minimum": 1, "maximum": 10000000},
+          "property_tax_monthly": {"type": "number", "minimum": 0, "maximum": 100000},
+          "condo_fees_monthly": {"type": "number", "minimum": 0, "maximum": 100000},
+          "other_debt_monthly": {"type": "number", "minimum": 0, "maximum": 1000000}
+        },
+        "required": ["principal", "amortization_years", "payment_frequency"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "draft_reply",
+      "description": "Saves a draft reply to one contact on a loan file for a person to review; it does not send anything.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "loan_number": {"type": "string", "pattern": "^DMC-[0-9]{4}-[0-9]{5}$"},
+          "recipient_contact_id": {"type": "string", "pattern": "^CT-[0-9]{4}$"},
+          "subject": {"type": "string", "minLength": 1, "maxLength": 120},
+          "body": {"type": "string", "minLength": 1, "maxLength": 2000}
+        },
+        "required": ["loan_number", "recipient_contact_id", "subject", "body"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "prepare_exception_request",
+      "description": "Prepares a draft EXC-100 exception request that the underwriter reviews and raises; it does not raise or approve anything.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "loan_number": {"type": "string", "pattern": "^DMC-[0-9]{4}-[0-9]{5}$"},
+          "exception_type": {
+            "type": "string",
+            "enum": ["gds_tds_ratio", "ltv", "income_documents", "rate_hold"]
+          },
+          "requested_value": {"type": "string", "minLength": 1, "maxLength": 200},
+          "justification": {"type": "string", "minLength": 20, "maxLength": 1000},
+          "compensating_factors": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 3, "maxLength": 200},
+            "minItems": 1,
+            "maxItems": 5
+          },
+          "supporting_chunk_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z]{2,5}-[0-9]{3}(-V[0-9]+)?#[a-z0-9-]+$"
+            },
+            "minItems": 1,
+            "maxItems": 5
+          }
+        },
+        "required": [
+          "loan_number",
+          "exception_type",
+          "requested_value",
+          "justification",
+          "compensating_factors",
+          "supporting_chunk_ids"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+]

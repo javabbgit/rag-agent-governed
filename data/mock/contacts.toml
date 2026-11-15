@@ -1,0 +1,96 @@
+# Mock contacts: each contact belongs to exactly one loan. Ids and labels only.
+
+[[contacts]]
+contact_id = "CT-0001"
+loan_number = "DMC-2026-00101"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0002"
+loan_number = "DMC-2026-00101"
+role_label = "borrower"
+
+[[contacts]]
+contact_id = "CT-0003"
+loan_number = "DMC-2026-00102"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0004"
+loan_number = "DMC-2026-00102"
+role_label = "borrower"
+
+[[contacts]]
+contact_id = "CT-0005"
+loan_number = "DMC-2026-00103"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0006"
+loan_number = "DMC-2026-00103"
+role_label = "borrower"
+
+[[contacts]]
+contact_id = "CT-0007"
+loan_number = "DMC-2026-00104"
+role_label = "borrower"
+
+[[contacts]]
+contact_id = "CT-0008"
+loan_number = "DMC-2026-00105"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0009"
+loan_number = "DMC-2026-00105"
+role_label = "borrower"
+
+[[contacts]]
+contact_id = "CT-0010"
+loan_number = "DMC-2026-00106"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0011"
+loan_number = "DMC-2026-00107"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0012"
+loan_number = "DMC-2026-00107"
+role_label = "borrower"
+
+[[contacts]]
+contact_id = "CT-0013"
+loan_number = "DMC-2026-00108"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0014"
+loan_number = "DMC-2026-00109"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0015"
+loan_number = "DMC-2026-00109"
+role_label = "borrower"
+
+[[contacts]]
+contact_id = "CT-0020"
+loan_number = "DMC-2026-00110"
+role_label = "borrower"
+
+[[contacts]]
+contact_id = "CT-0017"
+loan_number = "DMC-2026-00111"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0018"
+loan_number = "DMC-2026-00112"
+role_label = "broker contact"
+
+[[contacts]]
+contact_id = "CT-0019"
+loan_number = "DMC-2026-00112"
+role_label = "borrower"

@@ -1,0 +1,222 @@
+# Mock loans. Literal values; nothing generates them at runtime.
+# In-progress loans carry the current rate sheet (corpus/facts.toml [rates]); funded and
+# renewal_pending loans may carry earlier rates.
+#   DMC-2026-00102  L_minor: TDS over the limit by 1.17 points at the qualifying rate
+#   DMC-2026-00103  L_major: TDS over the limit by 2.80 points at the qualifying rate
+# The hygiene test and `make agent-data-report` check these bands.
+
+[[loans]]
+loan_number = "DMC-2026-00101"
+product_code = "FX5-C"
+stage = "application_received"
+amount = 420000
+rate_pct = 4.69
+amortization_years = 25
+term_years = 5
+payment_frequency = "monthly"
+gross_annual_income = 132000
+property_tax_monthly = 330
+condo_fees_monthly = 0
+other_debt_monthly = 400
+outstanding_conditions = []
+borrower_ref = "B-0001"
+broker_id = "br-01"
+underwriter_id = "uw-01"
+
+[[loans]]
+loan_number = "DMC-2026-00102"
+product_code = "VR5-C"
+stage = "conditions_outstanding"
+amount = 480000
+rate_pct = 4.15
+amortization_years = 25
+term_years = 5
+payment_frequency = "monthly"
+gross_annual_income = 126000
+property_tax_monthly = 360
+condo_fees_monthly = 0
+other_debt_monthly = 1010
+outstanding_conditions = ["COND-APPRAISAL", "COND-INCOME-DOCS", "COND-INSURANCE"]
+borrower_ref = "B-0002"
+broker_id = "br-01"
+underwriter_id = "uw-01"
+
+[[loans]]
+loan_number = "DMC-2026-00103"
+product_code = "FX3-C"
+stage = "application_received"
+amount = 470000
+rate_pct = 4.84
+amortization_years = 25
+term_years = 3
+payment_frequency = "biweekly"
+gross_annual_income = 126000
+property_tax_monthly = 380
+condo_fees_monthly = 0
+other_debt_monthly = 1050
+outstanding_conditions = []
+borrower_ref = "B-0003"
+broker_id = "br-02"
+underwriter_id = "uw-01"
+
+[[loans]]
+loan_number = "DMC-2026-00104"
+product_code = "FX1-O"
+stage = "funded"
+amount = 150000
+rate_pct = 6.99
+amortization_years = 20
+term_years = 1
+payment_frequency = "monthly"
+gross_annual_income = 98000
+property_tax_monthly = 250
+condo_fees_monthly = 0
+other_debt_monthly = 300
+outstanding_conditions = []
+borrower_ref = "B-0004"
+broker_id = "br-03"
+underwriter_id = "uw-01"
+
+[[loans]]
+loan_number = "DMC-2026-00105"
+product_code = "RNT-4"
+stage = "renewal_pending"
+amount = 300000
+rate_pct = 5.29
+amortization_years = 25
+term_years = 4
+payment_frequency = "monthly"
+gross_annual_income = 110000
+property_tax_monthly = 290
+condo_fees_monthly = 0
+other_debt_monthly = 500
+outstanding_conditions = []
+borrower_ref = "B-0105"
+broker_id = "br-01"
+underwriter_id = "uw-01"
+
+[[loans]]
+loan_number = "DMC-2026-00106"
+product_code = "SEA-5"
+stage = "declined"
+amount = 395000
+rate_pct = 5.19
+amortization_years = 25
+term_years = 5
+payment_frequency = "monthly"
+gross_annual_income = 90000
+property_tax_monthly = 310
+condo_fees_monthly = 0
+other_debt_monthly = 900
+outstanding_conditions = []
+borrower_ref = "B-0006"
+broker_id = "br-02"
+underwriter_id = "uw-01"
+
+[[loans]]
+loan_number = "DMC-2026-00107"
+product_code = "FX5-C"
+stage = "conditionally_approved"
+amount = 348000
+rate_pct = 4.69
+amortization_years = 25
+term_years = 5
+payment_frequency = "monthly"
+gross_annual_income = 118000
+property_tax_monthly = 300
+condo_fees_monthly = 0
+other_debt_monthly = 350
+outstanding_conditions = ["COND-EMPLOYMENT-LETTER"]
+borrower_ref = "B-0007"
+broker_id = "br-01"
+underwriter_id = "uw-02"
+
+[[loans]]
+loan_number = "DMC-2026-00108"
+product_code = "FX3-C"
+stage = "application_received"
+amount = 300000
+rate_pct = 4.84
+amortization_years = 25
+term_years = 3
+payment_frequency = "accelerated_biweekly"
+gross_annual_income = 96000
+property_tax_monthly = 280
+condo_fees_monthly = 250
+other_debt_monthly = 200
+outstanding_conditions = []
+borrower_ref = "B-0008"
+broker_id = "br-02"
+underwriter_id = "uw-02"
+
+[[loans]]
+loan_number = "DMC-2026-00109"
+product_code = "VR5-C"
+stage = "conditions_outstanding"
+amount = 410000
+rate_pct = 4.15
+amortization_years = 25
+term_years = 5
+payment_frequency = "monthly"
+gross_annual_income = 125000
+property_tax_monthly = 340
+condo_fees_monthly = 0
+other_debt_monthly = 500
+outstanding_conditions = ["COND-APPRAISAL", "COND-DOWN-PAYMENT"]
+borrower_ref = "B-0009"
+broker_id = "br-03"
+underwriter_id = "uw-02"
+
+[[loans]]
+loan_number = "DMC-2026-00110"
+product_code = "FX1-O"
+stage = "funded"
+amount = 120000
+rate_pct = 7.19
+amortization_years = 15
+term_years = 1
+payment_frequency = "monthly"
+gross_annual_income = 87000
+property_tax_monthly = 210
+condo_fees_monthly = 0
+other_debt_monthly = 150
+outstanding_conditions = []
+borrower_ref = "B-0010"
+broker_id = "br-01"
+underwriter_id = "uw-02"
+
+[[loans]]
+loan_number = "DMC-2026-00111"
+product_code = "RNT-4"
+stage = "conditionally_approved"
+amount = 328000
+rate_pct = 5.09
+amortization_years = 25
+term_years = 4
+payment_frequency = "monthly"
+gross_annual_income = 112000
+property_tax_monthly = 300
+condo_fees_monthly = 0
+other_debt_monthly = 400
+outstanding_conditions = ["COND-INSURANCE"]
+borrower_ref = "B-0011"
+broker_id = "br-03"
+underwriter_id = "uw-02"
+
+[[loans]]
+loan_number = "DMC-2026-00112"
+product_code = "SEA-5"
+stage = "funded"
+amount = 280000
+rate_pct = 5.39
+amortization_years = 25
+term_years = 5
+payment_frequency = "monthly"
+gross_annual_income = 92000
+property_tax_monthly = 260
+condo_fees_monthly = 0
+other_debt_monthly = 250
+outstanding_conditions = []
+borrower_ref = "B-0012"
+broker_id = "br-02"
+underwriter_id = "uw-02"
