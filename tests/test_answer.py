@@ -417,10 +417,31 @@ Rules:
 """
 
 
-def test_prompt_file_is_verbatim_and_hashed(settings):
-    text, sha = ans.load_prompt(settings.answer_prompt)
+EXPECTED_PROMPT_V2 = EXPECTED_PROMPT.replace(
+    "2. End every sentence with one or more citation markers, such as [S1] or [S2][S3], naming the sources that support that sentence.",
+    "2. End every sentence, and every line, with one or more citation markers, such as [S1] or [S2][S3], naming the sources that support it. This includes introductory lines, calculation steps and calculated results: cite the sources whose rules or figures the line uses.",
+).replace(
+    "6. Write plain English sentences or a short bullet list. No headings. Do not use",
+    "6. Write plain English sentences or a short bullet list. No headings. Do not end a line with a colon, and do not break a sentence across lines. Do not use",
+)
+
+
+def test_prompt_v1_file_is_unchanged_and_hashed():
+    text, sha = ans.load_prompt("src/rag_agent/prompts/answer_v1.md")
     assert text == EXPECTED_PROMPT.strip()
     assert sha == hashlib.sha256(EXPECTED_PROMPT.encode()).hexdigest()
+
+
+def test_prompt_v2_file_is_verbatim_and_default(settings):
+    assert settings.answer_prompt.endswith("answer_v2.md")
+    assert EXPECTED_PROMPT_V2 != EXPECTED_PROMPT
+    text, sha = ans.load_prompt(settings.answer_prompt)
+    assert text == EXPECTED_PROMPT_V2.strip()
+    assert sha == hashlib.sha256(EXPECTED_PROMPT_V2.encode()).hexdigest()
+
+
+def test_answer_max_tokens_default(settings):
+    assert settings.answer_max_tokens == 2048
 
 
 def test_real_prompt_sha_is_logged_and_in_result(settings, tmp_path):
@@ -431,7 +452,7 @@ def test_real_prompt_sha_is_logged_and_in_result(settings, tmp_path):
     res = ans.answer("q?", rt)
     (f,) = (tmp_path / "logs").glob("answers_*.jsonl")
     assert json.loads(f.read_text())["prompt_sha256"] == sha == res.prompt_sha256
-    assert sha == hashlib.sha256(EXPECTED_PROMPT.encode()).hexdigest()
+    assert sha == hashlib.sha256(EXPECTED_PROMPT_V2.encode()).hexdigest()
 
 
 def test_log_line_has_hashes_not_text(settings, tmp_path):
@@ -490,7 +511,7 @@ def test_missing_threshold_file_refuses_to_start(tmp_path):
 def test_build_runtime_checks_startup_files(settings, tmp_path):
     ok = _threshold(tmp_path, 'signal = "rerank_top1"\nthreshold = 0.5\n')
     rt = ans.build_runtime(settings, client=FakeClient(), threshold_path=ok)
-    assert rt.threshold == 0.5 and rt.prompt_text == EXPECTED_PROMPT.strip()
+    assert rt.threshold == 0.5 and rt.prompt_text == EXPECTED_PROMPT_V2.strip()
     settings.answer_prompt = str(tmp_path / "missing.md")
     with pytest.raises(ConfigError):
         ans.build_runtime(settings, client=FakeClient(), threshold_path=ok)
