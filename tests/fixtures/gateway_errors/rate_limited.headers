@@ -1,0 +1,22 @@
+HTTP/1.1 429 Too Many Requests
+date: Sun, 15 Nov 2026 02:07:29 GMT
+retry-after: 60
+rate_limit_type: requests
+reset_at: 2026-11-15 02:08:30 UTC
+x-litellm-call-id: bbc2ea80-457a-427a-ae33-64ca81b2697f
+x-litellm-version: 1.106.2
+x-litellm-response-cost: 0
+x-litellm-key-rpm-limit: 1
+x-litellm-key-spend: 0.0
+x-governance-action: pass
+x-governance-rule: R1
+x-governance-level: none
+x-governance-reason: none
+x-governance-routed-model: rag-embed
+x-governance-pii: -
+content-length: 269
+content-type: application/json
+x-frame-options: DENY
+content-security-policy: frame-ancestors 'none'
+x-content-type-options: nosniff
+

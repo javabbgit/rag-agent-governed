@@ -112,3 +112,24 @@ def test_bm25_over_database_includes_superseded(ingested):
     assert any(h.status == "superseded" for h in hits)
     current = retrieve("former limits", "bm25", 10, COLLECTION, False, dsn=DSN)
     assert all(h.status == "current" for h in current)
+
+
+def test_section_info_returns_text_and_metadata(ingested):
+    chunks = store.load_chunks(COLLECTION, DSN)
+    ids = [c.chunk_id for c in chunks[:3]]
+    info = retrieve_mod.section_info([*ids, "NOPE#missing"], COLLECTION, dsn=DSN)
+    assert set(info) == set(ids)
+    for i in ids:
+        s = info[i]
+        assert s.doc_id and s.title and s.section and s.text
+    superseded = {
+        h.chunk_id
+        for h in retrieve("former limits", "bm25", 10, COLLECTION, dsn=DSN)
+        if h.status == "superseded"
+    }
+    if superseded:
+        assert all(
+            v.superseded
+            for v in retrieve_mod.section_info(sorted(superseded), COLLECTION, dsn=DSN).values()
+        )
+    assert retrieve_mod.section_info([], COLLECTION, dsn=DSN) == {}

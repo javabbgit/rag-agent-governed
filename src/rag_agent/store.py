@@ -250,6 +250,30 @@ def load_chunks(collection: str, dsn: str | None = None) -> list[ChunkText]:
     return [ChunkText(*r) for r in rows]
 
 
+@dataclass(frozen=True)
+class SectionRow:
+    chunk_id: str
+    doc_id: str
+    title: str
+    heading: str
+    status: str
+    body: str
+
+
+def load_sections(
+    collection: str, chunk_ids: list[str], dsn: str | None = None
+) -> list[SectionRow]:
+    """Section text plus document title and status for the given chunk ids (read-only)."""
+    with connect(dsn) as conn:
+        rows = conn.execute(
+            "SELECT c.chunk_id, c.doc_id, d.title, c.heading, d.status, c.body"
+            " FROM chunks c JOIN documents d ON d.collection = c.collection AND d.doc_id = c.doc_id"
+            " WHERE c.collection = %s AND c.chunk_id = ANY(%s::text[]) ORDER BY c.chunk_id",
+            (collection, chunk_ids),
+        ).fetchall()
+    return [SectionRow(*r) for r in rows]
+
+
 _VECTOR_ALL = (
     "SELECT c.chunk_id, c.doc_id, c.heading, d.status, c.body,"
     " 1 - (c.embedding <=> %s::vector) AS score"

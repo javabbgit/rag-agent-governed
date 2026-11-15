@@ -34,6 +34,9 @@ class ChatResult:
     usage: dict[str, Any] | None
     latency_ms: float
     governance: dict[str, str] = field(default_factory=dict)  # x-governance-* headers
+    call_id: str | None = None  # x-litellm-call-id
+    cost_usd: float | None = None  # x-litellm-response-cost
+    attempted_retries: int | None = None  # x-litellm-attempted-retries (gateway side)
 
 
 @dataclass
@@ -45,6 +48,21 @@ class EmbedResult:
 
 class EmbeddingDimensionError(LLMError):
     """A returned vector does not have EMBED_DIM entries."""
+
+
+def _header(headers: Any, name: str) -> str | None:
+    """A response header value; absent or the literal "none" is None."""
+    value = headers.get(name)
+    if value is None or value.strip().lower() in ("", "none"):
+        return None
+    return value.strip()
+
+
+def _number(value: str | None, kind: type = float) -> Any:
+    try:
+        return None if value is None else kind(value)
+    except ValueError:
+        return None
 
 
 def _extract_error(exc: openai.APIStatusError) -> tuple[str, str | None]:
@@ -88,7 +106,12 @@ class LLMClient:
             return GatewayUnavailableError(f"{where} unreachable (connection failed)")
         if isinstance(exc, openai.APIStatusError):
             message, err_type = _extract_error(exc)
-            return classify_http_error(exc.status_code, message, err_type, secrets=self._secrets)
+            err = classify_http_error(exc.status_code, message, err_type, secrets=self._secrets)
+            headers = exc.response.headers
+            err.call_id = _header(headers, "x-litellm-call-id")
+            err.retry_after = _number(_header(headers, "retry-after"))
+            err.attempted_retries = _number(_header(headers, "x-litellm-attempted-retries"), int)
+            return err
         return LLMError(sanitize(f"unexpected {type(exc).__name__}", *self._secrets))
 
     # -- public API --------------------------------------------------------------------------
@@ -125,12 +148,17 @@ class LLMClient:
             usage=response.usage.model_dump() if response.usage else None,
             latency_ms=latency_ms,
             governance=governance,
+            call_id=_header(headers, "x-litellm-call-id"),
+            cost_usd=_number(_header(headers, "x-litellm-response-cost")),
+            attempted_retries=_number(_header(headers, "x-litellm-attempted-retries"), int),
         )
 
-    def embed(self, texts: list[str]) -> EmbedResult:
+    def embed(self, texts: list[str], timeout: float | None = None) -> EmbedResult:
+        """Embeddings; `timeout` (seconds) overrides LLM_TIMEOUT_S for this call only."""
         start = time.perf_counter()
+        api = self._embed if timeout is None else self._embed.with_options(timeout=timeout)
         try:
-            response = self._embed.embeddings.create(
+            response = api.embeddings.create(
                 model=self.settings.embed_model, input=texts, encoding_format="float"
             )
         except (openai.OpenAIError, LLMError) as exc:

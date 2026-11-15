@@ -104,3 +104,13 @@ Commands: make reranker-check | make eval-rerank-sweep SPLIT=dev |
   make eval-fallback SPLIT=dev|test REPORT=path [WRITE_THRESHOLD=1]
 Ask before changing: docker-compose.yml image pins, the reranker revision, RERANK_CANDIDATES,
 eval/fallback/threshold.toml.
+
+21. Answers go only through src/rag_agent/answer.py. In gateway mode never fall back to the direct
+    endpoint or to another model alias on any error; map gateway errors through the fixture-driven
+    classifier and return the fixed messages in messages.py. Never show raw gateway error text or keys.
+22. Citations are validated in code (citations.py). Do not relax validation, add retries, or change
+    the fallback threshold, rerank N or context size to raise the answered rate. Prompt changes need a
+    new prompts/answer_vN.md file, a full dev eval-answer run, and a decision-log entry.
+23. Answer logs never store interactive question or answer text (sha256 only); tests write logs to
+    tmp_path only. eval-answer runs on dev; the test split needs --final and is run once in D10.
+    D6 commands: make ask Q="...", make eval-answer SPLIT=dev REPEATS=3, make answer-review-tally FILE=...

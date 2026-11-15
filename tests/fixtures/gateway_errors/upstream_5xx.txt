@@ -1,0 +1,2 @@
+{"error":{"message":"litellm.InternalServerError: InternalServerError: OpenAIException - Connection error.\n\nLiteLLM: model group 'rag-embed' failed with the error above and no fallback model group was found for it, so the request was not retried on another model. Fallbacks are configured for: chat-default. Add a fallbacks entry for that model group (Router fallbacks or proxy router_settings.fallbacks) to retry on another model.","type":"internal_server_error","param":null,"code":"500"}}
+500

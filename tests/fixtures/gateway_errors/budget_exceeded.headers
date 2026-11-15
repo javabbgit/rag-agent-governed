@@ -1,0 +1,8 @@
+HTTP/1.1 422 Unprocessable Content
+date: Sun, 15 Nov 2026 02:02:52 GMT
+content-length: 176
+content-type: application/json
+x-frame-options: DENY
+content-security-policy: frame-ancestors 'none'
+x-content-type-options: nosniff
+

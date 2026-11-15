@@ -37,6 +37,16 @@ class Settings(BaseSettings):
     reranker_url: str = "http://127.0.0.1:8081"
     reranker_model_rev: str = "2cfc18c9415c912f9d8155881c133215df768a70"
     rerank_timeout_s: float = 60.0
+    answer_prompt: str = "src/rag_agent/prompts/answer_v2.md"
+    answer_context_k: int = 5
+    answer_max_tokens: int = 2048
+    question_max_chars: int = 1000
+    answer_log_dir: str = "reports/answers"
+    embed_timeout_s: float | None = None  # default: llm_timeout_s
+
+    @property
+    def effective_embed_timeout_s(self) -> float:
+        return self.embed_timeout_s if self.embed_timeout_s is not None else self.llm_timeout_s
 
     @property
     def effective_embed_base_url(self) -> str:

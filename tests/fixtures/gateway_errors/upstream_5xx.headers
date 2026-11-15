@@ -1,0 +1,19 @@
+HTTP/1.1 500 Internal Server Error
+date: Sun, 15 Nov 2026 02:22:01 GMT
+x-litellm-call-id: ed453ff8-f0af-46ac-8ebc-87d6151846fd
+x-litellm-version: 1.106.2
+x-litellm-response-cost: 0
+x-litellm-key-spend: 0.004255779999999996
+x-litellm-timeout: 120.0
+x-governance-action: pass
+x-governance-rule: R1
+x-governance-level: none
+x-governance-reason: none
+x-governance-routed-model: rag-embed
+x-governance-pii: -
+content-length: 493
+content-type: application/json
+x-frame-options: DENY
+content-security-policy: frame-ancestors 'none'
+x-content-type-options: nosniff
+

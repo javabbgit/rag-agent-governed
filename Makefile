@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback ask eval-answer answer-review-tally
 
 setup:
 	uv sync --python 3.11
@@ -92,3 +92,16 @@ eval-rerank-sweep:
 eval-fallback:
 	@test -n "$(REPORT)" || { echo 'usage: make eval-fallback SPLIT=dev|test REPORT=reports/eval/retrieval_<split>_<UTC>.json [WRITE_THRESHOLD=1]'; exit 2; }
 	uv run python scripts/eval_fallback.py --split $(SPLIT) --report "$(REPORT)" $(if $(WRITE_THRESHOLD),--write-threshold)
+
+REPEATS ?= 3
+
+ask:
+	@test -n "$(Q)" || { echo 'usage: make ask Q="your question"'; exit 2; }
+	uv run python scripts/ask.py $(if $(JSON),--json) "$(Q)"
+
+eval-answer:
+	uv run python scripts/eval_answer.py --split $(SPLIT) --repeats $(REPEATS) $(if $(FINAL),--final)
+
+answer-review-tally:
+	@test -n "$(FILE)" || { echo 'usage: make answer-review-tally FILE=reports/eval/answer_review_dev_<UTC>.csv'; exit 2; }
+	uv run python scripts/answer_review_tally.py "$(FILE)"
