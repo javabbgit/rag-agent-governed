@@ -255,3 +255,34 @@ def all_index_texts(
     if dsn is None:
         dsn = load_settings().database_url
     return [(c.chunk_id, c.index_text) for c in store.load_chunks(collection, dsn=dsn)]
+
+
+@dataclass(frozen=True)
+class SectionInfo:
+    chunk_id: str
+    doc_id: str
+    title: str  # document title from the corpus front matter (documents.title)
+    section: str  # the chunk heading
+    superseded: bool
+    text: str  # section body
+
+
+def section_info(
+    chunk_ids: Sequence[str],
+    collection: str = "main",
+    *,
+    store: Any = default_store,
+    dsn: str | None = None,
+) -> dict[str, SectionInfo]:
+    """Read-only: section text and metadata for the given chunk ids (unknown ids are absent)."""
+    if not chunk_ids:
+        return {}
+    if dsn is None:
+        dsn = load_settings().database_url
+    rows = store.load_sections(collection, list(chunk_ids), dsn=dsn)
+    return {
+        r.chunk_id: SectionInfo(
+            r.chunk_id, r.doc_id, r.title, r.heading, r.status != "current", r.body
+        )
+        for r in rows
+    }

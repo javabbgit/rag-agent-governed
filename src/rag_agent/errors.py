@@ -14,6 +14,10 @@ class LLMError(Exception):
         super().__init__(message)
         self.message = message
         self.status_code = status_code if status_code is not None else self.default_status
+        # gateway response headers, set by LLMClient when the error came with an HTTP response
+        self.call_id: str | None = None
+        self.retry_after: float | None = None
+        self.attempted_retries: int | None = None
 
 
 class GatewayAuthError(LLMError):
@@ -65,6 +69,7 @@ _POLICY_RE = re.compile(r"policy_blocked:\s*rule\s+(?P<rule>\S+)")
 _LEVEL_RE = re.compile(r"\(level\s+(?P<level>[^,)]+),\s*reason\s+(?P<reason>[^)]+)\)")
 _SECRET_RE = re.compile(r"sk-[A-Za-z0-9._-]*")
 _KEYHASH_RE = re.compile(r"Key Hash \(Token\)\s*=\s*\S+", re.IGNORECASE)
+_HEX64_RE = re.compile(r"\b[0-9a-fA-F]{64}\b")
 _BUDGET_RE = re.compile(r"budget|ExceededBudget|max_budget|spend limit", re.IGNORECASE)
 _ALLOWLIST_RE = re.compile(
     r"key_model_access_denied|not available for this API key|not allowed to access model",
@@ -91,6 +96,7 @@ def sanitize(message: str, *secrets: str | None) -> str:
         if secret:
             message = message.replace(secret, "[redacted]")
     message = _KEYHASH_RE.sub("Key Hash (Token) = [redacted]", message)
+    message = _HEX64_RE.sub("[redacted]", message)
     return _SECRET_RE.sub("[redacted]", message)
 
 
