@@ -18,6 +18,10 @@ EXPECTED = {
     "not_allowed": ModelNotAllowedError,
     "pii": PolicyBlockedError,
     "non_english": PolicyBlockedError,
+    "budget_exceeded": BudgetExceededError,
+    "rate_limited": RateLimitedError,
+    "upstream_5xx": UpstreamServerError,
+    "empty_key": GatewayAuthError,
 }
 
 

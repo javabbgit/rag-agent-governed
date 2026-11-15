@@ -115,6 +115,8 @@ def classify_http_error(
         return ModelNotAllowedError(safe, status_code)
     if "policy_blocked" in haystack:
         return PolicyBlockedError(safe, status_code)
+    if error_type == "budget_exceeded":  # recorded fixture: HTTP 422
+        return BudgetExceededError(safe, status_code)
     if _BUDGET_RE.search(haystack) and status_code in (400, 402, 403, 429):
         return BudgetExceededError(safe, status_code)
     if status_code == 402:
