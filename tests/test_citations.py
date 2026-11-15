@@ -1,3 +1,5 @@
+import pytest
+
 from rag_agent.citations import parse_markers, split_units, ungrounded_numbers, validate
 
 
@@ -23,6 +25,28 @@ def test_e3_uncited_sentence():
 
 def test_e4_abbreviation_does_not_split():
     assert _v("Fees apply, e.g. appraisal and legal fees [S2].")[0] == "answered"
+
+
+def test_company_abbreviation_does_not_split():
+    text = "The maximum CLTV for HEL-1 at Demo Mortgage Co. is 80% [S1]."
+    assert len(split_units(text)) == 1
+    assert _v(text)[0] == "answered"
+
+
+def test_leading_no_and_co_do_not_split():
+    text = "No. Demo Mortgage Co. does not offer it [S2]."
+    assert split_units(text) == [text]
+    assert _v(text)[0] == "answered"
+
+
+@pytest.mark.parametrize("abbr", ["Co.", "Inc.", "Ltd.", "No.", "e.g.", "i.e.", "vs."])
+def test_listed_abbreviations_do_not_split(abbr):
+    text = f"Compare Demo {abbr} Lending with the standard product here [S1]."
+    assert len(split_units(text)) == 1
+
+
+def test_abbreviations_are_case_sensitive():
+    assert len(split_units("It is the end of co. Next sentence follows here and now [S1].")) == 2
 
 
 def test_e5_marker_out_of_range():

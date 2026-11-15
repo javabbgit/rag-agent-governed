@@ -13,7 +13,14 @@ _MARKER = r"\[\s*S\d+(?:\s*,\s*S\d+)*\s*\]"
 MARKER_RE = re.compile(_MARKER)
 _LEADING_MARKERS = re.compile(rf"^(?:\s*{_MARKER})+")
 _BULLET = re.compile(r"^(?:[-*]|\d+\.)\s+")
-_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+_SENTENCE_END = re.compile(
+    r"(?<=[.!?])"
+    + "".join(
+        rf"(?<!\b{a})"
+        for a in (r"Co\.", r"Inc\.", r"Ltd\.", r"No\.", r"e\.g\.", r"i\.e\.", r"vs\.")
+    )
+    + r"\s+"
+)
 _MARKER_NUMBER = re.compile(r"S(\d+)")
 _NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?")
 
