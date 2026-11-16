@@ -7,6 +7,7 @@ from rag_agent.config import Settings
 def isolated_answer_log(tmp_path, monkeypatch):
     """Answer logs from any test (Settings and load_settings read the env) go to tmp_path."""
     monkeypatch.setenv("ANSWER_LOG_DIR", str(tmp_path / "answer_logs"))
+    monkeypatch.setenv("AGENT_LOG_DIR", str(tmp_path / "agent_logs"))
 
 
 @pytest.fixture

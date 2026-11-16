@@ -7,6 +7,14 @@ class AgentError(RuntimeError):
     """Base class."""
 
 
+class AgentStartupError(AgentError):
+    """The agent cannot start; raised before any gateway request. `code` names the cause."""
+
+    def __init__(self, code: str, detail: str = ""):
+        self.code = code
+        super().__init__(f"{code}: {detail}" if detail else code)
+
+
 class FactsMissingKey(AgentError):
     """A required key in corpus/facts.toml is missing or has the wrong type."""
 
