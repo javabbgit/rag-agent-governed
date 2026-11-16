@@ -1,7 +1,10 @@
 """Policy examples P1-P9, P11-P13, P15, P16, P19-P21 against the in-memory repo."""
 
+import decimal
 import json
+from decimal import Decimal
 
+import psycopg
 import pytest
 
 from agent_fakes import (
@@ -13,8 +16,11 @@ from agent_fakes import (
     make_ctx,
     make_prepare,
 )
-from rag_agent.agent.policy import check_and_run
+from rag_agent.agent import calc, tools
+from rag_agent.agent.policy import args_digest, check_and_run
 
+TINY = Decimal("0.004")
+CENT = Decimal("0.01")
 L_MINOR = "DMC-2026-00102"
 L_MAJOR = "DMC-2026-00103"
 WITHIN = "DMC-2026-00101"
@@ -305,6 +311,170 @@ def test_defense_off_skips_only_its_check():
 def test_denial_data_never_echoes_values(field):
     out = check_and_run(call("get_loan_status", loan_number="bad<script>"), make_ctx())
     assert "script" not in out.envelope
+
+
+# --- D7-A1 ------------------------------------------------------------------------------------
+
+
+def crafted_assessment(tds_over: Decimal) -> calc.LoanAssessment:
+    """An assessment whose TDS is `tds_over` points over the limit and whose GDS is within it."""
+    facts = make_ctx().facts
+    tds = facts.limits.tds_max_pct + tds_over
+    ratios = calc.Ratios(
+        Decimal(30), tds, Decimal(30) - facts.limits.gds_max_pct, tds_over, tds_over <= 0
+    )
+    return calc.LoanAssessment(
+        Decimal("6.44"),
+        "contract_plus_buffer",
+        Decimal(2500),
+        ratios,
+        calc.authority(Decimal(30), tds, facts),
+    )
+
+
+def draft_with_overage(monkeypatch, tds_over: Decimal):
+    monkeypatch.setattr(tools, "assess_loan", lambda loan, ctx: crafted_assessment(tds_over))
+    repo = FakeRepo()
+    out = check_and_run(
+        call("prepare_exception_request", **exc_args(L_MINOR)), seeded_ctx(text=L_MINOR, repo=repo)
+    )
+    return out, repo
+
+
+def test_overage_just_over_senior_limit_goes_to_committee_and_is_stored_rounded_up(monkeypatch):
+    facts = make_ctx().facts
+    out, repo = draft_with_overage(monkeypatch, facts.senior_uw_max_pts + TINY)  # 2.004
+    assert out.status == "awaiting_raise"
+    assert out.data["required_authority"] == "credit_committee"
+    assert repo.requests[0]["overage_pts"] == facts.senior_uw_max_pts + CENT  # 2.01
+    assert out.data["overage_pts"] == float(facts.senior_uw_max_pts + CENT)
+    assert repo.requests[0]["current_tds_pct"] == calc.pct(
+        facts.limits.tds_max_pct + facts.senior_uw_max_pts
+    )  # the ratio itself still rounds half-up (44.00)
+
+
+def test_overage_just_over_committee_limit_is_not_exceptable(monkeypatch):
+    facts = make_ctx().facts
+    out, repo = draft_with_overage(monkeypatch, facts.committee_max_pts + TINY)  # 4.004
+    assert (out.status, out.reason) == ("denied", "not_exceptable") and repo.requests == []
+
+
+def test_overage_exactly_at_senior_limit_stays_with_senior_underwriter(monkeypatch):
+    facts = make_ctx().facts
+    out, repo = draft_with_overage(monkeypatch, facts.senior_uw_max_pts)  # exactly 2.00
+    assert out.data["required_authority"] == "senior_underwriter"
+    assert repo.requests[0]["overage_pts"] == facts.senior_uw_max_pts
+    assert str(repo.requests[0]["overage_pts"]) == f"{facts.senior_uw_max_pts:.2f}"
+
+
+def test_nan_principal_is_invalid_arguments_and_the_digest_has_no_nan():
+    repo = FakeRepo()
+    raw = (
+        '{"principal": NaN, "product_code": "FX5-C", "amortization_years": 25,'
+        ' "payment_frequency": "monthly"}'
+    )
+    out = check_and_run({"name": "calculate_payment", "arguments": raw}, make_ctx(repo=repo))
+    assert (out.status, out.reason) == ("denied", "invalid_arguments")
+    assert out.data["field"] == "principal" and not out.reached_executor
+    digest = repo.events[0]["args_digest"]
+    assert set(digest["principal"]) == {"sha256", "len"}
+    assert digest["amortization_years"] == 25
+    json.dumps(repo.events[0], allow_nan=False)  # raises if a NaN is left anywhere
+    json.loads(out.envelope, parse_constant=pytest.fail)
+
+
+@pytest.mark.parametrize("literal", ["Infinity", "-Infinity", "1e999"])
+def test_infinite_numbers_are_invalid_arguments_and_digested(literal):
+    repo = FakeRepo()
+    raw = (
+        '{"principal": ' + literal + ', "product_code": "FX5-C", "amortization_years": 25,'
+        ' "payment_frequency": "monthly"}'
+    )
+    out = check_and_run({"name": "calculate_payment", "arguments": raw}, make_ctx(repo=repo))
+    assert (out.reason, out.data["field"]) == ("invalid_arguments", "principal")
+    json.dumps(repo.events[0], allow_nan=False)
+
+
+def test_args_digest_keeps_finite_numbers_in_clear():
+    schema = make_ctx().schemas["calculate_payment"]
+    args = {"principal": 400000.5, "amortization_years": 25, "annual_rate_pct": float("inf")}
+    digest = args_digest("{}", args, schema)
+    assert digest["principal"] == 400000.5 and digest["amortization_years"] == 25
+    assert set(digest["annual_rate_pct"]) == {"sha256", "len"}
+
+
+@pytest.mark.parametrize(
+    "text",
+    ["XDMC-2026-001023", "XDMC-2026-00102", "DMC-2026-001023", "ref-DMC-2026-00102"],
+)
+def test_loan_number_inside_a_longer_token_is_not_provenance(text):
+    repo = FakeRepo()
+    ctx = seeded_ctx(text=f"prepare an exception for {text}", repo=repo)
+    out = check_and_run(call("prepare_exception_request", **exc_args(L_MINOR)), ctx)
+    assert (out.status, out.reason) == ("denied", "arg_provenance") and repo.requests == []
+
+
+@pytest.mark.parametrize(
+    "text", [f"loan {L_MINOR}.", f"({L_MINOR})", f"{L_MINOR}, please", f"see:{L_MINOR}\n"]
+)
+def test_loan_number_as_a_whole_token_is_provenance(text):
+    out = check_and_run(
+        call("prepare_exception_request", **exc_args(L_MINOR)), seeded_ctx(text=text)
+    )
+    assert out.status == "awaiting_raise"
+
+
+class RaisingRepo(FakeRepo):
+    def __init__(self, exc: Exception):
+        super().__init__()
+        self.exc = exc
+
+    def insert_draft(self, row):
+        raise self.exc
+
+
+def reply_call(repo):
+    own = repo.get_contacts("DMC-2026-00101")[0]["contact_id"]
+    return call(
+        "draft_reply",
+        loan_number="DMC-2026-00101",
+        recipient_contact_id=own,
+        subject="Update",
+        body="Status update.",
+    )
+
+
+def test_unexpected_executor_exception_propagates():
+    repo = RaisingRepo(RuntimeError("boom"))
+    with pytest.raises(RuntimeError):
+        check_and_run(reply_call(repo), make_ctx("uw-01", "DMC-2026-00101", repo=repo))
+    assert repo.events == []
+
+
+@pytest.mark.parametrize(
+    "exc",
+    [
+        KeyError("subject"),
+        TypeError("bad"),
+        decimal.InvalidOperation(),
+        psycopg.errors.ForeignKeyViolation(),
+    ],
+)
+def test_known_executor_failures_become_executor_error(exc):
+    repo = RaisingRepo(exc)
+    out = check_and_run(reply_call(repo), make_ctx("uw-01", "DMC-2026-00101", repo=repo))
+    assert (out.status, out.reason) == ("error", "executor_error") and out.reached_executor
+    assert len(repo.events) == 1 and repo.events[0]["decision"] == "error"
+
+
+def test_p17_gate_off_keeps_db_rejected_mapping():
+    env = {"AGENT_DISABLE": "approval_gate", "AGENT_DEFENSES_OFF_ACK": "1"}
+    repo = FakeRepo()
+    out = check_and_run(
+        call("prepare_exception_request", **exc_args(L_MINOR)),
+        seeded_ctx(text=L_MINOR, repo=repo, env=env),
+    )
+    assert (out.status, out.reason) == ("error", "db_rejected") and out.reached_executor
 
 
 def test_events_carry_rule_stage_and_loop_step():

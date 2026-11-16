@@ -49,7 +49,7 @@ def row_for(loan: dict[str, Any], facts: Facts, v1_rates: dict[str, Any]) -> dic
         "q_rate": f"{calc.pct(a.qualifying_rate_pct)}",
         "gds": f"{calc.pct(a.ratios.gds)}",
         "tds": f"{calc.pct(a.ratios.tds)}",
-        "overage": f"{calc.pct(a.authority.overage_pts)}",
+        "overage": f"{calc.overage_up(a.authority.overage_pts)}",
         "authority": a.authority.required or "-",
         "over": a.authority.required is not None,
     }

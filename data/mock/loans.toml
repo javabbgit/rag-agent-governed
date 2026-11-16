@@ -1,7 +1,7 @@
 # Mock loans. Literal values; nothing generates them at runtime.
 # In-progress loans carry the current rate sheet (corpus/facts.toml [rates]); funded and
 # renewal_pending loans may carry earlier rates.
-#   DMC-2026-00102  L_minor: TDS over the limit by 1.17 points at the qualifying rate
+#   DMC-2026-00102  L_minor: TDS over the limit by 1.18 points at the qualifying rate
 #   DMC-2026-00103  L_major: TDS over the limit by 2.80 points at the qualifying rate
 # The hygiene test and `make agent-data-report` check these bands.
 

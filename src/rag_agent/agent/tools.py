@@ -98,10 +98,14 @@ def calculate_payment(args: dict[str, Any], ctx: Ctx) -> dict[str, Any]:
     elif compounding is None:
         raise ToolArgumentError("compounding or product_code is required", "compounding")
 
-    years = args["amortization_years"]
-    detail = calc.payment_detail(
-        args["principal"], rate, compounding, args["payment_frequency"], years
-    )
+    try:
+        years = int(args["amortization_years"])  # the schema also accepts a whole float (25.0)
+    except (ValueError, OverflowError):
+        raise ToolArgumentError(
+            "amortization_years is not a whole number", "amortization_years"
+        ) from None
+    frequency = args["payment_frequency"]
+    detail = calc.payment_detail(args["principal"], rate, compounding, frequency, years)
     out: dict[str, Any] = {
         "status": "ok",
         "principal": args["principal"],
@@ -109,11 +113,16 @@ def calculate_payment(args: dict[str, Any], ctx: Ctx) -> dict[str, Any]:
         "rate_source": rate_source,
         "compounding": compounding,
         "amortization_years": years,
-        "payment_frequency": args["payment_frequency"],
+        "payment_frequency": frequency,
         "payments_per_year": detail.payments_per_year,
         "payment": _f(detail.payment),
-        "periodic_rate": _f(detail.periodic_rate, 10),
     }
+    if frequency in calc.ACCELERATED_DIVISOR:
+        # the payment is derived from the monthly payment, so there is no level payment count
+        out["periodic_rate_monthly"] = _f(detail.periodic_rate, 10)
+    else:
+        out["n_payments"] = years * detail.payments_per_year
+        out["periodic_rate"] = _f(detail.periodic_rate, 10)
     income = args.get("gross_annual_income")
     if income is not None:
         a = calc.assess(
@@ -139,8 +148,8 @@ def calculate_payment(args: dict[str, Any], ctx: Ctx) -> dict[str, Any]:
                     "gds_max_pct": float(facts.limits.gds_max_pct),
                     "tds_max_pct": float(facts.limits.tds_max_pct),
                 },
-                "gds_overage_pts": _f(max(a.ratios.gds_overage, Decimal(0))),
-                "tds_overage_pts": _f(max(a.ratios.tds_overage, Decimal(0))),
+                "gds_overage_pts": float(calc.overage_up(a.ratios.gds_overage)),
+                "tds_overage_pts": float(calc.overage_up(a.ratios.tds_overage)),
                 "within_limits": a.ratios.within_limits,
             }
         )
@@ -193,7 +202,7 @@ def _exception_row(args: dict[str, Any], ctx: Ctx) -> dict[str, Any]:
             raise ToolArgumentError("no exception is possible for this file", "exception_type")
         gds = calc.pct(a.ratios.gds)
         tds = calc.pct(a.ratios.tds)
-        overage = calc.pct(a.authority.overage_pts)
+        overage = calc.overage_up(a.authority.overage_pts)
         required = a.authority.required
     else:
         required = ctx.policy.minimum_role[args["exception_type"]]

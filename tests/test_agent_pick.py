@@ -30,6 +30,28 @@ def test_kinds_pick_the_banded_loans():
     assert do("su-01", "tds_minor") == "DMC-2026-00102"
 
 
+def test_bands_use_the_unrounded_overage_and_the_facts_thresholds(monkeypatch):
+    import types
+    from decimal import Decimal
+
+    import agent_pick
+
+    senior, committee = FACTS.senior_uw_max_pts, FACTS.committee_max_pts
+    tiny = Decimal("0.004")
+
+    def band(over):
+        fake = types.SimpleNamespace(ratios=types.SimpleNamespace(tds_overage=over))
+        monkeypatch.setattr(agent_pick.calc, "assess_record", lambda loan, facts: fake)
+        return (do("uw-01", "tds_minor") is not None, do("uw-01", "tds_major") is not None)
+
+    assert band(Decimal(0)) == (False, False)
+    assert band(tiny) == (True, False)  # above zero, although it rounds to 0.00
+    assert band(senior) == (True, False)
+    assert band(senior + tiny) == (False, True)  # never rounded down into the minor band
+    assert band(committee) == (False, True)
+    assert band(committee + tiny) == (False, False)
+
+
 def test_none_found_and_bad_input():
     assert do("br-03", "tds_major") is None
     with pytest.raises(PickError):

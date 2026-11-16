@@ -8,11 +8,15 @@ Order, first match wins:
 
 from __future__ import annotations
 
+import decimal
 import hashlib
 import json
+import math
 import re
 from dataclasses import dataclass
 from typing import Any
+
+import psycopg
 
 from rag_agent.agent import tools
 from rag_agent.agent.ctx import Ctx
@@ -20,7 +24,15 @@ from rag_agent.agent.errors import DbRejected, ToolArgumentError
 from rag_agent.agent.mockdata import User, visible_to
 from rag_agent.agent.schema import validate
 
-LOAN_RE = re.compile(r"DMC-[0-9]{4}-[0-9]{5}", re.IGNORECASE)
+# a loan number counts only as a whole token: not inside a longer word or a longer digit run
+LOAN_RE = re.compile(r"(?<![A-Za-z0-9-])DMC-[0-9]{4}-[0-9]{5}(?![0-9])", re.IGNORECASE)
+# executor failures that become error / executor_error; anything else propagates
+EXECUTOR_ERRORS = (
+    KeyError,
+    TypeError,
+    decimal.InvalidOperation,
+    psycopg.errors.ForeignKeyViolation,
+)
 FREE_TEXT = ("subject", "body", "justification", "requested_value", "compensating_factors", "query")
 PROVENANCE_TOOLS = ("draft_reply", "prepare_exception_request")
 CLEAR_STRING_MAX = 64
@@ -94,6 +106,8 @@ def args_digest(raw: Any, args: dict[str, Any] | None, schema: dict[str, Any] | 
             out[key if key in known else "_unexpected"] = _digest(
                 json.dumps(value, sort_keys=True, ensure_ascii=False)
             )
+        elif isinstance(value, float) and not math.isfinite(value):
+            out[key] = _digest(repr(value))  # NaN / Infinity never reach the jsonb column
         elif (
             isinstance(value, bool | int | float)
             or value is None
@@ -218,7 +232,7 @@ def _run(call: ToolCall, args: dict[str, Any], ctx: Ctx) -> ToolOutcome:
         raise _Stop(9, "invalid_arguments", exc.field, reached=not guarded) from None
     except DbRejected:
         data = {"status": "error", "reason": "db_rejected"}
-    except Exception:
+    except EXECUTOR_ERRORS:
         data = {"status": "error", "reason": "executor_error"}
     status = data["status"]
     body = {k: v for k, v in data.items() if k != "status"}

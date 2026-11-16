@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from decimal import ROUND_HALF_UP, Decimal, localcontext
+from decimal import ROUND_CEILING, ROUND_HALF_UP, Decimal, localcontext
 from typing import Any
 
 from rag_agent.agent.facts import Facts, Limits
@@ -35,6 +35,14 @@ def money(value: Decimal) -> Decimal:
 
 def pct(value: Decimal) -> Decimal:
     return round_half_up(value, 2)
+
+
+def overage_up(value: Decimal) -> Decimal:
+    """Overage in points for display and storage: rounded UP to 2 dp, never down (POL-003).
+
+    Zero or negative (within the limit) gives 0.00. Routing never uses this value.
+    """
+    return max(value, Decimal(0)).quantize(Decimal("0.01"), rounding=ROUND_CEILING)
 
 
 def periodic_rate(rate_pct: Decimal, compounding: str, payments_per_year: int) -> Decimal:

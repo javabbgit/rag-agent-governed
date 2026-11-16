@@ -133,6 +133,21 @@ def test_p25_ltv_and_income_documents(repo):
     assert approvals.approve(docs, "su-01", repo=repo)["status"] == "approved"
 
 
+def test_nan_argument_denial_writes_its_policy_event(repo):
+    raw = (
+        '{"principal": NaN, "product_code": "FX5-C", "amortization_years": 25,'
+        ' "payment_frequency": "monthly"}'
+    )
+    out = check_and_run({"name": "calculate_payment", "arguments": raw}, make_ctx(repo=repo))
+    assert (out.status, out.reason) == ("denied", "invalid_arguments")
+    rows = sql(
+        "SELECT tool, decision, reason, reached_executor,"
+        " args_digest->'principal' ? 'sha256', args_digest->>'amortization_years'"
+        " FROM agent.policy_events"
+    )
+    assert rows == [("calculate_payment", "deny", "invalid_arguments", False, True, "25")]
+
+
 def test_every_call_is_logged(repo):
     draft(repo)
     rows = sql("SELECT tool, decision, reached_executor FROM agent.policy_events")

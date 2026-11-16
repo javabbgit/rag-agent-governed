@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 import re
 from typing import Any
 
@@ -53,7 +54,19 @@ def check_supported(schema: Any, where: str = "$") -> None:
 
 
 def _is_number(value: Any) -> bool:
-    return isinstance(value, int | float) and not isinstance(value, bool)
+    """An int or a finite float; json.loads accepts NaN and +/-Infinity, a number here does not."""
+    if isinstance(value, bool):
+        return False
+    if isinstance(value, float):
+        return math.isfinite(value)
+    return isinstance(value, int)
+
+
+def _is_integer(value: Any) -> bool:
+    """An int, or a float whose value is whole (25.0)."""
+    if isinstance(value, bool):
+        return False
+    return isinstance(value, int) or (isinstance(value, float) and value.is_integer())
 
 
 def _type_ok(kind: str, value: Any) -> bool:
@@ -64,7 +77,7 @@ def _type_ok(kind: str, value: Any) -> bool:
     if kind == "number":
         return _is_number(value)
     if kind == "integer":
-        return isinstance(value, int) and not isinstance(value, bool)
+        return _is_integer(value)
     if kind == "array":
         return isinstance(value, list)
     return isinstance(value, bool)

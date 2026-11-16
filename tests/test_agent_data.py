@@ -153,10 +153,23 @@ def test_l_minor_and_l_major_bands_are_locked():
         loan = next(x for x in LOANS if x["loan_number"] == num)
         assert loan["underwriter_id"] == "uw-01"
         assert loan["stage"] in mockdata.IN_PROGRESS_STAGES
-        return calc.pct(calc.assess_record(loan, FACTS).ratios.tds_overage)
+        return calc.assess_record(loan, FACTS).ratios.tds_overage  # unrounded
 
-    assert Decimal("0.01") <= overage("DMC-2026-00102") <= Decimal("2.00")
-    assert Decimal("2.01") <= overage("DMC-2026-00103") <= Decimal("4.00")
+    senior, committee = FACTS.senior_uw_max_pts, FACTS.committee_max_pts
+    assert 0 < overage("DMC-2026-00102") <= senior
+    assert senior < overage("DMC-2026-00103") <= committee
+
+
+def test_data_report_shows_the_overage_rounded_up():
+    import agent_data_report
+    from rag_agent.agent.facts import FACTS_PATH
+
+    v1_rates = tomllib.loads(FACTS_PATH.read_text(encoding="utf-8"))["v1"]["rates"]
+    for loan in LOANS:
+        exact = calc.assess_record(loan, FACTS).authority.overage_pts
+        shown = Decimal(agent_data_report.row_for(loan, FACTS, v1_rates)["overage"])
+        assert shown == calc.overage_up(exact)
+        assert 0 <= shown - exact < Decimal("0.01"), loan["loan_number"]
 
 
 def test_a_loan_is_within_both_limits():

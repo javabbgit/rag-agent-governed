@@ -201,6 +201,114 @@ def test_authority_boundaries_use_unrounded_values():
     assert calc.authority(just_over, 0, FACTS).required == "credit_committee"
 
 
+TINY = Decimal("0.004")
+CENT = Decimal("0.01")
+
+
+def test_overage_up_rounds_a_positive_overage_up_to_two_places():
+    assert calc.overage_up(Decimal("2.004")) == Decimal("2.01")
+    assert calc.overage_up(Decimal("4.004")) == Decimal("4.01")
+    assert calc.overage_up(Decimal("2.00")) == Decimal("2.00")
+    assert calc.overage_up(Decimal("2.0000001")) == Decimal("2.01")
+    assert calc.overage_up(Decimal("0.65")) == Decimal("0.65")
+    assert calc.overage_up(Decimal(0)) == Decimal("0.00")
+    assert calc.overage_up(Decimal("-1.234")) == Decimal("0.00")
+    assert str(calc.overage_up(Decimal("2"))) == "2.00"
+    # pct is unchanged: half-up
+    assert calc.pct(Decimal("2.004")) == Decimal("2.00")
+
+
+def test_routing_uses_the_unrounded_overage_and_display_rounds_up():
+    limit = FACTS.limits.tds_max_pct
+    senior, committee = FACTS.senior_uw_max_pts, FACTS.committee_max_pts
+    a = calc.authority(0, limit + senior + TINY, FACTS)
+    assert a.required == "credit_committee"
+    assert calc.overage_up(a.overage_pts) == senior + CENT
+    a = calc.authority(0, limit + committee + TINY, FACTS)
+    assert a.required == "not_exceptable"
+    assert calc.overage_up(a.overage_pts) == committee + CENT
+    a = calc.authority(0, limit + senior, FACTS)
+    assert a.required == "senior_underwriter"
+    assert calc.overage_up(a.overage_pts) == senior
+
+
+def test_calculate_payment_shows_overage_rounded_up(monkeypatch):
+    limits = FACTS.limits
+    over = FACTS.senior_uw_max_pts + TINY
+    tds = limits.tds_max_pct + over
+    crafted = calc.LoanAssessment(
+        Decimal("6.44"),
+        "contract_plus_buffer",
+        Decimal("2664.76"),
+        calc.Ratios(Decimal(30), tds, Decimal(30) - limits.gds_max_pct, over, False),
+        calc.authority(Decimal(30), tds, FACTS),
+    )
+    monkeypatch.setattr(calc, "assess", lambda *a, **k: crafted)
+    out = run(
+        principal=400000,
+        product_code="FX5-C",
+        amortization_years=25,
+        payment_frequency="monthly",
+        gross_annual_income=120000,
+    )
+    # e.g. TDS 44.00 with overage 2.01: the ratio is half-up, the overage never rounds down
+    assert out["tds_pct"] == float(limits.tds_max_pct + FACTS.senior_uw_max_pts)
+    assert out["tds_overage_pts"] == float(FACTS.senior_uw_max_pts + CENT)
+    assert out["gds_overage_pts"] == 0.0 and out["within_limits"] is False
+
+
+BASE = {"principal": 400000, "product_code": "FX5-C", "payment_frequency": "monthly"}
+
+
+def test_whole_float_amortization_gives_the_same_result_as_the_integer():
+    as_int = run(**BASE, amortization_years=25, gross_annual_income=120000)
+    as_float = run(**BASE, amortization_years=25.0, gross_annual_income=120000)
+    assert as_float == as_int
+    assert as_float["amortization_years"] == 25 and type(as_float["amortization_years"]) is int
+    raw = (
+        '{"principal": 400000, "product_code": "FX5-C", "payment_frequency": "monthly",'
+        ' "amortization_years": 25.0, "gross_annual_income": 120000}'
+    )
+    out = check_and_run({"name": "calculate_payment", "arguments": raw}, make_ctx())
+    assert out.status == "ok" and out.data == {k: v for k, v in as_int.items() if k != "status"}
+    half = check_and_run(call("calculate_payment", **BASE, amortization_years=25.5), make_ctx())
+    assert (half.reason, half.data["field"]) == ("invalid_arguments", "amortization_years")
+
+
+@pytest.mark.parametrize("years", [float("nan"), float("inf"), "abc"])
+def test_unusable_amortization_with_schema_validation_off_is_invalid_arguments(years):
+    off = {"AGENT_DISABLE": "schema_validation", "AGENT_DEFENSES_OFF_ACK": "1"}
+    ctx = make_ctx(env=off)
+    out = check_and_run(call("calculate_payment", **BASE, amortization_years=years), ctx)
+    assert (out.status, out.reason) == ("denied", "invalid_arguments")
+    assert out.data["field"] == "amortization_years" and out.reached_executor
+    assert len(ctx.repo.events) == 1
+
+
+@pytest.mark.parametrize(
+    ("frequency", "n_payments"),
+    [("monthly", 300), ("semi_monthly", 600), ("biweekly", 650), ("weekly", 1300)],
+)
+def test_n_payments_for_level_frequencies(frequency, n_payments):
+    out = run(
+        principal=400000, product_code="FX5-C", amortization_years=25, payment_frequency=frequency
+    )
+    assert out["n_payments"] == n_payments == 25 * out["payments_per_year"]
+    assert "periodic_rate" in out and "periodic_rate_monthly" not in out
+
+
+@pytest.mark.parametrize("frequency", ["accelerated_biweekly", "accelerated_weekly"])
+def test_accelerated_output_names_the_monthly_rate_and_has_no_n_payments(frequency):
+    out = run(
+        principal=400000, product_code="FX5-C", amortization_years=25, payment_frequency=frequency
+    )
+    monthly = run(
+        principal=400000, product_code="FX5-C", amortization_years=25, payment_frequency="monthly"
+    )
+    assert "n_payments" not in out and "periodic_rate" not in out
+    assert out["periodic_rate_monthly"] == monthly["periodic_rate"]
+
+
 def test_facts_missing_key_names_the_key():
     data = {
         "ratios": {

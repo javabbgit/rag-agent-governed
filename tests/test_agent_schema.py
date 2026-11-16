@@ -43,7 +43,15 @@ OBJ = {
         ({"s": "ab", "n": 1.5}, None),
         ({"s": "ab", "n": True}, ("n", "type")),  # bool is never a number
         ({"s": "ab", "i": True}, ("i", "type")),
-        ({"s": "ab", "i": 1.0}, ("i", "type")),
+        ({"s": "ab", "i": 1.0}, None),  # a whole float is an integer
+        ({"s": "ab", "i": 1.5}, ("i", "type")),
+        ({"s": "ab", "i": 0.0}, ("i", "minimum")),
+        ({"s": "ab", "n": float("nan")}, ("n", "type")),  # a number must be finite
+        ({"s": "ab", "n": float("inf")}, ("n", "type")),
+        ({"s": "ab", "n": float("-inf")}, ("n", "type")),
+        ({"s": "ab", "i": float("nan")}, ("i", "type")),
+        ({"s": "ab", "i": float("inf")}, ("i", "type")),
+        ({"s": "ab", "n": 10**400}, ("n", "maximum")),  # a huge int does not overflow the check
         ({"s": "ab", "e": "c"}, ("e", "enum")),
         ({"s": "ab", "l": []}, ("l", "minItems")),
         ({"s": "ab", "l": ["aa", "bb", "cc"]}, ("l", "maxItems")),
@@ -53,6 +61,14 @@ OBJ = {
 )
 def test_validate(value, expected):
     assert validate(OBJ, value) == expected
+
+
+def test_non_finite_json_literals_fail_the_number_type():
+    import json
+
+    for text in ("NaN", "Infinity", "-Infinity", "1e999"):
+        value = json.loads('{"s": "ab", "n": ' + text + "}")
+        assert validate(OBJ, value) == ("n", "type"), text
 
 
 def test_unsupported_keyword_raises_at_load():
