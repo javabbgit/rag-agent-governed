@@ -40,6 +40,18 @@ class ChatResult:
 
 
 @dataclass
+class ToolChatResult:
+    message: dict[str, Any]  # the assistant message as returned, for a verbatim echo
+    finish_reason: str | None
+    model: str
+    resolved_model: str | None
+    usage: dict[str, Any] | None
+    latency_ms: float
+    call_id: str | None = None
+    cost_usd: float | None = None
+
+
+@dataclass
 class EmbedResult:
     vectors: list[list[float]]
     model: str
@@ -151,6 +163,40 @@ class LLMClient:
             call_id=_header(headers, "x-litellm-call-id"),
             cost_usd=_number(_header(headers, "x-litellm-response-cost")),
             attempted_retries=_number(_header(headers, "x-litellm-attempted-retries"), int),
+        )
+
+    def chat_tools(
+        self, messages: list[dict[str, Any]], tools: list[dict[str, Any]], **kw: Any
+    ) -> ToolChatResult:
+        """One tool-calling chat request for the agent loop. Never retried by the SDK."""
+        start = time.perf_counter()
+        try:
+            raw = self._chat.with_options(max_retries=0).chat.completions.with_raw_response.create(
+                model=self.settings.chat_model,
+                messages=messages,  # type: ignore[arg-type]
+                tools=tools,  # type: ignore[arg-type]
+                **kw,
+            )
+            response = raw.parse()
+        except (openai.OpenAIError, LLMError) as exc:
+            raise self._translate(exc) from None
+        latency_ms = (time.perf_counter() - start) * 1000
+        if not response.choices:
+            raise LLMError("chat response has no choices")
+        headers = raw.headers
+        resolved = headers.get("x-litellm-model-name")
+        if resolved is None and self.settings.llm_mode == "direct":
+            resolved = response.model
+        choice = response.choices[0]
+        return ToolChatResult(
+            message=choice.message.model_dump(exclude_unset=True),
+            finish_reason=choice.finish_reason,
+            model=response.model,
+            resolved_model=resolved,
+            usage=response.usage.model_dump() if response.usage else None,
+            latency_ms=latency_ms,
+            call_id=_header(headers, "x-litellm-call-id"),
+            cost_usd=_number(_header(headers, "x-litellm-response-cost")),
         )
 
     def embed(self, texts: list[str], timeout: float | None = None) -> EmbedResult:

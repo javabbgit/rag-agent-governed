@@ -1,0 +1,8 @@
+total = "4a4e61b6f12bcb59de231c3faa952018ef4c641fd3cfaa92f3f14a3b23b10dc3"
+
+[tools]
+calculate_payment = "79d7a3940ae0e54fae8bc45f0aeeb3f33c6ae06a348e7491af147a36a1ce650b"
+draft_reply = "4c659cd746094c5ca7c28904d60ab56c29da85eb503f29583d199ec249b42e2c"
+get_loan_status = "db736d760cb00a93df2ecea10d61941425d999b70407da90b4f824712d8bb472"
+prepare_exception_request = "f92c92d0f9fdc077901d2ed151401fc46d49351cb7211eca05174b0ad743f902"
+search_policy = "16f7ac2a7ff09816ff3edeec1317e2d1338e8775cd2934b94f58501e8a8c5bf9"

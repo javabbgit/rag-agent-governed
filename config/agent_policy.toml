@@ -1,0 +1,53 @@
+# Agent policy. Human-owned. Facts keys are names, never numbers (see corpus/facts.toml).
+
+[limits]
+max_chat_calls = 8
+max_tool_calls = 12
+max_calls_per_message = 3
+max_denials = 3
+max_exception_drafts_per_run = 1
+
+[roles.broker]
+tools = ["search_policy", "get_loan_status", "calculate_payment", "draft_reply"]
+scope = "own_submitted"
+
+[roles.underwriter]
+tools = [
+  "search_policy",
+  "get_loan_status",
+  "calculate_payment",
+  "draft_reply",
+  "prepare_exception_request",
+]
+scope = "assigned"
+
+[roles.senior_underwriter]
+tools = ["search_policy", "get_loan_status", "calculate_payment", "draft_reply"]
+scope = "all"
+
+[roles.credit_committee]
+tools = ["search_policy", "get_loan_status", "calculate_payment", "draft_reply"]
+scope = "all"
+
+[side_effect]
+tools = ["prepare_exception_request"]
+
+# Exception authority (POL-010). Ratio overage thresholds are facts keys.
+[authority.gds_tds_ratio]
+senior_underwriter_max_pts = "exceptions.senior_uw_max_pts"
+credit_committee_max_pts = "exceptions.committee_max_pts"
+
+# Lowest role that may approve; credit_committee may approve anything senior_underwriter may.
+[authority.minimum_role]
+income_documents = "senior_underwriter"
+rate_hold = "senior_underwriter"
+ltv = "credit_committee"
+
+[defenses]
+role_allowlist = true
+schema_validation = true
+tool_pinning = true
+scope_check = true
+arg_provenance = true
+approval_gate = true
+data_envelope = true

@@ -17,6 +17,7 @@ EXPECTED = {
     "bad_key": GatewayAuthError,
     "not_allowed": ModelNotAllowedError,
     "pii": PolicyBlockedError,
+    "blocked_tool_message": PolicyBlockedError,
     "non_english": PolicyBlockedError,
     "budget_exceeded": BudgetExceededError,
     "rate_limited": RateLimitedError,

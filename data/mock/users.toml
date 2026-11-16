@@ -1,0 +1,37 @@
+# Mock users for the agent demo. Fictional ids only; no names or contact details.
+# Each user has exactly one role.
+
+[[users]]
+user_id = "br-01"
+role = "broker"
+org = "Broker firm A"
+
+[[users]]
+user_id = "br-02"
+role = "broker"
+org = "Broker firm B"
+
+[[users]]
+user_id = "br-03"
+role = "broker"
+org = "Broker firm C"
+
+[[users]]
+user_id = "uw-01"
+role = "underwriter"
+
+[[users]]
+user_id = "uw-02"
+role = "underwriter"
+
+[[users]]
+user_id = "su-01"
+role = "senior_underwriter"
+
+[[users]]
+user_id = "su-02"
+role = "senior_underwriter"
+
+[[users]]
+user_id = "cc-01"
+role = "credit_committee"

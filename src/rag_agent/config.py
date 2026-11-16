@@ -43,6 +43,9 @@ class Settings(BaseSettings):
     question_max_chars: int = 1000
     answer_log_dir: str = "reports/answers"
     embed_timeout_s: float | None = None  # default: llm_timeout_s
+    agent_max_tokens: int = 2048
+    agent_prompt: str = "src/rag_agent/prompts/agent_v1.md"
+    agent_log_dir: str = "reports/agent"
 
     @property
     def effective_embed_timeout_s(self) -> float:
