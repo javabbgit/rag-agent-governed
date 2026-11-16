@@ -24,7 +24,7 @@ agents write code only within these rules.
    (the gateway's FAKE_SIN 193 456 787, Luhn-valid, not anyone's number), used only for the PII probe.
    Corpus text under corpus/docs/ is English, ASCII only, and contains no person names,
    phone numbers, emails, street addresses, postal codes, or digit runs of 9 or more.
-7. Side effects (later milestones): tools with side effects must stop in a pending-approval state,
+7. Side effects (later milestones): tools with side effects must stop at an `awaiting_raise` draft that a human raises to `pending_approval`,
    enforced in code by the policy layer, never by prompt wording.
 8. Evaluation integrity (later milestones): never edit gold labels, eval datasets or thresholds
    to make a result pass. Tune on dev, report on test. Do not rely on temperature for determinism:
@@ -105,7 +105,7 @@ Commands: make reranker-check | make eval-rerank-sweep SPLIT=dev |
 Ask before changing: docker-compose.yml image pins, the reranker revision, RERANK_CANDIDATES,
 eval/fallback/threshold.toml.
 
-21. Answers go only through src/rag_agent/answer.py. In gateway mode never fall back to the direct
+21. Answers to `make ask` go only through src/rag_agent/answer.py; agent chat goes only through src/rag_agent/agent/loop.py and LLMClient.chat_tools. In gateway mode never fall back to the direct
     endpoint or to another model alias on any error; map gateway errors through the fixture-driven
     classifier and return the fixed messages in messages.py. Never show raw gateway error text or keys.
 22. Citations are validated in code (citations.py). Do not relax validation, add retries, or change
@@ -114,3 +114,20 @@ eval/fallback/threshold.toml.
 23. Answer logs never store interactive question or answer text (sha256 only); tests write logs to
     tmp_path only. eval-answer runs on dev; the test split needs --final and is run once in D10.
     D6 commands: make ask Q="...", make eval-answer SPLIT=dev REPEATS=3, make answer-review-tally FILE=...
+24. Never edit src/rag_agent/agent/tool_specs.json without saying so; never create or regenerate
+    tools.lock or run `make tools-lock`. The human regenerates the lock in its own commit after review.
+25. Only approvals.py (raise, discard, approve, refuse) may move an exception request out of
+    `awaiting_raise`; the agent can only prepare drafts. The single exception is
+    tools.execute_unguarded when approval_gate is off, and the database rejects it. Agent chat goes
+    only through src/rag_agent/agent/loop.py and LLMClient.chat_tools (max_retries=0): no retry in
+    the loop and no client built in the loop. Never add a code path that sends messages, emails or
+    HTTP requests to external systems. Every tool call goes through policy.py.
+26. Policy numbers come only from corpus/facts.toml; agent limits and defense switches come only from
+    config/agent_policy.toml. Never hard-code either.
+27. Mock data in data/mock/ must stay free of names, phone numbers, emails, street addresses, postal
+    codes and runs of 9 or more digits. Defenses may be switched off only with
+    AGENT_DEFENSES_OFF_ACK=1, in tests, governance drills or D9 runs, never in demos. make test-db
+    resets the agent tables; run make agent-seed afterwards.
+    D7 commands: make agent Q="..." AS=<user_id>, make agent-smoke REPEATS=2, make agent-audit
+    [SINCE=..], make exceptions / raise / discard / approve / refuse ID=.. AS=.., make agent-seed
+    [RESET=1], make agent-pick WHO=.. [KIND=..]; make tools-lock is for the human only.
