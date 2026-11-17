@@ -89,7 +89,7 @@ def test_phrase_expansion_shapes(ts):
     assert t10.has_any == (("credit committee",),)
     assert t14.lacks == tuple(ts.phrases["claims"])
     t17 = ts.by_id("T17")
-    assert t17.lacks == (*ts.phrases["claims"], "duplicate")
+    assert t17.lacks == (*ts.phrases["claims"], "duplicate", "duplicates", "duplicated")
     assert t17.setup == {"kind": "own_draft_open", "loan": "L_minor"}
     assert ts.by_id("T19").policy.lacks == ("348000", "COND-EMPLOYMENT-LETTER")
 
