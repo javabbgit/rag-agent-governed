@@ -31,8 +31,8 @@ class Settings(BaseSettings):
     embed_base_url: str | None = None
     embed_api_key: str | None = None
     embed_dim: int = 768
-    llm_timeout_s: float = 180.0
-    llm_max_retries: int = 1
+    llm_timeout_s: float = 75.0
+    llm_max_retries: int = 0
     database_url: str = "postgresql://rag:rag@127.0.0.1:5433/rag"
     reranker_url: str = "http://127.0.0.1:8081"
     reranker_model_rev: str = "2cfc18c9415c912f9d8155881c133215df768a70"
@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     answer_max_tokens: int = 2048
     question_max_chars: int = 1000
     answer_log_dir: str = "reports/answers"
-    embed_timeout_s: float | None = None  # default: llm_timeout_s
+    embed_timeout_s: float | None = 10.0  # None: llm_timeout_s
     agent_max_tokens: int = 2048
     agent_prompt: str = "src/rag_agent/prompts/agent_v1.md"
     agent_log_dir: str = "reports/agent"

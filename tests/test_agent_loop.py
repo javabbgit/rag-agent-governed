@@ -281,6 +281,36 @@ def test_awaiting_raise_continues_to_a_final_answer(settings):
     assert res.cited_markers == ["S1"] and res.unknown_markers == [] and res.n_embed_calls == 1
 
 
+def test_tool_outputs_has_one_entry_per_tool_call_with_the_outcome_data(settings):
+    calls = [status_call(OWN, "t1"), status_call(BR02_LOAN, "t2"), tc("nope", "t3")]
+    client = ScriptedClient(tool_reply(*calls), final_reply("Done."))
+    res = run(settings, client, "Show my loans.", user="br-01")
+    out = res.tool_outputs
+    assert [(o["turn"], o["tool"], o["status"]) for o in out] == [
+        (t["turn"], t["tool"], t["status"]) for t in res.tool_trace
+    ]
+    assert [o["tool"] for o in out] == ["get_loan_status", "get_loan_status", "unknown"]
+    assert out[0]["data"]["loan_number"] == OWN and out[0]["data"]["stage"]
+    assert out[1]["status"] == "denied" and "stage" not in out[1]["data"]
+
+
+def test_run_log_line_has_no_tool_outputs(settings, tmp_path):
+    client = ScriptedClient(tool_reply(status_call(OWN, "t1")), final_reply("Done."))
+    res = loop.run_agent(
+        "Show my loan.",
+        "br-01",
+        config=agent_config(),
+        runtime=runtime_for(settings, client),
+        repo=FakeRepo(),
+        log=True,
+        log_dir=str(tmp_path),
+    )
+    assert len(res.tool_outputs) == 1
+    (path,) = tmp_path.glob("runs_*.jsonl")
+    line = json.loads(path.read_text(encoding="utf-8").splitlines()[-1])
+    assert line["run_id"] == res.run_id and "tool_outputs" not in line
+
+
 def test_matching_a_pending_approval_request_ends_completed_without_c1(settings):
     repo = FakeRepo()
     repo._new_request(

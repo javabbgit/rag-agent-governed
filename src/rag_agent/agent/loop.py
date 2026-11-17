@@ -52,6 +52,8 @@ class AgentResult:
     exception_request_ids: list[str] = field(default_factory=list)
     draft_ids: list[str] = field(default_factory=list)
     tool_trace: list[dict[str, Any]] = field(default_factory=list)
+    # {"turn", "tool", "status", "data"} per tool call, for evaluation; never in the run log
+    tool_outputs: list[dict[str, Any]] = field(default_factory=list)
     sources: list[list[str]] = field(default_factory=list)  # [marker, chunk_id]
     cited_markers: list[str] = field(default_factory=list)
     unknown_markers: list[str] = field(default_factory=list)
@@ -190,11 +192,12 @@ def _loop(
                 fn = call.get("function") or {}
                 known = fn.get("name") in config.schemas
                 raw = fn.get("arguments")
+                tool_name = fn.get("name") if known else "unknown"
                 res.tool_trace.append(
                     {
                         "turn": turn,
                         "rule_stage": outcome.step,
-                        "tool": fn.get("name") if known else "unknown",
+                        "tool": tool_name,
                         "status": outcome.status,
                         "reason": outcome.reason,
                         "reached_executor": outcome.reached_executor,
@@ -202,6 +205,14 @@ def _loop(
                         "args_digest": policy.args_digest(
                             raw, _parsed(raw), config.schemas.get(fn.get("name"))
                         ),
+                    }
+                )
+                res.tool_outputs.append(
+                    {
+                        "turn": turn,
+                        "tool": tool_name,
+                        "status": outcome.status,
+                        "data": outcome.data,
                     }
                 )
                 drafted = outcome.status in ("awaiting_raise", "pending_approval")
