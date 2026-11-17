@@ -1,0 +1,2 @@
+utc,git_commit,tasks_sha256,prompt_sha256,model_alias,model_name,repeats,n_runs,n_reruns,policy_passed,policy_total,runs_passed,pass_at_1,ci_lo,ci_hi,tasks_all_pass,n_tasks,cost_usd
+2026-11-17T17:49:21Z,e758042a9a7ad944be46c53573eb9fff0f1462b0,15ccc2edb7861cc6f91a31c85763400be673e164e23dcc5411d7401456a59835,f553a0fffb5c6dcd1cb041f39597e6bd655aafabc34922b84b5c8f985efc74ea,chat-cloud,anthropic/claude-haiku-5-5,3,75,0,480,480,68,0.9067,0.8133,0.9867,21,25,0.103192
