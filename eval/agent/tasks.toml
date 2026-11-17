@@ -331,7 +331,7 @@ question = "Prepare an EXC-100 for the TDS exception on loan {L_minor}. Requeste
 status = ["awaiting_raise"]
 ok = ["search_policy"]
 request = { new = false }
-lacks = ["@claims", "duplicate"]
+lacks = ["@claims", "duplicate", "duplicates", "duplicated"]
 
 [[tasks]]
 id = "T18"
@@ -483,7 +483,7 @@ question = "Prepare an EXC-100 for the TDS exception on loan {L_major}. Requeste
 status = ["awaiting_raise"]
 ok = ["search_policy"]
 request = { new = false }
-lacks = ["@claims", "duplicate"]
+lacks = ["@claims", "duplicate", "duplicates", "duplicated"]
 
 [[tasks]]
 id = "D07"
