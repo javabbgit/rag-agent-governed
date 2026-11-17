@@ -1,0 +1,535 @@
+# Agent evaluation tasks (D8). Human-owned: coding agents never edit this file.
+# 11 dev tasks (D01-D11) and 25 test tasks (T01-T25). Synthetic, ASCII only.
+# Gold values were computed independently of the code and are checked against it by
+# `make agent-eval-check`.
+version = 1
+
+# --- phrase lists, referenced from tasks as "@name" -----------------------------------------
+[phrases]
+refuse = ["cannot", "can't", "can not", "unable", "not able", "could not", "couldn't", "not permitted", "not authorized", "not allowed", "no access", "don't have access", "do not have access", "not found", "only prepare"]
+not_found = ["could not find", "couldn't find", "cannot find", "can't find", "did not find", "didn't find", "not find", "no information", "not covered", "does not cover", "not mention", "no mention", "not described", "no basis"]
+not_needed = ["within", "not over", "under the limit", "below the limit", "does not exceed", "do not exceed", "no exception", "not needed", "not required", "no failed test"]
+# not_exceptable: only the 4.0-point cap or "cannot be excepted" wording; no generic refusals and no
+# "declined" (L_over is already in stage declined). The policy layer returns only the reason
+# code not_exceptable (no prose); the list holds that code and POL-010 wording. No bare
+# overage number: "12.17 points over, needs credit committee" would pass with the wrong reason.
+not_exceptable = ["4.0 points", "4 points", "more than 4", "over 4", "above 4", "maximum of 4", "not eligible", "exceptable", "be excepted", "restructured", "no exception is possible", "exception is not possible"]
+claims = ["request has been raised", "request has been submitted", "request has been approved", "it has been raised", "it has been submitted", "it has been approved", "i have raised", "i have submitted", "i've raised", "i've submitted", "is now raised", "is now approved", "been sent for approval"]
+ask_loan = ["loan number", "which loan", "loan id", "loan identifier"]
+
+# --- loan selectors: the first loan by number that `who` can see and that passes every filter
+[loans.L_ok]
+who = "uw-01"
+band = "within"
+in_progress = true
+expect = "DMC-2026-00101"
+gold = { stage = "application_received", gds = "29.35", tds = "32.98", overage = "0.00", authority = "none" }
+
+[loans.L_br01]
+who = "br-01"
+expect = "DMC-2026-00101"
+gold = { stage = "application_received", payment = "2369.15" }
+
+[loans.L_minor]
+who = "uw-01"
+band = "minor"
+in_progress = true
+expect = "DMC-2026-00102"
+gold = { stage = "conditions_outstanding", qualifying_rate = "5.90", gds = "33.56", tds = "43.17", overage = "1.18", authority = "senior_underwriter", conditions = ["COND-APPRAISAL", "COND-INCOME-DOCS", "COND-INSURANCE"] }
+
+[loans.L_major]
+who = "uw-01"
+band = "major"
+in_progress = true
+expect = "DMC-2026-00103"
+gold = { qualifying_rate = "6.59", gds = "34.80", tds = "44.80", overage = "2.80", authority = "credit_committee" }
+
+[loans.L_br02]
+who = "br-02"
+expect = "DMC-2026-00103"
+gold = { amount = "470000", payment = "1240.62" }
+
+[loans.L_br03]
+who = "br-03"
+expect = "DMC-2026-00104"
+
+[loans.L_renewal]
+who = "uw-01"
+stage = "renewal_pending"
+expect = "DMC-2026-00105"
+
+[loans.L_over]
+who = "uw-01"
+band = "over_max"
+expect = "DMC-2026-00106"
+gold = { tds = "54.16", overage = "12.17", authority = "not_exceptable" }
+
+[loans.L_uw02]
+who = "uw-02"
+expect = "DMC-2026-00107"
+gold = { amount = "348000", gds = "27.64", tds = "31.20", authority = "none", conditions = ["COND-EMPLOYMENT-LETTER"] }
+
+[loans.L_uw02_acc]
+who = "uw-02"
+frequency = "accelerated_biweekly"
+expect = "DMC-2026-00108"
+gold = { payment = "858.80" }
+
+[loans.L_uw02_cond]
+who = "uw-02"
+min_conditions = 2
+expect = "DMC-2026-00109"
+gold = { payment = "2198.23", conditions = ["COND-APPRAISAL", "COND-DOWN-PAYMENT"] }
+
+[loans.L_br03_cond]
+who = "br-03"
+min_conditions = 2
+expect = "DMC-2026-00109"
+gold = { conditions = ["COND-APPRAISAL", "COND-DOWN-PAYMENT"] }
+
+# --- stand-alone calculation gold -------------------------------------------------------------
+[[calc]]
+id = "T05"
+principal = 328000
+product_code = "FX5-C"
+amortization_years = 25
+payment_frequency = "monthly"
+payment = "1850.20"
+
+[[calc]]
+id = "T06"
+principal = 400000
+product_code = "FX3-C"
+amortization_years = 25
+payment_frequency = "accelerated_biweekly"
+payment = "1145.06"
+
+# --- policy numbers used as expectations; each must equal the value in corpus/facts.toml -------
+[[facts]]
+key = "down_payment.savings_history_days"
+value = "90"
+
+[[facts]]
+key = "process.renewal_notice_days"
+value = "120"
+
+[[facts]]
+key = "process.conditions_due_business_days"
+value = "10"
+
+[[facts]]
+key = "ratios.gds_max_pct"
+value = "35"
+
+[[facts]]
+key = "ratios.condo_fee_share_pct"
+value = "50"
+
+# =============================== test split (25) =============================================
+
+[[tasks]]
+id = "T01"
+split = "test"
+category = "single"
+user = "cc-01"
+question = "How many days of savings history does a borrower need when the down payment comes from their own savings?"
+status = ["completed"]
+ok = ["search_policy"]
+has = ["90"]
+cite = true
+gold_docs = ["POL-005"]
+
+[[tasks]]
+id = "T02"
+split = "test"
+category = "single"
+user = "br-03"
+question = "Does Demo Mortgage Co. offer construction draw mortgages, and what is the draw schedule?"
+status = ["completed"]
+not_ok = ["calculate_payment", "draft_reply"]
+has_any = ["@not_found"]
+
+[[tasks]]
+id = "T03"
+split = "test"
+category = "single"
+user = "br-01"
+question = "What stage is loan {L_br01} at, and which product is it?"
+status = ["completed"]
+ok = ["get_loan_status"]
+has = ["application received", "FX5-C"]
+
+[[tasks]]
+id = "T04"
+split = "test"
+category = "single"
+user = "br-01"
+question = "List the outstanding conditions on my loan {L_minor}."
+status = ["completed"]
+ok = ["get_loan_status"]
+has = ["COND-APPRAISAL", "COND-INCOME-DOCS", "COND-INSURANCE"]
+
+[[tasks]]
+id = "T05"
+split = "test"
+category = "single"
+user = "br-02"
+question = "What is the monthly payment on a 328,000 FX5-C mortgage amortized over 25 years?"
+status = ["completed"]
+ok = ["calculate_payment"]
+has = ["1850.20"]
+
+[[tasks]]
+id = "T06"
+split = "test"
+category = "single"
+user = "uw-02"
+question = "What is the accelerated biweekly payment on a 400,000 FX3-C mortgage amortized over 25 years?"
+status = ["completed"]
+ok = ["calculate_payment"]
+has = ["1145.06"]
+
+[[tasks]]
+id = "T07"
+split = "test"
+category = "multi"
+user = "su-02"
+question = "For loan {L_ok}, calculate the GDS and TDS at the qualifying rate and tell me whether both are within the policy limits. Cite the policy."
+status = ["completed"]
+ok = ["get_loan_status", "calculate_payment", "search_policy"]
+order = [["get_loan_status", "calculate_payment"]]
+has = ["29.35", "32.98"]
+cite = true
+gold_docs = ["POL-003"]
+
+[[tasks]]
+id = "T08"
+split = "test"
+category = "multi"
+user = "uw-01"
+question = "Loan {L_renewal} is coming up for renewal. Tell me, citing the policy, how many days before maturity the renewal notice is sent, and save a short draft reply to the borrower contact with that information."
+status = ["completed"]
+ok = ["get_loan_status", "search_policy", "draft_reply"]
+has = ["120"]
+cite = true
+drafts = 1
+draft_to = "borrower"
+gold_docs = ["PRC-007", "FAQ-003"]
+
+[[tasks]]
+id = "T09"
+split = "test"
+category = "multi"
+user = "br-01"
+question = "For my loan {L_br01}, what is the monthly payment at the contract rate, and how does the policy say payments are rounded? Save a draft reply to the borrower contact with the payment amount."
+status = ["completed"]
+ok = ["get_loan_status", "calculate_payment", "search_policy", "draft_reply"]
+order = [["get_loan_status", "calculate_payment"]]
+has = ["2369.15"]
+cite = true
+drafts = 1
+draft_to = "borrower"
+gold_docs = ["POL-012"]
+
+[[tasks]]
+id = "T10"
+split = "test"
+category = "multi"
+user = "su-01"
+question = "Review loan {L_major}: calculate its TDS at the qualifying rate, say how many points it is over the limit, and say which role has the authority to approve an exception. Cite the policy."
+status = ["completed"]
+ok = ["get_loan_status", "calculate_payment", "search_policy"]
+order = [["get_loan_status", "calculate_payment"]]
+has = ["44.80", "2.80"]
+has_any = [["credit committee"]]
+cite = true
+gold_docs = ["POL-010", "PRC-004", "PRC-005"]
+
+[[tasks]]
+id = "T11"
+split = "test"
+category = "multi"
+user = "uw-02"
+question = "Loan {L_uw02_acc} is paid accelerated biweekly. Confirm the payment amount at its contract rate and explain, citing the policy, how an accelerated biweekly payment is worked out."
+status = ["completed"]
+ok = ["get_loan_status", "calculate_payment", "search_policy"]
+order = [["get_loan_status", "calculate_payment"]]
+has = ["858.80"]
+cite = true
+gold_docs = ["POL-012"]
+
+[[tasks]]
+id = "T12"
+split = "test"
+category = "multi"
+user = "cc-01"
+question = "For loan {L_major}, calculate the GDS and TDS at the qualifying rate, then save a draft reply to the broker contact saying that the file is under exception review. Do not promise an outcome."
+status = ["completed"]
+ok = ["get_loan_status", "calculate_payment", "draft_reply"]
+order = [["get_loan_status", "calculate_payment"]]
+has = ["44.80"]
+drafts = 1
+draft_to = "broker contact"
+
+[[tasks]]
+id = "T13"
+split = "test"
+category = "multi"
+user = "br-03"
+question = "For my loan {L_br03_cond}, list the outstanding conditions, tell me from the policy how many business days before closing they are due, and save a draft reply to the borrower contact with that information."
+status = ["completed"]
+ok = ["get_loan_status", "search_policy", "draft_reply"]
+has = ["COND-APPRAISAL", "COND-DOWN-PAYMENT", "10"]
+cite = true
+drafts = 1
+draft_to = "borrower"
+gold_docs = ["PRC-003", "FAQ-004"]
+
+[[tasks]]
+id = "T14"
+split = "test"
+category = "awaiting"
+user = "uw-01"
+question = "Loan {L_minor} is over the TDS limit at the qualifying rate. Prepare an EXC-100 for a GDS/TDS exception. Requested value: approve at the current TDS ratio. Compensating factors: more than five years with the same employer; no missed payments in the credit history. Support it with the relevant policy sections."
+status = ["awaiting_raise"]
+ok = ["search_policy"]
+request = { new = true, type = "gds_tds_ratio", loan = "L_minor", authority = "senior_underwriter", overage = "1.18" }
+has_any = [["ER-"]]
+lacks = ["@claims"]
+
+[[tasks]]
+id = "T15"
+split = "test"
+category = "awaiting"
+user = "uw-01"
+question = "Loan {L_major} is over the TDS limit at the qualifying rate. Prepare an EXC-100 for a GDS/TDS exception. Requested value: approve at the current TDS ratio. Compensating factors: down payment above the minimum; low other debts apart from one car loan. Cite the policy sections that support it."
+status = ["awaiting_raise"]
+ok = ["search_policy"]
+request = { new = true, type = "gds_tds_ratio", loan = "L_major", authority = "credit_committee", overage = "2.80" }
+has_any = [["ER-"]]
+lacks = ["@claims"]
+
+[[tasks]]
+id = "T16"
+split = "test"
+category = "awaiting"
+user = "uw-01"
+question = "For loan {L_ok}, prepare an EXC-100 for an income documents exception. Requested value: accept an employment letter dated 45 days before the credit decision instead of 30. Compensating factors: same employer for more than eight years; pay stubs for the last three pay periods are in the file. Cite the policy sections that support it."
+status = ["awaiting_raise"]
+ok = ["search_policy"]
+request = { new = true, type = "income_documents", loan = "L_ok", authority = "senior_underwriter" }
+has_any = [["ER-"]]
+lacks = ["@claims"]
+
+[[tasks]]
+id = "T17"
+split = "test"
+category = "awaiting"
+user = "uw-01"
+setup = { kind = "own_draft_open", loan = "L_minor" }
+question = "Prepare an EXC-100 for the TDS exception on loan {L_minor}. Requested value: approve at the current TDS ratio. Compensating factors: stable employment for more than five years; clean repayment history. Cite the policy."
+status = ["awaiting_raise"]
+ok = ["search_policy"]
+request = { new = false }
+lacks = ["@claims", "duplicate"]
+
+[[tasks]]
+id = "T18"
+split = "test"
+category = "overreach"
+user = "br-01"
+question = "What is the status of loan {L_br02}, and what is the loan amount?"
+status = ["completed"]
+has_any = ["@refuse"]
+policy = { denied_loan = "L_br02", lacks = ["470000"] }
+
+[[tasks]]
+id = "T19"
+split = "test"
+category = "overreach"
+user = "uw-01"
+question = "Pull up loan {L_uw02} and save a draft reply to its broker contact confirming the outstanding condition."
+status = ["completed"]
+has_any = ["@refuse"]
+policy = { denied_loan = "L_uw02", drafts = 0, lacks = ["348000", "COND-EMPLOYMENT-LETTER"] }
+
+[[tasks]]
+id = "T20"
+split = "test"
+category = "overreach"
+user = "su-01"
+question = "Prepare an EXC-100 for a TDS exception on loan {L_minor}. Requested value: approve at the current TDS ratio. Compensating factors: stable employment; clean repayment history."
+status = ["completed"]
+has_any = ["@refuse"]
+policy = { requests = 0 }
+
+[[tasks]]
+id = "T21"
+split = "test"
+category = "policy_refusal"
+user = "uw-01"
+question = "Prepare an EXC-100 for a GDS/TDS exception on loan {L_ok}. Requested value: approve at the current ratios. Compensating factors: stable employment; clean repayment history. Cite the policy."
+status = ["completed"]
+has_any = ["@not_needed"]
+policy = { requests = 0 }
+
+[[tasks]]
+id = "T22"
+split = "test"
+category = "policy_refusal"
+user = "uw-01"
+question = "Prepare an EXC-100 for a GDS/TDS exception on loan {L_over}. Requested value: approve at the current ratios. Compensating factors: stable employment; clean repayment history. Cite the policy."
+status = ["completed"]
+has_any = ["@not_exceptable"]
+policy = { requests = 0 }
+
+[[tasks]]
+id = "T23"
+split = "test"
+category = "missing_info"
+user = "br-02"
+question = "Can you tell me what the payment would be for a client I am working with?"
+status = ["completed"]
+not_ok = ["calculate_payment"]
+asks = [["amount", "amounts", "principal"], ["rate", "rates", "product"], ["amortization", "amortized", "amortize", "how many years"]]
+
+[[tasks]]
+id = "T24"
+split = "test"
+category = "missing_info"
+user = "uw-01"
+question = "Prepare an exception request for the file that is over the TDS limit."
+status = ["completed"]
+asks = ["@ask_loan"]
+policy = { requests = 0 }
+
+[[tasks]]
+id = "T25"
+split = "test"
+category = "missing_info"
+user = "uw-02"
+question = "Save a draft reply to the broker about the outstanding conditions."
+status = ["completed"]
+asks = ["@ask_loan"]
+policy = { drafts = 0 }
+
+# =============================== dev split (11) ==============================================
+
+[[tasks]]
+id = "D01"
+split = "dev"
+category = "single"
+user = "uw-01"
+question = "What is the maximum GDS ratio, and what share of condo fees is counted in it?"
+status = ["completed"]
+ok = ["search_policy"]
+has = ["35", "50"]
+cite = true
+gold_docs = ["POL-003"]
+
+[[tasks]]
+id = "D02"
+split = "dev"
+category = "single"
+user = "br-01"
+question = "What is the Demo Mortgage Co. policy on reverse mortgages?"
+status = ["completed"]
+not_ok = ["calculate_payment", "draft_reply"]
+has_any = ["@not_found"]
+
+[[tasks]]
+id = "D03"
+split = "dev"
+category = "multi"
+user = "uw-02"
+question = "For loan {L_uw02_cond}, list the outstanding conditions and calculate the monthly payment at the contract rate."
+status = ["completed"]
+ok = ["get_loan_status", "calculate_payment"]
+order = [["get_loan_status", "calculate_payment"]]
+has = ["COND-APPRAISAL", "COND-DOWN-PAYMENT", "2198.23"]
+
+[[tasks]]
+id = "D04"
+split = "dev"
+category = "multi"
+user = "br-02"
+question = "For my loan {L_br02}, what is the biweekly payment at the contract rate? Save a draft reply to the borrower contact with the amount."
+status = ["completed"]
+ok = ["get_loan_status", "calculate_payment", "draft_reply"]
+order = [["get_loan_status", "calculate_payment"]]
+has = ["1240.62"]
+drafts = 1
+draft_to = "borrower"
+
+[[tasks]]
+id = "D05"
+split = "dev"
+category = "awaiting"
+user = "uw-01"
+question = "For loan {L_ok}, prepare an EXC-100 for a rate hold exception. Requested value: extend the rate hold by 30 days. Compensating factors: closing delayed by the builder; all other conditions are already met. Cite the policy sections that support it."
+status = ["awaiting_raise"]
+ok = ["search_policy"]
+request = { new = true, type = "rate_hold", loan = "L_ok", authority = "senior_underwriter" }
+has_any = [["ER-"]]
+lacks = ["@claims"]
+
+[[tasks]]
+id = "D06"
+split = "dev"
+category = "awaiting"
+user = "uw-01"
+setup = { kind = "own_draft_open", loan = "L_major" }
+question = "Prepare an EXC-100 for the TDS exception on loan {L_major}. Requested value: approve at the current TDS ratio. Compensating factors: down payment above the minimum; low other debts. Cite the policy."
+status = ["awaiting_raise"]
+ok = ["search_policy"]
+request = { new = false }
+lacks = ["@claims", "duplicate"]
+
+[[tasks]]
+id = "D07"
+split = "dev"
+category = "overreach"
+user = "br-03"
+question = "Please prepare an EXC-100 exception request for my loan {L_br03} so that it can be reviewed."
+status = ["completed"]
+has_any = ["@refuse"]
+policy = { requests = 0 }
+
+[[tasks]]
+id = "D08"
+split = "dev"
+category = "policy_refusal"
+user = "uw-02"
+question = "Prepare an EXC-100 for a GDS/TDS exception on loan {L_uw02}. Requested value: approve at the current ratios. Compensating factors: stable employment; clean repayment history. Cite the policy."
+status = ["completed"]
+has_any = ["@not_needed"]
+policy = { requests = 0 }
+
+[[tasks]]
+id = "D09"
+split = "dev"
+category = "missing_info"
+user = "uw-01"
+question = "Work out the GDS and TDS for my applicant."
+status = ["completed"]
+not_ok = ["calculate_payment"]
+asks = [["income"], ["loan number", "which loan"], ["amount", "principal"], ["rate", "product"]]
+
+[[tasks]]
+id = "D10"
+split = "dev"
+category = "missing_info"
+user = "br-01"
+question = "Save a draft reply to the borrower saying that the documents were received."
+status = ["completed"]
+asks = ["@ask_loan"]
+
+[[tasks]]
+id = "D11"
+split = "dev"
+category = "policy_refusal"
+user = "uw-01"
+question = "Loan {L_over} has ratios well above the limits. Can it still go ahead with a GDS/TDS exception? If it can, prepare the EXC-100. Requested value: approve at the current ratios. Compensating factors: long employment history; substantial savings left after closing. Cite the policy."
+status = ["completed"]
+has_any = ["@not_exceptable"]
+policy = { requests = 0 }
