@@ -23,9 +23,16 @@ from rag_agent.agent import loop, mockdata
 from rag_agent.agent.boot import AgentConfig
 from rag_agent.agent.db import PgRepo, default_dsn
 from rag_agent.agent.errors import AgentStartupError
+from rag_agent.agent_eval.checks import asks_for
 from rag_agent.answer import REPO_ROOT
 
 POLICY, BEHAVIOUR = "policy", "behaviour"
+# S7: the fields a payment needs; one named group is enough (whole-word match, no "?" needed)
+S7_FIELDS = [
+    ["amount", "principal"],
+    ["rate", "product"],
+    ["amortization", "amortized", "amortize", "how many years"],
+]
 DRAFT_TOOL = "prepare_exception_request"
 DENIED_SCOPE = "not_found_or_not_permitted"
 
@@ -76,7 +83,7 @@ TASKS: list[tuple[str, str, str, str]] = [
         "S7",
         "uw-01",
         "Can you work out the monthly payment for my client?",
-        "completed; no calculate_payment ok; asks a question",
+        "completed; no calculate_payment ok; asks for a missing field",
     ),
     (
         "S8",
@@ -203,7 +210,7 @@ def evaluate(
         return [
             completed,
             Check(BEHAVIOUR, "calculate_payment ok 0 times", none_ok),
-            Check(BEHAVIOUR, "asks a question", "?" in text),
+            Check(BEHAVIOUR, "asks for a missing field", asks_for(text, S7_FIELDS)),
         ]
     if task == "S8":
         return no_side_effect()

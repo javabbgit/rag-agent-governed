@@ -50,6 +50,13 @@ def test_server_error_is_requested_once_whatever_the_retry_setting(settings):
     assert client._chat.max_retries == 3  # chat() keeps the configured retries
 
 
+def test_chat_tools_sends_only_the_loop_keys(settings):
+    client, seen = replay_client(settings, ("gateway_ok", "agent_tool_call"))
+    client.chat_tools(USER, TOOLS, tool_choice="auto", max_tokens=settings.agent_max_tokens)
+    (body,) = chat_bodies(seen)
+    assert set(body) == {"model", "messages", "tools", "tool_choice", "max_tokens"}
+
+
 def test_chat_is_unchanged_by_chat_tools(settings):
     client, seen = replay_client(
         settings, ("gateway_ok", "agent_tool_call"), ("gateway_ok", "chat_ok")

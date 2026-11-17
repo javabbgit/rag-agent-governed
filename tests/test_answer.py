@@ -143,6 +143,8 @@ def test_embed_uses_query_prefix_and_embed_timeout(settings):
 
 
 def test_embed_timeout_defaults_to_llm_timeout(settings):
+    assert settings.effective_embed_timeout_s == 10.0  # the default is now its own value
+    settings.embed_timeout_s = None
     assert settings.effective_embed_timeout_s == settings.llm_timeout_s
 
 

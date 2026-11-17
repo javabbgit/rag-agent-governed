@@ -41,8 +41,10 @@ def test_defaults_and_fallbacks(tmp_path):
     s = load_settings(_write_env(tmp_path / "e", **REQUIRED))
     assert s.llm_mode == "gateway"
     assert s.embed_dim == 768
-    assert s.llm_timeout_s == 180
-    assert s.llm_max_retries == 1
+    assert s.llm_timeout_s == 75
+    assert s.llm_max_retries == 0
+    assert s.embed_timeout_s == 10.0
+    assert s.effective_embed_timeout_s == 10.0
     assert s.database_url == "postgresql://rag:rag@127.0.0.1:5433/rag"
     assert s.effective_embed_base_url == REQUIRED["OPENAI_BASE_URL"]
     assert s.effective_embed_api_key == REQUIRED["OPENAI_API_KEY"]

@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback ask eval-answer answer-review-tally tools-lock agent-seed agent-db-check agent-data-report agent-pick agent-prescan exceptions raise discard approve refuse agent agent-smoke agent-audit
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback ask eval-answer answer-review-tally tools-lock agent-seed agent-db-check agent-data-report agent-pick agent-prescan exceptions raise discard approve refuse agent agent-smoke agent-audit agent-eval-check agent-eval agent-eval-prescan agent-eval-tally agent-eval-rescore agent-eval-compare
 
 setup:
 	uv sync --python 3.11
@@ -154,3 +154,25 @@ agent-smoke:
 
 agent-audit:
 	uv run python scripts/agent_audit.py $(if $(SINCE),--since "$(SINCE)")
+
+agent-eval-check:
+	uv run python scripts/agent_eval.py check
+
+# Sends gateway requests. The test split needs FINAL=1 and a clean tree.
+agent-eval:
+	uv run python scripts/agent_eval.py run --split $(SPLIT) --repeats $(REPEATS) $(if $(MODEL),--model $(MODEL)) $(if $(FINAL),--final) $(if $(COST_CAP),--cost-cap $(COST_CAP)) $(if $(ONLY),--only $(ONLY)) $(if $(PACE),--pace $(PACE))
+
+agent-eval-prescan:
+	uv run python scripts/agent_eval.py prescan
+
+agent-eval-tally:
+	@test -n "$(FILE)" || { echo 'usage: make agent-eval-tally FILE=reports/agent/review_....csv|failures_....csv'; exit 2; }
+	uv run python scripts/agent_eval.py tally "$(FILE)"
+
+agent-eval-rescore:
+	@test -n "$(REPORT)" || { echo 'usage: make agent-eval-rescore REPORT=reports/agent/eval_....json [ALLOW_NEW_TASKS=1]'; exit 2; }
+	uv run python scripts/agent_eval.py rescore "$(REPORT)" $(if $(ALLOW_NEW_TASKS),--allow-new-tasks)
+
+agent-eval-compare:
+	@test -n "$(A)" -a -n "$(B)" || { echo 'usage: make agent-eval-compare A=reports/agent/eval_a.json B=reports/agent/eval_b.json'; exit 2; }
+	uv run python scripts/agent_eval.py compare "$(A)" "$(B)"

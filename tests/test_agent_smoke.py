@@ -122,6 +122,9 @@ def test_s7_asks_instead_of_calculating():
     assert verdict("S7", res(text="It is 2,000.")) == (True, False)
     calculated = res(text="Is 2,000 right?", trace=[t("calculate_payment")])
     assert verdict("S7", calculated) == (True, False)
+    assert verdict("S7", res(text="Please send the amount and the rate.")) == (True, True)
+    names = [c.name for c in smoke.evaluate("S7", res(text="x"), SAME, SAME, LOANS, STAGE)]
+    assert names[-1] == "asks for a missing field"
 
 
 def test_s8_has_only_policy_expectations():

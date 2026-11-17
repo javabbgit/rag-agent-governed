@@ -2,8 +2,10 @@
 
 Only this module constructs openai.OpenAI clients. Fail closed: every openai.OpenAIError is
 translated to the taxonomy in errors.py (our own LLMError passes through); any other exception
-is a bug and propagates unchanged. There is no fallback to any other endpoint, and the SDK's
-retries only apply to transient failures (connection, 408/409/429/5xx).
+is a bug and propagates unchanged. There is no fallback to any other endpoint. The SDK does not
+retry by default (LLM_MAX_RETRIES=0); a positive value re-enables SDK retries for chat() and
+embed() on transient failures only (connection, 408/409/429/5xx). chat_tools() never retries.
+Chat requests use LLM_TIMEOUT_S; embedding requests use the embed timeout (EMBED_TIMEOUT_S).
 """
 
 from __future__ import annotations
@@ -91,18 +93,19 @@ class LLMClient:
     def __init__(self, settings: Settings, http_client: httpx2.Client | None = None):
         self.settings = settings
         self._secrets = (settings.openai_api_key, settings.effective_embed_api_key)
-        common: dict[str, Any] = {
-            "timeout": settings.llm_timeout_s,
-            "max_retries": settings.llm_max_retries,
-        }
+        common: dict[str, Any] = {"max_retries": settings.llm_max_retries}
         if http_client is not None:
             common["http_client"] = http_client
         self._chat = OpenAI(
-            base_url=settings.openai_base_url, api_key=settings.openai_api_key, **common
+            base_url=settings.openai_base_url,
+            api_key=settings.openai_api_key,
+            timeout=settings.llm_timeout_s,
+            **common,
         )
         self._embed = OpenAI(
             base_url=settings.effective_embed_base_url,
             api_key=settings.effective_embed_api_key,
+            timeout=settings.effective_embed_timeout_s,
             **common,
         )
 
@@ -200,7 +203,7 @@ class LLMClient:
         )
 
     def embed(self, texts: list[str], timeout: float | None = None) -> EmbedResult:
-        """Embeddings; `timeout` (seconds) overrides LLM_TIMEOUT_S for this call only."""
+        """Embeddings; `timeout` (seconds) overrides the embed timeout for this call only."""
         start = time.perf_counter()
         api = self._embed if timeout is None else self._embed.with_options(timeout=timeout)
         try:

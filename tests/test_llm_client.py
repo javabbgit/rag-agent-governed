@@ -133,6 +133,15 @@ def test_embed_ok_and_float_format(settings):
     assert json.loads(seen[0].content)["encoding_format"] == "float"
 
 
+def test_embeddings_client_uses_the_embed_timeout(settings):
+    settings.llm_timeout_s, settings.embed_timeout_s = 33.0, 7.5
+    client, seen = make_client(settings, embed_response(4))
+    assert client._embed.timeout == 7.5
+    assert client._chat.timeout == 33.0
+    client.embed(["x"])
+    assert seen[0].extensions["timeout"]["read"] == 7.5
+
+
 def test_embed_wrong_dimension(settings):
     client, _ = make_client(settings, embed_response(3))
     with pytest.raises(EmbeddingDimensionError):
