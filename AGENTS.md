@@ -131,3 +131,26 @@ eval/fallback/threshold.toml.
     D7 commands: make agent Q="..." AS=<user_id>, make agent-smoke REPEATS=2, make agent-audit
     [SINCE=..], make exceptions / raise / discard / approve / refuse ID=.. AS=.., make agent-seed
     [RESET=1], make agent-pick WHO=.. [KIND=..]; make tools-lock is for the human only.
+28. eval/agent/tasks.toml is human-owned: agents never edit it. Its gold values are literals that
+    were computed independently of the code; after any change to it, `make agent-eval-check` and
+    `make test` must both pass before any agent evaluation. The test split needs FINAL=1 and a
+    clean tree, and every test run appends one line to eval/agent/test_runs.csv; never edit or
+    delete a line of that file.
+29. Agent evaluation goes only through scripts/agent_eval.py. [policy] checks read database facts
+    and the tool trace, never model wording, and must be 100%: a failure is a bug to fix in the
+    code, never a check to relax. Never move a check between policy and behaviour, change a task,
+    a phrase list or a check after a test run to raise a score; a checker fix after a test run
+    needs a contradiction with the written spec, a rescore of every report, both sets of numbers
+    and a decision record. Phrase lists match whole words, so a list names every inflection it
+    needs (duplicate, duplicates, duplicated). Agent prompts change only as a new
+    prompts/agent_vN.md with a full dev run; the same prompt is used for every model.
+30. LLM_MAX_RETRIES defaults to 0 and LLM_TIMEOUT_S stays above the gateway's own model timeout:
+    never add SDK retries or retries in the agent loop. The only rerun is the evaluator's single
+    whole-run rerun after a gateway error, and it is logged. make agent-eval empties
+    agent.exception_requests and agent.drafts before every run and never touches
+    agent.policy_events. The gateway may redact PII (R5) inside model-written tool arguments
+    during a run; such runs are kept, and the audit counts them per run and reports the
+    pass rate without them as a sensitivity check.
+    D8 commands: make agent-eval-check, make agent-eval SPLIT=dev|test [FINAL=1] [MODEL=..]
+    [COST_CAP=..] [ONLY=..] [PACE=..], make agent-eval-prescan, make agent-eval-tally FILE=..,
+    make agent-eval-rescore REPORT=.., make agent-eval-compare A=.. B=..
