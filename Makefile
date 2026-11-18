@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback ask eval-answer answer-review-tally tools-lock agent-seed agent-db-check agent-data-report agent-pick agent-prescan exceptions raise discard approve refuse agent agent-smoke agent-audit agent-eval-check agent-eval agent-eval-prescan agent-eval-tally agent-eval-rescore agent-eval-compare
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback ask eval-answer answer-review-tally tools-lock agent-seed agent-db-check agent-data-report agent-pick agent-prescan exceptions raise discard approve refuse agent agent-smoke agent-audit agent-eval-check agent-eval agent-eval-prescan agent-eval-tally agent-eval-rescore agent-eval-compare attack-check attack-matrix attack-delivery attack-prescan
 
 setup:
 	uv sync --python 3.11
@@ -176,3 +176,19 @@ agent-eval-rescore:
 agent-eval-compare:
 	@test -n "$(A)" -a -n "$(B)" || { echo 'usage: make agent-eval-compare A=reports/agent/eval_a.json B=reports/agent/eval_b.json'; exit 2; }
 	uv run python scripts/agent_eval.py compare "$(A)" "$(B)"
+
+# D9 attack set: validation only; no writes, no requests.
+attack-check:
+	uv run python scripts/attack_eval.py check
+
+# Scripted runs against the local database; no model calls.
+attack-matrix:
+	uv run python scripts/attack_eval.py matrix
+
+# Sends gateway requests (rag-embed only).
+attack-delivery:
+	uv run python scripts/attack_eval.py delivery
+
+# Sends gateway requests (chat-cloud, max_tokens 16).
+attack-prescan:
+	uv run python scripts/attack_eval.py prescan
