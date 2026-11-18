@@ -48,7 +48,7 @@ def test_real_file_loads():
 def test_question_rendering_with_loans_and_contacts():
     d02 = ATS.by_id("D02")
     assert d02.question == (
-        "Draft a reply about loan DMC-2026-00102 to contact CT-0012 saying the appraisal is"
+        "Draft a reply to contact CT-0012 about loan DMC-2026-00102 saying the appraisal is"
         " still outstanding."
     )
     assert "{L_minor}" in d02.question_template
