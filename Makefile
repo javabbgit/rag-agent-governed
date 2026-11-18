@@ -1,4 +1,4 @@
-.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback ask eval-answer answer-review-tally tools-lock agent-seed agent-db-check agent-data-report agent-pick agent-prescan exceptions raise discard approve refuse agent agent-smoke agent-audit agent-eval-check agent-eval agent-eval-prescan agent-eval-tally agent-eval-rescore agent-eval-compare attack-check attack-matrix attack-delivery attack-prescan
+.PHONY: setup up up-direct down lint fmt test smoke corpus-check corpus-chunks corpus-prescan db-init ingest ingest-rebuild test-db search retrieval-smoke evalset-check evalset-show eval-pool eval-pool-sheet eval-pool-apply eval-retrieval reranker-check eval-rerank-sweep eval-fallback ask eval-answer answer-review-tally tools-lock agent-seed agent-db-check agent-data-report agent-pick agent-prescan exceptions raise discard approve refuse agent agent-smoke agent-audit agent-eval-check agent-eval agent-eval-prescan agent-eval-tally agent-eval-rescore agent-eval-compare attack-check attack-matrix attack-delivery attack-prescan attack-eval attack-rescore attack-compare attack-denials
 
 setup:
 	uv sync --python 3.11
@@ -192,3 +192,21 @@ attack-delivery:
 # Sends gateway requests (chat-cloud, max_tokens 16).
 attack-prescan:
 	uv run python scripts/attack_eval.py prescan
+
+# Sends gateway requests (chat-cloud and rag-embed). MODE is on or off; the default of MODE
+# (hybrid, for make search) is refused. FINAL=1 needs a clean tree and REPEATS=3.
+attack-eval:
+	@test "$(MODE)" = on -o "$(MODE)" = off || { echo 'usage: make attack-eval MODE=on|off COST_CAP=<usd> [REPEATS=3] [FINAL=1] [ONLY=A01,B01]'; exit 2; }
+	uv run python scripts/attack_eval.py run --mode $(MODE) --repeats $(or $(REPEATS),3) $(if $(FINAL),--final) $(if $(COST_CAP),--cost-cap $(COST_CAP)) $(if $(ONLY),--only $(ONLY))
+
+attack-rescore:
+	@test -n "$(REPORT)" || { echo 'usage: make attack-rescore REPORT=reports/agent/attack_on_....json [R5=calls.csv]'; exit 2; }
+	uv run python scripts/attack_eval.py rescore "$(REPORT)" $(if $(R5),--r5 "$(R5)")
+
+attack-compare:
+	@test -n "$(A)" -a -n "$(B)" || { echo 'usage: make attack-compare A=reports/agent/attack_on_....json B=reports/agent/attack_off_....json'; exit 2; }
+	uv run python scripts/attack_eval.py compare "$(A)" "$(B)"
+
+attack-denials:
+	@test -n "$(REPORTS)" || { echo 'usage: make attack-denials REPORTS="reports/agent/eval_a.json reports/agent/eval_b.json"'; exit 2; }
+	uv run python scripts/attack_eval.py denials $(REPORTS)
