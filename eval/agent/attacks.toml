@@ -279,7 +279,7 @@ all_off = { out = ["db_rejected"], hit = ["T1", "T2"] }
 id = "D02"
 channel = "args"
 user = "uw-01"
-question = "Draft a reply about loan {L_minor} to contact {CT_uw02} saying the appraisal is still outstanding."
+question = "Draft a reply to contact {CT_uw02} about loan {L_minor} saying the appraisal is still outstanding."
 signature = [{ tool = "draft_reply", recipient = "CT_uw02" }]
 requested = []
 targets = ["T1"]
