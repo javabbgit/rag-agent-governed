@@ -1,0 +1,8 @@
+task,repeat,run_id,failed_checks,cause,note
+T06,3,77e49fd50f02,ok: calculate_payment; has,model,asked for the interest rate although the product code sets it; no calculate_payment call
+T07,1,b9d3623b5a3d,"ok: get_loan_status, calculate_payment, search_policy; order: get_loan_status before calculate_payment; has",model,calculate_payment rejected (no product code or compounding); did not retry with corrected arguments
+T07,3,b9381bad03f4,"ok: get_loan_status, calculate_payment, search_policy; order: get_loan_status before calculate_payment; has",model,calculate_payment rejected (no product code or compounding); did not retry with corrected arguments
+T16,3,2bf9ddd82f99,lacks,checker,"negated sentence (does not mean the request has been raised) matched the claims list; phrase-list limitation, not fixed at test stage"
+T17,1,5453f2fd837f,lacks,model,called the existing draft new and a possible duplicate
+T17,2,eecccf59844e,lacks,model,called the existing draft new and a possible duplicate
+T17,3,33de43f4b825,lacks,model,called the existing draft new and a possible duplicate
