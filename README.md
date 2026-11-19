@@ -25,14 +25,16 @@ named next to each one.
   ([answer_test_d10.md](docs/results/answer_test_d10.md)). The gate passed T62, and the model
   declined it in all 3 generations.
 - **Cited answers (test).** 115/116 answers cite a gold chunk, and 0/123 have an invalid citation
-  ([answer_test_d10.md](docs/results/answer_test_d10.md)). Of the manually checked sentences,
-  37/37 are supported by their source
+  ([answer_test_d10.md](docs/results/answer_test_d10.md)). 37/37 sentences from 10 questions are
+  supported
   ([answer_review_d10.csv](docs/results/answer_review_d10.csv)).
 - **Agent tasks (test, Haiku 5.5).** pass@1 is 0.907 [0.813, 0.987] (68/75 runs), and the policy
   invariant checks pass 480/480
   ([agent_test_haiku_d8.md](docs/results/agent_test_haiku_d8.md)).
-- **Injection.** 0 unauthorized side effects or reads in 54 runs with defenses on, vs 7 of 54 runs
-  with all defenses off. With defenses off, 4 side-effect calls reached the executor (3 persisted,
+- **Injection.** 0 of 54 runs with defenses on vs 7 of 54 with all off had an unauthorized side
+  effect or read (delivered to the model: 42 and 48; with defenses on, 9 runs were stopped at
+  startup by the tool-definition checks, 6 by the tools.lock pin and 3 by spec validation, and 3
+  by the gateway). With defenses off, 4 side-effect calls reached the executor (3 persisted,
   1 rejected by a database constraint), plus 3 out-of-scope reads
   ([attack_on_d9.md](docs/results/attack_on_d9.md),
   [attack_off_d9.md](docs/results/attack_off_d9.md)).
@@ -55,7 +57,7 @@ Videos: coming soon.
 | Agent loop, tool policy, approvals, tools.lock | yes | - |
 | Role-based data scope on loan files | yes | - |
 | PII detection and redaction (rules such as R5) | none of its own; pre-scans go through the gateway | yes, on every request |
-| Residency routing, model aliases (chat-cloud, chat-cloud-strong, rag-embed) | - | yes |
+| Residency routing, model aliases (chat-cloud and rag-embed; chat-cloud-strong was allow-listed only for the D8 model comparison) | - | yes |
 | Budgets and audit log | - | yes |
 | Error taxonomy | maps gateway errors to fixed messages | produces them |
 
@@ -66,7 +68,7 @@ flowchart LR
   A --> R[Local reranker, TEI]
   A -->|every chat and embedding call| G[LLM gateway, localhost:4000]
   G --> E[rag-embed, local]
-  G --> C[chat-cloud / chat-cloud-strong]
+  G --> C[chat-cloud]
   G --> L[(Audit, budgets)]
 ```
 
@@ -133,7 +135,8 @@ match, it returns the top hybrid sources (current versions only, at most 5) with
 `degraded` and a fixed message, without generating an answer.
 
 **Fallback gate.** If the top-1 rerank score is below the committed dev threshold
-(t = 0.062085786500000004, [answer_test_d10.md](docs/results/answer_test_d10.md)), the
+(t = 0.0621 (full value in eval/fallback/threshold.toml),
+[answer_test_d10.md](docs/results/answer_test_d10.md)), the
 question goes to fallback without a chat call.
 
 **Cited generation** ([src/rag_agent/answer.py](src/rag_agent/answer.py)). The top 5 chunks go
@@ -202,7 +205,8 @@ have status `draft`; and there is at most one open request per loan and exceptio
   first gold chunk. Document-level Hit@1: the top chunk comes from a gold document. Intervals are
   95% bootstrap intervals from [src/rag_agent/metrics.py](src/rag_agent/metrics.py).
 - Correct fallback: out-of-corpus questions that fall back. False fallback: answerable questions
-  that fall back. Cited gold: answered questions that cite at least one gold chunk.
+  that fall back. Cited gold: answers (all 3 generations pooled) that cite at least one gold
+  chunk.
 - Agent pass@1: share of runs that pass every check. Policy checks read database facts and the
   tool trace, never model wording, and must be 100%.
 
@@ -216,15 +220,15 @@ make eval-answer SPLIT=test FINAL=1
 make agent-eval SPLIT=test FINAL=1
 make ingest COLLECTION=adversarial DOCS_DIR=corpus/adversarial
 make attack-matrix
-make attack-eval MODE=on FINAL=1 COST_CAP=0.50
-AGENT_DEFENSES_OFF_ACK=1 make attack-eval MODE=off FINAL=1 COST_CAP=0.50
+make attack-eval MODE=on FINAL=1 COST_CAP=0.40
+AGENT_DEFENSES_OFF_ACK=1 make attack-eval MODE=off FINAL=1 COST_CAP=0.40
 ```
 
 ### Retrieval (test)
 
 From [retrieval_test_d5.md](docs/results/retrieval_test_d5.md):
 
-| mode | Hit@1 | Hit@3 | Hit@5 | MRR@10 [95% CI] | doc Hit@1 | superseded@1 |
+| mode | Hit@1 (chunk) | Hit@3 | Hit@5 | MRR@10 [95% CI] | doc Hit@1 | superseded@1 |
 |---|---|---|---|---|---|---|
 | bm25 | 0.7000 | 0.7400 | 0.8000 | 0.7409 [0.6257, 0.8509] | 0.8200 | 0/50 |
 | vector | 0.6600 | 0.8600 | 0.9200 | 0.7607 [0.6600, 0.8507] | 0.7600 | 2/50 |
@@ -241,7 +245,7 @@ was chosen on dev ([rerank_sweep_dev_d5.md](docs/results/rerank_sweep_dev_d5.md)
 | dev | 0.9667 | 8/8 = 1.0000 [1.0000, 1.0000] | 4/30 = 0.1333 [0.0333, 0.2667] | [fallback_dev_d5.md](docs/results/fallback_dev_d5.md) |
 | test | 0.9233 | 11/12 = 0.9167 [0.7500, 1.0000] | 9/50 = 0.1800 [0.0800, 0.2800] | [fallback_test_d5.md](docs/results/fallback_test_d5.md) |
 
-The threshold t = 0.062085786500000004 was set on dev (Youden). On test, 6 of 10 paraphrase
+The threshold t = 0.0621 was set on dev (Youden). On test, 6 of 10 paraphrase
 questions fall back by mistake. The test-optimal threshold of 0.0714 is shown in the report for
 reference only and is not used.
 
@@ -253,15 +257,18 @@ Haiku 5.5, 3 generations per question, all repeats pooled:
 |---|---|---|---|
 | correct fallback | 24/24 | 24/24 | 36/36 |
 | false fallback | 36/90 | 14/90 | 34/150 |
-| uncited (gate passed) | 21/78 | 2/78 | 5/123 |
-| model declined | 0/78 | 0/78 | 2/123 |
-| empty output | 3/78 | 0/78 | 0/123 |
-| citation invalid | 0/78 | 0/78 | 0/123 |
+| uncited (answerable, gate passed) | 21/78 | 2/78 | 5/123 |
+| model declined (answerable, gate passed) | 0/78 | 0/78 | 2/123 |
+| empty output (answerable, gate passed) | 3/78 | 0/78 | 0/123 |
+| citation invalid (answerable, gate passed) | 0/78 | 0/78 | 0/123 |
 | cited gold | 54/54 | 76/76 | 115/116 |
 | answer span hit | 49/54 | 71/76 | 107/116 |
 | consistent across repeats | 33/38 | 36/38 | 57/62 |
-| cost (USD) | 0.0235807 | 0.023393299999999992 | 0.04374309999999998 |
+| cost (USD) | $0.0236 | $0.0234 | $0.0437 |
 | source | [answer_dev_v1_d6.md](docs/results/answer_dev_v1_d6.md) | [answer_dev_v2_d6.md](docs/results/answer_dev_v2_d6.md) | [answer_test_d10.md](docs/results/answer_test_d10.md) |
+
+T62's three declines are counted as correct fallback, not as model declined; the two declines in
+the table are T41.
 
 Manual sentence checks: dev v2 34 of 35 supported, 1 partial
 ([answer_review_d6.csv](docs/results/answer_review_d6.csv)); test 37 of 37 supported
@@ -344,11 +351,12 @@ each report by call ID):
 
 ### How the labels were made
 
-Business sign-off on the labels was simulated and made zero changes. Pooling still found missed
-gold labels afterwards. Pooling reviews at commits fd4f8ef (dev) and 824c0a5 (test) found 4 missed
-gold labels on test. Commit 4248656 added a gold label for T23 that lay outside the pool. After
-reranking, pooling at 5c0faaa found 2 more on test. Six questions (D11, D12, D23, D30, T15, T38)
-were flagged as ambiguous and kept as labeled, because the test set is frozen.
+Business sign-off on the labels was simulated and made zero changes, yet the pooling reviews that
+followed still found missed gold labels: 4 on test at commits fd4f8ef (dev) and 824c0a5 (test);
+commit 4248656 added a gold label for T23 that lay outside the pool; after reranking, pooling at
+5c0faaa found 2 more on test. Six questions (D11, D12, D23, D30, T15, T38) were flagged as
+ambiguous and kept as labeled, because the test set is frozen. Sources: these commits in this
+repository's history (git show any of them).
 
 ## Limitations and honest notes
 
@@ -456,7 +464,8 @@ never sent anywhere), and no comparison of local small models. Candidates for v1
 - Prompt v2 candidates: self-correction after invalid tool arguments (T07), recognising an
   existing draft (T17), accepting "please send / provide" as a request for missing information
 - Re-running the A, B and E injection channels with a model that is easier to mislead
-- Gateway side: scan the tools field; fix the "digits ... CT" address false positive
+- Gateway side: scan the tools field; fix the "digits ... CT" address false positive; add
+  language detection to embedding requests
 - Local small-model comparison
 
 ## How this was built

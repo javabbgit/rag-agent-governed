@@ -20,7 +20,7 @@ answers, D8 agent, D9 injection, D10 release.
 | agent_test_haiku_d8.md / .json | D8 | 2026-11-17 | e758042 | anthropic/claude-haiku-5-5 | Results (agent); Evaluation: agent |
 | agent_test_sonnet_d8.md / .json | D8 | 2026-11-17 | 1b6cd83 | anthropic/claude-sonnet-5-5 | Evaluation: agent |
 | agent_compare_d8.md | D8 | 2026-11-17 | - | both of the above | Evaluation: agent; Limitation 12 |
-| agent_r5_sensitivity_d8.txt | D8 (added in D10) | - | - | Haiku and Sonnet D8 test reports | Evaluation: agent, R5; Limitation 13 |
+| agent_r5_sensitivity_d8.txt | D8 (added in D10) | - | - | computed from agent_test_haiku_d8.json, agent_test_sonnet_d8.json and r5_audit_extract.psv | Evaluation: agent, R5; Limitation 13 |
 | agent_review_haiku_d8.csv | D8 | - | - | anthropic/claude-haiku-5-5 | Evaluation: agent (manual unit check) |
 | agent_review_sonnet_d8.csv | D8 | - | - | anthropic/claude-sonnet-5-5 | none (empty by design) |
 | agent_failures_haiku_d8.csv | D8 (added in D10) | - | - | anthropic/claude-haiku-5-5 | Evaluation: agent (reviewed pass count) |
