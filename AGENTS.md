@@ -168,3 +168,6 @@ eval/fallback/threshold.toml.
     D9 commands: make attack-check, attack-matrix, make ingest COLLECTION=adversarial
     DOCS_DIR=corpus/adversarial, attack-delivery, attack-prescan, attack-eval MODE=on|off [FINAL=1] [ONLY=..] [REPEATS=..]
     COST_CAP=.., attack-rescore REPORT=.., attack-compare A=.. B=.., attack-denials REPORTS=..
+32. The v1.0 code is the code at tag d9-injection. From there through tag v1.0 and until the
+    D12 videos are linked, only README.md, AGENTS.md and docs/ may change. Any change to src/, scripts/, tests/, config/,
+    eval/, corpus/, data/ or the Makefile requires a separate v1.1 branch.

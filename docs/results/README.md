@@ -9,16 +9,18 @@ answers, D8 agent, D9 injection, D10 release.
 
 | file | stage | date (UTC) | git commit | model | backs in README |
 |---|---|---|---|---|---|
-| retrieval_test_d5.md / .json | D5 | 2026-11-14 | 5c0faaa | rag-embed (gateway), bge-reranker-base | Results (retrieval); Evaluation: retrieval; Limitation 6 |
+| retrieval_dev_d5.md / .json | D5 | 2026-11-14 | 0b13ddc | rag-embed (gateway), bge-reranker-base | Limitation 7 |
+| retrieval_test_d5.md / .json | D5 | 2026-11-14 | 5c0faaa | rag-embed (gateway), bge-reranker-base | Results (retrieval); Evaluation: retrieval, cited answers (T62); Limitations 6, 7 |
 | rerank_sweep_dev_d5.md / .json | D5 | 2026-11-14 | ad51231 | rag-embed (gateway), bge-reranker-base | Evaluation: retrieval (choice of N); Limitation 6 |
 | fallback_dev_d5.md / .json | D5 | 2026-11-14 (source report retrieval_dev_20261114T221930Z) | - | rerank scores, no chat model | Evaluation: fallback |
 | fallback_test_d5.md / .json | D5 | 2026-11-14 (source report retrieval_test_20261114T225634Z) | - | rerank scores, no chat model | Results (fallback); Evaluation: fallback; Limitation 7 |
 | answer_dev_v1_d6.md / .json | D6 | 2026-11-15 | 309679a | anthropic/claude-haiku-5-5 | Evaluation: cited answers (dev v1) |
 | answer_dev_v2_d6.md / .json | D6 | 2026-11-15 | e6207ce | anthropic/claude-haiku-5-5 | Evaluation: cited answers (dev v2) |
-| answer_review_d6.csv | D6 | - | - | anthropic/claude-haiku-5-5 | Evaluation: cited answers; Limitations 8, 10 |
+| answer_review_d6.csv | D6 dev v2 | 2026-11-15 (source run) | e6207ce (source run) | anthropic/claude-haiku-5-5 | Evaluation: cited answers (dev v2); Limitations 8, 10 |
 | agent_test_haiku_d8.md / .json | D8 | 2026-11-17 | e758042 | anthropic/claude-haiku-5-5 | Results (agent); Evaluation: agent |
 | agent_test_sonnet_d8.md / .json | D8 | 2026-11-17 | 1b6cd83 | anthropic/claude-sonnet-5-5 | Evaluation: agent |
 | agent_compare_d8.md | D8 | 2026-11-17 | - | both of the above | Evaluation: agent; Limitation 12 |
+| agent_r5_sensitivity_d8.txt | D8 (added in D10) | - | - | Haiku and Sonnet D8 test reports | Evaluation: agent, R5; Limitation 13 |
 | agent_review_haiku_d8.csv | D8 | - | - | anthropic/claude-haiku-5-5 | Evaluation: agent (manual unit check) |
 | agent_review_sonnet_d8.csv | D8 | - | - | anthropic/claude-sonnet-5-5 | none (empty by design) |
 | agent_failures_haiku_d8.csv | D8 (added in D10) | - | - | anthropic/claude-haiku-5-5 | Evaluation: agent (reviewed pass count) |
