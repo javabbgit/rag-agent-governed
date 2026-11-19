@@ -23,7 +23,7 @@ named next to each one.
   (0.1800 [0.0800, 0.2800]) ([fallback_test_d5.md](docs/results/fallback_test_d5.md)). End to
   end, over 3 generations per question, correct fallback is 36/36 and false fallback 34/150
   ([answer_test_d10.md](docs/results/answer_test_d10.md)). The gate passed T62, and the model
-  declined it in all 3 generations; the superseded_only rule did not fire.
+  declined it in all 3 generations.
 - **Cited answers (test).** 115/116 answers cite a gold chunk, and 0/123 have an invalid citation
   ([answer_test_d10.md](docs/results/answer_test_d10.md)). Of the manually checked sentences,
   37/37 are supported by their source
@@ -54,7 +54,7 @@ Videos: coming soon.
 | Citation validation, answer messages | yes | - |
 | Agent loop, tool policy, approvals, tools.lock | yes | - |
 | Role-based data scope on loan files | yes | - |
-| PII detection and redaction (rules such as R5) | chunk pre-scans only | yes, on every request |
+| PII detection and redaction (rules such as R5) | none of its own; pre-scans go through the gateway | yes, on every request |
 | Residency routing, model aliases (chat-cloud, chat-cloud-strong, rag-embed) | - | yes |
 | Budgets and audit log | - | yes |
 | Error taxonomy | maps gateway errors to fixed messages | produces them |
@@ -126,8 +126,11 @@ retrieval parameters live in one constant block.
 
 **Local reranker** ([src/rag_agent/rerank.py](src/rag_agent/rerank.py)). bge-reranker-base runs
 in a Text Embeddings Inference container and reranks the top 10 hybrid candidates. It runs only
-after the gateway has accepted the query embedding. If the reranker fails, scripts stop
-(fail closed); they never fall back silently to hybrid results.
+after the gateway has accepted the query embedding. If the reranker fails, evaluation scripts
+stop (fail closed); they never fall back silently to hybrid results. The answer path
+(`make ask`) degrades instead. When the reranker is unreachable or its pinned revision does not
+match, it returns the top hybrid sources (current versions only, at most 5) with status
+`degraded` and a fixed message, without generating an answer.
 
 **Fallback gate.** If the top-1 rerank score is below the committed dev threshold
 (t = 0.062085786500000004, [answer_test_d10.md](docs/results/answer_test_d10.md)), the
@@ -209,10 +212,12 @@ Reproduce (test runs need a clean tree; the test split is run once):
 make eval-retrieval SPLIT=test
 make eval-fallback SPLIT=test REPORT=<retrieval report>
 make eval-answer SPLIT=dev REPEATS=3
+make eval-answer SPLIT=test FINAL=1
 make agent-eval SPLIT=test FINAL=1
+make ingest COLLECTION=adversarial DOCS_DIR=corpus/adversarial
 make attack-matrix
-make attack-eval MODE=on FINAL=1
-AGENT_DEFENSES_OFF_ACK=1 make attack-eval MODE=off FINAL=1
+make attack-eval MODE=on FINAL=1 COST_CAP=0.50
+AGENT_DEFENSES_OFF_ACK=1 make attack-eval MODE=off FINAL=1 COST_CAP=0.50
 ```
 
 ### Retrieval (test)
