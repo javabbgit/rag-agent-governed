@@ -1,0 +1,12 @@
+uv run python scripts/reranker_check.py
+model_id /data/models--BAAI--bge-reranker-base/snapshots/2cfc18c9415c912f9d8155881c133215df768a70
+model_sha None
+version 1.9.4
+max_input_length 512
+max_client_batch_size 64
+pair score relevant 0.5354
+pair score unrelated 0.0000
+n chunks 264
+tokens max 323 p95 248
+chunks over 448 tokens (may be truncated with a typical query): 0
+reranker ok

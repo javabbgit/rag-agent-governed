@@ -1,0 +1,19 @@
+report|call_id|ts|requested_model|pii_counts|redacted
+answer_dev_v1_d6|3008b869-6870-43ac-baa8-23bb9749367a|2026-11-15 14:42:29.000134+00|chat-cloud|{"PERSON": 1}|1
+answer_dev_v1_d6|e7b46629-cdf4-4fdd-8852-d3bae949cb11|2026-11-15 14:42:31.924952+00|chat-cloud|{"PERSON": 1}|1
+answer_dev_v1_d6|92efff82-9655-4afc-8392-7cdf8e9ce1ea|2026-11-15 14:42:34.113792+00|chat-cloud|{"PERSON": 1}|1
+answer_dev_v2_d6|fb46cae0-c27c-4fa9-8a46-b7ca9bbe5404|2026-11-15 15:08:07.593843+00|chat-cloud|{"PERSON": 1}|1
+answer_dev_v2_d6|99c6c6f9-09e1-4067-a157-c979ff93279f|2026-11-15 15:08:08.682349+00|chat-cloud|{"PERSON": 1}|1
+answer_dev_v2_d6|c3ceb0db-ee74-452a-96e4-63f28843e512|2026-11-15 15:08:10.798722+00|chat-cloud|{"PERSON": 1}|1
+answer_test_d10|73a657f7-7703-4fc8-ad1a-e4b686f5195b|2026-11-19 14:39:28.571602+00|chat-cloud|{"PERSON": 1}|1
+answer_test_d10|652db706-c061-4898-909c-1aa7297b0c99|2026-11-19 14:39:31.619114+00|chat-cloud|{"PERSON": 1}|1
+answer_test_d10|d6e84bac-c385-40a3-a671-1c77bf06449a|2026-11-19 14:39:34.656048+00|chat-cloud|{"PERSON": 1}|1
+agent_test_haiku_d8|15043ea4-28c8-48be-989a-a7bd91f3b19a|2026-11-17 17:51:52.756893+00|chat-cloud|{"PERSON": 1}|1
+agent_test_haiku_d8|7824eea2-6f63-49d3-b9b4-495268eeae03|2026-11-17 17:52:19.96187+00|chat-cloud|{"PHONE_NUMBER": 1}|1
+agent_test_haiku_d8|247ff601-46df-4c00-89f6-f891562f8382|2026-11-17 17:52:23.055224+00|chat-cloud|{"PHONE_NUMBER": 1}|1
+agent_test_haiku_d8|738a19b6-fa1c-421e-b61d-846845f1f42b|2026-11-17 17:55:12.939235+00|chat-cloud|{"PERSON": 1}|1
+agent_test_sonnet_d8|857f6d69-8d0d-4984-9c99-c5274a9f34d1|2026-11-17 18:20:23.106883+00|chat-cloud-strong|{"PERSON": 1}|1
+agent_test_sonnet_d8|c8b794f9-1de4-444c-86e0-48bd94702c15|2026-11-17 18:21:30.542095+00|chat-cloud-strong|{"PERSON": 1}|1
+agent_test_sonnet_d8|da2c605d-0198-4f61-9da2-dbed14ad501f|2026-11-17 18:21:51.560112+00|chat-cloud-strong|{"PERSON": 1}|1
+agent_test_sonnet_d8|dc97ddca-f44e-4d0c-bacc-100dddd3df09|2026-11-17 18:21:59.085388+00|chat-cloud-strong|{"PERSON": 1}|1
+agent_test_sonnet_d8|3adb6f71-fc97-4a5c-9244-9fb0336a759e|2026-11-17 18:22:07.486332+00|chat-cloud-strong|{"PERSON": 1}|1
