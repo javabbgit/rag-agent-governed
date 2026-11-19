@@ -1,0 +1,238 @@
+{
+  "split": "test",
+  "report_file": "retrieval_test_20261114T225634Z.json",
+  "report_fingerprint": "24486b95d21ff2be2e87cff3c01edd23fe5865ae14e70297df16ef94ae6e1c27",
+  "questions_sha256": "6136924ca0a5645efb69836b092ced0dc802b028f87a36bb9967009623bc51a7",
+  "rerank_n": 10,
+  "reranker": {
+    "model_id": "/data/models--BAAI--bge-reranker-base/snapshots/2cfc18c9415c912f9d8155881c133215df768a70",
+    "model_sha": null,
+    "version": "1.9.4"
+  },
+  "auroc": {
+    "rerank_top1": 0.9233333333333333,
+    "vector_top1": 0.88
+  },
+  "n_answerable": 50,
+  "n_oos": 12,
+  "threshold": 0.062085786500000004,
+  "threshold_source": "committed dev threshold",
+  "rates": {
+    "correct_fallback": {
+      "num": 11,
+      "den": 12,
+      "rate": 0.9166666666666666,
+      "ci": [
+        0.75,
+        1.0
+      ]
+    },
+    "false_fallback": {
+      "num": 9,
+      "den": 50,
+      "rate": 0.18,
+      "ci": [
+        0.08,
+        0.28
+      ]
+    },
+    "correct_by_category": {
+      "oos_far": {
+        "num": 6,
+        "den": 6,
+        "rate": 1.0,
+        "ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "oos_near": {
+        "num": 5,
+        "den": 6,
+        "rate": 0.8333333333333334,
+        "ci": [
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "false_by_category": {
+      "exact": {
+        "num": 0,
+        "den": 8,
+        "rate": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "paraphrase": {
+        "num": 6,
+        "den": 10,
+        "rate": 0.6,
+        "ci": [
+          0.3,
+          0.9
+        ]
+      },
+      "confusable": {
+        "num": 0,
+        "den": 8,
+        "rate": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "superseded_trap": {
+        "num": 0,
+        "den": 6,
+        "rate": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "fine_grained": {
+        "num": 1,
+        "den": 6,
+        "rate": 0.16666666666666666,
+        "ci": [
+          0.0,
+          0.5
+        ]
+      },
+      "table": {
+        "num": 1,
+        "den": 6,
+        "rate": 0.16666666666666666,
+        "ci": [
+          0.0,
+          0.5
+        ]
+      },
+      "multi_doc": {
+        "num": 1,
+        "den": 6,
+        "rate": 0.16666666666666666,
+        "ci": [
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "passed_without_gold": 0
+  },
+  "reference": {
+    "t": 0.071396713,
+    "lo": 0.06952461,
+    "hi": 0.073268816,
+    "j": 0.8200000000000001,
+    "rates": {
+      "correct_fallback": {
+        "num": 12,
+        "den": 12,
+        "rate": 1.0,
+        "ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "false_fallback": {
+        "num": 9,
+        "den": 50,
+        "rate": 0.18,
+        "ci": [
+          0.08,
+          0.28
+        ]
+      },
+      "correct_by_category": {
+        "oos_far": {
+          "num": 6,
+          "den": 6,
+          "rate": 1.0,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        },
+        "oos_near": {
+          "num": 6,
+          "den": 6,
+          "rate": 1.0,
+          "ci": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "false_by_category": {
+        "exact": {
+          "num": 0,
+          "den": 8,
+          "rate": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "paraphrase": {
+          "num": 6,
+          "den": 10,
+          "rate": 0.6,
+          "ci": [
+            0.3,
+            0.9
+          ]
+        },
+        "confusable": {
+          "num": 0,
+          "den": 8,
+          "rate": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "superseded_trap": {
+          "num": 0,
+          "den": 6,
+          "rate": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "fine_grained": {
+          "num": 1,
+          "den": 6,
+          "rate": 0.16666666666666666,
+          "ci": [
+            0.0,
+            0.5
+          ]
+        },
+        "table": {
+          "num": 1,
+          "den": 6,
+          "rate": 0.16666666666666666,
+          "ci": [
+            0.0,
+            0.5
+          ]
+        },
+        "multi_doc": {
+          "num": 1,
+          "den": 6,
+          "rate": 0.16666666666666666,
+          "ci": [
+            0.0,
+            0.5
+          ]
+        }
+      },
+      "passed_without_gold": 0
+    }
+  }
+}

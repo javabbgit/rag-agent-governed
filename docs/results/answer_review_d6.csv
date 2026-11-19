@@ -1,0 +1,36 @@
+qid,sentence_no,sentence,markers,cited_chunk_ids,verdict
+D01,1,The maximum total debt service (TDS) ratio is 42% [S1][S3].,S1;S3,POL-003#summary;POL-003#gds-and-tds-limits,supported
+D03,1,"The EXC-100 has five required fields, and a request is complete only when all five are filled in [S1].",S1,PRC-005#exc-100-fields,supported
+D03,2,"Loan number, in the format DMC-YYYY-NNNNN [S1]",S1,PRC-005#exc-100-fields,supported
+D03,3,"Exception type, naming which of the four excepted items applies [S1][S2]",S1;S2,PRC-005#exc-100-fields;PRC-005#when-an-exc-100-may-be-raised,supported
+D03,4,"Requested value, such as the ratio, loan-to-value, accepted document or new rate hold end date [S1]",S1,PRC-005#exc-100-fields,supported
+D03,5,"Justification, explaining in plain words why the exception is sensible for the file [S1]",S1,PRC-005#exc-100-fields,supported
+D03,6,"Compensating factors, listing documented strengths that reduce risk and are not already counted in the excepted figure [S1]",S1,PRC-005#exc-100-fields,supported
+D05,1,A rate hold on a refinance lasts 60 days [S1][S2].,S1;S2,RATE-003#rate-hold-period-for-a-refinance;RATE-003#summary,supported
+D05,2,"The hold begins on the date Mortgage Operations acknowledges the complete application under PRC-001, and it ends 60 days later [S1].",S1,RATE-003#rate-hold-period-for-a-refinance,supported
+D05,3,"A rate hold is not an approval, and the borrower gets the held rate only if the mortgage is approved and every condition is met [S5].",S5,RATE-003#a-rate-hold-is-not-an-approval,supported
+D05,4,A borrower who needs more than 60 days must ask for an extension [S1].,S1,RATE-003#rate-hold-period-for-a-refinance,supported
+D07,1,"If you give no instruction by the maturity date, your mortgage renews into the open product FX1-O [S1][S3].",S1;S3,PRC-007#if-the-borrower-gives-no-instruction;PRD-001#fx5-c-renewal-at-maturity,supported
+D07,2,The balance renews for the FX1-O term at the FX1-O rate on the rate sheet in force on the maturity date [S1][S2].,S1;S2,PRC-007#if-the-borrower-gives-no-instruction;FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want,supported
+D07,3,Mortgage Operations sends you the new terms in writing on the same business day [S1][S2].,S1;S2,PRC-007#if-the-borrower-gives-no-instruction;FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want,supported
+D07,4,"The FX1-O rate is higher than the closed terms, so staying in FX1-O may cost you more [S2].",S2,FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want,supported
+D07,5,"You can move to a closed term at any time with no penalty, because FX1-O has none [S1][S2].",S1;S2,PRC-007#if-the-borrower-gives-no-instruction;FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want,supported
+D09,1,Underwriting counts self-employed income as the average net income of the last 2 years [S1].,S1,POL-008#income-the-2-year-average-of-net-income,supported
+D09,2,"Net income is the income on the notice of assessment after business expenses are deducted, and gross business revenue is never counted [S1].",S1,POL-008#income-the-2-year-average-of-net-income,supported
+D09,3,"Add the net income for each of the 2 years, then divide by 2 [S1].",S1,POL-008#income-the-2-year-average-of-net-income,supported
+D09,4,"If the most recent year's net income is lower than this average, the lower figure is used [S1].",S1,POL-008#income-the-2-year-average-of-net-income,supported
+D09,5,"If the business made a loss in either year, self-employed income may not be counted [S1].",S1,POL-008#income-the-2-year-average-of-net-income,supported
+D09,6,"For the SEA-5 product, the borrower must have been in business for at least 2 years before the application [S5].",S5,PRD-007#sea-5-eligibility-for-self-employed-borrowers,supported
+D12,1,The lender must give a final response in writing within 30 calendar days of the date the complaint was received [S1].,S1,PRC-008#final-response-within-30-days,supported
+D12,2,"If the investigation cannot be finished in that time, the Complaints Office must write to the customer before the deadline with the reason and a new date [S1].",S1,PRC-008#final-response-within-30-days,supported
+D14,1,A Customer Service Representative may view the status of a file and the contact details needed to answer the customer [S1][S2].,S1;S2,POL-011#least-privilege-access-by-role;PRC-004#what-each-role-may-view,supported
+D14,2,They may not view the full financial documents [S1][S2].,S1;S2,POL-011#least-privilege-access-by-role;PRC-004#what-each-role-may-view,supported
+D16,1,Mortgage Operations signs off the title confirmation from the lawyer [S2].,S2,PRC-003#who-signs-off-each-condition-type,supported
+D16,2,The FAQ also lists the lawyer's title confirmation among the items Mortgage Operations signs off [S1].,S1,FAQ-004#when-are-conditions-due-and-who-signs-them-off,supported
+D16,3,A person may not sign off a condition they supplied themselves [S2].,S2,PRC-003#who-signs-off-each-condition-type,supported
+D19,1,"The 1-year fixed open mortgage, FX1-O, has a contract rate of 6.99% on the rate sheet effective 2026-11-01 [S2].",S2,PRD-004#fx1-o-rate-and-qualifying-rate,supported
+D19,2,"Because the sources give this rate as of that date, check the current rate sheet for any later change [S1][S2].",S1;S2,FAQ-002#is-there-a-mortgage-with-no-penalty;PRD-004#fx1-o-rate-and-qualifying-rate,partial
+D21,1,"Underwriting uses the lower of the purchase price and the appraised value, which is 490,000 [S3]",S3,POL-007#how-loan-to-value-is-calculated,supported
+D21,2,"LTV is the loan amount divided by that value: 400,000 / 490,000 = 81.6% [S1][S2][S3]",S1;S2;S3,POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal;POL-007#conventional-loan-to-value-limit;POL-007#how-loan-to-value-is-calculated,supported
+D21,3,"Because 81.6% is above the 80% conventional limit, the loan needs mortgage default insurance [S2][S5]",S2;S5,POL-007#conventional-loan-to-value-limit;POL-007#when-mortgage-default-insurance-is-required,supported
+D21,4,"Reducing the loan to 392,000 would give 80.0% LTV and avoid the need for insurance [S1]",S1,POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal,supported

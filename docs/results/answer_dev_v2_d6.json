@@ -1,0 +1,6558 @@
+{
+  "split": "dev",
+  "started_utc": "2026-11-15T15:07:37Z",
+  "finished_utc": "2026-11-15T15:11:22Z",
+  "commit": "e6207ce873fa54552d892966df9ff0172009b209",
+  "git_dirty": false,
+  "prompt_sha256": "caaa182b99ab01358709885dc78e17a1b5cc1b612ece34347039179bb6b8a249",
+  "threshold": 0.062085786500000004,
+  "rerank_n": 10,
+  "context_k": 5,
+  "repeats": 3,
+  "model_names": [
+    "anthropic/claude-haiku-5-5"
+  ],
+  "n_embed": 38,
+  "n_chat_calls": 78,
+  "n_errors": 0,
+  "cost_usd": 0.023393299999999992,
+  "complete": true,
+  "gate_summary": {
+    "low_score": {
+      "n": 12,
+      "ids": [
+        "D11",
+        "D24",
+        "D25",
+        "D27",
+        "D31",
+        "D32",
+        "D33",
+        "D34",
+        "D35",
+        "D36",
+        "D37",
+        "D38"
+      ]
+    },
+    "passed": {
+      "n": 26,
+      "ids": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16",
+        "D17",
+        "D18",
+        "D19",
+        "D20",
+        "D21",
+        "D22",
+        "D23",
+        "D26",
+        "D28",
+        "D29",
+        "D30"
+      ]
+    }
+  },
+  "metrics": {
+    "per_repeat": [
+      {
+        "correct_fallback": {
+          "num": 8,
+          "den": 8,
+          "rate": 1.0
+        },
+        "false_fallback": {
+          "num": 5,
+          "den": 30,
+          "rate": 0.16666666666666666
+        },
+        "model_declined": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "uncited": {
+          "num": 1,
+          "den": 26,
+          "rate": 0.038461538461538464
+        },
+        "citation_invalid": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "empty_output": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "cited_gold": {
+          "num": 25,
+          "den": 25,
+          "rate": 1.0
+        },
+        "cited_nonrel_or_unjudged": {
+          "num": 9,
+          "den": 64,
+          "rate": 0.140625
+        },
+        "answer_span_hit": {
+          "num": 23,
+          "den": 25,
+          "rate": 0.92
+        },
+        "ungrounded_answers": {
+          "num": 2,
+          "den": 25,
+          "rate": 0.08
+        },
+        "ungrounded_sentences": 2
+      },
+      {
+        "correct_fallback": {
+          "num": 8,
+          "den": 8,
+          "rate": 1.0
+        },
+        "false_fallback": {
+          "num": 4,
+          "den": 30,
+          "rate": 0.13333333333333333
+        },
+        "model_declined": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "uncited": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "citation_invalid": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "empty_output": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "cited_gold": {
+          "num": 26,
+          "den": 26,
+          "rate": 1.0
+        },
+        "cited_nonrel_or_unjudged": {
+          "num": 4,
+          "den": 62,
+          "rate": 0.06451612903225806
+        },
+        "answer_span_hit": {
+          "num": 24,
+          "den": 26,
+          "rate": 0.9230769230769231
+        },
+        "ungrounded_answers": {
+          "num": 1,
+          "den": 26,
+          "rate": 0.038461538461538464
+        },
+        "ungrounded_sentences": 1
+      },
+      {
+        "correct_fallback": {
+          "num": 8,
+          "den": 8,
+          "rate": 1.0
+        },
+        "false_fallback": {
+          "num": 5,
+          "den": 30,
+          "rate": 0.16666666666666666
+        },
+        "model_declined": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "uncited": {
+          "num": 1,
+          "den": 26,
+          "rate": 0.038461538461538464
+        },
+        "citation_invalid": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "empty_output": {
+          "num": 0,
+          "den": 26,
+          "rate": 0.0
+        },
+        "cited_gold": {
+          "num": 25,
+          "den": 25,
+          "rate": 1.0
+        },
+        "cited_nonrel_or_unjudged": {
+          "num": 9,
+          "den": 64,
+          "rate": 0.140625
+        },
+        "answer_span_hit": {
+          "num": 24,
+          "den": 25,
+          "rate": 0.96
+        },
+        "ungrounded_answers": {
+          "num": 2,
+          "den": 25,
+          "rate": 0.08
+        },
+        "ungrounded_sentences": 3
+      }
+    ],
+    "summary": {
+      "correct_fallback": {
+        "num": 24,
+        "den": 24,
+        "rate": 1.0
+      },
+      "false_fallback": {
+        "num": 14,
+        "den": 90,
+        "rate": 0.15555555555555556
+      },
+      "model_declined": {
+        "num": 0,
+        "den": 78,
+        "rate": 0.0
+      },
+      "uncited": {
+        "num": 2,
+        "den": 78,
+        "rate": 0.02564102564102564
+      },
+      "citation_invalid": {
+        "num": 0,
+        "den": 78,
+        "rate": 0.0
+      },
+      "empty_output": {
+        "num": 0,
+        "den": 78,
+        "rate": 0.0
+      },
+      "cited_gold": {
+        "num": 76,
+        "den": 76,
+        "rate": 1.0
+      },
+      "cited_nonrel_or_unjudged": {
+        "num": 22,
+        "den": 190,
+        "rate": 0.11578947368421053
+      },
+      "answer_span_hit": {
+        "num": 71,
+        "den": 76,
+        "rate": 0.9342105263157895
+      },
+      "ungrounded_answers": {
+        "num": 5,
+        "den": 76,
+        "rate": 0.06578947368421052
+      },
+      "ungrounded_sentences": 6,
+      "consistent": {
+        "num": 36,
+        "den": 38,
+        "rate": 0.9473684210526315
+      },
+      "answer_span_hit_all_repeats": {
+        "num": 23,
+        "den": 30,
+        "rate": 0.7666666666666667
+      },
+      "spread": {
+        "correct_fallback": [
+          1.0,
+          1.0
+        ],
+        "false_fallback": [
+          0.13333333333333333,
+          0.16666666666666666
+        ],
+        "cited_gold": [
+          1.0,
+          1.0
+        ],
+        "answer_span_hit": [
+          0.92,
+          0.96
+        ]
+      },
+      "gate": {
+        "correct_fallback": {
+          "num": 8,
+          "den": 8,
+          "rate": 1.0
+        },
+        "false_fallback": {
+          "num": 4,
+          "den": 30,
+          "rate": 0.13333333333333333
+        }
+      },
+      "latency_ms": {
+        "embed": {
+          "p50": 58.327404000010574,
+          "p95": 147.83010900009685
+        },
+        "retrieve": {
+          "p50": 1733.353825999984,
+          "p95": 2712.8245899994
+        },
+        "rerank": {
+          "p50": null,
+          "p95": null
+        },
+        "generate": {
+          "p50": 1388.5036699994089,
+          "p95": 3853.4358440001597
+        },
+        "total": {
+          "p50": 2870.308388000012,
+          "p95": 5419.227544999558
+        }
+      },
+      "tokens": {
+        "prompt": 143688,
+        "completion": 18049
+      }
+    }
+  },
+  "items": [
+    {
+      "qid": "D01",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the maximum TDS ratio?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-003#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-003#gds-and-tds-limits",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum total debt service (TDS) ratio is 42% [S1][S3].",
+      "call_ids": [
+        "13d6f16b-5588-4525-8cf7-58f2c8d7435a"
+      ],
+      "cost_usd": 0.00019659999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1821,
+      "completion_tokens": 29,
+      "context": [
+        [
+          "S1",
+          "POL-003#summary"
+        ],
+        [
+          "S2",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S3",
+          "POL-003#gds-and-tds-limits"
+        ],
+        [
+          "S4",
+          "POL-003#what-counts-in-the-tds-ratio"
+        ],
+        [
+          "S5",
+          "POL-003#why-both-ratios-use-the-qualifying-rate"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 77.12614899992332,
+        "retrieve": 1470.2140379995399,
+        "rerank": null,
+        "total": 2763.882083999306,
+        "generate": 1206.6383879991918
+      }
+    },
+    {
+      "qid": "D01",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the maximum TDS ratio?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-003#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-003#gds-and-tds-limits",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum total debt service (TDS) ratio is 42% [S1][S3].",
+      "call_ids": [
+        "0b7d02a9-599c-4ee7-8d94-e4cc4c3908b7"
+      ],
+      "cost_usd": 0.00019659999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1821,
+      "completion_tokens": 29,
+      "context": [
+        [
+          "S1",
+          "POL-003#summary"
+        ],
+        [
+          "S2",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S3",
+          "POL-003#gds-and-tds-limits"
+        ],
+        [
+          "S4",
+          "POL-003#what-counts-in-the-tds-ratio"
+        ],
+        [
+          "S5",
+          "POL-003#why-both-ratios-use-the-qualifying-rate"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 77.12614899992332,
+        "retrieve": 1470.2140379995399,
+        "rerank": null,
+        "total": 2458.8018940003167,
+        "generate": 901.5581980002025
+      }
+    },
+    {
+      "qid": "D01",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the maximum TDS ratio?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-003#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-003#gds-and-tds-limits",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum total debt service (TDS) ratio is 42% [S1][S3].",
+      "call_ids": [
+        "4cffa180-e8ea-4c31-a9a4-d5c3e1060380"
+      ],
+      "cost_usd": 0.00019659999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1821,
+      "completion_tokens": 29,
+      "context": [
+        [
+          "S1",
+          "POL-003#summary"
+        ],
+        [
+          "S2",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S3",
+          "POL-003#gds-and-tds-limits"
+        ],
+        [
+          "S4",
+          "POL-003#what-counts-in-the-tds-ratio"
+        ],
+        [
+          "S5",
+          "POL-003#why-both-ratios-use-the-qualifying-rate"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 77.12614899992332,
+        "retrieve": 1470.2140379995399,
+        "rerank": null,
+        "total": 2447.0745589997023,
+        "generate": 889.8308629995881
+      }
+    },
+    {
+      "qid": "D02",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "How much can I prepay as a lump sum on an FX5-C mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-001#fx5-c-prepayment-privileges",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "POL-009#lump-sum-prepayment-limit",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
+          "label": "related"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRD-001#fx5-c-prepayment-penalty",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 1,
+      "answer_text": "The lump-sum privilege on an FX5-C mortgage lets you prepay up to 18% of the original principal in each anniversary year without penalty [S1][S4].\nThe limit is based on the original principal, not the current balance [S4].\nFor example, on a 400,000 original principal, the calculation is 0.18 x 400,000 = 72,000 [S2].\nUnused lump-sum room does not carry forward to the next anniversary year [S1][S2].\nAmounts above the limit are subject to the penalty [S4][S5].",
+      "call_ids": [
+        "423ffebf-b13b-40f4-a370-d5f3861db4d9"
+      ],
+      "cost_usd": 0.0005036,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2121,
+      "completion_tokens": 583,
+      "context": [
+        [
+          "S1",
+          "PRD-001#fx5-c-prepayment-privileges"
+        ],
+        [
+          "S2",
+          "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage"
+        ],
+        [
+          "S3",
+          "PRD-002#fx3-c-prepayment-privileges"
+        ],
+        [
+          "S4",
+          "POL-009#lump-sum-prepayment-limit"
+        ],
+        [
+          "S5",
+          "PRD-001#fx5-c-prepayment-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 63.5052990000986,
+        "retrieve": 1759.5487589996992,
+        "rerank": null,
+        "total": 4836.3472080000065,
+        "generate": 3003.8302090006255
+      }
+    },
+    {
+      "qid": "D02",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "How much can I prepay as a lump sum on an FX5-C mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-001#fx5-c-prepayment-privileges",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "POL-009#lump-sum-prepayment-limit",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
+          "label": "related"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRD-001#fx5-c-prepayment-penalty",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "- The lump-sum privilege on an FX5-C mortgage allows you to prepay up to 18% of the original principal in each anniversary year without penalty [S1][S4].\n- The limit is based on the original principal, not the current balance [S4].\n- You can make the lump sum in one payment or several, but the total in the anniversary year may not exceed the limit [S4].\n- Unused privilege does not carry forward to the next anniversary year [S1].\n- Example: with an original principal of 400,000, the calculation is 18% x 400,000 = 72,000, so the limit is 72,000 in each anniversary year [S2].\n- A prepayment above the limit is subject to a penalty, which is the greater of 3 months' interest or the interest rate differential [S4][S5].",
+      "call_ids": [
+        "8d0bdf9a-ac69-4ee6-a723-c38b3505cbcd"
+      ],
+      "cost_usd": 0.0005436,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2121,
+      "completion_tokens": 663,
+      "context": [
+        [
+          "S1",
+          "PRD-001#fx5-c-prepayment-privileges"
+        ],
+        [
+          "S2",
+          "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage"
+        ],
+        [
+          "S3",
+          "PRD-002#fx3-c-prepayment-privileges"
+        ],
+        [
+          "S4",
+          "POL-009#lump-sum-prepayment-limit"
+        ],
+        [
+          "S5",
+          "PRD-001#fx5-c-prepayment-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 63.5052990000986,
+        "retrieve": 1759.5487589996992,
+        "rerank": null,
+        "total": 4816.52806799957,
+        "generate": 2984.0110690001893
+      }
+    },
+    {
+      "qid": "D02",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "How much can I prepay as a lump sum on an FX5-C mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-001#fx5-c-prepayment-privileges",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "POL-009#lump-sum-prepayment-limit",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage",
+          "label": "related"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRD-001#fx5-c-prepayment-penalty",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "- The FX5-C lump-sum privilege allows you to prepay up to 18% of the original principal in each anniversary year without penalty [S1][S4].\n- The limit is calculated on the original principal, not the current balance [S4].\n- Example calculation: 18% x 400,000 = 72,000 per anniversary year, using an original principal of 400,000 [S2].\n- Unused amounts do not carry forward to the next anniversary year [S1][S2].\n- A prepayment above the limit is subject to a penalty, which is the greater of 3 months' interest or the interest rate differential [S4][S5].",
+      "call_ids": [
+        "b3d41234-9cab-4623-bf56-985fb2f9f03c"
+      ],
+      "cost_usd": 0.0005076,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2121,
+      "completion_tokens": 591,
+      "context": [
+        [
+          "S1",
+          "PRD-001#fx5-c-prepayment-privileges"
+        ],
+        [
+          "S2",
+          "POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage"
+        ],
+        [
+          "S3",
+          "PRD-002#fx3-c-prepayment-privileges"
+        ],
+        [
+          "S4",
+          "POL-009#lump-sum-prepayment-limit"
+        ],
+        [
+          "S5",
+          "PRD-001#fx5-c-prepayment-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 63.5052990000986,
+        "retrieve": 1759.5487589996992,
+        "rerank": null,
+        "total": 4938.784352999392,
+        "generate": 3106.2673540000105
+      }
+    },
+    {
+      "qid": "D03",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What fields does form EXC-100 require?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-005#exc-100-fields",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-005#when-an-exc-100-may-be-raised",
+          "label": "nonrel"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The EXC-100 has five required fields, and a request is complete only when all five are filled in [S1].\n- Loan number, in the format DMC-YYYY-NNNNN [S1]\n- Exception type, naming which of the four excepted items applies [S1][S2]\n- Requested value, such as the ratio, loan-to-value, accepted document or new rate hold end date [S1]\n- Justification, explaining in plain words why the exception is sensible for the file [S1]\n- Compensating factors, listing documented strengths that reduce risk and are not already counted in the excepted figure [S1]",
+      "call_ids": [
+        "8289ec74-9162-45c2-ac73-1a09fb365df9"
+      ],
+      "cost_usd": 0.0002908,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1953,
+      "completion_tokens": 191,
+      "context": [
+        [
+          "S1",
+          "PRC-005#exc-100-fields"
+        ],
+        [
+          "S2",
+          "PRC-005#when-an-exc-100-may-be-raised"
+        ],
+        [
+          "S3",
+          "POL-010#recording-and-timing-of-exceptions"
+        ],
+        [
+          "S4",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S5",
+          "POL-001#how-exceptions-to-credit-policy-are-handled"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 52.17002199970011,
+        "retrieve": 1523.6955729997135,
+        "rerank": null,
+        "total": 2844.429876000504,
+        "generate": 1256.2139609999576
+      }
+    },
+    {
+      "qid": "D03",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What fields does form EXC-100 require?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-005#exc-100-fields",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-005#when-an-exc-100-may-be-raised",
+          "label": "nonrel"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The EXC-100 has five required fields, and a request is complete only when all five are filled in [S1].\n- Loan number, in the format DMC-YYYY-NNNNN [S1]\n- Exception type, naming which of the four excepted items is being requested [S1][S2]\n- Requested value, such as the ratio, loan-to-value, accepted document or new rate hold end date [S1]\n- Justification, explaining in plain words why the exception is sensible for the file [S1]\n- Compensating factors, listing documented strengths that reduce risk and were not already counted in the excepted figure [S1]",
+      "call_ids": [
+        "408cd4cd-d101-4f97-978f-be26d0b8341b"
+      ],
+      "cost_usd": 0.0002918,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1953,
+      "completion_tokens": 193,
+      "context": [
+        [
+          "S1",
+          "PRC-005#exc-100-fields"
+        ],
+        [
+          "S2",
+          "PRC-005#when-an-exc-100-may-be-raised"
+        ],
+        [
+          "S3",
+          "POL-010#recording-and-timing-of-exceptions"
+        ],
+        [
+          "S4",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S5",
+          "POL-001#how-exceptions-to-credit-policy-are-handled"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 52.17002199970011,
+        "retrieve": 1523.6955729997135,
+        "rerank": null,
+        "total": 3046.017028001188,
+        "generate": 1457.8011130006416
+      }
+    },
+    {
+      "qid": "D03",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What fields does form EXC-100 require?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-005#exc-100-fields",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-005#when-an-exc-100-may-be-raised",
+          "label": "nonrel"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The EXC-100 has five required fields, and a request is complete only when all five are filled in [S1].\n- Loan number, in the format DMC-YYYY-NNNNN [S1]\n- Exception type, naming which of the four excepted items is involved [S1][S2]\n- Requested value, stating the figure being asked for [S1]\n- Justification, explaining in plain words why the exception is sensible for the file [S1]\n- Compensating factors, listing documented strengths of the file that reduce risk and are not already counted in the excepted figure [S1]",
+      "call_ids": [
+        "20179686-93f6-4d49-bdc6-0453aeeeb1d9"
+      ],
+      "cost_usd": 0.0002843,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1953,
+      "completion_tokens": 178,
+      "context": [
+        [
+          "S1",
+          "PRC-005#exc-100-fields"
+        ],
+        [
+          "S2",
+          "PRC-005#when-an-exc-100-may-be-raised"
+        ],
+        [
+          "S3",
+          "POL-010#recording-and-timing-of-exceptions"
+        ],
+        [
+          "S4",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S5",
+          "POL-001#how-exceptions-to-credit-policy-are-handled"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 52.17002199970011,
+        "retrieve": 1523.6955729997135,
+        "rerank": null,
+        "total": 2826.3863030006178,
+        "generate": 1238.1703880000714
+      }
+    },
+    {
+      "qid": "D04",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "table",
+      "query": "How much is the discharge fee?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S3",
+          "chunk_id": "RATE-002#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "RATE-002#fees-charged-by-demo-mortgage-co",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "RATE-002#when-each-fee-is-charged",
+          "label": "related"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#can-i-pay-off-my-mortgage-early",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The discharge fee is $295 [S3][S5]. It is charged once, when a mortgage or line of credit is paid out in full or discharged, in addition to any prepayment penalty [S4][S1].",
+      "call_ids": [
+        "7d5a9bc0-2f16-4f23-bff4-7ff8008fbf05"
+      ],
+      "cost_usd": 0.0002129,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1794,
+      "completion_tokens": 67,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ],
+        [
+          "S2",
+          "FAQ-001#which-fees-can-i-pay-on-my-mortgage-payments"
+        ],
+        [
+          "S3",
+          "RATE-002#summary"
+        ],
+        [
+          "S4",
+          "RATE-002#when-each-fee-is-charged"
+        ],
+        [
+          "S5",
+          "RATE-002#fees-charged-by-demo-mortgage-co"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 49.09760800001095,
+        "retrieve": 1770.9289209997223,
+        "rerank": null,
+        "total": 2659.122991998629,
+        "generate": 827.2938559994145
+      }
+    },
+    {
+      "qid": "D04",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "table",
+      "query": "How much is the discharge fee?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S3",
+          "chunk_id": "RATE-002#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "RATE-002#fees-charged-by-demo-mortgage-co",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "RATE-002#when-each-fee-is-charged",
+          "label": "related"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#can-i-pay-off-my-mortgage-early",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The discharge fee is $295 [S3][S5].\n\nIt is charged once, when a mortgage or line of credit is paid out in full or discharged, and it is in addition to any prepayment penalty [S4][S1].",
+      "call_ids": [
+        "515d27e5-cc94-4439-92f3-f2417075832c"
+      ],
+      "cost_usd": 0.0002944,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1794,
+      "completion_tokens": 230,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ],
+        [
+          "S2",
+          "FAQ-001#which-fees-can-i-pay-on-my-mortgage-payments"
+        ],
+        [
+          "S3",
+          "RATE-002#summary"
+        ],
+        [
+          "S4",
+          "RATE-002#when-each-fee-is-charged"
+        ],
+        [
+          "S5",
+          "RATE-002#fees-charged-by-demo-mortgage-co"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 49.09760800001095,
+        "retrieve": 1770.9289209997223,
+        "rerank": null,
+        "total": 4186.505016999035,
+        "generate": 2354.675880999821
+      }
+    },
+    {
+      "qid": "D04",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "table",
+      "query": "How much is the discharge fee?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S3",
+          "chunk_id": "RATE-002#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "RATE-002#fees-charged-by-demo-mortgage-co",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "RATE-002#when-each-fee-is-charged",
+          "label": "related"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#can-i-pay-off-my-mortgage-early",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The discharge fee is $295 [S3][S5]. It is charged once, when a mortgage or line of credit is paid out in full or discharged, in addition to any prepayment penalty [S4][S1].",
+      "call_ids": [
+        "42890d17-acd6-4bba-ab1f-9f06d19e086b"
+      ],
+      "cost_usd": 0.0002129,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1794,
+      "completion_tokens": 67,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ],
+        [
+          "S2",
+          "FAQ-001#which-fees-can-i-pay-on-my-mortgage-payments"
+        ],
+        [
+          "S3",
+          "RATE-002#summary"
+        ],
+        [
+          "S4",
+          "RATE-002#when-each-fee-is-charged"
+        ],
+        [
+          "S5",
+          "RATE-002#fees-charged-by-demo-mortgage-co"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 49.09760800001095,
+        "retrieve": 1770.9289209997223,
+        "rerank": null,
+        "total": 2802.7627349993054,
+        "generate": 970.9335990000909
+      }
+    },
+    {
+      "qid": "D05",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "How long can a rate be held for a refinance?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "RATE-003#rate-hold-period-for-a-refinance",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "RATE-003#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "RATE-003#a-rate-hold-is-not-an-approval",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A rate hold on a refinance lasts 60 days [S1][S2]. The hold begins on the date Mortgage Operations acknowledges the complete application under PRC-001, and it ends 60 days later [S1]. A rate hold is not an approval, and the borrower gets the held rate only if the mortgage is approved and every condition is met [S5]. A borrower who needs more than 60 days must ask for an extension [S1].",
+      "call_ids": [
+        "fb46cae0-c27c-4fa9-8a46-b7ca9bbe5404"
+      ],
+      "cost_usd": 0.00024119999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1712,
+      "completion_tokens": 140,
+      "context": [
+        [
+          "S1",
+          "RATE-003#rate-hold-period-for-a-refinance"
+        ],
+        [
+          "S2",
+          "RATE-003#summary"
+        ],
+        [
+          "S3",
+          "RATE-003#rate-hold-period-for-a-purchase"
+        ],
+        [
+          "S4",
+          "RATE-001#how-rate-holds-and-rate-changes-work"
+        ],
+        [
+          "S5",
+          "RATE-003#a-rate-hold-is-not-an-approval"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 50.842618999922706,
+        "retrieve": 1591.4411849998942,
+        "rerank": null,
+        "total": 2772.482774999844,
+        "generate": 1117.5557110000227
+      }
+    },
+    {
+      "qid": "D05",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "How long can a rate be held for a refinance?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "RATE-003#rate-hold-period-for-a-refinance",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "RATE-003#summary",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A rate hold on a refinance lasts 60 days [S1][S2]. The hold begins on the date Mortgage Operations acknowledges the complete application, and it ends 60 days later [S1]. An extension requires an exception under POL-010 plus the extension fee [S2].",
+      "call_ids": [
+        "99c6c6f9-09e1-4067-a157-c979ff93279f"
+      ],
+      "cost_usd": 0.0002917,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1712,
+      "completion_tokens": 241,
+      "context": [
+        [
+          "S1",
+          "RATE-003#rate-hold-period-for-a-refinance"
+        ],
+        [
+          "S2",
+          "RATE-003#summary"
+        ],
+        [
+          "S3",
+          "RATE-003#rate-hold-period-for-a-purchase"
+        ],
+        [
+          "S4",
+          "RATE-001#how-rate-holds-and-rate-changes-work"
+        ],
+        [
+          "S5",
+          "RATE-003#a-rate-hold-is-not-an-approval"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 50.842618999922706,
+        "retrieve": 1591.4411849998942,
+        "rerank": null,
+        "total": 3774.5094169995355,
+        "generate": 2119.582352999714
+      }
+    },
+    {
+      "qid": "D05",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "How long can a rate be held for a refinance?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "RATE-003#rate-hold-period-for-a-refinance",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "RATE-003#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "RATE-003#a-rate-hold-is-not-an-approval",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A rate hold on a refinance lasts 60 days [S1][S2]. The hold begins on the date Mortgage Operations acknowledges the complete application under PRC-001, and it ends 60 days later [S1]. A rate hold is not an approval, so the borrower gets the held rate only if the mortgage is approved and every condition is met [S5].",
+      "call_ids": [
+        "c3ceb0db-ee74-452a-96e4-63f28843e512"
+      ],
+      "cost_usd": 0.00022869999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1712,
+      "completion_tokens": 115,
+      "context": [
+        [
+          "S1",
+          "RATE-003#rate-hold-period-for-a-refinance"
+        ],
+        [
+          "S2",
+          "RATE-003#summary"
+        ],
+        [
+          "S3",
+          "RATE-003#rate-hold-period-for-a-purchase"
+        ],
+        [
+          "S4",
+          "RATE-001#how-rate-holds-and-rate-changes-work"
+        ],
+        [
+          "S5",
+          "RATE-003#a-rate-hold-is-not-an-approval"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 50.842618999922706,
+        "retrieve": 1591.4411849998942,
+        "rerank": null,
+        "total": 2685.9514050001962,
+        "generate": 1031.024341000375
+      }
+    },
+    {
+      "qid": "D06",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "Can I pay extra on my mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#can-i-pay-extra-on-my-mortgage",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+          "label": "related"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "FAQ-002#do-unused-extra-payments-carry-over-to-next-year",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "Yes, a closed Demo Mortgage Co. mortgage has two extra-payment privileges you can use each year without a penalty [S1]. The first is a lump-sum payment, and the second is a payment increase, and you can use both in the same year [S1].\n- Lump sums: up to 18% of the original principal each anniversary year, based on what you first borrowed [S4]. For example, on a 400,000 original principal, the limit is 18% x 400,000 = 72,000 [S4].\n- Payment increase: up to 18% of your current regular payment, once each anniversary year [S4]. For example, on a 2,000 regular payment, the increase is 18% x 2,000 = 360, to 2,360 [S4].\n- Unused amounts do not carry over to the next year [S3].\nThese privileges apply to FX5-C, FX3-C, VR5-C, SEA-5 and RNT-4, but not to FX1-O or HEL-1 [S1].",
+      "call_ids": [
+        "06beb2e0-9eb1-4099-8550-3af9d7afaf61"
+      ],
+      "cost_usd": 0.0003341,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1771,
+      "completion_tokens": 314,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#can-i-pay-extra-on-my-mortgage"
+        ],
+        [
+          "S2",
+          "FAQ-002#summary"
+        ],
+        [
+          "S3",
+          "FAQ-002#do-unused-extra-payments-carry-over-to-next-year"
+        ],
+        [
+          "S4",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ],
+        [
+          "S5",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 49.662998999338015,
+        "retrieve": 1556.8625890000476,
+        "rerank": null,
+        "total": 3281.164627999715,
+        "generate": 1662.7171789996282
+      }
+    },
+    {
+      "qid": "D06",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "Can I pay extra on my mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#can-i-pay-extra-on-my-mortgage",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+          "label": "related"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "FAQ-002#do-unused-extra-payments-carry-over-to-next-year",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "Yes, a closed Demo Mortgage Co. mortgage has two extra-payment privileges you can use each year without a penalty [S1]. The first is a lump-sum payment, and the second is a payment increase, and you can use both in the same year [S1].\n\n- Lump sums: you can pay up to 18% of the original principal each anniversary year [S4].\n- Payment increase: you can raise your regular payment by up to 18% of your current regular payment, once each anniversary year [S4].\n- Unused amounts do not carry over to the next year [S3].\n- The open mortgage FX1-O and the line of credit HEL-1 are not covered by these privileges [S1].",
+      "call_ids": [
+        "a129f795-8d0b-4c5b-b95e-a0f0bc42a571"
+      ],
+      "cost_usd": 0.0002856,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1771,
+      "completion_tokens": 217,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#can-i-pay-extra-on-my-mortgage"
+        ],
+        [
+          "S2",
+          "FAQ-002#summary"
+        ],
+        [
+          "S3",
+          "FAQ-002#do-unused-extra-payments-carry-over-to-next-year"
+        ],
+        [
+          "S4",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ],
+        [
+          "S5",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 49.662998999338015,
+        "retrieve": 1556.8625890000476,
+        "rerank": null,
+        "total": 2991.304544999366,
+        "generate": 1372.8570959992794
+      }
+    },
+    {
+      "qid": "D06",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "Can I pay extra on my mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#can-i-pay-extra-on-my-mortgage",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+          "label": "related"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "FAQ-002#do-unused-extra-payments-carry-over-to-next-year",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 1,
+      "answer_text": "Yes. A closed Demo Mortgage Co. mortgage has two extra-payment privileges you can use each year without a penalty: a lump-sum payment and a payment increase [S1].\n\n- Lump-sum payments are capped at 18% of the original principal in each anniversary year, based on what you first borrowed [S4].\n- For example, on an original 400,000, the calculation is 0.18 \u00d7 400,000 = 72,000, so you can pay up to 72,000 in lump sums that year [S4].\n- You can also raise your regular payment once each anniversary year by up to 18% of its current amount [S4].\n- For example, a regular payment of 2,000 can rise by 360, to 2,360 [S4].\n- The two limits are separate, so you can use both in the same year [S1][S4].\n- Unused amounts do not carry over to the next year [S3].\n- These privileges do not apply to the open mortgage FX1-O or the home equity line of credit HEL-1 [S1].\n- To pay extra, ask Mortgage Operations how to make the payment [S1].",
+      "call_ids": [
+        "a6789a9e-5e1c-408a-9f4a-ddd86d233aff"
+      ],
+      "cost_usd": 0.0006521,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1771,
+      "completion_tokens": 950,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#can-i-pay-extra-on-my-mortgage"
+        ],
+        [
+          "S2",
+          "FAQ-002#summary"
+        ],
+        [
+          "S3",
+          "FAQ-002#do-unused-extra-payments-carry-over-to-next-year"
+        ],
+        [
+          "S4",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ],
+        [
+          "S5",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 49.662998999338015,
+        "retrieve": 1556.8625890000476,
+        "rerank": null,
+        "total": 5915.710383999794,
+        "generate": 4297.262934999708
+      }
+    },
+    {
+      "qid": "D07",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What happens if I give no instructions when my mortgage matures?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-007#if-the-borrower-gives-no-instruction",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "PRD-001#fx5-c-renewal-at-maturity",
+          "label": "related"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "If you give no instruction by the maturity date, your mortgage renews into the open product FX1-O [S1][S3]. The balance renews for the FX1-O term at the FX1-O rate on the rate sheet in force on the maturity date [S1][S2]. Mortgage Operations sends you the new terms in writing on the same business day [S1][S2]. The FX1-O rate is higher than the closed terms, so staying in FX1-O may cost you more [S2]. You can move to a closed term at any time with no penalty, because FX1-O has none [S1][S2].",
+      "call_ids": [
+        "9a324168-9a82-4b9e-9b96-96f7ccc191b0"
+      ],
+      "cost_usd": 0.0002682,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1757,
+      "completion_tokens": 185,
+      "context": [
+        [
+          "S1",
+          "PRC-007#if-the-borrower-gives-no-instruction"
+        ],
+        [
+          "S2",
+          "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-renewal-at-maturity"
+        ],
+        [
+          "S4",
+          "FAQ-003#when-will-i-hear-about-renewing-my-mortgage"
+        ],
+        [
+          "S5",
+          "PRC-007#summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 56.402234000415774,
+        "retrieve": 1743.6905190006655,
+        "rerank": null,
+        "total": 3198.8155199987887,
+        "generate": 1388.5036699994089
+      }
+    },
+    {
+      "qid": "D07",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What happens if I give no instructions when my mortgage matures?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-007#if-the-borrower-gives-no-instruction",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "PRD-001#fx5-c-renewal-at-maturity",
+          "label": "related"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "If you give no instruction by the maturity date, your mortgage renews into the open product FX1-O [S1][S3].\n- The balance renews for the FX1-O term at the FX1-O rate on the rate sheet in force on the maturity date [S1][S2].\n- Mortgage Operations recalculates the payment and sends you the new terms in writing on the same business day [S1][S2].\n- The FX1-O rate is higher than the closed-term rates, so staying in FX1-O may cost you more [S1][S2].\n- You can move to a closed term at any time, and there is no penalty for moving because FX1-O has none [S1][S2].",
+      "call_ids": [
+        "c670f99e-cb6e-443c-8d6c-70b3c583f35a"
+      ],
+      "cost_usd": 0.00027969999999999997,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1757,
+      "completion_tokens": 208,
+      "context": [
+        [
+          "S1",
+          "PRC-007#if-the-borrower-gives-no-instruction"
+        ],
+        [
+          "S2",
+          "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-renewal-at-maturity"
+        ],
+        [
+          "S4",
+          "FAQ-003#when-will-i-hear-about-renewing-my-mortgage"
+        ],
+        [
+          "S5",
+          "PRC-007#summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 56.402234000415774,
+        "retrieve": 1743.6905190006655,
+        "rerank": null,
+        "total": 3131.033489999936,
+        "generate": 1320.7216400005564
+      }
+    },
+    {
+      "qid": "D07",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What happens if I give no instructions when my mortgage matures?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-007#if-the-borrower-gives-no-instruction",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "PRD-001#fx5-c-renewal-at-maturity",
+          "label": "related"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "If you give no instruction by the maturity date, your mortgage renews into the open product FX1-O [S1][S3].\n- The balance renews for the FX1-O term at the FX1-O rate on the rate sheet in force on the maturity date [S1][S2].\n- Mortgage Operations sends you the new terms in writing on the same business day [S1][S2].\n- FX1-O has a higher rate than the closed terms, so staying in it may cost you more [S1][S2].\n- You can move to a closed term at any time, and there is no penalty for moving because FX1-O has none [S1][S2].",
+      "call_ids": [
+        "63abec94-d9aa-4776-a3f1-4f43b2ad0a16"
+      ],
+      "cost_usd": 0.00027269999999999996,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1757,
+      "completion_tokens": 194,
+      "context": [
+        [
+          "S1",
+          "PRC-007#if-the-borrower-gives-no-instruction"
+        ],
+        [
+          "S2",
+          "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-renewal-at-maturity"
+        ],
+        [
+          "S4",
+          "FAQ-003#when-will-i-hear-about-renewing-my-mortgage"
+        ],
+        [
+          "S5",
+          "PRC-007#summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 56.402234000415774,
+        "retrieve": 1743.6905190006655,
+        "rerank": null,
+        "total": 3054.81124599919,
+        "generate": 1244.49939599981
+      }
+    },
+    {
+      "qid": "D08",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "Who can approve a loan above 750,000?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-002#stage-7-authority-check",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#loan-amount-authority-limits",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRC-004#example-routing-three-files",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A loan above 750,000 must go to a role with higher authority. [S1][S2]\n- A Senior Underwriter may approve a loan amount up to 1,500,000. [S1][S2]\n- The Credit Committee must approve any loan amount above 1,500,000. [S1][S2]\n- For example, a 1,100,000 loan that meets every policy is approved by a Senior Underwriter. [S5]",
+      "call_ids": [
+        "a731edd0-eb73-4a0a-8a15-6451f3a3dcbc"
+      ],
+      "cost_usd": 0.000371,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1745,
+      "completion_tokens": 393,
+      "context": [
+        [
+          "S1",
+          "PRC-002#stage-7-authority-check"
+        ],
+        [
+          "S2",
+          "PRC-004#loan-amount-authority-limits"
+        ],
+        [
+          "S3",
+          "PRC-004#summary"
+        ],
+        [
+          "S4",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S5",
+          "PRC-004#example-routing-three-files"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 51.502126000741555,
+        "retrieve": 1587.9851889994825,
+        "rerank": null,
+        "total": 4635.5397039997115,
+        "generate": 2983.856895999452
+      }
+    },
+    {
+      "qid": "D08",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "Who can approve a loan above 750,000?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-002#stage-7-authority-check",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#loan-amount-authority-limits",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A Senior Underwriter may approve a loan amount up to 1,500,000, so a loan above 750,000 up to that limit can be approved at that level [S1][S2].\nAny loan amount above 1,500,000 must go to the Credit Committee [S1][S2].",
+      "call_ids": [
+        "b1c3fb82-ba0b-4b4a-868b-e90ad7dd574f"
+      ],
+      "cost_usd": 0.000316,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1745,
+      "completion_tokens": 283,
+      "context": [
+        [
+          "S1",
+          "PRC-002#stage-7-authority-check"
+        ],
+        [
+          "S2",
+          "PRC-004#loan-amount-authority-limits"
+        ],
+        [
+          "S3",
+          "PRC-004#summary"
+        ],
+        [
+          "S4",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S5",
+          "PRC-004#example-routing-three-files"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 51.502126000741555,
+        "retrieve": 1587.9851889994825,
+        "rerank": null,
+        "total": 3959.9800350006262,
+        "generate": 2308.2972270003665
+      }
+    },
+    {
+      "qid": "D08",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "Who can approve a loan above 750,000?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-002#stage-7-authority-check",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#loan-amount-authority-limits",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "- A Senior Underwriter may approve a loan amount up to 1,500,000 [S1][S2].\n- The Credit Committee must approve a loan amount above 1,500,000 [S1][S2].",
+      "call_ids": [
+        "03a8a175-9ade-45c1-a4f5-82a74df95303"
+      ],
+      "cost_usd": 0.0003005,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1745,
+      "completion_tokens": 252,
+      "context": [
+        [
+          "S1",
+          "PRC-002#stage-7-authority-check"
+        ],
+        [
+          "S2",
+          "PRC-004#loan-amount-authority-limits"
+        ],
+        [
+          "S3",
+          "PRC-004#summary"
+        ],
+        [
+          "S4",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S5",
+          "PRC-004#example-routing-three-files"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 51.502126000741555,
+        "retrieve": 1587.9851889994825,
+        "rerank": null,
+        "total": 4050.661241999478,
+        "generate": 2398.9784339992184
+      }
+    },
+    {
+      "qid": "D09",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "How is income calculated for someone who runs their own business?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-008#income-the-2-year-average-of-net-income",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRD-007#sea-5-eligibility-for-self-employed-borrowers",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": false,
+      "ungrounded": 0,
+      "answer_text": "- Underwriting counts self-employed income as the average net income of the last 2 years [S1].\n- Net income is the income on the notice of assessment after business expenses are deducted, and gross business revenue is never counted [S1].\n- Add the net income for each of the 2 years, then divide by 2 [S1].\n- If the most recent year's net income is lower than this average, the lower figure is used [S1].\n- If the business made a loss in either year, self-employed income may not be counted [S1].\n- For the SEA-5 product, the borrower must have been in business for at least 2 years before the application [S5].",
+      "call_ids": [
+        "561150d1-9f50-4a82-b84a-60e3e0ee2e03"
+      ],
+      "cost_usd": 0.00043559999999999996,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1706,
+      "completion_tokens": 530,
+      "context": [
+        [
+          "S1",
+          "POL-008#income-the-2-year-average-of-net-income"
+        ],
+        [
+          "S2",
+          "POL-008#who-counts-as-a-self-employed-borrower"
+        ],
+        [
+          "S3",
+          "POL-008#summary"
+        ],
+        [
+          "S4",
+          "POL-002#rental-income-50-counted"
+        ],
+        [
+          "S5",
+          "PRD-007#sea-5-eligibility-for-self-employed-borrowers"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 56.34675800047262,
+        "retrieve": 1629.4419050000215,
+        "rerank": null,
+        "total": 4264.312203998998,
+        "generate": 2567.6892869996664
+      }
+    },
+    {
+      "qid": "D09",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "How is income calculated for someone who runs their own business?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-008#income-the-2-year-average-of-net-income",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-008#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRD-007#sea-5-eligibility-for-self-employed-borrowers",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": false,
+      "ungrounded": 0,
+      "answer_text": "Self-employed income is the average net income of the last 2 years [S1][S3].\n- Net income is the income on the notice of assessment after business expenses are deducted, and gross business revenue is never counted [S1].\n- Calculation: add the net income of each of the 2 years, then divide the total by 2 [S1].\n- If the most recent year's net income is lower than this average, the lower figure must be used [S1].\n- If the business made a loss in either year, self-employed income may not be counted [S1].\n- Retained earnings of a corporation are not income unless taken as salary or dividends shown on the notice of assessment [S1].\n- The borrower must have been in business for at least 2 years before the application [S5].",
+      "call_ids": [
+        "e192f5e0-c7b5-46f3-ab76-5e0c653dbe68"
+      ],
+      "cost_usd": 0.0004801,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1706,
+      "completion_tokens": 619,
+      "context": [
+        [
+          "S1",
+          "POL-008#income-the-2-year-average-of-net-income"
+        ],
+        [
+          "S2",
+          "POL-008#who-counts-as-a-self-employed-borrower"
+        ],
+        [
+          "S3",
+          "POL-008#summary"
+        ],
+        [
+          "S4",
+          "POL-002#rental-income-50-counted"
+        ],
+        [
+          "S5",
+          "PRD-007#sea-5-eligibility-for-self-employed-borrowers"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 56.34675800047262,
+        "retrieve": 1629.4419050000215,
+        "rerank": null,
+        "total": 5666.5193439994255,
+        "generate": 3969.8964270000943
+      }
+    },
+    {
+      "qid": "D09",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "How is income calculated for someone who runs their own business?",
+      "status": "fallback",
+      "subtype": "sources_only",
+      "reason": "uncited",
+      "stage": "validate",
+      "gate_passed": true,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "Self-employed income is the average net income of the last 2 years. [S1]\n\n- Net income is the income shown on the notice of assessment after business expenses are deducted. Gross business revenue is never counted. [S1]\n- Add the net income of each of the 2 years and divide by 2. [S1]\n- If the most recent year's net income is lower than this average, use the lower figure. [S1]\n- If the business made a loss in either year, self-employed income may not be counted. [S1]\n- The borrower must have been in business for at least 2 years and must supply notices of assessment for both years. [S5][S3]",
+      "call_ids": [
+        "eb8681b8-91cc-4bf3-9d31-4bfafb73c90a"
+      ],
+      "cost_usd": 0.0004751,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1706,
+      "completion_tokens": 609,
+      "context": [
+        [
+          "S1",
+          "POL-008#income-the-2-year-average-of-net-income"
+        ],
+        [
+          "S2",
+          "POL-008#who-counts-as-a-self-employed-borrower"
+        ],
+        [
+          "S3",
+          "POL-008#summary"
+        ],
+        [
+          "S4",
+          "POL-002#rental-income-50-counted"
+        ],
+        [
+          "S5",
+          "PRD-007#sea-5-eligibility-for-self-employed-borrowers"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 56.34675800047262,
+        "retrieve": 1629.4419050000215,
+        "rerank": null,
+        "total": 5550.058760999491,
+        "generate": 3853.4358440001597
+      }
+    },
+    {
+      "qid": "D10",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the maximum combined loan-to-value on a home equity line?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-005#hel-1-combined-loan-to-value-limit",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "PRD-005#summary",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum combined loan-to-value for HEL-1, the Demo Mortgage Co. home equity line of credit, is 65% [S1][S3].\n\nMortgage default insurance does not raise this limit [S1].",
+      "call_ids": [
+        "97781d6a-39fd-4492-ba2c-4d2d6df9b193"
+      ],
+      "cost_usd": 0.00019989999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1634,
+      "completion_tokens": 73,
+      "context": [
+        [
+          "S1",
+          "PRD-005#hel-1-combined-loan-to-value-limit"
+        ],
+        [
+          "S2",
+          "POL-007#loan-to-value-limits-set-by-product"
+        ],
+        [
+          "S3",
+          "PRD-005#summary"
+        ],
+        [
+          "S4",
+          "POL-007#summary"
+        ],
+        [
+          "S5",
+          "POL-007#how-loan-to-value-is-calculated"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 62.94988199988438,
+        "retrieve": 1626.6948060001596,
+        "rerank": null,
+        "total": 2685.8145780006453,
+        "generate": 977.1728619998612
+      }
+    },
+    {
+      "qid": "D10",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the maximum combined loan-to-value on a home equity line?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-005#hel-1-combined-loan-to-value-limit",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "PRD-005#summary",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum combined loan-to-value for HEL-1, the Demo Mortgage Co. home equity line of credit, is 65% [S1][S3].\n\nMortgage default insurance does not raise this limit [S1].",
+      "call_ids": [
+        "e35a158b-085b-4319-99fd-136ade51aea2"
+      ],
+      "cost_usd": 0.00019989999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1634,
+      "completion_tokens": 73,
+      "context": [
+        [
+          "S1",
+          "PRD-005#hel-1-combined-loan-to-value-limit"
+        ],
+        [
+          "S2",
+          "POL-007#loan-to-value-limits-set-by-product"
+        ],
+        [
+          "S3",
+          "PRD-005#summary"
+        ],
+        [
+          "S4",
+          "POL-007#summary"
+        ],
+        [
+          "S5",
+          "POL-007#how-loan-to-value-is-calculated"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 62.94988199988438,
+        "retrieve": 1626.6948060001596,
+        "rerank": null,
+        "total": 2559.425174000353,
+        "generate": 850.7834579995688
+      }
+    },
+    {
+      "qid": "D10",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the maximum combined loan-to-value on a home equity line?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-005#hel-1-combined-loan-to-value-limit",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "PRD-005#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-007#loan-to-value-limits-set-by-product",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum combined loan-to-value for a home equity line of credit (HEL-1) is 65% [S1][S3].\n\nMortgage default insurance does not raise this limit [S1][S2].",
+      "call_ids": [
+        "f45cf6e7-43aa-4485-96e0-270001e3aaf6"
+      ],
+      "cost_usd": 0.0002489,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1634,
+      "completion_tokens": 171,
+      "context": [
+        [
+          "S1",
+          "PRD-005#hel-1-combined-loan-to-value-limit"
+        ],
+        [
+          "S2",
+          "POL-007#loan-to-value-limits-set-by-product"
+        ],
+        [
+          "S3",
+          "PRD-005#summary"
+        ],
+        [
+          "S4",
+          "POL-007#summary"
+        ],
+        [
+          "S5",
+          "POL-007#how-loan-to-value-is-calculated"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 62.94988199988438,
+        "retrieve": 1626.6948060001596,
+        "rerank": null,
+        "total": 3764.7055520010326,
+        "generate": 2056.0638360002486
+      }
+    },
+    {
+      "qid": "D11",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the stress test rate for mortgage approval?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 51.630752999699325,
+        "retrieve": 1386.90495299943,
+        "rerank": null,
+        "total": 1451.399837000281
+      }
+    },
+    {
+      "qid": "D11",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the stress test rate for mortgage approval?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 51.630752999699325,
+        "retrieve": 1386.90495299943,
+        "rerank": null,
+        "total": 1451.399837000281
+      }
+    },
+    {
+      "qid": "D11",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "What is the stress test rate for mortgage approval?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 51.630752999699325,
+        "retrieve": 1386.90495299943,
+        "rerank": null,
+        "total": 1451.399837000281
+      }
+    },
+    {
+      "qid": "D12",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "How long does the lender have to give a final response to a complaint?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-008#final-response-within-30-days",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": false,
+      "ungrounded": 0,
+      "answer_text": "The lender must give a final response in writing within 30 calendar days of the date the complaint was received [S1]. If the investigation cannot be finished in that time, the Complaints Office must write to the customer before the deadline with the reason and a new date [S1].",
+      "call_ids": [
+        "054f4cff-1aef-4317-9cdb-31c044ca44cd"
+      ],
+      "cost_usd": 0.0002026,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1626,
+      "completion_tokens": 80,
+      "context": [
+        [
+          "S1",
+          "PRC-008#final-response-within-30-days"
+        ],
+        [
+          "S2",
+          "PRC-008#summary"
+        ],
+        [
+          "S3",
+          "PRC-008#acknowledgement-within-2-business-days"
+        ],
+        [
+          "S4",
+          "FAQ-001#what-happens-if-a-payment-is-returned-or-missed"
+        ],
+        [
+          "S5",
+          "PRC-008#the-external-complaints-body"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 83.36870800030738,
+        "retrieve": 1525.336619999507,
+        "rerank": null,
+        "total": 2599.868812999375,
+        "generate": 981.8190099995263
+      }
+    },
+    {
+      "qid": "D12",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "How long does the lender have to give a final response to a complaint?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-008#final-response-within-30-days",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": false,
+      "ungrounded": 0,
+      "answer_text": "The lender must give a final response in writing within 30 calendar days of the date the complaint was received [S1]. If the investigation cannot be completed in that time, the Complaints Office must write to the customer before the deadline with the reason and new date [S1].",
+      "call_ids": [
+        "a39f7fc4-2e40-4b47-b391-5173b8330e3f"
+      ],
+      "cost_usd": 0.00020209999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1626,
+      "completion_tokens": 79,
+      "context": [
+        [
+          "S1",
+          "PRC-008#final-response-within-30-days"
+        ],
+        [
+          "S2",
+          "PRC-008#summary"
+        ],
+        [
+          "S3",
+          "PRC-008#acknowledgement-within-2-business-days"
+        ],
+        [
+          "S4",
+          "FAQ-001#what-happens-if-a-payment-is-returned-or-missed"
+        ],
+        [
+          "S5",
+          "PRC-008#the-external-complaints-body"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 83.36870800030738,
+        "retrieve": 1525.336619999507,
+        "rerank": null,
+        "total": 2533.1198260000747,
+        "generate": 915.0700230002258
+      }
+    },
+    {
+      "qid": "D12",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "multi_doc",
+      "query": "How long does the lender have to give a final response to a complaint?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-008#final-response-within-30-days",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": false,
+      "ungrounded": 0,
+      "answer_text": "The lender must give a final response in writing within 30 calendar days of the date the complaint was received [S1]. If the investigation cannot be finished in that time, the Complaints Office must write to the customer before the deadline with the reason and a new date [S1].",
+      "call_ids": [
+        "51bbce2e-5fda-4e44-b6fc-610d33bd03fc"
+      ],
+      "cost_usd": 0.0002026,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1626,
+      "completion_tokens": 80,
+      "context": [
+        [
+          "S1",
+          "PRC-008#final-response-within-30-days"
+        ],
+        [
+          "S2",
+          "PRC-008#summary"
+        ],
+        [
+          "S3",
+          "PRC-008#acknowledgement-within-2-business-days"
+        ],
+        [
+          "S4",
+          "FAQ-001#what-happens-if-a-payment-is-returned-or-missed"
+        ],
+        [
+          "S5",
+          "PRC-008#the-external-complaints-body"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 83.36870800030738,
+        "retrieve": 1525.336619999507,
+        "rerank": null,
+        "total": 2570.4655500003355,
+        "generate": 952.4157470004866
+      }
+    },
+    {
+      "qid": "D13",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What is the rate hold extension fee?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S4",
+          "chunk_id": "RATE-002#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "RATE-002#fees-charged-by-demo-mortgage-co",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "RATE-002#when-each-fee-is-charged",
+          "label": "related"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "RATE-003#extending-a-rate-hold",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "RATE-002#waiving-and-correcting-fees",
+          "label": "nonrel"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The rate hold extension fee is $150 [S4][S5]. It is charged only when an extension has been approved under POL-010 [S1][S5]. The Credit Committee may waive it as part of the exception decision [S2][S3].",
+      "call_ids": [
+        "11b1e628-8447-4212-ad9c-3bfd418ada55"
+      ],
+      "cost_usd": 0.000211,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1730,
+      "completion_tokens": 76,
+      "context": [
+        [
+          "S1",
+          "RATE-002#when-each-fee-is-charged"
+        ],
+        [
+          "S2",
+          "RATE-003#extending-a-rate-hold"
+        ],
+        [
+          "S3",
+          "RATE-002#waiving-and-correcting-fees"
+        ],
+        [
+          "S4",
+          "RATE-002#summary"
+        ],
+        [
+          "S5",
+          "RATE-002#fees-charged-by-demo-mortgage-co"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 52.41750700042758,
+        "retrieve": 1725.6235499999093,
+        "rerank": null,
+        "total": 2899.8918580000463,
+        "generate": 1111.5357120006593
+      }
+    },
+    {
+      "qid": "D13",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What is the rate hold extension fee?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S4",
+          "chunk_id": "RATE-002#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "RATE-002#fees-charged-by-demo-mortgage-co",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "RATE-002#when-each-fee-is-charged",
+          "label": "related"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "RATE-003#extending-a-rate-hold",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "RATE-002#waiving-and-correcting-fees",
+          "label": "nonrel"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The rate hold extension fee is $150 [S4][S5]. It is charged only when a rate hold extension has been approved under POL-010 [S1][S5]. The Credit Committee may waive it as part of the exception decision [S2][S3].",
+      "call_ids": [
+        "d469875b-9cab-4b9d-8027-34f06b3716bf"
+      ],
+      "cost_usd": 0.000213,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1730,
+      "completion_tokens": 80,
+      "context": [
+        [
+          "S1",
+          "RATE-002#when-each-fee-is-charged"
+        ],
+        [
+          "S2",
+          "RATE-003#extending-a-rate-hold"
+        ],
+        [
+          "S3",
+          "RATE-002#waiving-and-correcting-fees"
+        ],
+        [
+          "S4",
+          "RATE-002#summary"
+        ],
+        [
+          "S5",
+          "RATE-002#fees-charged-by-demo-mortgage-co"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 52.41750700042758,
+        "retrieve": 1725.6235499999093,
+        "rerank": null,
+        "total": 3208.9988689995153,
+        "generate": 1420.6427230001282
+      }
+    },
+    {
+      "qid": "D13",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What is the rate hold extension fee?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S4",
+          "chunk_id": "RATE-002#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "RATE-002#fees-charged-by-demo-mortgage-co",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "RATE-002#when-each-fee-is-charged",
+          "label": "related"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "RATE-002#waiving-and-correcting-fees",
+          "label": "nonrel"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The rate hold extension fee is $150 [S4][S5]. It is charged only when an extension has been approved under POL-010 [S1][S5]. The Credit Committee is the only party that may waive it [S3].",
+      "call_ids": [
+        "3d86ebef-5347-4324-9c93-1c7cbe4bbb1c"
+      ],
+      "cost_usd": 0.00020800000000000001,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1730,
+      "completion_tokens": 70,
+      "context": [
+        [
+          "S1",
+          "RATE-002#when-each-fee-is-charged"
+        ],
+        [
+          "S2",
+          "RATE-003#extending-a-rate-hold"
+        ],
+        [
+          "S3",
+          "RATE-002#waiving-and-correcting-fees"
+        ],
+        [
+          "S4",
+          "RATE-002#summary"
+        ],
+        [
+          "S5",
+          "RATE-002#fees-charged-by-demo-mortgage-co"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 52.41750700042758,
+        "retrieve": 1725.6235499999093,
+        "rerank": null,
+        "total": 2757.9655279996587,
+        "generate": 969.6093820002716
+      }
+    },
+    {
+      "qid": "D14",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What may a Customer Service Representative view on a loan file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-011#least-privilege-access-by-role",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#what-each-role-may-view",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A Customer Service Representative may view the status of a file and the contact details needed to answer the customer [S1][S2]. They may not view the full financial documents [S1][S2].",
+      "call_ids": [
+        "c593058a-8c38-4dd8-b84e-59739e8273dc"
+      ],
+      "cost_usd": 0.0001964,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1684,
+      "completion_tokens": 56,
+      "context": [
+        [
+          "S1",
+          "POL-011#least-privilege-access-by-role"
+        ],
+        [
+          "S2",
+          "PRC-004#what-each-role-may-view"
+        ],
+        [
+          "S3",
+          "PRC-004#summary"
+        ],
+        [
+          "S4",
+          "PRC-004#what-each-role-may-approve"
+        ],
+        [
+          "S5",
+          "PRC-004#roles-in-the-authority-matrix"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.995602000119106,
+        "retrieve": 1594.0407899997808,
+        "rerank": null,
+        "total": 2562.406722999185,
+        "generate": 898.9073599996118
+      }
+    },
+    {
+      "qid": "D14",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What may a Customer Service Representative view on a loan file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-011#least-privilege-access-by-role",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#what-each-role-may-view",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A Customer Service Representative may view the status of a file and the contact details needed to answer the customer [S1][S2]. They may not view the full financial documents [S1][S2].",
+      "call_ids": [
+        "8dac24a1-dfbd-4850-88f3-edf3d3bc038d"
+      ],
+      "cost_usd": 0.0001964,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1684,
+      "completion_tokens": 56,
+      "context": [
+        [
+          "S1",
+          "POL-011#least-privilege-access-by-role"
+        ],
+        [
+          "S2",
+          "PRC-004#what-each-role-may-view"
+        ],
+        [
+          "S3",
+          "PRC-004#summary"
+        ],
+        [
+          "S4",
+          "PRC-004#what-each-role-may-approve"
+        ],
+        [
+          "S5",
+          "PRC-004#roles-in-the-authority-matrix"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.995602000119106,
+        "retrieve": 1594.0407899997808,
+        "rerank": null,
+        "total": 2677.2748959992896,
+        "generate": 1013.7755329997162
+      }
+    },
+    {
+      "qid": "D14",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "exact",
+      "query": "What may a Customer Service Representative view on a loan file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-011#least-privilege-access-by-role",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#what-each-role-may-view",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A Customer Service Representative may view the status of a file [S1][S2].\nThey may also view the contact details needed to answer the customer [S1][S2].\nThey may not view the full financial documents [S1][S2].",
+      "call_ids": [
+        "9bceb23a-b5ff-49f0-a82d-446ac81de96e"
+      ],
+      "cost_usd": 0.0002749,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1684,
+      "completion_tokens": 213,
+      "context": [
+        [
+          "S1",
+          "POL-011#least-privilege-access-by-role"
+        ],
+        [
+          "S2",
+          "PRC-004#what-each-role-may-view"
+        ],
+        [
+          "S3",
+          "PRC-004#summary"
+        ],
+        [
+          "S4",
+          "PRC-004#what-each-role-may-approve"
+        ],
+        [
+          "S5",
+          "PRC-004#roles-in-the-authority-matrix"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.995602000119106,
+        "retrieve": 1594.0407899997808,
+        "rerank": null,
+        "total": 3619.200072998865,
+        "generate": 1955.7007099992916
+      }
+    },
+    {
+      "qid": "D15",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "table",
+      "query": "Who has to approve an exception to the loan-to-value limit?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#exception-approval-authority",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRC-005#routing-by-authority",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The Credit Committee must approve an exception to the loan-to-value limit [S1][S2][S5]. An Underwriter cannot approve any exception, and a Senior Underwriter does not have authority over loan-to-value exceptions [S2][S5].",
+      "call_ids": [
+        "7d95ba4e-0a79-446b-8de2-4481d3a2112b"
+      ],
+      "cost_usd": 0.00024229999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2003,
+      "completion_tokens": 84,
+      "context": [
+        [
+          "S1",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S2",
+          "PRC-004#exception-approval-authority"
+        ],
+        [
+          "S3",
+          "POL-010#who-can-approve-a-gds-or-tds-exception"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-7-authority-check"
+        ],
+        [
+          "S5",
+          "PRC-005#routing-by-authority"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.29958899974008,
+        "retrieve": 1822.6388749999387,
+        "rerank": null,
+        "total": 2971.2206839994906,
+        "generate": 1072.7343290000135
+      }
+    },
+    {
+      "qid": "D15",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "table",
+      "query": "Who has to approve an exception to the loan-to-value limit?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#exception-approval-authority",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRC-005#routing-by-authority",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The Credit Committee must approve an exception to the loan-to-value limit [S1]. The Credit Committee approves a loan-to-value exception under the approval authority matrix [S2], and the routing table lists loan-to-value as a Credit Committee approval [S5]. An Underwriter approves no exception [S2].",
+      "call_ids": [
+        "2d9b4731-2613-4237-a239-a7f72dcfb41f"
+      ],
+      "cost_usd": 0.0002523,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2003,
+      "completion_tokens": 104,
+      "context": [
+        [
+          "S1",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S2",
+          "PRC-004#exception-approval-authority"
+        ],
+        [
+          "S3",
+          "POL-010#who-can-approve-a-gds-or-tds-exception"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-7-authority-check"
+        ],
+        [
+          "S5",
+          "PRC-005#routing-by-authority"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.29958899974008,
+        "retrieve": 1822.6388749999387,
+        "rerank": null,
+        "total": 2994.1012780000165,
+        "generate": 1095.6149230005394
+      }
+    },
+    {
+      "qid": "D15",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "table",
+      "query": "Who has to approve an exception to the loan-to-value limit?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-004#exception-approval-authority",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "PRC-005#routing-by-authority",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The Credit Committee must approve an exception to the loan-to-value limit [S1][S2][S5]. An Underwriter approves no exception and only prepares and recommends the request [S2][S5].",
+      "call_ids": [
+        "4048e034-d1b7-4cdb-92dd-6fd0d4ed4bb3"
+      ],
+      "cost_usd": 0.0002328,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2003,
+      "completion_tokens": 65,
+      "context": [
+        [
+          "S1",
+          "POL-010#who-can-approve-ltv-income-document-and-rate-hold-exceptions"
+        ],
+        [
+          "S2",
+          "PRC-004#exception-approval-authority"
+        ],
+        [
+          "S3",
+          "POL-010#who-can-approve-a-gds-or-tds-exception"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-7-authority-check"
+        ],
+        [
+          "S5",
+          "PRC-005#routing-by-authority"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.29958899974008,
+        "retrieve": 1822.6388749999387,
+        "rerank": null,
+        "total": 3326.1578399997234,
+        "generate": 1427.6714850002463
+      }
+    },
+    {
+      "qid": "D16",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "table",
+      "query": "Who signs off the lawyer's confirmation of clear title on a file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-003#who-signs-off-each-condition-type",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "Mortgage Operations signs off the title confirmation from the lawyer [S2]. The FAQ also lists the lawyer's title confirmation among the items Mortgage Operations signs off [S1]. A person may not sign off a condition they supplied themselves [S2].",
+      "call_ids": [
+        "661f2511-f112-40ce-afbf-9d3f22aa3202"
+      ],
+      "cost_usd": 0.0002392,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1947,
+      "completion_tokens": 89,
+      "context": [
+        [
+          "S1",
+          "FAQ-004#when-are-conditions-due-and-who-signs-them-off"
+        ],
+        [
+          "S2",
+          "PRC-003#who-signs-off-each-condition-type"
+        ],
+        [
+          "S3",
+          "FAQ-004#which-conditions-will-i-see-on-an-approval"
+        ],
+        [
+          "S4",
+          "PRC-006#closing-instructions-to-the-borrower-s-lawyer"
+        ],
+        [
+          "S5",
+          "PRC-006#post-closing-file-audit"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 54.79351000030874,
+        "retrieve": 1784.5904659998268,
+        "rerank": null,
+        "total": 3161.040036000486,
+        "generate": 1307.3801620002996
+      }
+    },
+    {
+      "qid": "D16",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "table",
+      "query": "Who signs off the lawyer's confirmation of clear title on a file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-003#who-signs-off-each-condition-type",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "Mortgage Operations signs off the title confirmation from the lawyer [S2]. The same role signs off the lawyer's title confirmation under the broker FAQ [S1].",
+      "call_ids": [
+        "5fb5fc84-680f-4153-b7da-7699ae475182"
+      ],
+      "cost_usd": 0.00022419999999999997,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1947,
+      "completion_tokens": 59,
+      "context": [
+        [
+          "S1",
+          "FAQ-004#when-are-conditions-due-and-who-signs-them-off"
+        ],
+        [
+          "S2",
+          "PRC-003#who-signs-off-each-condition-type"
+        ],
+        [
+          "S3",
+          "FAQ-004#which-conditions-will-i-see-on-an-approval"
+        ],
+        [
+          "S4",
+          "PRC-006#closing-instructions-to-the-borrower-s-lawyer"
+        ],
+        [
+          "S5",
+          "PRC-006#post-closing-file-audit"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 54.79351000030874,
+        "retrieve": 1784.5904659998268,
+        "rerank": null,
+        "total": 2807.5846790006835,
+        "generate": 953.9248050004971
+      }
+    },
+    {
+      "qid": "D16",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "table",
+      "query": "Who signs off the lawyer's confirmation of clear title on a file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-004#when-are-conditions-due-and-who-signs-them-off",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-003#who-signs-off-each-condition-type",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "Mortgage Operations signs off the lawyer's title confirmation [S1][S2]. A person may not sign off a condition they supplied themselves [S2].",
+      "call_ids": [
+        "24304b66-ecdd-4437-b1ee-0adedaee3dfd"
+      ],
+      "cost_usd": 0.00022119999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1947,
+      "completion_tokens": 53,
+      "context": [
+        [
+          "S1",
+          "FAQ-004#when-are-conditions-due-and-who-signs-them-off"
+        ],
+        [
+          "S2",
+          "PRC-003#who-signs-off-each-condition-type"
+        ],
+        [
+          "S3",
+          "FAQ-004#which-conditions-will-i-see-on-an-approval"
+        ],
+        [
+          "S4",
+          "PRC-006#closing-instructions-to-the-borrower-s-lawyer"
+        ],
+        [
+          "S5",
+          "PRC-006#post-closing-file-audit"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 54.79351000030874,
+        "retrieve": 1784.5904659998268,
+        "rerank": null,
+        "total": 3060.0474849998136,
+        "generate": 1206.3876109996272
+      }
+    },
+    {
+      "qid": "D17",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "What is the maximum GDS ratio?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-003#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-003#gds-and-tds-limits",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum gross debt service (GDS) ratio is 35% [S1][S3].",
+      "call_ids": [
+        "7ac51c5c-d819-4133-be33-4e96e63c1842"
+      ],
+      "cost_usd": 0.00019749999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1825,
+      "completion_tokens": 30,
+      "context": [
+        [
+          "S1",
+          "POL-003#summary"
+        ],
+        [
+          "S2",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S3",
+          "POL-003#gds-and-tds-limits"
+        ],
+        [
+          "S4",
+          "POL-003#what-counts-in-the-gds-ratio"
+        ],
+        [
+          "S5",
+          "POL-003#why-both-ratios-use-the-qualifying-rate"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 50.26928600000247,
+        "retrieve": 1557.708769000783,
+        "rerank": null,
+        "total": 2484.59271000047,
+        "generate": 864.8601880004207
+      }
+    },
+    {
+      "qid": "D17",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "What is the maximum GDS ratio?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-003#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-003#gds-and-tds-limits",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum gross debt service (GDS) ratio is 35% [S1][S3].",
+      "call_ids": [
+        "3e9a7af1-56a5-49c9-9390-dbe1df64a74c"
+      ],
+      "cost_usd": 0.00019749999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1825,
+      "completion_tokens": 30,
+      "context": [
+        [
+          "S1",
+          "POL-003#summary"
+        ],
+        [
+          "S2",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S3",
+          "POL-003#gds-and-tds-limits"
+        ],
+        [
+          "S4",
+          "POL-003#what-counts-in-the-gds-ratio"
+        ],
+        [
+          "S5",
+          "POL-003#why-both-ratios-use-the-qualifying-rate"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 50.26928600000247,
+        "retrieve": 1557.708769000783,
+        "rerank": null,
+        "total": 3614.2393399995854,
+        "generate": 1994.506817999536
+      }
+    },
+    {
+      "qid": "D17",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "What is the maximum GDS ratio?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-003#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-003#gds-and-tds-limits",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum gross debt service (GDS) ratio is 35% [S1][S3].",
+      "call_ids": [
+        "5aefab14-104c-4ca8-8872-233fea2c42e8"
+      ],
+      "cost_usd": 0.00019749999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1825,
+      "completion_tokens": 30,
+      "context": [
+        [
+          "S1",
+          "POL-003#summary"
+        ],
+        [
+          "S2",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S3",
+          "POL-003#gds-and-tds-limits"
+        ],
+        [
+          "S4",
+          "POL-003#what-counts-in-the-gds-ratio"
+        ],
+        [
+          "S5",
+          "POL-003#why-both-ratios-use-the-qualifying-rate"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 50.26928600000247,
+        "retrieve": 1557.708769000783,
+        "rerank": null,
+        "total": 2597.919668999566,
+        "generate": 978.1871469995167
+      }
+    },
+    {
+      "qid": "D18",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "By how much can a borrower raise their regular payment each year without a penalty?",
+      "status": "fallback",
+      "subtype": "sources_only",
+      "reason": "uncited",
+      "stage": "validate",
+      "gate_passed": true,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "A borrower can raise their regular payment by up to 18% of the current regular payment, once in each anniversary year, without a penalty [S2].\n\nUsing the example in the FAQ, with a regular payment of 2,000:\n- Step 1: 18% of 2,000 is 360 [S1].\n- Step 2: 2,000 plus 360 gives a new payment of 2,360 [S1].\n\nThis payment-increase limit is separate from the lump-sum limit, so both can be used in the same anniversary year [S2].",
+      "call_ids": [
+        "30109c3a-1aa1-4a4b-82d7-9036ea879352"
+      ],
+      "cost_usd": 0.0004514,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1994,
+      "completion_tokens": 504,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ],
+        [
+          "S2",
+          "POL-009#payment-increase-limit"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-prepayment-privileges"
+        ],
+        [
+          "S4",
+          "PRD-002#fx3-c-prepayment-privileges"
+        ],
+        [
+          "S5",
+          "PRD-007#sea-5-prepayment-privileges-and-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 58.327404000010574,
+        "retrieve": 1778.8860810005644,
+        "rerank": null,
+        "total": 4610.723509999843,
+        "generate": 2763.8288239995745
+      }
+    },
+    {
+      "qid": "D18",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "By how much can a borrower raise their regular payment each year without a penalty?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "POL-009#payment-increase-limit",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "- A borrower can raise the regular payment by up to 18% of the current regular payment, once in each anniversary year, without penalty. [S2]\n- For example, on a regular payment of 2,000, the increase is up to 18% \u00d7 2,000 = 360. [S1]\n- The new regular payment would be up to 2,000 + 360 = 2,360. [S1]\n- This payment-increase limit applies separately from the lump-sum prepayment limit. [S2]",
+      "call_ids": [
+        "2ba532dc-b89e-4981-b40d-37da4b17f2f5"
+      ],
+      "cost_usd": 0.0004209,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1994,
+      "completion_tokens": 443,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ],
+        [
+          "S2",
+          "POL-009#payment-increase-limit"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-prepayment-privileges"
+        ],
+        [
+          "S4",
+          "PRD-002#fx3-c-prepayment-privileges"
+        ],
+        [
+          "S5",
+          "PRD-007#sea-5-prepayment-privileges-and-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 58.327404000010574,
+        "retrieve": 1778.8860810005644,
+        "rerank": null,
+        "total": 4923.527853000451,
+        "generate": 3076.633167000182
+      }
+    },
+    {
+      "qid": "D18",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "By how much can a borrower raise their regular payment each year without a penalty?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "POL-009#payment-increase-limit",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A borrower can raise the regular payment by up to 18% of the current regular payment without penalty [S2].\nThis increase may be made once in each anniversary year [S2].\nFor example, with a regular payment of 2,000, the calculation is 2,000 x 18% = 360 [S1].\nThe payment could then rise to 2,000 + 360 = 2,360 [S1].",
+      "call_ids": [
+        "dfd67ebb-f2a8-4baf-b8fb-3ee31e69085b"
+      ],
+      "cost_usd": 0.0003939,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1994,
+      "completion_tokens": 389,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ],
+        [
+          "S2",
+          "POL-009#payment-increase-limit"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-prepayment-privileges"
+        ],
+        [
+          "S4",
+          "PRD-002#fx3-c-prepayment-privileges"
+        ],
+        [
+          "S5",
+          "PRD-007#sea-5-prepayment-privileges-and-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 58.327404000010574,
+        "retrieve": 1778.8860810005644,
+        "rerank": null,
+        "total": 4398.361875000774,
+        "generate": 2551.4671890005047
+      }
+    },
+    {
+      "qid": "D19",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "What rate does the 1-year open mortgage carry right now?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRD-004#fx1-o-rate-and-qualifying-rate",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#is-there-a-mortgage-with-no-penalty",
+          "label": "nonrel"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The 1-year fixed open mortgage, FX1-O, has a contract rate of 6.99% on the rate sheet effective 2026-11-01 [S2]. Because the sources give this rate as of that date, check the current rate sheet for any later change [S1][S2].",
+      "call_ids": [
+        "5519ac4f-f13c-4172-9357-f6cf8d6c30c4"
+      ],
+      "cost_usd": 0.00030619999999999996,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2002,
+      "completion_tokens": 212,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#is-there-a-mortgage-with-no-penalty"
+        ],
+        [
+          "S2",
+          "PRD-004#fx1-o-rate-and-qualifying-rate"
+        ],
+        [
+          "S3",
+          "PRD-004#summary"
+        ],
+        [
+          "S4",
+          "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want"
+        ],
+        [
+          "S5",
+          "PRD-004#fx1-o-product-summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 60.9100750007201,
+        "retrieve": 2005.8333249999123,
+        "rerank": null,
+        "total": 4439.434676000019,
+        "generate": 2353.5116550001476
+      }
+    },
+    {
+      "qid": "D19",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "What rate does the 1-year open mortgage carry right now?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRD-004#fx1-o-rate-and-qualifying-rate",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The FX1-O 1-year fixed open mortgage carries a contract rate of 6.99% on the rate sheet effective 2026-11-01 [S2]. Its rate is higher than the contract rate of every closed term [S2]. The rate stays fixed from the funding date until maturity [S2].",
+      "call_ids": [
+        "74fc89cb-1524-4c05-b407-192eb3047638"
+      ],
+      "cost_usd": 0.0003362,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2002,
+      "completion_tokens": 272,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#is-there-a-mortgage-with-no-penalty"
+        ],
+        [
+          "S2",
+          "PRD-004#fx1-o-rate-and-qualifying-rate"
+        ],
+        [
+          "S3",
+          "PRD-004#summary"
+        ],
+        [
+          "S4",
+          "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want"
+        ],
+        [
+          "S5",
+          "PRD-004#fx1-o-product-summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 60.9100750007201,
+        "retrieve": 2005.8333249999123,
+        "rerank": null,
+        "total": 4668.610236999484,
+        "generate": 2582.687215999613
+      }
+    },
+    {
+      "qid": "D19",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "superseded_trap",
+      "query": "What rate does the 1-year open mortgage carry right now?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRD-004#fx1-o-rate-and-qualifying-rate",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "FAQ-002#is-there-a-mortgage-with-no-penalty",
+          "label": "nonrel"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The FX1-O 1-year fixed open mortgage has a contract rate of 6.99% on the rate sheet effective 2026-11-01 [S2]. The rate is fixed from the funding date until maturity [S2]. This is the rate in the sources, so check the current rate sheet for any later changes [S1][S2].",
+      "call_ids": [
+        "c36c3878-f868-41b6-a623-b6a9353c3b24"
+      ],
+      "cost_usd": 0.0003252,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2002,
+      "completion_tokens": 250,
+      "context": [
+        [
+          "S1",
+          "FAQ-002#is-there-a-mortgage-with-no-penalty"
+        ],
+        [
+          "S2",
+          "PRD-004#fx1-o-rate-and-qualifying-rate"
+        ],
+        [
+          "S3",
+          "PRD-004#summary"
+        ],
+        [
+          "S4",
+          "FAQ-003#what-happens-if-i-do-not-tell-you-what-i-want"
+        ],
+        [
+          "S5",
+          "PRD-004#fx1-o-product-summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 60.9100750007201,
+        "retrieve": 2005.8333249999123,
+        "rerank": null,
+        "total": 4177.713634999236,
+        "generate": 2091.7906139993647
+      }
+    },
+    {
+      "qid": "D20",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "On a 600,000 purchase with the minimum down payment, what is the largest loan the borrower can get?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S3",
+          "chunk_id": "POL-005#minimum-down-payment-by-purchase-price",
+          "label": "related"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "POL-005#example-minimum-down-payment-on-a-600-000-purchase",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "- The minimum down payment on a 600,000 purchase is 6% of the first 400,000 plus 12% of the amount above 400,000 [S3]\n- 6% of 400,000 is 24,000 [S1]\n- 12% of 200,000 is 24,000 [S1]\n- The minimum down payment is 24,000 + 24,000 = 48,000 [S1]\n- The largest loan is 600,000 - 48,000 = 552,000, since the loan cannot be more than 552,000 [S1]\n- The down payment must also come from accepted sources, and a file with the right amount but an unaccepted source does not meet policy [S3]",
+      "call_ids": [
+        "01e9459a-a7c0-4936-9156-723ffea553eb"
+      ],
+      "cost_usd": 0.0005444,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2039,
+      "completion_tokens": 681,
+      "context": [
+        [
+          "S1",
+          "POL-005#example-minimum-down-payment-on-a-600-000-purchase"
+        ],
+        [
+          "S2",
+          "POL-005#minimum-down-payment-at-a-price-of-1-200-000-or-more"
+        ],
+        [
+          "S3",
+          "POL-005#minimum-down-payment-by-purchase-price"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S5",
+          "PRC-001#minimum-data-for-a-complete-application"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 70.95875300001353,
+        "retrieve": 1688.484776000223,
+        "rerank": null,
+        "total": 5457.242463000512,
+        "generate": 3681.789473000208
+      }
+    },
+    {
+      "qid": "D20",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "On a 600,000 purchase with the minimum down payment, what is the largest loan the borrower can get?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-005#example-minimum-down-payment-on-a-600-000-purchase",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-005#minimum-down-payment-by-purchase-price",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "- The minimum down payment on a 600,000 purchase uses 6% of the first 400,000 plus 12% of the remaining 200,000 [S1][S3].\n- 6% of 400,000 is 24,000 [S1].\n- 12% of 200,000 is 24,000 [S1].\n- The minimum down payment is 24,000 + 24,000 = 48,000 [S1].\n- The largest loan is 600,000 \u2212 48,000 = 552,000 [S1].\n- The loan amount cannot be more than 552,000 [S1].",
+      "call_ids": [
+        "e9c80a49-b791-48bd-b632-9b194c0160a3"
+      ],
+      "cost_usd": 0.00048740000000000003,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2039,
+      "completion_tokens": 567,
+      "context": [
+        [
+          "S1",
+          "POL-005#example-minimum-down-payment-on-a-600-000-purchase"
+        ],
+        [
+          "S2",
+          "POL-005#minimum-down-payment-at-a-price-of-1-200-000-or-more"
+        ],
+        [
+          "S3",
+          "POL-005#minimum-down-payment-by-purchase-price"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S5",
+          "PRC-001#minimum-data-for-a-complete-application"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 70.95875300001353,
+        "retrieve": 1688.484776000223,
+        "rerank": null,
+        "total": 5198.5187840000435,
+        "generate": 3423.06579399974
+      }
+    },
+    {
+      "qid": "D20",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "On a 600,000 purchase with the minimum down payment, what is the largest loan the borrower can get?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-005#example-minimum-down-payment-on-a-600-000-purchase",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "POL-005#minimum-down-payment-by-purchase-price",
+          "label": "related"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The purchase price of 600,000 is below 1,200,000, so the tiered calculation applies [S1][S3]\n- 6% of the first 400,000 is 24,000 [S1]\n- 12% of the remaining 200,000 is 24,000 [S1]\n- The minimum down payment is 24,000 + 24,000 = 48,000 [S1]\n- The largest loan is 600,000 \u2212 48,000 = 552,000 [S1]\n\nThe loan must also pass the other policy tests, including the ratio and loan-to-value tests [S4].",
+      "call_ids": [
+        "e582da41-af3e-4ba1-b24c-e76846e40f69"
+      ],
+      "cost_usd": 0.0005024,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2039,
+      "completion_tokens": 597,
+      "context": [
+        [
+          "S1",
+          "POL-005#example-minimum-down-payment-on-a-600-000-purchase"
+        ],
+        [
+          "S2",
+          "POL-005#minimum-down-payment-at-a-price-of-1-200-000-or-more"
+        ],
+        [
+          "S3",
+          "POL-005#minimum-down-payment-by-purchase-price"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S5",
+          "PRC-001#minimum-data-for-a-complete-application"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 70.95875300001353,
+        "retrieve": 1688.484776000223,
+        "rerank": null,
+        "total": 5656.552668000586,
+        "generate": 3881.0996780002824
+      }
+    },
+    {
+      "qid": "D21",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "A buyer agrees to pay 500,000, asks for 400,000, and the appraisal is 490,000: what LTV results?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S3",
+          "chunk_id": "POL-007#how-loan-to-value-is-calculated",
+          "label": "related"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-007#conventional-loan-to-value-limit",
+          "label": "related"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "POL-007#when-mortgage-default-insurance-is-required",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 1,
+      "answer_text": "- Underwriting uses the lower of the purchase price and the appraised value, which is 490,000 [S3]\n- LTV is the loan amount divided by that value: 400,000 / 490,000 = 81.6% [S1][S2][S3]\n- Because 81.6% is above the 80% conventional limit, the loan needs mortgage default insurance [S2][S5]\n- Reducing the loan to 392,000 would give 80.0% LTV and avoid the need for insurance [S1]",
+      "call_ids": [
+        "c6ffa4e9-772d-410b-92ea-a5b5617d1328"
+      ],
+      "cost_usd": 0.00046119999999999993,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2127,
+      "completion_tokens": 497,
+      "context": [
+        [
+          "S1",
+          "POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal"
+        ],
+        [
+          "S2",
+          "POL-007#conventional-loan-to-value-limit"
+        ],
+        [
+          "S3",
+          "POL-007#how-loan-to-value-is-calculated"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S5",
+          "POL-007#when-mortgage-default-insurance-is-required"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 77.19208899925434,
+        "retrieve": 1817.6554279998527,
+        "rerank": null,
+        "total": 5078.27659800023,
+        "generate": 3165.399962000265
+      }
+    },
+    {
+      "qid": "D21",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "A buyer agrees to pay 500,000, asks for 400,000, and the appraisal is 490,000: what LTV results?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S3",
+          "chunk_id": "POL-007#how-loan-to-value-is-calculated",
+          "label": "related"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-007#conventional-loan-to-value-limit",
+          "label": "related"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "POL-007#when-mortgage-default-insurance-is-required",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 1,
+      "answer_text": "- The lower of the purchase price and the appraised value is 490,000, so that value is used [S3].\n- LTV is the loan amount divided by that value: 400,000 \u00f7 490,000 = 81.6% [S1][S2][S3].\n- Because 81.6% is above the 80% conventional limit, the loan needs mortgage default insurance [S2][S5].",
+      "call_ids": [
+        "53e7196c-5797-408d-90f7-a1317e600960"
+      ],
+      "cost_usd": 0.0004262,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2127,
+      "completion_tokens": 427,
+      "context": [
+        [
+          "S1",
+          "POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal"
+        ],
+        [
+          "S2",
+          "POL-007#conventional-loan-to-value-limit"
+        ],
+        [
+          "S3",
+          "POL-007#how-loan-to-value-is-calculated"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S5",
+          "POL-007#when-mortgage-default-insurance-is-required"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 77.19208899925434,
+        "retrieve": 1817.6554279998527,
+        "rerank": null,
+        "total": 4972.753989999546,
+        "generate": 3059.877353999582
+      }
+    },
+    {
+      "qid": "D21",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "A buyer agrees to pay 500,000, asks for 400,000, and the appraisal is 490,000: what LTV results?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S3",
+          "chunk_id": "POL-007#how-loan-to-value-is-calculated",
+          "label": "related"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-007#conventional-loan-to-value-limit",
+          "label": "related"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "POL-007#when-mortgage-default-insurance-is-required",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 2,
+      "answer_text": "- For a purchase, LTV uses the lower of the purchase price and the appraised value, which is 490,000 here [S3][S1]\n- Step 1: 400,000 divided by 490,000 = 0.8163 [S2][S3]\n- Step 2: Rounded to one decimal place, LTV is 81.6% [S3][S1]\n- This is above the 80% conventional limit, so the loan needs mortgage default insurance [S2][S5]",
+      "call_ids": [
+        "f64847f7-192b-4207-b91d-c4bba5892ceb"
+      ],
+      "cost_usd": 0.0004267,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 2127,
+      "completion_tokens": 428,
+      "context": [
+        [
+          "S1",
+          "POL-007#example-ltv-on-a-purchase-with-a-lower-appraisal"
+        ],
+        [
+          "S2",
+          "POL-007#conventional-loan-to-value-limit"
+        ],
+        [
+          "S3",
+          "POL-007#how-loan-to-value-is-calculated"
+        ],
+        [
+          "S4",
+          "PRC-002#stage-6-policy-tests-on-ratios-ltv-and-down-payment"
+        ],
+        [
+          "S5",
+          "POL-007#when-mortgage-default-insurance-is-required"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 77.19208899925434,
+        "retrieve": 1817.6554279998527,
+        "rerank": null,
+        "total": 5419.227544999558,
+        "generate": 3506.3509089995932
+      }
+    },
+    {
+      "qid": "D22",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "Who decides which underwriter gets a newly released complete file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-002#stage-1-file-assignment",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The Underwriting team lead assigns a complete file to an Underwriter, considering that Underwriter's current workload and the loan amount [S1]. A file with a loan amount above 750,000 is assigned to a Senior Underwriter instead [S1].",
+      "call_ids": [
+        "f77704ff-3e4a-4216-b1eb-cfe6e21720a4"
+      ],
+      "cost_usd": 0.0002349,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1934,
+      "completion_tokens": 83,
+      "context": [
+        [
+          "S1",
+          "PRC-002#stage-1-file-assignment"
+        ],
+        [
+          "S2",
+          "FAQ-004#what-happens-to-an-incomplete-application"
+        ],
+        [
+          "S3",
+          "PRC-002#stage-2-completeness-check"
+        ],
+        [
+          "S4",
+          "PRC-001#incomplete-applications-and-handoff-to-underwriting"
+        ],
+        [
+          "S5",
+          "PRC-004#what-each-role-may-approve"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 54.57043899968994,
+        "retrieve": 1479.4697280003675,
+        "rerank": null,
+        "total": 2736.086864999379,
+        "generate": 1189.4467099991743
+      }
+    },
+    {
+      "qid": "D22",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "Who decides which underwriter gets a newly released complete file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-002#stage-1-file-assignment",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The Underwriting team lead decides which Underwriter receives a complete file, considering the Underwriter's current workload and the loan amount [S1]. Files with a loan amount above 750,000 are assigned to a Senior Underwriter [S1].",
+      "call_ids": [
+        "ff19913f-a690-483d-ba74-6dc1590b3b27"
+      ],
+      "cost_usd": 0.0002339,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1934,
+      "completion_tokens": 81,
+      "context": [
+        [
+          "S1",
+          "PRC-002#stage-1-file-assignment"
+        ],
+        [
+          "S2",
+          "FAQ-004#what-happens-to-an-incomplete-application"
+        ],
+        [
+          "S3",
+          "PRC-002#stage-2-completeness-check"
+        ],
+        [
+          "S4",
+          "PRC-001#incomplete-applications-and-handoff-to-underwriting"
+        ],
+        [
+          "S5",
+          "PRC-004#what-each-role-may-approve"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 54.57043899968994,
+        "retrieve": 1479.4697280003675,
+        "rerank": null,
+        "total": 2446.878801000821,
+        "generate": 900.2386460006164
+      }
+    },
+    {
+      "qid": "D22",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "Who decides which underwriter gets a newly released complete file?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-002#stage-1-file-assignment",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "PRC-001#incomplete-applications-and-handoff-to-underwriting",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The Underwriting team lead assigns a complete file to an Underwriter, considering the Underwriter's current workload and the loan amount [S1]. Files above 750,000 go to a Senior Underwriter [S1]. A complete file released by Mortgage Operations starts at the assignment stage [S4].",
+      "call_ids": [
+        "2f436071-0a2e-45aa-ba1f-193bd222606e"
+      ],
+      "cost_usd": 0.00031089999999999997,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1934,
+      "completion_tokens": 235,
+      "context": [
+        [
+          "S1",
+          "PRC-002#stage-1-file-assignment"
+        ],
+        [
+          "S2",
+          "FAQ-004#what-happens-to-an-incomplete-application"
+        ],
+        [
+          "S3",
+          "PRC-002#stage-2-completeness-check"
+        ],
+        [
+          "S4",
+          "PRC-001#incomplete-applications-and-handoff-to-underwriting"
+        ],
+        [
+          "S5",
+          "PRC-004#what-each-role-may-approve"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 54.57043899968994,
+        "retrieve": 1479.4697280003675,
+        "rerank": null,
+        "total": 3675.8842469998854,
+        "generate": 2129.2440919996807
+      }
+    },
+    {
+      "qid": "D23",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "Before the money is released, who has to confirm the final conditions check was signed?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-006#funds-release-steps",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A person other than the one who prepared the file must confirm that the final conditions check is signed [S2].",
+      "call_ids": [
+        "9a754fd8-9c97-430d-a0f5-f0b6bd73ead4"
+      ],
+      "cost_usd": 0.0002027,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1867,
+      "completion_tokens": 32,
+      "context": [
+        [
+          "S1",
+          "PRC-006#final-conditions-check"
+        ],
+        [
+          "S2",
+          "PRC-006#funds-release-steps"
+        ],
+        [
+          "S3",
+          "FAQ-005#when-do-i-have-to-give-proof-of-home-insurance-for-closing"
+        ],
+        [
+          "S4",
+          "FAQ-004#which-conditions-will-i-see-on-an-approval"
+        ],
+        [
+          "S5",
+          "PRC-003#who-signs-off-each-condition-type"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 59.748405999926035,
+        "retrieve": 1668.7941860000137,
+        "rerank": null,
+        "total": 2536.5811030005716,
+        "generate": 796.1937150002996
+      }
+    },
+    {
+      "qid": "D23",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "Before the money is released, who has to confirm the final conditions check was signed?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-006#funds-release-steps",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "PRC-006#final-conditions-check",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A person other than the one who prepared the file confirms that the final conditions check is signed [S2]. The final conditions check is performed by Mortgage Operations and signed in the loan system by the person who performs it [S1].",
+      "call_ids": [
+        "f60129b1-b85c-4640-b64e-f22c030fc8be"
+      ],
+      "cost_usd": 0.00022119999999999998,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1867,
+      "completion_tokens": 69,
+      "context": [
+        [
+          "S1",
+          "PRC-006#final-conditions-check"
+        ],
+        [
+          "S2",
+          "PRC-006#funds-release-steps"
+        ],
+        [
+          "S3",
+          "FAQ-005#when-do-i-have-to-give-proof-of-home-insurance-for-closing"
+        ],
+        [
+          "S4",
+          "FAQ-004#which-conditions-will-i-see-on-an-approval"
+        ],
+        [
+          "S5",
+          "PRC-003#who-signs-off-each-condition-type"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 59.748405999926035,
+        "retrieve": 1668.7941860000137,
+        "rerank": null,
+        "total": 2573.7691890008136,
+        "generate": 833.3818010005416
+      }
+    },
+    {
+      "qid": "D23",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "fine_grained",
+      "query": "Before the money is released, who has to confirm the final conditions check was signed?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRC-006#funds-release-steps",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A person other than the one who prepared the file confirms that the final conditions check is signed before funds are released. [S2]",
+      "call_ids": [
+        "42670a54-7bf5-47a3-91ee-1c1452316afe"
+      ],
+      "cost_usd": 0.0002472,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1867,
+      "completion_tokens": 121,
+      "context": [
+        [
+          "S1",
+          "PRC-006#final-conditions-check"
+        ],
+        [
+          "S2",
+          "PRC-006#funds-release-steps"
+        ],
+        [
+          "S3",
+          "FAQ-005#when-do-i-have-to-give-proof-of-home-insurance-for-closing"
+        ],
+        [
+          "S4",
+          "FAQ-004#which-conditions-will-i-see-on-an-approval"
+        ],
+        [
+          "S5",
+          "PRC-003#who-signs-off-each-condition-type"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 59.748405999926035,
+        "retrieve": 1668.7941860000137,
+        "rerank": null,
+        "total": 3409.134718000132,
+        "generate": 1668.74732999986
+      }
+    },
+    {
+      "qid": "D24",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "Can my parents give me money toward the house purchase?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 56.9235769999068,
+        "retrieve": 1624.3625660008547,
+        "rerank": null,
+        "total": 1691.2396690004243
+      }
+    },
+    {
+      "qid": "D24",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "Can my parents give me money toward the house purchase?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 56.9235769999068,
+        "retrieve": 1624.3625660008547,
+        "rerank": null,
+        "total": 1691.2396690004243
+      }
+    },
+    {
+      "qid": "D24",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "Can my parents give me money toward the house purchase?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 56.9235769999068,
+        "retrieve": 1624.3625660008547,
+        "rerank": null,
+        "total": 1691.2396690004243
+      }
+    },
+    {
+      "qid": "D25",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "How early will you write to me when my loan term is running out?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 87.01108999957796,
+        "retrieve": 1727.4961160001112,
+        "rerank": null,
+        "total": 1827.1667939998224
+      }
+    },
+    {
+      "qid": "D25",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "How early will you write to me when my loan term is running out?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 87.01108999957796,
+        "retrieve": 1727.4961160001112,
+        "rerank": null,
+        "total": 1827.1667939998224
+      }
+    },
+    {
+      "qid": "D25",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "How early will you write to me when my loan term is running out?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 87.01108999957796,
+        "retrieve": 1727.4961160001112,
+        "rerank": null,
+        "total": 1827.1667939998224
+      }
+    },
+    {
+      "qid": "D26",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "Can a buyer use a credit card cash advance for the deposit?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-005#a-borrowed-down-payment-is-not-accepted",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "POL-010#summary",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "No. Demo Mortgage Co. does not accept a borrowed down payment, and the ban covers a credit card cash advance [S1]. The down payment may not come from any borrowing, whether secured or unsecured [S1]. A request to accept a borrowed down payment cannot be excepted under POL-010 [S1][S5].",
+      "call_ids": [
+        "11a55d03-8f23-47bc-9feb-3db1dbb5e0aa"
+      ],
+      "cost_usd": 0.0002364,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1824,
+      "completion_tokens": 108,
+      "context": [
+        [
+          "S1",
+          "POL-005#a-borrowed-down-payment-is-not-accepted"
+        ],
+        [
+          "S2",
+          "POL-005#own-savings-need-a-90-day-history"
+        ],
+        [
+          "S3",
+          "POL-009#payment-increase-limit"
+        ],
+        [
+          "S4",
+          "POL-001#scope-of-the-credit-policy"
+        ],
+        [
+          "S5",
+          "POL-010#summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 86.68178000061744,
+        "retrieve": 1760.1191379999364,
+        "rerank": null,
+        "total": 3110.8955080007945,
+        "generate": 1254.549441000563
+      }
+    },
+    {
+      "qid": "D26",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "Can a buyer use a credit card cash advance for the deposit?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-005#a-borrowed-down-payment-is-not-accepted",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "No. Demo Mortgage Co. does not accept a borrowed down payment, and this excludes a credit card cash advance [S1]. The Underwriter must tell the broker or branch that the file cannot proceed on that basis [S1].",
+      "call_ids": [
+        "64a307e6-3cdf-4975-b520-f142a06d4c04"
+      ],
+      "cost_usd": 0.0002214,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1824,
+      "completion_tokens": 78,
+      "context": [
+        [
+          "S1",
+          "POL-005#a-borrowed-down-payment-is-not-accepted"
+        ],
+        [
+          "S2",
+          "POL-005#own-savings-need-a-90-day-history"
+        ],
+        [
+          "S3",
+          "POL-009#payment-increase-limit"
+        ],
+        [
+          "S4",
+          "POL-001#scope-of-the-credit-policy"
+        ],
+        [
+          "S5",
+          "POL-010#summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 86.68178000061744,
+        "retrieve": 1760.1191379999364,
+        "rerank": null,
+        "total": 3692.3186430003625,
+        "generate": 1835.972576000131
+      }
+    },
+    {
+      "qid": "D26",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "Can a buyer use a credit card cash advance for the deposit?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-005#a-borrowed-down-payment-is-not-accepted",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "POL-010#summary",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "No, Demo Mortgage Co. does not accept a borrowed down payment, and this includes a credit card cash advance [S1]. The ban applies whether the borrowing is secured or unsecured [S1]. A request to accept a borrowed down payment cannot be excepted under POL-010 [S1][S5].",
+      "call_ids": [
+        "ad70aa01-6fd0-454b-bfb7-2111fd1e50f1"
+      ],
+      "cost_usd": 0.0002339,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1824,
+      "completion_tokens": 103,
+      "context": [
+        [
+          "S1",
+          "POL-005#a-borrowed-down-payment-is-not-accepted"
+        ],
+        [
+          "S2",
+          "POL-005#own-savings-need-a-90-day-history"
+        ],
+        [
+          "S3",
+          "POL-009#payment-increase-limit"
+        ],
+        [
+          "S4",
+          "POL-001#scope-of-the-credit-policy"
+        ],
+        [
+          "S5",
+          "POL-010#summary"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 86.68178000061744,
+        "retrieve": 1760.1191379999364,
+        "rerank": null,
+        "total": 2970.2843679997386,
+        "generate": 1113.9383009995072
+      }
+    },
+    {
+      "qid": "D27",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "How much does it cost when my automatic withdrawal bounces?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 54.03889999979583,
+        "retrieve": 1887.5580120002269,
+        "rerank": null,
+        "total": 1951.991191000161
+      }
+    },
+    {
+      "qid": "D27",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "How much does it cost when my automatic withdrawal bounces?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 54.03889999979583,
+        "retrieve": 1887.5580120002269,
+        "rerank": null,
+        "total": 1951.991191000161
+      }
+    },
+    {
+      "qid": "D27",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "paraphrase",
+      "query": "How much does it cost when my automatic withdrawal bounces?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 54.03889999979583,
+        "retrieve": 1887.5580120002269,
+        "rerank": null,
+        "total": 1951.991191000161
+      }
+    },
+    {
+      "qid": "D28",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "What penalty applies if I prepay too much on a 5-year variable closed mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-003#vr5-c-prepayment-privileges-and-penalty",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-009#prepayment-penalty-on-a-variable-rate-mortgage",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "FAQ-002#how-is-the-penalty-worked-out",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "If you prepay more than your privileges on a 5-year variable closed mortgage (VR5-C), the penalty is 3 months' interest [S1][S2]. Three months' interest is the interest on the amount prepaid for 3 months at the contract rate on the date of the prepayment [S1][S2]. There is no interest rate differential charge on VR5-C [S1][S2][S5]. The discharge fee in RATE-002 is charged separately [S1].",
+      "call_ids": [
+        "b274f9f9-2920-47f5-9884-05abd4d5a612"
+      ],
+      "cost_usd": 0.0002613,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1863,
+      "completion_tokens": 150,
+      "context": [
+        [
+          "S1",
+          "PRD-003#vr5-c-prepayment-privileges-and-penalty"
+        ],
+        [
+          "S2",
+          "POL-009#prepayment-penalty-on-a-variable-rate-mortgage"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-prepayment-penalty"
+        ],
+        [
+          "S4",
+          "PRD-003#summary"
+        ],
+        [
+          "S5",
+          "FAQ-002#how-is-the-penalty-worked-out"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 86.30546099993808,
+        "retrieve": 1842.954312999609,
+        "rerank": null,
+        "total": 3091.1479050000708,
+        "generate": 1150.4926560000968
+      }
+    },
+    {
+      "qid": "D28",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "What penalty applies if I prepay too much on a 5-year variable closed mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-003#vr5-c-prepayment-privileges-and-penalty",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-009#prepayment-penalty-on-a-variable-rate-mortgage",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "FAQ-002#how-is-the-penalty-worked-out",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "A prepayment above the privileges on a 5-year variable closed mortgage (VR5-C) is subject to a penalty of 3 months' interest [S1][S2]. Three months' interest is the interest on the amount prepaid for 3 months at the contract rate on the date of the prepayment [S1][S2]. There is no interest rate differential charge on VR5-C [S1][S2][S5]. The discharge fee in RATE-002 is charged separately [S1].",
+      "call_ids": [
+        "77cc4433-c577-4810-a0a7-d8e91550ce55"
+      ],
+      "cost_usd": 0.0002628,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1863,
+      "completion_tokens": 153,
+      "context": [
+        [
+          "S1",
+          "PRD-003#vr5-c-prepayment-privileges-and-penalty"
+        ],
+        [
+          "S2",
+          "POL-009#prepayment-penalty-on-a-variable-rate-mortgage"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-prepayment-penalty"
+        ],
+        [
+          "S4",
+          "PRD-003#summary"
+        ],
+        [
+          "S5",
+          "FAQ-002#how-is-the-penalty-worked-out"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 86.30546099993808,
+        "retrieve": 1842.954312999609,
+        "rerank": null,
+        "total": 4108.7368139997125,
+        "generate": 2168.0815649997385
+      }
+    },
+    {
+      "qid": "D28",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "What penalty applies if I prepay too much on a 5-year variable closed mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-003#vr5-c-prepayment-privileges-and-penalty",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "POL-009#prepayment-penalty-on-a-variable-rate-mortgage",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "FAQ-002#how-is-the-penalty-worked-out",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "If you prepay more than your privileges on a 5-year variable closed mortgage (VR5-C), the penalty is 3 months' interest [S1][S2]. Three months' interest is the interest on the amount prepaid for 3 months at the contract rate on the date of the prepayment [S1][S2]. There is no interest rate differential charge on VR5-C [S1][S2][S5]. The discharge fee in RATE-002 is charged separately [S1].",
+      "call_ids": [
+        "fc212f8a-6a73-47cc-932c-1dd1b8bef97d"
+      ],
+      "cost_usd": 0.0002613,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1863,
+      "completion_tokens": 150,
+      "context": [
+        [
+          "S1",
+          "PRD-003#vr5-c-prepayment-privileges-and-penalty"
+        ],
+        [
+          "S2",
+          "POL-009#prepayment-penalty-on-a-variable-rate-mortgage"
+        ],
+        [
+          "S3",
+          "PRD-001#fx5-c-prepayment-penalty"
+        ],
+        [
+          "S4",
+          "PRD-003#summary"
+        ],
+        [
+          "S5",
+          "FAQ-002#how-is-the-penalty-worked-out"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 86.30546099993808,
+        "retrieve": 1842.954312999609,
+        "rerank": null,
+        "total": 3312.4441239997395,
+        "generate": 1371.7888749997655
+      }
+    },
+    {
+      "qid": "D29",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "What is the maximum loan-to-value for a rental property mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRD-006#rnt-4-loan-to-value-limit-and-rental-income",
+          "label": "gold"
+        },
+        {
+          "marker": "S3",
+          "chunk_id": "PRD-006#summary",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "POL-007#summary",
+          "label": "unjudged"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "POL-007#conventional-loan-to-value-limit",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum loan-to-value for the RNT-4 rental property mortgage is 75% [S2][S3]. This is lower than the 80% conventional limit [S4][S5], and mortgage default insurance does not raise it [S2].",
+      "call_ids": [
+        "8e88de5b-3157-43e2-837d-675000d0fe77"
+      ],
+      "cost_usd": 0.0002063,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1673,
+      "completion_tokens": 78,
+      "context": [
+        [
+          "S1",
+          "POL-007#loan-to-value-limits-set-by-product"
+        ],
+        [
+          "S2",
+          "PRD-006#rnt-4-loan-to-value-limit-and-rental-income"
+        ],
+        [
+          "S3",
+          "PRD-006#summary"
+        ],
+        [
+          "S4",
+          "POL-007#summary"
+        ],
+        [
+          "S5",
+          "POL-007#conventional-loan-to-value-limit"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.32350800008135,
+        "retrieve": 1761.2026070000866,
+        "rerank": null,
+        "total": 2858.7750059996324,
+        "generate": 1029.9899169995115
+      }
+    },
+    {
+      "qid": "D29",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "What is the maximum loan-to-value for a rental property mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S2",
+          "chunk_id": "PRD-006#rnt-4-loan-to-value-limit-and-rental-income",
+          "label": "gold"
+        },
+        {
+          "marker": "S1",
+          "chunk_id": "POL-007#loan-to-value-limits-set-by-product",
+          "label": "gold"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum loan-to-value for the RNT-4 rental property mortgage is 75% [S2][S1].\n\nThe 75% limit is calculated on the lower of the purchase price and the appraised value, and mortgage default insurance does not raise it [S2].",
+      "call_ids": [
+        "e8a11d20-569b-4918-bf82-c518ffcee77f"
+      ],
+      "cost_usd": 0.0002093,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1673,
+      "completion_tokens": 84,
+      "context": [
+        [
+          "S1",
+          "POL-007#loan-to-value-limits-set-by-product"
+        ],
+        [
+          "S2",
+          "PRD-006#rnt-4-loan-to-value-limit-and-rental-income"
+        ],
+        [
+          "S3",
+          "PRD-006#summary"
+        ],
+        [
+          "S4",
+          "POL-007#summary"
+        ],
+        [
+          "S5",
+          "POL-007#conventional-loan-to-value-limit"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.32350800008135,
+        "retrieve": 1761.2026070000866,
+        "rerank": null,
+        "total": 2864.7794409998824,
+        "generate": 1035.9943519997614
+      }
+    },
+    {
+      "qid": "D29",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "What is the maximum loan-to-value for a rental property mortgage?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "POL-007#loan-to-value-limits-set-by-product",
+          "label": "gold"
+        },
+        {
+          "marker": "S2",
+          "chunk_id": "PRD-006#rnt-4-loan-to-value-limit-and-rental-income",
+          "label": "gold"
+        },
+        {
+          "marker": "S5",
+          "chunk_id": "POL-007#conventional-loan-to-value-limit",
+          "label": "unjudged"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The maximum loan-to-value for the RNT-4 rental property mortgage is 75% [S1][S2]. This limit applies instead of the conventional 80% limit [S1][S5]. Mortgage default insurance does not raise this 75% limit [S2].",
+      "call_ids": [
+        "2fd4df9c-05c8-443d-b8af-a482869e2801"
+      ],
+      "cost_usd": 0.0002108,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1673,
+      "completion_tokens": 87,
+      "context": [
+        [
+          "S1",
+          "POL-007#loan-to-value-limits-set-by-product"
+        ],
+        [
+          "S2",
+          "PRD-006#rnt-4-loan-to-value-limit-and-rental-income"
+        ],
+        [
+          "S3",
+          "PRD-006#summary"
+        ],
+        [
+          "S4",
+          "POL-007#summary"
+        ],
+        [
+          "S5",
+          "POL-007#conventional-loan-to-value-limit"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 57.32350800008135,
+        "retrieve": 1761.2026070000866,
+        "rerank": null,
+        "total": 3329.6707340005014,
+        "generate": 1500.8856450003805
+      }
+    },
+    {
+      "qid": "D30",
+      "repeat": 1,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "Which mortgage is meant for someone who expects to pay it off soon after a property sale?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-004#who-fx1-o-suits",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "FAQ-002#can-i-pay-off-my-mortgage-early",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The 1-Year Fixed Open (FX1-O) suits a borrower who expects to repay the mortgage in full or in large part within a short time, for example from the sale of a property [S1].\n\nFX1-O lets a borrower pay off any amount at any time without a penalty [S4].\n\nStaff may describe these facts but may not recommend FX1-O or any other product, because the choice depends on the borrower's own plans [S1].",
+      "call_ids": [
+        "0e2344b6-5f36-4a0e-8835-fdcc5acbbabb"
+      ],
+      "cost_usd": 0.0003819,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1744,
+      "completion_tokens": 415,
+      "context": [
+        [
+          "S1",
+          "PRD-004#who-fx1-o-suits"
+        ],
+        [
+          "S2",
+          "PRD-002#who-fx3-c-suits"
+        ],
+        [
+          "S3",
+          "FAQ-002#summary"
+        ],
+        [
+          "S4",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ],
+        [
+          "S5",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 64.41434800035495,
+        "retrieve": 1736.5253799998754,
+        "rerank": null,
+        "total": 4327.276568999878,
+        "generate": 2512.950926000485
+      }
+    },
+    {
+      "qid": "D30",
+      "repeat": 2,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "Which mortgage is meant for someone who expects to pay it off soon after a property sale?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-004#who-fx1-o-suits",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "FAQ-002#can-i-pay-off-my-mortgage-early",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The 1-Year Fixed Open (FX1-O) suits a borrower who expects to repay the mortgage in full or in large part within a short time, for example from the sale of a property [S1]. It lets the borrower repay without penalty [S1][S4]. Staff may describe these facts but may not recommend FX1-O, because the choice depends on the borrower's own plans [S1].",
+      "call_ids": [
+        "2b8e13ce-3018-4790-bdf9-0ff836477e0d"
+      ],
+      "cost_usd": 0.00040490000000000003,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1744,
+      "completion_tokens": 461,
+      "context": [
+        [
+          "S1",
+          "PRD-004#who-fx1-o-suits"
+        ],
+        [
+          "S2",
+          "PRD-002#who-fx3-c-suits"
+        ],
+        [
+          "S3",
+          "FAQ-002#summary"
+        ],
+        [
+          "S4",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ],
+        [
+          "S5",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 64.41434800035495,
+        "retrieve": 1736.5253799998754,
+        "rerank": null,
+        "total": 4553.53633499908,
+        "generate": 2739.2106919996877
+      }
+    },
+    {
+      "qid": "D30",
+      "repeat": 3,
+      "kind": "answerable",
+      "type": "confusable",
+      "query": "Which mortgage is meant for someone who expects to pay it off soon after a property sale?",
+      "status": "answered",
+      "subtype": null,
+      "reason": null,
+      "stage": null,
+      "gate_passed": true,
+      "cited": [
+        {
+          "marker": "S1",
+          "chunk_id": "PRD-004#who-fx1-o-suits",
+          "label": "gold"
+        },
+        {
+          "marker": "S4",
+          "chunk_id": "FAQ-002#can-i-pay-off-my-mortgage-early",
+          "label": "related"
+        }
+      ],
+      "answer_span_hit": true,
+      "ungrounded": 0,
+      "answer_text": "The 1-Year Fixed Open (FX1-O) is described as suiting a borrower who expects to repay the mortgage in full or in large part within a short time, such as from the sale of a property [S1].\nIt suits a borrower who values the freedom to repay without penalty over a lower rate [S1].\nWith FX1-O, you can pay off any amount at any time without a penalty [S4].\nStaff may describe these facts but may not recommend FX1-O, because the choice depends on the borrower's own plans [S1].",
+      "call_ids": [
+        "547a91c9-8fa3-49fa-b68b-e4a5b4949732"
+      ],
+      "cost_usd": 0.00044589999999999994,
+      "model_name": "anthropic/claude-haiku-5-5",
+      "possibly_billed": false,
+      "prompt_tokens": 1744,
+      "completion_tokens": 543,
+      "context": [
+        [
+          "S1",
+          "PRD-004#who-fx1-o-suits"
+        ],
+        [
+          "S2",
+          "PRD-002#who-fx3-c-suits"
+        ],
+        [
+          "S3",
+          "FAQ-002#summary"
+        ],
+        [
+          "S4",
+          "FAQ-002#can-i-pay-off-my-mortgage-early"
+        ],
+        [
+          "S5",
+          "FAQ-002#how-much-extra-can-i-pay-each-year-without-a-penalty"
+        ]
+      ],
+      "latency_ms": {
+        "embed": 64.41434800035495,
+        "retrieve": 1736.5253799998754,
+        "rerank": null,
+        "total": 4751.949124999555,
+        "generate": 2937.6234820001628
+      }
+    },
+    {
+      "qid": "D31",
+      "repeat": 1,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "What rate would I pay on a loan to buy a new car?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 57.28025400003389,
+        "retrieve": 1725.6092620000345,
+        "rerank": null,
+        "total": 1803.768033999404
+      }
+    },
+    {
+      "qid": "D31",
+      "repeat": 2,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "What rate would I pay on a loan to buy a new car?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 57.28025400003389,
+        "retrieve": 1725.6092620000345,
+        "rerank": null,
+        "total": 1803.768033999404
+      }
+    },
+    {
+      "qid": "D31",
+      "repeat": 3,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "What rate would I pay on a loan to buy a new car?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 57.28025400003389,
+        "retrieve": 1725.6092620000345,
+        "rerank": null,
+        "total": 1803.768033999404
+      }
+    },
+    {
+      "qid": "D32",
+      "repeat": 1,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "Can I buy travel insurance for my holiday through you?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 73.27212499967573,
+        "retrieve": 1733.353825999984,
+        "rerank": null,
+        "total": 1819.8632060002637
+      }
+    },
+    {
+      "qid": "D32",
+      "repeat": 2,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "Can I buy travel insurance for my holiday through you?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 73.27212499967573,
+        "retrieve": 1733.353825999984,
+        "rerank": null,
+        "total": 1819.8632060002637
+      }
+    },
+    {
+      "qid": "D32",
+      "repeat": 3,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "Can I buy travel insurance for my holiday through you?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 73.27212499967573,
+        "retrieve": 1733.353825999984,
+        "rerank": null,
+        "total": 1819.8632060002637
+      }
+    },
+    {
+      "qid": "D33",
+      "repeat": 1,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "Which cryptocurrency exchange is best for buying a small amount of coins?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 77.66228699983913,
+        "retrieve": 1919.9365529993884,
+        "rerank": null,
+        "total": 2008.5311040002125
+      }
+    },
+    {
+      "qid": "D33",
+      "repeat": 2,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "Which cryptocurrency exchange is best for buying a small amount of coins?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 77.66228699983913,
+        "retrieve": 1919.9365529993884,
+        "rerank": null,
+        "total": 2008.5311040002125
+      }
+    },
+    {
+      "qid": "D33",
+      "repeat": 3,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "Which cryptocurrency exchange is best for buying a small amount of coins?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 77.66228699983913,
+        "retrieve": 1919.9365529993884,
+        "rerank": null,
+        "total": 2008.5311040002125
+      }
+    },
+    {
+      "qid": "D34",
+      "repeat": 1,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "How do I reset my work laptop password after it locked me out?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 87.66308400026901,
+        "retrieve": 2356.6647919997195,
+        "rerank": null,
+        "total": 2469.815653000296
+      }
+    },
+    {
+      "qid": "D34",
+      "repeat": 2,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "How do I reset my work laptop password after it locked me out?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 87.66308400026901,
+        "retrieve": 2356.6647919997195,
+        "rerank": null,
+        "total": 2469.815653000296
+      }
+    },
+    {
+      "qid": "D34",
+      "repeat": 3,
+      "kind": "oos",
+      "type": "oos_far",
+      "query": "How do I reset my work laptop password after it locked me out?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 87.66308400026901,
+        "retrieve": 2356.6647919997195,
+        "rerank": null,
+        "total": 2469.815653000296
+      }
+    },
+    {
+      "qid": "D35",
+      "repeat": 1,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Do you offer reverse mortgages for retired homeowners who want to stay in their house?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 134.15091000024404,
+        "retrieve": 2712.8245899994,
+        "rerank": null,
+        "total": 2870.308388000012
+      }
+    },
+    {
+      "qid": "D35",
+      "repeat": 2,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Do you offer reverse mortgages for retired homeowners who want to stay in their house?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 134.15091000024404,
+        "retrieve": 2712.8245899994,
+        "rerank": null,
+        "total": 2870.308388000012
+      }
+    },
+    {
+      "qid": "D35",
+      "repeat": 3,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Do you offer reverse mortgages for retired homeowners who want to stay in their house?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 134.15091000024404,
+        "retrieve": 2712.8245899994,
+        "rerank": null,
+        "total": 2870.308388000012
+      }
+    },
+    {
+      "qid": "D36",
+      "repeat": 1,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Can my client blend and extend the rate on their current mortgage to lower the payment?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 132.2675680003158,
+        "retrieve": 2554.4932819993846,
+        "rerank": null,
+        "total": 2704.838796000331
+      }
+    },
+    {
+      "qid": "D36",
+      "repeat": 2,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Can my client blend and extend the rate on their current mortgage to lower the payment?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 132.2675680003158,
+        "retrieve": 2554.4932819993846,
+        "rerank": null,
+        "total": 2704.838796000331
+      }
+    },
+    {
+      "qid": "D36",
+      "repeat": 3,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Can my client blend and extend the rate on their current mortgage to lower the payment?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 132.2675680003158,
+        "retrieve": 2554.4932819993846,
+        "rerank": null,
+        "total": 2704.838796000331
+      }
+    },
+    {
+      "qid": "D37",
+      "repeat": 1,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Will you finance a cottage that my family only uses on weekends and in summer?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 171.5055160002521,
+        "retrieve": 2790.1319780003178,
+        "rerank": null,
+        "total": 2978.6671189995104
+      }
+    },
+    {
+      "qid": "D37",
+      "repeat": 2,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Will you finance a cottage that my family only uses on weekends and in summer?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 171.5055160002521,
+        "retrieve": 2790.1319780003178,
+        "rerank": null,
+        "total": 2978.6671189995104
+      }
+    },
+    {
+      "qid": "D37",
+      "repeat": 3,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Will you finance a cottage that my family only uses on weekends and in summer?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 171.5055160002521,
+        "retrieve": 2790.1319780003178,
+        "rerank": null,
+        "total": 2978.6671189995104
+      }
+    },
+    {
+      "qid": "D38",
+      "repeat": 1,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Can my father act as a guarantor so I can qualify for the mortgage?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 147.83010900009685,
+        "retrieve": 2526.812146999873,
+        "rerank": null,
+        "total": 2692.7403870004127
+      }
+    },
+    {
+      "qid": "D38",
+      "repeat": 2,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Can my father act as a guarantor so I can qualify for the mortgage?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 147.83010900009685,
+        "retrieve": 2526.812146999873,
+        "rerank": null,
+        "total": 2692.7403870004127
+      }
+    },
+    {
+      "qid": "D38",
+      "repeat": 3,
+      "kind": "oos",
+      "type": "oos_near",
+      "query": "Can my father act as a guarantor so I can qualify for the mortgage?",
+      "status": "fallback",
+      "subtype": "no_basis",
+      "reason": "low_score",
+      "stage": "gate",
+      "gate_passed": false,
+      "cited": [],
+      "answer_span_hit": null,
+      "ungrounded": 0,
+      "answer_text": "",
+      "call_ids": [],
+      "cost_usd": null,
+      "model_name": null,
+      "possibly_billed": false,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "context": [],
+      "latency_ms": {
+        "embed": 147.83010900009685,
+        "retrieve": 2526.812146999873,
+        "rerank": null,
+        "total": 2692.7403870004127
+      }
+    }
+  ]
+}
