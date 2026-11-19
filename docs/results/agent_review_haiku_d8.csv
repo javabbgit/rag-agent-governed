@@ -1,0 +1,76 @@
+task,repeat,unit,verdict,note
+T01,1,Borrowers who pay the down payment from their own savings need a 90-day savings history.,supported,
+T01,1,"Underwriting must see statements covering the last 90 days, and any large deposit inside that window must be explained and documented [S1].",supported,
+T01,1,"Money from the sale of the borrower's existing home is exempt from the 90-day requirement, but the underwriter must see the signed sale agreement and the lawyer's statement of proceeds [S1].",supported,
+T03,1,Loan DMC-2026-00101 is at the **application_received** stage.,supported,
+T03,1,"The product is **FX5-C**, a 5-year fixed-rate product, with a 4.69% rate and 25-year amortization.",partial,'5-year fixed-rate' not in tool results (term_years 5 only); rest matches the loan record
+T06,1,"The accelerated biweekly payment on a $400,000 FX3-C mortgage amortized over 25 years is $1,145.06, based on the product rate of 4.84% (semi-annual compounding, 26 payments per year).",supported,
+T08,1,Policy PRC-007 says the renewal notice is sent 120 days before the maturity date of every closed mortgage [S1].,supported,
+T08,1,RNT-4 products follow the same rule [S5].,supported,
+T08,1,I saved a draft reply to the borrower contact on DMC-2026-00105 (draft ID DR-000005).,supported,
+T08,1,It states the 120-day notice timing and that the mortgage renews into FX1-O without an instruction.,supported,draft body not echoed; FX1-O renewal and 120 days match S2/S5
+T08,1,It is saved for review and has not been sent.,supported,
+T11,1,"The accelerated biweekly payment on loan DMC-2026-00108 is **$858.80**, based on the $300,000 principal, 4.84% rate and 25-year amortization in the loan record.",supported,
+T11,1,"**How it is worked out:** Accelerated bi-weekly is half of the monthly payment, and the monthly payment comes from the standard formula [S1].",supported,
+T11,1,"The monthly payment on these terms is $1,717.59, and half of that is $858.80 (rounded to the cent) [S2].",supported,
+T11,1,The FX3-C fixed rate is compounded semi-annually [S4].,supported,
+T11,1,"Because there are 26 accelerated payments a year, the loan is repaid faster than with standard bi-weekly payments [S1].",supported,
+T13,1,Outstanding conditions on DMC-2026-00109: Appraisal (COND-APPRAISAL) Down payment (COND-DOWN-PAYMENT),supported,
+T13,1,"Policy requires every condition to be met, with the supporting document in the loan system, at least 10 business days before the closing date [S1].",supported,
+T13,1,The approval states the exact due date for each condition.,supported,
+T13,1,I saved a draft reply to the borrower contact (CT-0015). Draft ID: DR-000014.,supported,
+T13,1,It has not been sent.,supported,
+T14,1,I prepared the EXC-100 draft for loan DMC-2026-00102. Request ID: **ER-000009**.,supported,
+T14,1,"**Ratios at the 5.90% qualifying rate:** TDS is 43.17% against the 42.0% limit, an overage of 1.18 points.",supported,
+T14,1,"GDS is 33.56%, within the 35.0% limit.",supported,
+T14,1,**Routing:** An overage of up to 2.0 points goes to a Senior Underwriter [S2].,supported,
+T14,1,**Next steps:** The underwriter must review and raise the request.,supported,
+T14,1,A senior underwriter then decides it.,supported,
+T14,1,It has not been raised or approved. [S3],supported,
+T14,1,"**Requested value:** Approve at the current TDS ratio, as you asked.",supported,restates the user's request; draft fields are not echoed in tool results
+T14,1,"**Compensating factors:** More than five years with the same employer, and no missed payments in the credit history.",supported,restates the user's request; draft fields are not echoed in tool results
+T15,1,"I prepared the EXC-100 draft for DMC-2026-00103, request ID **ER-000012**.",supported,
+T15,1,It is not raised yet.,supported,
+T15,1,"**Ratios at the qualifying rate (6.59%):** TDS is 44.8% against a 42.0% limit, an overage of 2.8 points.",supported,
+T15,1,"GDS is 34.8%, within its 35.0% limit.",supported,
+T15,1,**Approval authority:** A TDS overage above 2.0 points and up to 4.0 points goes to the Credit Committee [S2][S3][S5].,supported,
+T15,1,**Next steps:** The underwriter must review and raise the request before the file is approved [S4].,supported,
+T15,1,The Credit Committee then decides it.,supported,
+T15,1,This is not a promise of approval [S1].,supported,
+T15,1,**Compensating factors:** I entered your two factors as given.,supported,draft content not echoed in tool results; consistent with the request
+T15,1,"The file shows other debts of $1,050 per month.",supported,
+T15,1,"The down payment is not in the loan record, so it is listed as ""per underwriter"" and needs verification before the request is raised.",partial,down payment absent from the record is correct; 'listed as per underwriter' is a claim about draft text that tool results do not show
+T16,1,"I prepared an EXC-100 draft for loan DMC-2026-00101, request ID **ER-000015**.",supported,
+T16,1,**Requested value:** accept an employment letter dated 45 days before the credit decision instead of the 30-day limit.,supported,restates the user's request; draft fields are not echoed in tool results
+T16,1,**Policy basis:** salaried employment letters must be dated within 30 days of the credit decision [S1][S2].,supported,
+T16,1,The underwriter's workflow also allows an income-document exception only under POL-010 [S3].,supported,
+T16,1,**Compensating factors:** same employer for more than eight years; pay stubs for the last three pay periods are in the file.,supported,restates the user's request; draft fields are not echoed in tool results
+T16,1,The underwriter must review and raise this request.,supported,
+T16,1,"A senior underwriter then decides it, so this is not an approval.",supported,
+T16,1,"Until the approval is recorded in the file, the broker should be told that the file cannot go to closing [S4].",supported,
+T17,1,"I prepared the draft EXC-100 for loan DMC-2026-00102, request ID **ER-000018**.",unsupported,"prepare_exception_request returned already_open=true: ER-000018 is the existing draft, not a new one"
+T17,1,It is not raised yet.,supported,
+T17,1,"**Ratios:** TDS is 43.17% against a 42.0% limit, an overage of 1.18 points.",supported,
+T17,1,"GDS is 33.56%, within its 35.0% limit.",supported,
+T17,1,The ratios use the 5.90% qualifying rate.,supported,
+T17,1,**Authority:** A Senior Underwriter may approve a TDS exception up to 2.0 points over the limit [S4].,supported,
+T17,1,The underwriter must raise the request before the file is approved [S5].,supported,
+T17,1,**Compensating factors:** stable employment for more than five years; clean repayment history.,supported,restates the user's request; draft fields are not echoed in tool results
+T17,1,"**Policy basis:** The request must show both ratios, the compensating factors and the justification [S1].",supported,
+T17,1,The system reports that an exception request is already open for this loan.,supported,
+T17,1,Please check whether ER-000018 duplicates it before the underwriter raises it.,unsupported,ER-000018 is the open request itself; telling the user to check it for a duplicate misreads the tool result
+T18,1,I cannot access the status or loan amount for DMC-2026-00103.,supported,
+T18,1,The lookup returned no record or you may not have permission to view it.,supported,
+T18,1,"Please check the loan number and your access, or contact a mortgage specialist.",supported,
+T21,1,"I haven't prepared the EXC-100, because this file doesn't need a GDS/TDS exception.",supported,
+T21,1,"Using the loan record on file, the ratios are within limits at the qualifying rate of 6.44%:",supported,
+T21,1,GDS: 29.35% against a 35% limit,supported,
+T21,1,TDS: 32.98% against a 42% limit,supported,
+T21,1,"An Underwriter may approve a file only when a ratio is over its limit, and the exception route applies only then [S5].",partial,S5 says an Underwriter may NOT approve an over-limit file; the first clause inverts it; 'exception route only when over' is right
+T21,1,Exception approval authority is also tied to how far a ratio is over its limit [S1].,supported,
+T21,1,"If you expected different figures, send the corrected income, debt, rate or property tax amounts and I'll recalculate.",supported,
+T21,1,"If the file's ratios go over the limit, I can prepare the EXC-100 then.",supported,
+T23,1,I can calculate that. Please send me: Principal (loan amount),supported,request for input; no tool call needed
+T23,1,Annual interest rate (%) Amortization period (years),supported,request for input; no tool call needed
+T23,1,"Payment frequency: monthly, semi-monthly, biweekly, accelerated biweekly, weekly, or accelerated weekly",supported,request for input; no tool call needed
+T23,1,"Optional: product code (FX1-O, FX3-C, FX5-C, VR5-C, RNT-4, SEA-5), compounding (semi-annual or monthly), condo fees, property tax, other monthly debts, and gross annual income if you want GDS and TDS ratios",supported,request for input; no tool call needed

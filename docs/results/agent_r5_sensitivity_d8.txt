@@ -1,0 +1,2 @@
+agent_test_haiku_d8 runs_with_r5=3 passed_without_r5=65/72 passed_all=68/75
+agent_test_sonnet_d8 runs_with_r5=5 passed_without_r5=66/70 passed_all=71/75

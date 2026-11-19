@@ -1,0 +1,131 @@
+{
+  "split": "dev",
+  "report_file": "retrieval_dev_20261114T221930Z.json",
+  "report_fingerprint": "8373a368ae0c6e06f7eca5b4f049a56bdfc9dba7d8c4a84251a03445732f368d",
+  "questions_sha256": "0b8d89dfce9955197f08799c549640796b3aed5c7fc2e001c7cad63560049e57",
+  "rerank_n": 10,
+  "reranker": {
+    "model_id": "/data/models--BAAI--bge-reranker-base/snapshots/2cfc18c9415c912f9d8155881c133215df768a70",
+    "model_sha": null,
+    "version": "1.9.4"
+  },
+  "auroc": {
+    "rerank_top1": 0.9666666666666667,
+    "vector_top1": 0.9333333333333333
+  },
+  "n_answerable": 30,
+  "n_oos": 8,
+  "threshold": 0.062085786500000004,
+  "threshold_source": "dev Youden, rule youden-midpoint-ties-high",
+  "interval": [
+    0.043409023,
+    0.08076255
+  ],
+  "j": 0.8666666666666667,
+  "rates": {
+    "correct_fallback": {
+      "num": 8,
+      "den": 8,
+      "rate": 1.0,
+      "ci": [
+        1.0,
+        1.0
+      ]
+    },
+    "false_fallback": {
+      "num": 4,
+      "den": 30,
+      "rate": 0.13333333333333333,
+      "ci": [
+        0.03333333333333333,
+        0.26666666666666666
+      ]
+    },
+    "correct_by_category": {
+      "oos_far": {
+        "num": 4,
+        "den": 4,
+        "rate": 1.0,
+        "ci": [
+          1.0,
+          1.0
+        ]
+      },
+      "oos_near": {
+        "num": 4,
+        "den": 4,
+        "rate": 1.0,
+        "ci": [
+          1.0,
+          1.0
+        ]
+      }
+    },
+    "false_by_category": {
+      "exact": {
+        "num": 0,
+        "den": 5,
+        "rate": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "paraphrase": {
+        "num": 3,
+        "den": 4,
+        "rate": 0.75,
+        "ci": [
+          0.25,
+          1.0
+        ]
+      },
+      "confusable": {
+        "num": 0,
+        "den": 3,
+        "rate": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "superseded_trap": {
+        "num": 0,
+        "den": 3,
+        "rate": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "fine_grained": {
+        "num": 0,
+        "den": 4,
+        "rate": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "table": {
+        "num": 0,
+        "den": 3,
+        "rate": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "multi_doc": {
+        "num": 1,
+        "den": 8,
+        "rate": 0.125,
+        "ci": [
+          0.0,
+          0.375
+        ]
+      }
+    },
+    "passed_without_gold": 0
+  }
+}

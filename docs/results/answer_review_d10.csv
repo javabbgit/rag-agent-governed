@@ -1,0 +1,38 @@
+qid,sentence_no,sentence,markers,cited_chunk_ids,verdict
+T01,1,An approver must decide a complete EXC-100 within 2 business days of receiving it [S1][S2].,S1;S2,PRC-005#the-2-business-day-decision-time;POL-010#recording-and-timing-of-exceptions,supported
+T01,2,The count starts on the first business day after the EXC-100 is complete in the loan system [S1].,S1,PRC-005#the-2-business-day-decision-time,supported
+T01,3,"A request decided late is still valid, but the delay is recorded [S1].",S1,PRC-005#the-2-business-day-decision-time,supported
+T04,1,"The HEL-1 minimum payment is the interest charged for the month, so it is interest-only [S1].",S1,PRD-005#hel-1-interest-and-minimum-payment,supported
+T04,2,Interest is calculated daily on the drawn balance at the HEL-1 contract rate and charged to the line each month [S1].,S1,PRD-005#hel-1-interest-and-minimum-payment,supported
+T04,3,"For HEL-1, the contract rate is DMC Prime plus 0.75 [S3].",S3,POL-004#products-that-must-be-qualified-at-the-qualifying-rate,supported
+T04,4,The minimum payment changes when DMC Prime or the drawn balance changes [S1].,S1,PRD-005#hel-1-interest-and-minimum-payment,supported
+T04,5,"It does not reduce the amount borrowed, and Mortgage Operations shows it on each statement [S1].",S1,PRD-005#hel-1-interest-and-minimum-payment,supported
+T07,1,A self-employed borrower must have been in business for at least 2 years before the application [S1].,S1,PRD-007#sea-5-eligibility-for-self-employed-borrowers,supported
+T07,2,POL-008 also sets the minimum time in business at at least 2 years [S3].,S3,POL-008#summary,supported
+T13,1,"Yes, if the deposit is meant for your down payment, the Underwriter will ask where it came from. [S1][S2]",S1;S2,POL-005#a-borrowed-down-payment-is-not-accepted;POL-005#own-savings-need-a-90-day-history,supported
+T13,2,A single large deposit within the 90-day savings history must be explained and documented. [S2],S2,POL-005#own-savings-need-a-90-day-history,supported
+T13,3,"Acceptable explanations include the sale of a property, a bonus shown on a pay stub, or a gift that meets the rules. [S2]",S2,POL-005#own-savings-need-a-90-day-history,supported
+T13,4,"If the deposit looks like loan proceeds, the Underwriter must ask for proof of its source. [S1]",S1,POL-005#a-borrowed-down-payment-is-not-accepted,supported
+T13,5,Borrowed money may not be counted toward the down payment. [S1],S1,POL-005#a-borrowed-down-payment-is-not-accepted,supported
+T19,1,The sources do not say that accelerated payments let an FX5-C borrower get around the prepayment limits. [S1][S2],S1;S2,PRD-001#fx5-c-payment-frequencies;PRD-001#fx5-c-prepayment-privileges,supported
+T19,2,FX5-C borrowers have a lump-sum privilege of up to 18% of the original principal and a payment-increase privilege of up to 18% of the current regular payment in each anniversary year. [S2],S2,PRD-001#fx5-c-prepayment-privileges,supported
+T19,3,Accelerated frequencies are based on the monthly payment and repay the mortgage faster than the matching standard frequencies. [S1],S1,PRD-001#fx5-c-payment-frequencies,supported
+T19,4,Staff must not describe an accelerated frequency as a way to avoid the prepayment limits in POL-009. [S1],S1,PRD-001#fx5-c-payment-frequencies,supported
+T22,1,Fixed-rate interest on FX3-C is compounded semi-annually. [S1][S3],S1;S3,PRD-002#fx3-c-rate-and-qualifying-rate;POL-012#compounding-fixed-semi-annual-variable-monthly,supported
+T22,2,"Mortgage Operations converts the stated annual rate to a payment-period rate using i = (1 + r / 2)^(2 / f) - 1, where r is the annual rate as a decimal and f is the number of payments per year. [S3]",S3,POL-012#compounding-fixed-semi-annual-variable-monthly,supported
+T22,3,Each FX3-C payment is calculated under this method and rounded to the cent. [S2],S2,PRD-002#fx3-c-payment-frequencies,supported
+T25,1,"No, an FX5-C mortgage is for an owner-occupied residential property, and a non-owner-occupied property is lent on under RNT-4 and not under FX5-C [S1].",S1,PRD-001#fx5-c-product-summary,supported
+T25,2,Demo Mortgage Co. lends on a property the borrower will not live in only under RNT-4 [S5].,S5,POL-006#owner-occupied-and-non-owner-occupied-properties,supported
+T29,1,The HEL-1 contract rate is DMC Prime plus 0.75 points [S3].,S3,PRD-005#hel-1-rate-and-qualifying-rate,supported
+T29,2,"Step 1: On the rate sheet effective 2026-11-01, DMC Prime is 4.70% [S3].",S3,PRD-005#hel-1-rate-and-qualifying-rate,supported
+T29,3,Step 2: 4.70% plus 0.75 points equals 5.45% [S3].,S3,PRD-005#hel-1-rate-and-qualifying-rate,supported
+T29,4,The HEL-1 rate is therefore 5.45% on that rate sheet [S3].,S3,PRD-005#hel-1-rate-and-qualifying-rate,supported
+T29,5,"The rate changes whenever DMC Prime changes, and without a rate hold it is the rate on the rate sheet in force on the funding date [S3].",S3,PRD-005#hel-1-rate-and-qualifying-rate,supported
+T32,1,Three months' interest is the interest on the amount prepaid for 3 months at the contract rate [S2].,S2,POL-009#prepayment-penalty-on-a-fixed-rate-mortgage,supported
+T32,2,"The sources give this example: a 30,000 prepayment above the privileges at a contract rate of 4.69% [S1].",S1,POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage,supported
+T32,3,"Three months' interest is 30,000 x 4.69% / 4 = 351.75 [S1].",S1,POL-009#example-privileges-and-penalty-on-an-fx5-c-mortgage,supported
+T35,1,"For each salaried job, your client must supply two documents [S1].",S1,POL-002#documents-required-for-salaried-income,supported
+T35,2,"A recent pay stub showing the pay period, year-to-date earnings and the employer's name [S1]",S1,POL-002#documents-required-for-salaried-income,supported
+T35,3,"An employment letter from the employer, dated within 30 days of the credit decision, stating the position, employment status, start date and base pay [S1][S3]",S1;S3,POL-002#documents-required-for-salaried-income;PRC-002#stage-3-income-verification,supported
+T35,4,"Underwriting counts each job separately, so the same two documents are needed for both jobs [S1].",S1,POL-002#documents-required-for-salaried-income,supported
+T35,5,"For each job, the pay stub and employment letter must agree on base pay, or the difference must be resolved with the borrower before a decision is made [S1].",S1,POL-002#documents-required-for-salaried-income,supported

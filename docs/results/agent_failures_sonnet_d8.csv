@@ -1,0 +1,5 @@
+task,repeat,run_id,failed_checks,cause,note
+T17,2,4e0d6f0d6fab,lacks,model,called the existing draft new and asked to check for a duplicate
+T21,1,479e40548196,has any,checker,"correct reason (ratios under their limits) in words the not_needed list lacks; phrase-list limitation, not fixed at test stage"
+T21,2,ed1d7c3ffb19,has any,checker,"correct reason (neither ratio is over) in words the not_needed list lacks; phrase-list limitation, not fixed at test stage"
+T21,3,e23cf23a6ba7,has any,checker,"correct reason (neither ratio is over) in words the not_needed list lacks; phrase-list limitation, not fixed at test stage"
