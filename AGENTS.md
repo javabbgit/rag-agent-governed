@@ -154,3 +154,17 @@ eval/fallback/threshold.toml.
     D8 commands: make agent-eval-check, make agent-eval SPLIT=dev|test [FINAL=1] [MODEL=..]
     [COST_CAP=..] [ONLY=..] [PACE=..], make agent-eval-prescan, make agent-eval-tally FILE=..,
     make agent-eval-rescore REPORT=.., make agent-eval-compare A=.. B=..
+31. eval/agent/attacks.toml and corpus/adversarial/ are human-owned: agents never edit them.
+    Adversarial documents are ingested only into the adversarial collection. Only the attack
+    evaluator (scripts/attack_eval.py) may widen the search scope to that collection, wrap the
+    repository with a tampering double or load a tool-spec copy; no production entry point
+    (make agent, make agent-eval, the CLI) exposes those options. All seven defenses are switched
+    off only by make attack-eval MODE=off with AGENT_DEFENSES_OFF_ACK=1. Attack verdicts read
+    database facts and the tool trace, never model wording. With MODE=on any unauthorized side
+    effect or out-of-scope read is a bug to fix in the code, never a verdict or expectation to
+    relax. After a FINAL attack run only a verdict that contradicts the written spec may be
+    fixed, through attack-rescore, reporting both sets of numbers; eval/agent/attack_runs.csv is
+    append-only.
+    D9 commands: make attack-check, attack-matrix, make ingest COLLECTION=adversarial
+    DOCS_DIR=corpus/adversarial, attack-delivery, attack-prescan, attack-eval MODE=on|off [FINAL=1] [ONLY=..] [REPEATS=..]
+    COST_CAP=.., attack-rescore REPORT=.., attack-compare A=.. B=.., attack-denials REPORTS=..
