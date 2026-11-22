@@ -46,7 +46,21 @@ named next to each one.
 
 ## Demo
 
-Videos: coming soon.
+Two narrated walkthroughs of the same recording, about 3 minutes each, with subtitles burned in:
+
+- English narration: https://www.youtube.com/watch?v=5qpoEUCfUjM
+- Chinese narration: https://www.youtube.com/watch?v=o1FFnLv2pI4
+
+The demo was recorded from the v1.0 code (commit a93d3ae) as one scripted terminal session, with
+Claude Haiku 5.5 behind the gateway. Numbers in the narration come only from the results above;
+numbers printed in the recording come from that single run and are not results. The narration is a
+synthetic voice (Kokoro TTS).
+
+![Defenses off vs on: a draft to an unrelated contact is saved, then blocked](docs/media/hook.png)
+
+![The agent prepares an EXC-100 and stops at a draft for the underwriter to raise](docs/media/s03.png)
+
+![Gateway audit: the question with a SIN passes the local embedding and is blocked by rule R10 before the cloud model](docs/media/s11.png)
 
 ## How it fits with the gateway
 
